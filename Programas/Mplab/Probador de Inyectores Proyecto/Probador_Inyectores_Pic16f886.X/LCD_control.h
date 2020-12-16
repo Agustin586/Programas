@@ -1,7 +1,6 @@
 #include <xc.h>
 #define _XTAL_FREQ 20000000
 
-
 /*------------------------------------------------------------------------------
                             PROGRAM DEFINES
  -----------------------------------------------------------------------------*/
@@ -47,8 +46,6 @@
     #define LCD_20X4 0x02    //Numero grandes para Lcd 20x4
     #define JUST_RIGHT 0x10  //Numeros con justificacion derecha de la pantalla
     #define JUST_LEFT 0x11   //Numeros con justificacion izquierda de la pantalla
-#endif
-
 
 /*------------------------------------------------------------------------------
                             FUNCTION PROTOTYPES
@@ -63,3 +60,4 @@ void LCD_shift(unsigned char dir,unsigned char cant);
 void LCD_character(unsigned char adress,char caracter[]);
 void LCD_numerogrande(int valor);
 
+#endif

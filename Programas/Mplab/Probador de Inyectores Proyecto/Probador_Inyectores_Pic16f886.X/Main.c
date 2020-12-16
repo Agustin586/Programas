@@ -1,26 +1,4 @@
-// PIC16F886 Configuration Bit Settings
-
-// 'C' source line config statements
-
-// CONFIG1
-#pragma config FOSC = HS        // Oscillator Selection bits (HS oscillator: High-speed crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN)
-#pragma config WDTE = OFF       // Watchdog Timer Enable bit (WDT disabled and can be enabled by SWDTEN bit of the WDTCON register)
-#pragma config PWRTE = ON       // Power-up Timer Enable bit (PWRT enabled)
-#pragma config MCLRE = ON       // RE3/MCLR pin function select bit (RE3/MCLR pin function is MCLR)
-#pragma config CP = OFF         // Code Protection bit (Program memory code protection is disabled)
-#pragma config CPD = OFF        // Data Code Protection bit (Data memory code protection is disabled)
-#pragma config BOREN = OFF      // Brown Out Reset Selection bits (BOR disabled)
-#pragma config IESO = ON        // Internal External Switchover bit (Internal/External Switchover mode is enabled)
-#pragma config FCMEN = ON       // Fail-Safe Clock Monitor Enabled bit (Fail-Safe Clock Monitor is enabled)
-#pragma config LVP = OFF        // Low Voltage Programming Enable bit (RB3 pin has digital I/O, HV on MCLR must be used for programming)
-
-// CONFIG2
-#pragma config BOR4V = BOR40V   // Brown-out Reset Selection bit (Brown-out Reset set to 4.0V)
-#pragma config WRT = OFF        // Flash Program Memory Self Write Enable bits (Write protection off)
-
-// #pragma config statements should precede project file includes.
-// Use project enums instead of #define for ON and OFF.
-
+#include "Configuracion_Bits.h"
 #include <xc.h>
 #include <stdio.h>
 #include "LCD_control.h"
@@ -42,6 +20,8 @@
 #define TICKS_T4    400   // Cada 40ms
 
 
+extern unsigned char Modo;
+
 ///////////////////////////
 //Prototipos de funciones//
 ///////////////////////////
@@ -54,7 +34,7 @@ void antirrebote(void);
  * Escribe en la pantalla el cursor que se mueve
  * @param opcion
  */
-void Seleccion_Modo(unsigned char *opcion);   
+void Seleccion_Modo(void);   
 /**
  * Ingresa al modo de pulverizacion
  */
@@ -84,7 +64,13 @@ void __interrupt() ISR(void);
  * Elije la tarea a realizar
  */
 void Task_Ready(void);
-
+/**
+ * Configura los pines como digitales y analogicos segun corresponda
+ * Ademas configura otras cosas
+ */
+void Pines_Init(void);
+void MEF_Init(void);
+void MEF_Actualizacion(void);
 
 unsigned int T_Task1=TICKS_T1,T_Task2=TICKS_T2,T_Task3=TICKS_T4,T_Lcd=TICKS_PANT;
 //T_running=0 --> ninguna tarea corriendo
@@ -92,33 +78,30 @@ unsigned int T_Task1=TICKS_T1,T_Task2=TICKS_T2,T_Task3=TICKS_T4,T_Lcd=TICKS_PANT
 unsigned char Est_Task1=0,Est_Task2=0,Est_Task3=0,T_running=0;
 _Bool mostrar=0,clock100us=0;
 
+typedef enum
+{
+    ESTADO_MENU,
+    ESTADO_MODO_PULV,
+        SUBEST_ADC_MODO_PULV,
+        SUBEST_PWM_MODO_PULV,
+        SUBEST_TIEMPO_MODO_PULV,
+    ESTADO_MODO_FUGA,
+    ESTADO_MODO_FLUJO,
+}MEFestado_t;
 
+MEFestado_t Estado_Actual;
+
+////////////////////////////////////////////////////////////////////////////////
 void main(void)
 {
     unsigned char opcion=1;
-
-    //Configuraciones de Entradas y Salidas
-    TRISAbits.TRISA5 = 0;
-    PORTA = 0;
-    PORTB = 0;
-    PORTC = 0;
-    TRISB = 0xFF;                       // Port B how to input
-    TRISC = 0x00;                       // Port C how to output
-    ANSELHbits.ANS12 = 0;               // Setting RB0 how to a digital input
-    ANSELHbits.ANS11 = 0;               // Setea como digital
-    ANSELHbits.ANS10 = 0;               // Setting RB1 how to a digital input
-    ANSELHbits.ANS8 = 0;                // Setting RB2 how to a diigtla input
-    ANSELHbits.ANS9 = 0;                // Setting RB3 how to a diigtla input
-    ANSELbits.ANS4  = 0;
-    
-    ANS13 = 0;
-    TRISB5 = 0;
-    RB5 = 0;
     
     //Inicializaciones
+    Pines_Init();
     LCD_init();
     Adc_init();
     Pwm_init();
+    MEF_Init();
     
     //Caracter especial
     char caracter1[8] = 
@@ -162,53 +145,50 @@ void main(void)
     
     while(1)
     {
+        /*
         //Parametros iniciales
         Out_E = 0;
         Modo = 0;
         opcion = 1;
-        
-//        while(1)
-//        {
-//            RB5 = 1;
-//            __delay_us(100);
-//            RB5 = 0;
-//            __delay_us(100);
-//        }
         
         while(ENTER==0)   Seleccion_Modo(&opcion);
         
         antirrebote(),LCD_command(CLEAR);   
         Modo = opcion;                      // Elije el modo de trabajo
         Lcd_PPAR();                         // Escribe los parametros en la pantalla
+        */
         
-        switch(opcion)
-        {
-            //Modo de prueba pulverizacion
-            case 1:
-            {
-                MP_Pulv();
-            break;
-            }
-            //Modo de prueba fuga
-            case 2:
-            {
-//                MP_Fuga();
-            break;
-            }
-            //Modo de prueba flujo
-            case 3:
-            {
-//                MP_Flujo();
-            break;
-            }
-        }
     }
 
     return;
 }
-
 ////////////////////////////////////////////////////////////////////////////////
-
+void MEF_Init(void)
+{
+    Estado_Actual = ESTADO_MENU;
+    
+    return;
+}
+////////////////////////////////////////////////////////////////////////////////
+void MEF_Actualizacion(void)
+{
+    switch(Estado_Actual)
+    {
+        case ESTADO_MENU:
+        {
+            //Accion
+            Seleccion_Modo();
+            //Transicion
+            if(ENTER && Modo==1)        Estado_Actual = ESTADO_MODO_PULV,antirrebote();
+            else if(ENTER && Modo==2)   Estado_Actual = ESTADO_MODO_FUGA,antirrebote();
+            else if(ENTER && Modo==3)   Estado_Actual = ESTADO_MODO_FLUJO,antirrebote();
+        break;
+        }
+    }
+    
+    return;
+}
+////////////////////////////////////////////////////////////////////////////////
 void Seleccion_Modo(unsigned char *opcion)
 {
     unsigned char opc_ant=0;    
@@ -238,9 +218,7 @@ void Seleccion_Modo(unsigned char *opcion)
     
     return;
 }
-
 ////////////////////////////////////////////////////////////////////////////////
-
 void MP_Pulv(void)
 {
     unsigned char Maq_task1=1;
@@ -304,9 +282,7 @@ void MP_Pulv(void)
     
     return;
 }
-
 ////////////////////////////////////////////////////////////////////////////////
-
 void Lcd_PTM(unsigned char opcion)
 {
     if(opcion == 1)
@@ -345,9 +321,7 @@ void Lcd_PTM(unsigned char opcion)
     
     return;
 }
-
 ////////////////////////////////////////////////////////////////////////////////
-
 void Lcd_PPAR(void)
 {
     LCD_array(1,1,"RPM:");
@@ -358,9 +332,7 @@ void Lcd_PPAR(void)
     
     return;
 }
-
 ////////////////////////////////////////////////////////////////////////////////
-
 void __interrupt() ISR(void)
 {
     _Bool f_pwmS1=0;
@@ -409,9 +381,7 @@ void __interrupt() ISR(void)
     
     return;
 }
-
 ////////////////////////////////////////////////////////////////////////////////
-
 void Task_Ready(void)
 {
     if(T_Task1 == 0)
@@ -440,9 +410,7 @@ void Task_Ready(void)
     
     return;
 }
-
 ////////////////////////////////////////////////////////////////////////////////
-
 void antirrebote(void)
 {
     WDTCONbits.SWDTEN = 0;      // Deshabilita el wdt
@@ -457,18 +425,31 @@ void antirrebote(void)
     
     return;
 }
-
+////////////////////////////////////////////////////////////////////////////////
+void Pines_Init(void)
+{
+    //Configuraciones de Entradas y Salidas
+    TRISAbits.TRISA5 = 0;
+    PORTA = 0;
+    PORTB = 0;
+    PORTC = 0;
+    TRISB = 0xFF;                       // Port B how to input
+    TRISC = 0x00;                       // Port C how to output
+    ANSELHbits.ANS12 = 0;               // Setting RB0 how to a digital input
+    ANSELHbits.ANS11 = 0;               // Setea como digital
+    ANSELHbits.ANS10 = 0;               // Setting RB1 how to a digital input
+    ANSELHbits.ANS8 = 0;                // Setting RB2 how to a diigtla input
+    ANSELHbits.ANS9 = 0;                // Setting RB3 how to a diigtla input
+    ANSELbits.ANS4  = 0;
+    
+    ANS13 = 0;
+    TRISB5 = 0;
+    RB5 = 0;
+    
+    return;
+}
 ////////////////////////////////////////////////////////////////////////////////
 
-/*
- * Variables:
- * 
- * aux_opc --> Utiliza el auxiliar para mantener el ultimo estado de la opcion seteada
- * opcion  --> Setea la opcion del programa
- * Out_E   --> Salida habilitada
- * Modo    --> Modo de trabajo
- * mostrar --> Muestra una sola vez la informacion para no estar cargandola siempre
- */ 
 ///*//Ciclo infinito
 //    while(1)
 //    {
