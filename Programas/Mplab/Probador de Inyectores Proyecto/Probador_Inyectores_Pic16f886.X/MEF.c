@@ -34,12 +34,17 @@ void MEF_Actualizacion(void)
         case ESTADO_INICIO:
         {
             Pantalla_Inicio();
+            WDTCONbits.SWDTEN = 1;          //Habilita el watch dog
+            WDTCONbits.WDTPS  = 0b1010;     // Preescaler de wdt 1:32768 --> timer = 32768 / 32Khz ~= 1 segundo
+            CLRWDT();
+            
             Estado_Actual = ESTADO_MENU;
         break;
         }
         case ESTADO_MENU:
         {
             //Accion
+            Seleccion_Modo();
             
             //Transicion
             if(ENTER)        Estado_Actual = ESTADO_MODO_PULV,Antirrebote();

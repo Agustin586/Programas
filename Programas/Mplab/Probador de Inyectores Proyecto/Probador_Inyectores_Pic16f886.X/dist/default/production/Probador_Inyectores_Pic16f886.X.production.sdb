@@ -4,7 +4,7 @@
 [d chip 16F886 ]
 [d frameptr 0 ]
 "21 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\MEF.c
-[e E1230 . `uc
+[e E1246 . `uc
 ESTADO_INICIO 0
 ESTADO_MENU 1
 ESTADO_MODO_PULV 2
@@ -18,12 +18,24 @@ ESTADO_MODO_FLUJO 7
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
 "86 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\common\ftadd.c
 [v ___ftadd __ftadd `(f  1 e 3 0 ]
+"56 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"44 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\common\fttol.c
+[v ___fttol __fttol `(l  1 e 4 0 ]
+"28 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\common\lwtoft.c
+[v ___lwtoft __lwtoft `(f  1 e 3 0 ]
 "6 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\pic\__eeprom.c
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"4 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Display_Lcd.c
+"6 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Display_Lcd.c
 [v _Pant_Inicio Pant_Inicio `(v  1 e 1 0 ]
+"42
+[v _Pant_Selector Pant_Selector `(v  1 e 1 0 ]
+"57
+[v _Pant_Menu Pant_Menu `(v  1 e 1 0 ]
 "4 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Lcd.c
 [v _LCD_init LCD_init `(v  1 e 1 0 ]
 "39
@@ -34,21 +46,41 @@ ESTADO_MODO_FLUJO 7
 [v _LCD_array LCD_array `(v  1 e 1 0 ]
 "197
 [v _LCD_character LCD_character `(v  1 e 1 0 ]
-"22 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+"28 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
 [v _main main `(v  1 e 1 0 ]
-"44
+"46
 [v _Pines_Init Pines_Init `(v  1 e 1 0 ]
-"67
+"65
 [v _Antirrebote Antirrebote `(v  1 e 1 0 ]
+"73
+[v _ISR ISR `II(v  1 e 1 0 ]
+"90
+[v _Task_Ready Task_Ready `(v  1 e 1 0 ]
 "23 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\MEF.c
 [v _MEF_Init MEF_Init `(v  1 e 1 0 ]
 "30
 [v _MEF_Actualizacion MEF_Actualizacion `(v  1 e 1 0 ]
+"12 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Menu_Modo.c
+[v _Select_Modo Select_Modo `(v  1 e 1 0 ]
+"5 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Pwm_Soft.c
+[v _Pwm_init Pwm_init `(v  1 e 1 0 ]
+"30 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X/Pwm_Soft.h
+[v _freqPwmS1 freqPwmS1 `ui  1 e 2 0 ]
+"32
+[v _PwmS1 PwmS1 `ui  1 e 2 0 ]
+"34
+[v _Per_PwmS1 Per_PwmS1 `f  1 e 3 0 ]
+[v _Pw_PwmS1 Pw_PwmS1 `f  1 e 3 0 ]
+"35
+[v _P_W_T_S1 P_W_T_S1 `ui  1 e 2 0 ]
+[v _PER_T_S1 PER_T_S1 `ui  1 e 2 0 ]
+"37
+[v _Act_PwmS1 Act_PwmS1 `a  1 e 1 0 ]
 "166 C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
 "228
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
-[s S129 . 1 `uc 1 RB0 1 0 :1:0 
+[s S108 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -58,11 +90,11 @@ ESTADO_MODO_FLUJO 7
 `uc 1 RB7 1 0 :1:7 
 ]
 "245
-[u S138 . 1 `S129 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES138  1 e 1 @6 ]
+[u S117 . 1 `S108 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES117  1 e 1 @6 ]
 "290
 [v _PORTC PORTC `VEuc  1 e 1 @7 ]
-[s S270 . 1 `uc 1 RC0 1 0 :1:0 
+[s S357 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -72,9 +104,33 @@ ESTADO_MODO_FLUJO 7
 `uc 1 RC7 1 0 :1:7 
 ]
 "307
-[u S279 . 1 `S270 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES279  1 e 1 @7 ]
-[s S62 . 1 `uc 1 TRISA0 1 0 :1:0 
+[u S366 . 1 `S357 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES366  1 e 1 @7 ]
+"571
+[v _TMR1 TMR1 `VEus  1 e 2 @14 ]
+[s S429 . 1 `uc 1 TMR1ON 1 0 :1:0 
+`uc 1 TMR1CS 1 0 :1:1 
+`uc 1 nT1SYNC 1 0 :1:2 
+`uc 1 T1OSCEN 1 0 :1:3 
+`uc 1 T1CKPS 1 0 :2:4 
+`uc 1 TMR1GE 1 0 :1:6 
+`uc 1 T1GINV 1 0 :1:7 
+]
+"621
+[s S437 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T1INSYNC 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T1CKPS0 1 0 :1:4 
+`uc 1 T1CKPS1 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 T1GIV 1 0 :1:7 
+]
+[s S445 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T1SYNC 1 0 :1:2 
+]
+[u S448 . 1 `S429 1 . 1 0 `S437 1 . 1 0 `S445 1 . 1 0 ]
+[v _T1CONbits T1CONbits `VES448  1 e 1 @16 ]
+[s S44 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 TRISA3 1 0 :1:3 
@@ -84,13 +140,13 @@ ESTADO_MODO_FLUJO 7
 `uc 1 TRISA7 1 0 :1:7 
 ]
 "1354
-[u S71 . 1 `S62 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES71  1 e 1 @133 ]
+[u S53 . 1 `S44 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES53  1 e 1 @133 ]
 "1399
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
 "1461
 [v _TRISC TRISC `VEuc  1 e 1 @135 ]
-[s S249 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S336 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -100,30 +156,30 @@ ESTADO_MODO_FLUJO 7
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "1478
-[u S258 . 1 `S249 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES258  1 e 1 @135 ]
-[s S34 . 1 `uc 1 SWDTEN 1 0 :1:0 
+[u S345 . 1 `S336 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES345  1 e 1 @135 ]
+[s S198 . 1 `uc 1 SWDTEN 1 0 :1:0 
 `uc 1 WDTPS 1 0 :4:1 
 ]
 "2871
-[s S37 . 1 `uc 1 . 1 0 :1:0 
+[s S201 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 WDTPS0 1 0 :1:1 
 `uc 1 WDTPS1 1 0 :1:2 
 `uc 1 WDTPS2 1 0 :1:3 
 `uc 1 WDTPS3 1 0 :1:4 
 ]
-[u S43 . 1 `S34 1 . 1 0 `S37 1 . 1 0 ]
-[v _WDTCONbits WDTCONbits `VES43  1 e 1 @261 ]
-[s S105 . 1 `uc 1 ANS0 1 0 :1:0 
+[u S207 . 1 `S198 1 . 1 0 `S201 1 . 1 0 ]
+[v _WDTCONbits WDTCONbits `VES207  1 e 1 @261 ]
+[s S87 . 1 `uc 1 ANS0 1 0 :1:0 
 `uc 1 ANS1 1 0 :1:1 
 `uc 1 ANS2 1 0 :1:2 
 `uc 1 ANS3 1 0 :1:3 
 `uc 1 ANS4 1 0 :1:4 
 ]
 "3243
-[u S111 . 1 `S105 1 . 1 0 ]
-[v _ANSELbits ANSELbits `VES111  1 e 1 @392 ]
-[s S88 . 1 `uc 1 ANS8 1 0 :1:0 
+[u S93 . 1 `S87 1 . 1 0 ]
+[v _ANSELbits ANSELbits `VES93  1 e 1 @392 ]
+[s S70 . 1 `uc 1 ANS8 1 0 :1:0 
 `uc 1 ANS9 1 0 :1:1 
 `uc 1 ANS10 1 0 :1:2 
 `uc 1 ANS11 1 0 :1:3 
@@ -131,29 +187,44 @@ ESTADO_MODO_FLUJO 7
 `uc 1 ANS13 1 0 :1:5 
 ]
 "3288
-[u S95 . 1 `S88 1 . 1 0 ]
-[v _ANSELHbits ANSELHbits `VES95  1 e 1 @393 ]
-"3432
-[v _ANS13 ANS13 `VEb  1 e 0 @3149 ]
-"3933
-[v _RB5 RB5 `VEb  1 e 0 @53 ]
+[u S77 . 1 `S70 1 . 1 0 ]
+[v _ANSELHbits ANSELHbits `VES77  1 e 1 @393 ]
+"3711
+[v _GIE GIE `VEb  1 e 0 @95 ]
+"3855
+[v _PEIE PEIE `VEb  1 e 0 @94 ]
+"3930
+[v _RB4 RB4 `VEb  1 e 0 @52 ]
 "4152
 [v _TMR1IE TMR1IE `VEb  1 e 0 @1120 ]
 "4155
 [v _TMR1IF TMR1IF `VEb  1 e 0 @96 ]
-"4221
-[v _TRISB5 TRISB5 `VEb  1 e 0 @1077 ]
+"4158
+[v _TMR1ON TMR1ON `VEb  1 e 0 @128 ]
+"4218
+[v _TRISB4 TRISB4 `VEb  1 e 0 @1076 ]
+"23 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+[v _Modo Modo `uc  1 e 1 0 ]
+"24
+[v _Mostrar Mostrar `a  1 e 1 0 ]
+"25
+[v _Delay100ms Delay100ms `VEui  1 e 2 0 ]
 "21 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\MEF.c
-[v _Estado_Actual Estado_Actual `E1230  1 e 1 0 ]
-"22 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+[v _Estado_Actual Estado_Actual `E1246  1 e 1 0 ]
+"28 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"42
-} 0
 "44
+} 0
+"5 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Pwm_Soft.c
+[v _Pwm_init Pwm_init `(v  1 e 1 0 ]
+{
+"25
+} 0
+"46 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
 [v _Pines_Init Pines_Init `(v  1 e 1 0 ]
 {
-"65
+"63
 } 0
 "23 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\MEF.c
 [v _MEF_Init MEF_Init `(v  1 e 1 0 ]
@@ -163,38 +234,58 @@ ESTADO_MODO_FLUJO 7
 "30
 [v _MEF_Actualizacion MEF_Actualizacion `(v  1 e 1 0 ]
 {
-"53
+"58
 } 0
-"4 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Display_Lcd.c
+"12 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Menu_Modo.c
+[v _Select_Modo Select_Modo `(v  1 e 1 0 ]
+{
+"26
+} 0
+"42 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Display_Lcd.c
+[v _Pant_Selector Pant_Selector `(v  1 e 1 0 ]
+{
+"55
+} 0
+"57
+[v _Pant_Menu Pant_Menu `(v  1 e 1 0 ]
+{
+"65
+} 0
+"65 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+[v _Antirrebote Antirrebote `(v  1 e 1 0 ]
+{
+"71
+} 0
+"6 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Display_Lcd.c
 [v _Pant_Inicio Pant_Inicio `(v  1 e 1 0 ]
 {
-"21
-[v Pant_Inicio@caracter caracter `[8]uc  1 a 8 8 ]
+"23
+[v Pant_Inicio@caracter caracter `[8]uc  1 a 8 14 ]
+"9
+[v Pant_Inicio@caracter1 caracter1 `[8]uc  1 a 8 6 ]
 "7
-[v Pant_Inicio@caracter1 caracter1 `[8]uc  1 a 8 0 ]
-"5
-[v Pant_Inicio@F1230 F1230 `[8]uc  1 s 8 F1230 ]
-"36
+[v Pant_Inicio@F1247 F1247 `[8]uc  1 s 8 F1247 ]
+"40
 } 0
 "197 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Lcd.c
 [v _LCD_character LCD_character `(v  1 e 1 0 ]
 {
 [v LCD_character@adress adress `uc  1 a 1 wreg ]
 "200
-[v LCD_character@i i `uc  1 a 1 6 ]
+[v LCD_character@i i `uc  1 a 1 8 ]
 "197
 [v LCD_character@adress adress `uc  1 a 1 wreg ]
-[v LCD_character@caracter caracter `*.4uc  1 p 1 3 ]
+[v LCD_character@caracter caracter `*.4uc  1 p 1 5 ]
 "199
-[v LCD_character@adress adress `uc  1 a 1 5 ]
+[v LCD_character@adress adress `uc  1 a 1 7 ]
 "204
 } 0
 "137
 [v _LCD_array LCD_array `(v  1 e 1 0 ]
 {
-[v LCD_array@x x `i  1 p 2 3 ]
-[v LCD_array@y y `i  1 p 2 5 ]
-[v LCD_array@date date `*.24uc  1 p 1 7 ]
+[v LCD_array@x x `i  1 p 2 5 ]
+[v LCD_array@y y `i  1 p 2 7 ]
+[v LCD_array@date date `*.24uc  1 p 1 9 ]
 "159
 } 0
 "88
@@ -203,19 +294,14 @@ ESTADO_MODO_FLUJO 7
 [v LCD_date@date date `uc  1 a 1 wreg ]
 [v LCD_date@date date `uc  1 a 1 wreg ]
 "91
-[v LCD_date@date date `uc  1 a 1 2 ]
+[v LCD_date@date date `uc  1 a 1 4 ]
 "133
 } 0
-"67 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-[v _Antirrebote Antirrebote `(v  1 e 1 0 ]
-{
-"73
-} 0
-"4 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Lcd.c
+"4
 [v _LCD_init LCD_init `(v  1 e 1 0 ]
 {
 "14
-[v LCD_init@i i `uc  1 a 1 5 ]
+[v LCD_init@i i `uc  1 a 1 7 ]
 "35
 } 0
 "39
@@ -224,6 +310,16 @@ ESTADO_MODO_FLUJO 7
 [v LCD_command@cmd cmd `uc  1 a 1 wreg ]
 [v LCD_command@cmd cmd `uc  1 a 1 wreg ]
 "42
-[v LCD_command@cmd cmd `uc  1 a 1 2 ]
+[v LCD_command@cmd cmd `uc  1 a 1 4 ]
 "84
+} 0
+"73 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+[v _ISR ISR `II(v  1 e 1 0 ]
+{
+"88
+} 0
+"90
+[v _Task_Ready Task_Ready `(v  1 e 1 0 ]
+{
+"99
 } 0

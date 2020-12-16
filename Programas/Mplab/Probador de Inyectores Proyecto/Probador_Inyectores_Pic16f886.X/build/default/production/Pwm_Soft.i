@@ -1,4 +1,4 @@
-# 1 "Display_Lcd.c"
+# 1 "Pwm_Soft.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,35 +6,8 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "Display_Lcd.c" 2
-# 1 "./Configuracion_Bits.h" 1
-
-
-
-
-
-
-
-
-#pragma config FOSC = HS
-#pragma config WDTE = OFF
-#pragma config PWRTE = ON
-#pragma config MCLRE = ON
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = ON
-#pragma config FCMEN = ON
-#pragma config LVP = OFF
-
-
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
-
-
-
-
-
+# 1 "Pwm_Soft.c" 2
+# 1 "./Pwm_Soft.h" 1
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2399,41 +2372,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\xc.h" 2 3
-# 27 "./Configuracion_Bits.h" 2
-# 1 "Display_Lcd.c" 2
-
-# 1 "./Display_Lcd.h" 1
-
-
-
-# 1 "./MEF.h" 1
-
-
-
-# 1 "./Display_Lcd.h" 1
-# 4 "./MEF.h" 2
-
-# 1 "./Lcd.h" 1
-# 72 "./Lcd.h"
-void LCD_init(void);
-void LCD_command(unsigned char cmd);
-void LCD_array(int x,int y,char *date);
-void LCD_xy(int x,int y);
-void LCD_date(char date);
-void LCD_shift(unsigned char dir,unsigned char cant);
-void LCD_character(unsigned char adress,char caracter[]);
-# 5 "./MEF.h" 2
-
-# 1 "./Menu_Modo.h" 1
-
-
-
-
-
-void Select_Modo(void);
-# 6 "./MEF.h" 2
-
-# 1 "./Pwm_Soft.h" 1
+# 1 "./Pwm_Soft.h" 2
 # 20 "./Pwm_Soft.h"
 void Pwm_init(void);
 void Pwm1_init(unsigned int frecuencia);
@@ -2453,103 +2392,103 @@ float Per_PwmS1=0,Pw_PwmS1=0;
 unsigned int P_W_T_S1=0,PER_T_S1=0;
 
 _Bool Act_PwmS1=0;
-# 7 "./MEF.h" 2
+# 1 "Pwm_Soft.c" 2
 
 
 
 
+void Pwm_init(void)
+{
+    ANSELHbits.ANS11 = 0;
 
 
-void MEF_Init(void);
-void MEF_Actualizacion(void);
-# 4 "./Display_Lcd.h" 2
-# 13 "./Display_Lcd.h"
-void Pant_Inicio(void);
-void Pant_Menu(void);
-void Pant_Pulverizacion(void);
-void Pant_Fuga(void);
-void Pant_Flujo(void);
-void Pant_Selector(void);
-# 2 "Display_Lcd.c" 2
+    T1CONbits.TMR1GE = 0;
+    T1CONbits.T1SYNC = 1;
+    T1CONbits.TMR1CS = 0;
+    T1CONbits.T1CKPS = 0b01;
+    T1CONbits.TMR1ON = 1;
+
+    TMR1 = 65285;
 
 
-extern unsigned char Modo;
+    PEIE = 1;
+    GIE = 1;
+    TMR1IE = 0;
+    TMR1IF = 1;
 
-void Pant_Inicio(void)
+    return;
+}
+
+
+
+void Pwm1_init(unsigned int frecuencia)
 {
 
-    char caracter1[8] =
+    TRISB4 = 0;
+    RB4=0;
+
+
+
+
+
+
+    freqPwmS1 = frecuencia;
+    Per_PwmS1 = (1.0/frecuencia)-0.005;
+    PER_T_S1 = Per_PwmS1 / 0.0001;
+
+
+    Pw_PwmS1 = 0;
+    PwmS1 = 0;
+
+    return;
+}
+
+
+
+void Pwm1(float duty)
+{
+
+    Act_PwmS1 = 1;
+
+    Pw_PwmS1 = (duty * Per_PwmS1) / 100.0;
+    P_W_T_S1 = Pw_PwmS1 / 0.0001;
+
+    if(PwmS1 == 0) RB4=1;
+
+
+    TMR1ON = 1;
+
+    return;
+}
+
+
+
+void Pwm1_stop(void)
+{
+
+    Act_PwmS1 = 0;
+
+    Pw_PwmS1 = 0;
+    PwmS1 = 0;
+
+    RB4=0;
+
+    return;
+}
+
+
+
+void Pwm_Signal(void)
+{
+    if(PwmS1==P_W_T_S1)
     {
-        0b00000110,
-        0b00001001,
-        0b00001001,
-        0b00000110,
-        0b00000000,
-        0b00000000,
-        0b00000000,
-        0b00000000
-    };
-    LCD_character(0x01,caracter1);
-
-
-    char caracter[8] = {0,0,0,0,0,0,0,0};
-    LCD_character(0x00,caracter);
-
-
-    LCD_command(0x01);
-    LCD_array(1,1,"====================");
-    LCD_array(2,1,"PROBADOR AUTOMOTRIZ ");
-    LCD_array(3,1,"   DE INYECTORES    ");
-    LCD_array(4,1,"====================");
-    _delay((unsigned long)((2000)*(20000000/4000.0)));
-
-
-    LCD_command(0x01);
-
-    LCD_array(1,1,">");
-
-    return;
-}
-
-void Pant_Selector(void)
-{
-    if(Modo == 1) LCD_array(4,1," "),LCD_array(1,1,">");
-    else if(Modo == 2) LCD_array(1,1," "),LCD_array(2,1,">");
-    else if(Modo == 3) LCD_array(2,1," "),LCD_array(3,1,">");
-    else if(Modo == 4) LCD_array(3,1," "),LCD_array(4,1,">");
-
-
-
-
-
-
-    return;
-}
-
-void Pant_Menu(void)
-{
-    LCD_array(1,3,"PULVERIZACION");
-    LCD_array(2,3,"FUGA");
-    LCD_array(3,3,"FLUJO");
-    LCD_array(4,3,"LIMP. ULTRASONIDO");
-
-    return;
-}
-
-void Pant_Pulverizacion(void)
-{
-
-    return;
-}
-
-void Pant_Fuga(void)
-{
-
-    return;
-}
-
-void Pant_Flujo(void)
-{
+        RB4=0;
+    }
+    if(PwmS1==PER_T_S1)
+    {
+        PwmS1 = 0;
+        RB4=1;
+    }
 
     return;
 }

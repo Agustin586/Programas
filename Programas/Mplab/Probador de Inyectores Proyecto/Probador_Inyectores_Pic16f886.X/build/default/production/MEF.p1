@@ -1,11 +1,29 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "21 MEF.c
 [; ;MEF.c: 21: MEFestado_t Estado_Actual;
-[c E1230 0 1 2 3 4 5 6 7 .. ]
-[n E1230 . ESTADO_INICIO ESTADO_MENU ESTADO_MODO_PULV SUBEST_ADC_MODO_PULV SUBEST_PWM_MODO_PULV SUBEST_TIEMPO_MODO_PULV ESTADO_MODO_FUGA ESTADO_MODO_FLUJO  ]
-"12 ./Display_Lcd.h
-[; ;./Display_Lcd.h: 12: void Pant_Inicio(void);
+[c E1246 0 1 2 3 4 5 6 7 .. ]
+[n E1246 . ESTADO_INICIO ESTADO_MENU ESTADO_MODO_PULV SUBEST_ADC_MODO_PULV SUBEST_PWM_MODO_PULV SUBEST_TIEMPO_MODO_PULV ESTADO_MODO_FUGA ESTADO_MODO_FLUJO  ]
+"13 ./Display_Lcd.h
+[; ;./Display_Lcd.h: 13: void Pant_Inicio(void);
 [v _Pant_Inicio `(v ~T0 @X0 0 ef ]
+"2859 C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 2859:     struct {
+[s S114 :1 `uc 1 :4 `uc 1 ]
+[n S114 . SWDTEN WDTPS ]
+"2863
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 2863:     struct {
+[s S115 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S115 . . WDTPS0 WDTPS1 WDTPS2 WDTPS3 ]
+"2858
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 2858: typedef union {
+[u S113 `S114 1 `S115 1 ]
+[n S113 . . . ]
+"2871
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 2871: extern volatile WDTCONbits_t WDTCONbits __attribute__((address(0x105)));
+[v _WDTCONbits `VS113 ~T0 @X0 0 e@261 ]
+"6 ./Menu_Modo.h
+[; ;./Menu_Modo.h: 6: void Select_Modo(void);
+[v _Select_Modo `(v ~T0 @X0 0 ef ]
 "234 C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h
 [; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 234:     struct {
 [s S8 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -272,9 +290,47 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3370
 [; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 3370: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
+"30 ./Pwm_Soft.h
+[; ;./Pwm_Soft.h: 30: unsigned int freqPwmS1=0;
+[v _freqPwmS1 `ui ~T0 @X0 1 e ]
+[i _freqPwmS1
+-> -> 0 `i `ui
+]
+"32
+[; ;./Pwm_Soft.h: 32: unsigned int PwmS1=0;
+[v _PwmS1 `ui ~T0 @X0 1 e ]
+[i _PwmS1
+-> -> 0 `i `ui
+]
+"34
+[; ;./Pwm_Soft.h: 34: float Per_PwmS1=0,Pw_PwmS1=0;
+[v _Per_PwmS1 `f ~T0 @X0 1 e ]
+[i _Per_PwmS1
+-> -> 0 `i `f
+]
+[v _Pw_PwmS1 `f ~T0 @X0 1 e ]
+[i _Pw_PwmS1
+-> -> 0 `i `f
+]
+"35
+[; ;./Pwm_Soft.h: 35: unsigned int P_W_T_S1=0,PER_T_S1=0;
+[v _P_W_T_S1 `ui ~T0 @X0 1 e ]
+[i _P_W_T_S1
+-> -> 0 `i `ui
+]
+[v _PER_T_S1 `ui ~T0 @X0 1 e ]
+[i _PER_T_S1
+-> -> 0 `i `ui
+]
+"37
+[; ;./Pwm_Soft.h: 37: _Bool Act_PwmS1=0;
+[v _Act_PwmS1 `a ~T0 @X0 1 e ]
+[i _Act_PwmS1
+-> -> 0 `i `a
+]
 "21 MEF.c
 [; ;MEF.c: 21: MEFestado_t Estado_Actual;
-[v _Estado_Actual `E1230 ~T0 @X0 1 e ]
+[v _Estado_Actual `E1246 ~T0 @X0 1 e ]
 "23
 [; ;MEF.c: 23: void MEF_Init(void)
 [v _MEF_Init `(v ~T0 @X0 1 ef ]
@@ -285,7 +341,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "25
 [; ;MEF.c: 25:     Estado_Actual = ESTADO_INICIO;
-[e = _Estado_Actual . `E1230 0 ]
+[e = _Estado_Actual . `E1246 0 ]
 "27
 [; ;MEF.c: 27:     return;
 [e $UE 134  ]
@@ -317,58 +373,70 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MEF.c: 36:             Pant_Inicio();
 [e ( _Pant_Inicio ..  ]
 "37
-[; ;MEF.c: 37:             Estado_Actual = ESTADO_MENU;
-[e = _Estado_Actual . `E1230 1 ]
+[; ;MEF.c: 37:             WDTCONbits.SWDTEN = 1;
+[e = . . _WDTCONbits 0 0 -> -> 1 `i `uc ]
 "38
-[; ;MEF.c: 38:         break;
-[e $U 136  ]
+[; ;MEF.c: 38:             WDTCONbits.WDTPS = 0b1010;
+[e = . . _WDTCONbits 0 1 -> -> 10 `i `uc ]
 "39
-[; ;MEF.c: 39:         }
-}
-"40
-[; ;MEF.c: 40:         case ESTADO_MENU:
-[e :U 139 ]
+[; ;MEF.c: 39:             __asm("clrwdt");
+[; <" clrwdt ;# ">
 "41
-[; ;MEF.c: 41:         {
-{
+[; ;MEF.c: 41:             Estado_Actual = ESTADO_MENU;
+[e = _Estado_Actual . `E1246 1 ]
+"42
+[; ;MEF.c: 42:         break;
+[e $U 136  ]
+"43
+[; ;MEF.c: 43:         }
+}
+"44
+[; ;MEF.c: 44:         case ESTADO_MENU:
+[e :U 139 ]
 "45
-[; ;MEF.c: 45:             if(PORTBbits.RB1) Estado_Actual = ESTADO_MODO_PULV,Antirrebote();
+[; ;MEF.c: 45:         {
+{
+"47
+[; ;MEF.c: 47:             Select_Modo();
+[e ( _Select_Modo ..  ]
+"50
+[; ;MEF.c: 50:             if(PORTBbits.RB1) Estado_Actual = ESTADO_MODO_PULV,Antirrebote();
 [e $ ! != -> . . _PORTBbits 0 1 `i -> 0 `i 140  ]
-[e ; = _Estado_Actual . `E1230 2 ( _Antirrebote ..  ]
+[e ; = _Estado_Actual . `E1246 2 ( _Antirrebote ..  ]
 [e $U 141  ]
-"46
-[; ;MEF.c: 46:             else if(PORTBbits.RB1) Estado_Actual = ESTADO_MODO_FUGA,Antirrebote();
+"51
+[; ;MEF.c: 51:             else if(PORTBbits.RB1) Estado_Actual = ESTADO_MODO_FUGA,Antirrebote();
 [e :U 140 ]
 [e $ ! != -> . . _PORTBbits 0 1 `i -> 0 `i 142  ]
-[e ; = _Estado_Actual . `E1230 6 ( _Antirrebote ..  ]
+[e ; = _Estado_Actual . `E1246 6 ( _Antirrebote ..  ]
 [e $U 143  ]
-"47
-[; ;MEF.c: 47:             else if(PORTBbits.RB1) Estado_Actual = ESTADO_MODO_FLUJO,Antirrebote();
+"52
+[; ;MEF.c: 52:             else if(PORTBbits.RB1) Estado_Actual = ESTADO_MODO_FLUJO,Antirrebote();
 [e :U 142 ]
 [e $ ! != -> . . _PORTBbits 0 1 `i -> 0 `i 144  ]
-[e ; = _Estado_Actual . `E1230 7 ( _Antirrebote ..  ]
+[e ; = _Estado_Actual . `E1246 7 ( _Antirrebote ..  ]
 [e :U 144 ]
 [e :U 143 ]
 [e :U 141 ]
-"48
-[; ;MEF.c: 48:         break;
+"53
+[; ;MEF.c: 53:         break;
 [e $U 136  ]
-"49
-[; ;MEF.c: 49:         }
+"54
+[; ;MEF.c: 54:         }
 }
-"50
-[; ;MEF.c: 50:     }
+"55
+[; ;MEF.c: 55:     }
 }
 [e $U 136  ]
 [e :U 137 ]
-[e [\ -> _Estado_Actual `ui , $ -> . `E1230 0 `ui 138
- , $ -> . `E1230 1 `ui 139
+[e [\ -> _Estado_Actual `ui , $ -> . `E1246 0 `ui 138
+ , $ -> . `E1246 1 `ui 139
  136 ]
 [e :U 136 ]
-"52
-[; ;MEF.c: 52:     return;
+"57
+[; ;MEF.c: 57:     return;
 [e $UE 135  ]
-"53
-[; ;MEF.c: 53: }
+"58
+[; ;MEF.c: 58: }
 [e :UE 135 ]
 }

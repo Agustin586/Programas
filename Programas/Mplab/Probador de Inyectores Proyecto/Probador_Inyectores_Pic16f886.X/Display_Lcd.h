@@ -8,12 +8,14 @@
 #define Pantalla_Pulverizacion  Pant_Pulverizacion
 #define Pantalla_Fuga           Pant_Fuga
 #define Pantalla_Flujo          Pant_Flujo
+#define Pantalla_Selector       Pant_Selector
 
 void Pant_Inicio(void);
 void Pant_Menu(void);
 void Pant_Pulverizacion(void);
 void Pant_Fuga(void);
 void Pant_Flujo(void);
+void Pant_Selector(void);
 
 #endif	/* XC_DISPLAY_LCD_H */
 

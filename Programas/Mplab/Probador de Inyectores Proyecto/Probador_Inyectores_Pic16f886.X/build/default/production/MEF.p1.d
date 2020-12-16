@@ -3,4 +3,6 @@ MEF.c  \
 Configuracion_Bits.h  \
 MEF.h  \
 Display_Lcd.h  \
-Lcd.h 
+Lcd.h  \
+Menu_Modo.h  \
+Pwm_Soft.h 

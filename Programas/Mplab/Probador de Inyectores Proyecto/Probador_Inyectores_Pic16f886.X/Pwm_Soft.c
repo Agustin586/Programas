@@ -14,7 +14,6 @@ void Pwm_init(void)
     T1CONbits.TMR1ON = 1;               // Timer1 habilitado
     
     TMR1 = 65285;     // 100us
-    //TMR1 = 63035;   // 1ms
     
     //Configura la interrupcion por timer1
     PEIE = 1;

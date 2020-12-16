@@ -2412,19 +2412,13 @@ extern __bank0 __bit __timeout;
 
 # 1 "./MEF.h" 1
 # 4 "./Display_Lcd.h" 2
-
-
-
-
-
-
-
-
+# 13 "./Display_Lcd.h"
 void Pant_Inicio(void);
 void Pant_Menu(void);
 void Pant_Pulverizacion(void);
 void Pant_Fuga(void);
 void Pant_Flujo(void);
+void Pant_Selector(void);
 # 4 "./MEF.h" 2
 
 # 1 "./Lcd.h" 1
@@ -2437,6 +2431,37 @@ void LCD_date(char date);
 void LCD_shift(unsigned char dir,unsigned char cant);
 void LCD_character(unsigned char adress,char caracter[]);
 # 5 "./MEF.h" 2
+
+# 1 "./Menu_Modo.h" 1
+
+
+
+
+
+void Select_Modo(void);
+# 6 "./MEF.h" 2
+
+# 1 "./Pwm_Soft.h" 1
+# 20 "./Pwm_Soft.h"
+void Pwm_init(void);
+void Pwm1_init(unsigned int frecuencia);
+void Pwm1(float duty);
+void Pwm1_stop(void);
+
+void Pwm_Signal(void);
+
+
+
+
+unsigned int freqPwmS1=0;
+
+unsigned int PwmS1=0;
+
+float Per_PwmS1=0,Pw_PwmS1=0;
+unsigned int P_W_T_S1=0,PER_T_S1=0;
+
+_Bool Act_PwmS1=0;
+# 7 "./MEF.h" 2
 
 
 
@@ -2481,12 +2506,17 @@ void MEF_Actualizacion(void)
         case ESTADO_INICIO:
         {
             Pant_Inicio();
+            WDTCONbits.SWDTEN = 1;
+            WDTCONbits.WDTPS = 0b1010;
+            __asm("clrwdt");
+
             Estado_Actual = ESTADO_MENU;
         break;
         }
         case ESTADO_MENU:
         {
 
+            Select_Modo();
 
 
             if(PORTBbits.RB1) Estado_Actual = ESTADO_MODO_PULV,Antirrebote();

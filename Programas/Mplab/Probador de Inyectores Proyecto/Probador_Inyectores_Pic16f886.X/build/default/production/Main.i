@@ -2412,19 +2412,13 @@ extern __bank0 __bit __timeout;
 
 # 1 "./MEF.h" 1
 # 4 "./Display_Lcd.h" 2
-
-
-
-
-
-
-
-
+# 13 "./Display_Lcd.h"
 void Pant_Inicio(void);
 void Pant_Menu(void);
 void Pant_Pulverizacion(void);
 void Pant_Fuga(void);
 void Pant_Flujo(void);
+void Pant_Selector(void);
 # 4 "./MEF.h" 2
 
 # 1 "./Lcd.h" 1
@@ -2437,6 +2431,37 @@ void LCD_date(char date);
 void LCD_shift(unsigned char dir,unsigned char cant);
 void LCD_character(unsigned char adress,char caracter[]);
 # 5 "./MEF.h" 2
+
+# 1 "./Menu_Modo.h" 1
+
+
+
+
+
+void Select_Modo(void);
+# 6 "./MEF.h" 2
+
+# 1 "./Pwm_Soft.h" 1
+# 20 "./Pwm_Soft.h"
+void Pwm_init(void);
+void Pwm1_init(unsigned int frecuencia);
+void Pwm1(float duty);
+void Pwm1_stop(void);
+
+void Pwm_Signal(void);
+
+
+
+
+unsigned int freqPwmS1=0;
+
+unsigned int PwmS1=0;
+
+float Per_PwmS1=0,Pw_PwmS1=0;
+unsigned int P_W_T_S1=0,PER_T_S1=0;
+
+_Bool Act_PwmS1=0;
+# 7 "./MEF.h" 2
 
 
 
@@ -2548,6 +2573,12 @@ extern int printf(const char *, ...);
 # 18 "Main.c"
 void Pines_Init(void);
 void Antirrebote(void);
+void Task_Ready(void);
+void __attribute__((picinterrupt(("")))) ISR (void);
+
+unsigned char Modo=0;
+_Bool Mostrar=0;
+volatile unsigned int Delay100ms=1000;
 
 
 void main(void)
@@ -2556,11 +2587,7 @@ void main(void)
     Pines_Init();
     MEF_Init();
     LCD_init();
-
-
-    WDTCONbits.SWDTEN = 1;
-    WDTCONbits.WDTPS = 0b1010;
-    __asm("clrwdt");
+    Pwm_init();
 
     TMR1IE=1,TMR1IF=1;
 
@@ -2588,10 +2615,6 @@ void Pines_Init(void)
     ANSELHbits.ANS9 = 0;
     ANSELbits.ANS4 = 0;
 
-    ANS13 = 0;
-    TRISB5 = 0;
-    RB5 = 0;
-
     return;
 }
 
@@ -2599,6 +2622,34 @@ void Antirrebote(void)
 {
     _delay((unsigned long)((10)*(20000000/4000.0)));
     while(PORTBbits.RB0 || PORTBbits.RB1 || PORTBbits.RB2 || PORTBbits.RB3) _delay((unsigned long)((10)*(20000000/4000.0)));
+
+    return;
+}
+
+void __attribute__((picinterrupt(("")))) ISR (void)
+{
+
+    if(TMR1IF == 1)
+    {
+        if(Delay100ms!= 0 && !Mostrar) Delay100ms--;
+
+        TMR1 = 65285;
+        TMR1ON = 1;
+        TMR1IF = 0;
+    }
+
+    if(!Delay100ms) Task_Ready();
+
+    return;
+}
+
+void Task_Ready(void)
+{
+    if(!Delay100ms)
+    {
+        Mostrar = 1;
+        Delay100ms = 1000;
+    }
 
     return;
 }
