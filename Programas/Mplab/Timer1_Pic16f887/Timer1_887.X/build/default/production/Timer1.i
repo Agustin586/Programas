@@ -2562,7 +2562,7 @@ void Timer1_Start(void)
     TMR1 = 64285;
     T1CONbits.TMR1ON = 1;
 
-    INTCONbits.GIE = 1;
+    PIE1bits.TMR1IE = 1;
 
     return;
 }
@@ -2572,7 +2572,7 @@ void Timer1_Stop(void)
     T1CONbits.TMR1ON = 0;
     TMR1 = 64285;
 
-    INTCONbits.GIE = 0;
+    PIE1bits.TMR1IE = 0;
 
     return;
 }

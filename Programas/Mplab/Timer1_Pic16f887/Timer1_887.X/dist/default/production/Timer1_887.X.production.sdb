@@ -11,15 +11,15 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"34 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Mplab\MPLAB X PROJECTS\Timer1_Pic16f887\Timer1_887.X\Main.c
+"45 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Timer1_Pic16f887\Timer1_887.X\Main.c
 [v _main main `(v  1 e 1 0 ]
-"70
+"80
 [v _ISR ISR `II(v  1 e 1 0 ]
-"85
+"95
 [v _Fin_Delay Fin_Delay `(v  1 e 1 0 ]
-"100
+"110
 [v _Antirrebote Antirrebote `(v  1 e 1 0 ]
-"8 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Mplab\MPLAB X PROJECTS\Timer1_Pic16f887\Timer1_887.X\Timer1.c
+"8 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Timer1_Pic16f887\Timer1_887.X\Timer1.c
 [v _Timer1_Init Timer1_Init `(v  1 e 1 0 ]
 "28
 [v _Timer1_Start Timer1_Start `(v  1 e 1 0 ]
@@ -117,16 +117,16 @@
 [v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
 "3449
 [v _ANSELH ANSELH `VEuc  1 e 1 @393 ]
-"27 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Mplab\MPLAB X PROJECTS\Timer1_Pic16f887\Timer1_887.X\Main.c
+"36 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Timer1_Pic16f887\Timer1_887.X\Main.c
 [v _Tiempo Tiempo `ul  1 e 4 0 ]
-"28
+"37
 [v _Delay Delay `VEul  1 e 4 0 ]
-"34
+"45
 [v _main main `(v  1 e 1 0 ]
 {
-"67
+"78
 } 0
-"39 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Mplab\MPLAB X PROJECTS\Timer1_Pic16f887\Timer1_887.X\Timer1.c
+"39 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Timer1_Pic16f887\Timer1_887.X\Timer1.c
 [v _Timer1_Stop Timer1_Stop `(v  1 e 1 0 ]
 {
 "47
@@ -141,22 +141,22 @@
 {
 "26
 } 0
-"100 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Mplab\MPLAB X PROJECTS\Timer1_Pic16f887\Timer1_887.X\Main.c
+"110 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Timer1_Pic16f887\Timer1_887.X\Main.c
 [v _Antirrebote Antirrebote `(v  1 e 1 0 ]
 {
-"106
+"116
 } 0
-"70
+"80
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"83
+"93
 } 0
-"85
+"95
 [v _Fin_Delay Fin_Delay `(v  1 e 1 0 ]
 {
-"98
+"108
 } 0
-"39 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Mplab\MPLAB X PROJECTS\Timer1_Pic16f887\Timer1_887.X\Timer1.c
+"39 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Timer1_Pic16f887\Timer1_887.X\Timer1.c
 [v i1_Timer1_Stop Timer1_Stop `(v  1 e 1 0 ]
 {
 "47

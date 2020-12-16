@@ -7,7 +7,7 @@
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "Main.c" 2
-# 16 "Main.c"
+# 18 "Main.c"
 # 1 "./Configuracion_Bits.h" 1
 
 
@@ -2521,7 +2521,7 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\xc.h" 2 3
 # 27 "./Configuracion_Bits.h" 2
-# 16 "Main.c" 2
+# 18 "Main.c" 2
 
 # 1 "./Timer1.h" 1
 
@@ -2530,14 +2530,16 @@ extern __bank0 __bit __timeout;
 void Timer1_Init(void);
 void Timer1_Start(void);
 void Timer1_Stop(void);
-# 17 "Main.c" 2
-# 27 "Main.c"
+# 19 "Main.c" 2
+# 36 "Main.c"
 unsigned long Tiempo=100;
 volatile unsigned long Delay=0;
+
 
 void __attribute__((picinterrupt(("")))) ISR (void);
 void Fin_Delay(void);
 void Antirrebote(void);
+
 
 void main(void) {
 
@@ -2573,7 +2575,6 @@ void main(void) {
 
     return;
 }
-
 
 void __attribute__((picinterrupt(("")))) ISR (void)
 {
