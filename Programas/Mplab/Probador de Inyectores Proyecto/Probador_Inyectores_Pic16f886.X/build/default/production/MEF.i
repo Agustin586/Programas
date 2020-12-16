@@ -2406,6 +2406,39 @@ extern __bank0 __bit __timeout;
 
 
 
+# 1 "./Display_Lcd.h" 1
+
+
+
+# 1 "./MEF.h" 1
+# 4 "./Display_Lcd.h" 2
+
+
+
+
+
+
+
+
+void Pant_Inicio(void);
+void Pant_Menu(void);
+void Pant_Pulverizacion(void);
+void Pant_Fuga(void);
+void Pant_Flujo(void);
+# 4 "./MEF.h" 2
+
+# 1 "./Lcd.h" 1
+# 72 "./Lcd.h"
+void LCD_init(void);
+void LCD_command(unsigned char cmd);
+void LCD_array(int x,int y,char *date);
+void LCD_xy(int x,int y);
+void LCD_date(char date);
+void LCD_shift(unsigned char dir,unsigned char cant);
+void LCD_character(unsigned char adress,char caracter[]);
+# 5 "./MEF.h" 2
+
+
 
 
 
@@ -2422,6 +2455,7 @@ extern void Antirrebote(void);
 
 typedef enum
 {
+    ESTADO_INICIO,
     ESTADO_MENU,
     ESTADO_MODO_PULV,
         SUBEST_ADC_MODO_PULV,
@@ -2435,7 +2469,7 @@ MEFestado_t Estado_Actual;
 
 void MEF_Init(void)
 {
-    Estado_Actual = ESTADO_MENU;
+    Estado_Actual = ESTADO_INICIO;
 
     return;
 }
@@ -2444,6 +2478,12 @@ void MEF_Actualizacion(void)
 {
     switch(Estado_Actual)
     {
+        case ESTADO_INICIO:
+        {
+            Pant_Inicio();
+            Estado_Actual = ESTADO_MENU;
+        break;
+        }
         case ESTADO_MENU:
         {
 

@@ -13,6 +13,9 @@
         <logicalFolder name="f1" displayName="Control" projectFiles="true">
           <itemPath>MEF.h</itemPath>
         </logicalFolder>
+        <logicalFolder name="f3" displayName="Display" projectFiles="true">
+          <itemPath>Display_Lcd.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="f2" displayName="Estados" projectFiles="true">
           <itemPath>Menu_Modo.h</itemPath>
           <itemPath>Modo_Pulverizacion.h</itemPath>
@@ -39,6 +42,9 @@
         <logicalFolder name="f2" displayName="Control" projectFiles="true">
           <itemPath>MEF.c</itemPath>
         </logicalFolder>
+        <logicalFolder name="f3" displayName="Display" projectFiles="true">
+          <itemPath>Display_Lcd.c</itemPath>
+        </logicalFolder>
         <logicalFolder name="f1" displayName="Estados" projectFiles="true">
           <itemPath>Menu_Modo.c</itemPath>
           <itemPath>Modo_Pulverizacion.c</itemPath>
@@ -47,6 +53,8 @@
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f2" displayName="Perifericos" projectFiles="true">
+        <itemPath>Lcd.c</itemPath>
+        <itemPath>Lcd.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -67,7 +75,7 @@
         <targetDevice>PIC16F886</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool></platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>2.20</languageToolchainVersion>
         <platform>3</platform>

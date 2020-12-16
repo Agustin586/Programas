@@ -1,4 +1,4 @@
-# 1 "ADC.c"
+# 1 "Lcd.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,35 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "ADC.c" 2
-# 1 "./ADC.h" 1
+# 1 "Lcd.c" 2
+# 1 "./Configuracion_Bits.h" 1
+
+
+
+
+
+
+
+
+#pragma config FOSC = HS
+#pragma config WDTE = OFF
+#pragma config PWRTE = ON
+#pragma config MCLRE = ON
+#pragma config CP = OFF
+#pragma config CPD = OFF
+#pragma config BOREN = OFF
+#pragma config IESO = ON
+#pragma config FCMEN = ON
+#pragma config LVP = OFF
+
+
+#pragma config BOR4V = BOR40V
+#pragma config WRT = OFF
+
+
+
+
+
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2372,60 +2399,219 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\xc.h" 2 3
-# 1 "./ADC.h" 2
+# 27 "./Configuracion_Bits.h" 2
+# 1 "Lcd.c" 2
+
+# 1 "./Lcd.h" 1
+# 72 "./Lcd.h"
+void LCD_init(void);
+void LCD_command(unsigned char cmd);
+void LCD_array(int x,int y,char *date);
+void LCD_xy(int x,int y);
+void LCD_date(char date);
+void LCD_shift(unsigned char dir,unsigned char cant);
+void LCD_character(unsigned char adress,char caracter[]);
+# 2 "Lcd.c" 2
 
 
-
-void Adc_init(void);
-int Adc(unsigned char canal);
-# 1 "ADC.c" 2
-
-
-void Adc_init(void)
+void LCD_init(void)
 {
 
-    TRISAbits.TRISA0 = 1,ANSELbits.ANS0 = 1;
-    TRISAbits.TRISA1 = 1;ANSELbits.ANS1 = 1;
-    TRISAbits.TRISA2 = 1,ANSELbits.ANS2 = 1;
-    TRISAbits.TRISA3 = 1,ANSELbits.ANS3 = 1;
+    TRISCbits.TRISC4=0,TRISCbits.TRISC5=0,TRISCbits.TRISC6=0,TRISCbits.TRISC7=0;
+    TRISCbits.TRISC1=0,TRISCbits.TRISC3=0;
+    TRISCbits.TRISC2=0,PORTCbits.RC2=0;
 
 
-    ADCON0bits.ADCS = 0b10;
+    _delay((unsigned long)((30)*(20000000/4000.0)));
+
+    for(char i=0;i<3;i++)
+    {
+        LCD_command(0x03);
+        _delay((unsigned long)((7)*(20000000/4000.0)));
+    }
 
 
-    ADCON1bits.ADFM = 1;
-
-    ADCON1bits.VCFG0 = 0;
-    ADCON1bits.VCFG1 = 0;
+ LCD_command(0x33);
+    _delay((unsigned long)((100)*(20000000/4000000.0)));
+    LCD_command(0x32);
+    _delay((unsigned long)((5)*(20000000/4000.0)));
+ LCD_command(0x28);
+    _delay((unsigned long)((100)*(20000000/4000000.0)));
+ LCD_command(0x0C);
+    _delay((unsigned long)((100)*(20000000/4000000.0)));
+ LCD_command(0x06);
+    _delay((unsigned long)((100)*(20000000/4000000.0)));
+    LCD_command(0x01);
+    _delay((unsigned long)((10)*(20000000/4000.0)));
 
     return;
 }
 
-int Adc(unsigned char channel)
+
+
+void LCD_command(unsigned char cmd)
 {
-    int convertion;
 
-    convertion = 0;
-
-
-    ADCON0 &= 0xC3;
-    ADCON0 |= channel<<2;
+    PORTCbits.RC4=0,PORTCbits.RC5=0,PORTCbits.RC6=0,PORTCbits.RC7=0;
 
 
-    ADCON0bits.ADON = 1;
-    _delay((unsigned long)((70)*(20000000/4000000.0)));
+    PORTCbits.RC4 = ((cmd >> 4) & 0x01);
+    PORTCbits.RC5 = ((cmd >> 5) & 0x01);
+    PORTCbits.RC6 = ((cmd >> 6) & 0x01);
+    PORTCbits.RC7 = ((cmd >> 7) & 0x01);
+
+
+    PORTCbits.RC1 = 0;
+    PORTCbits.RC3 = 0;
+
+
+    PORTCbits.RC3 = 1;
+    _delay((unsigned long)((15)*(20000000/4000000.0)));
+    PORTCbits.RC3 = 0;
+    _delay((unsigned long)((15)*(20000000/4000000.0)));
 
 
 
-    ADCON0bits.GO_nDONE = 1;
-    while(ADCON0bits.GO_nDONE == 1);
-    convertion = ADRESH, convertion = convertion<<8;
-    convertion |= ADRESL;
+    PORTCbits.RC4=0,PORTCbits.RC5=0,PORTCbits.RC6=0,PORTCbits.RC7=0;
+
+
+    PORTCbits.RC4 = (cmd & 0x01);
+    PORTCbits.RC5 = ((cmd >> 1) & 0x01);
+    PORTCbits.RC6 = ((cmd >> 2) & 0x01);
+    PORTCbits.RC7 = ((cmd >> 3) & 0x01);
+
+
+    PORTCbits.RC1 = 0;
+    PORTCbits.RC3 = 0;
+
+
+    PORTCbits.RC3 = 1;
+    _delay((unsigned long)((15)*(20000000/4000000.0)));
+    PORTCbits.RC3 = 0;
+    _delay((unsigned long)((15)*(20000000/4000000.0)));
+
+
+    _delay((unsigned long)((3)*(20000000/4000.0)));
+
+    return;
+}
 
 
 
-    ADCON0bits.ADON = 0;
-    _delay((unsigned long)((70)*(20000000/4000000.0)));
+void LCD_date(char date)
+{
 
-    return convertion;
+    PORTCbits.RC4=0,PORTCbits.RC5=0,PORTCbits.RC6=0,PORTCbits.RC7=0;
+
+
+    PORTCbits.RC4 = ((date >> 4) & 0x01);
+    PORTCbits.RC5 = ((date >> 5) & 0x01);
+    PORTCbits.RC6 = ((date >> 6) & 0x01);
+    PORTCbits.RC7 = ((date >> 7) & 0x01);
+
+
+    PORTCbits.RC1 = 1;
+    PORTCbits.RC3 = 0;
+
+
+    PORTCbits.RC3 = 1;
+    _delay((unsigned long)((15)*(20000000/4000000.0)));
+    PORTCbits.RC3 = 0;
+    _delay((unsigned long)((15)*(20000000/4000000.0)));
+
+
+
+    PORTCbits.RC4=0,PORTCbits.RC5=0,PORTCbits.RC6=0,PORTCbits.RC7=0;
+
+
+    PORTCbits.RC4 = (date & 0x01);
+    PORTCbits.RC5 = ((date >> 1) & 0x01);
+    PORTCbits.RC6 = ((date >> 2) & 0x01);
+    PORTCbits.RC7 = ((date >> 3) & 0x01);
+
+
+    PORTCbits.RC1 = 1;
+    PORTCbits.RC3 = 0;
+
+
+    PORTCbits.RC3 = 1;
+    _delay((unsigned long)((50)*(20000000/4000000.0)));
+    PORTCbits.RC3 = 0;
+    _delay((unsigned long)((50)*(20000000/4000000.0)));
+
+
+    _delay((unsigned long)((3)*(20000000/4000.0)));
+
+    return;
+}
+
+
+
+void LCD_array(int x,int y,char *date)
+{
+
+    switch(x)
+    {
+        case 1: LCD_command(0x80 | (0x00 + (y - 1)));
+        break;
+        case 2: LCD_command(0x80 | (0x40 + (y - 1)));
+        break;
+        case 3: LCD_command(0x80 | (0x14 + (y - 1)));
+        break;
+        case 4: LCD_command(0x80 | (0x54 + (y - 1)));
+        break;
+    }
+
+
+    while(*date)
+    {
+        LCD_date(*date);
+        _delay((unsigned long)((1)*(20000000/4000.0)));
+        date++;
+    }
+}
+
+
+
+void LCD_xy(int x,int y)
+{
+    switch(x)
+    {
+        case 1: LCD_command(0x80 | (0x00 + (y - 1)));
+        break;
+        case 2: LCD_command(0x80 | (0x40 + (y - 1)));
+        break;
+        case 3: LCD_command(0x80 | (0x14 + (y - 1)));
+        break;
+        case 4: LCD_command(0x80 | (0x54 + (y - 1)));
+        break;
+    }
+}
+
+
+
+void LCD_shift(unsigned char dir,unsigned char cant)
+{
+    char i=1;
+
+    while(i <= cant)
+    {
+        LCD_command(dir);
+        _delay((unsigned long)((250)*(20000000/4000.0)));
+        i++;
+    }
+
+    LCD_command(0x02);
+    i = 1;
+}
+
+
+
+void LCD_character(unsigned char adress,char caracter[])
+{
+    LCD_command(0x40 + (adress * 8));
+    for(char i=0;i<8;i++)
+    {
+        LCD_date(caracter[i]);
+    }
 }

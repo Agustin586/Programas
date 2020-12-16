@@ -8,6 +8,7 @@ extern void Antirrebote(void);
 ////////////////////////////////////////////////////////////////////////////////
 typedef enum
 {
+    ESTADO_INICIO,
     ESTADO_MENU,
     ESTADO_MODO_PULV,
         SUBEST_ADC_MODO_PULV,
@@ -21,7 +22,7 @@ MEFestado_t Estado_Actual;
 
 void MEF_Init(void)
 {
-    Estado_Actual = ESTADO_MENU;
+    Estado_Actual = ESTADO_INICIO;
     
     return;
 }
@@ -30,6 +31,12 @@ void MEF_Actualizacion(void)
 {
     switch(Estado_Actual)
     {
+        case ESTADO_INICIO:
+        {
+            Pantalla_Inicio();
+            Estado_Actual = ESTADO_MENU;
+        break;
+        }
         case ESTADO_MENU:
         {
             //Accion

@@ -7,7 +7,6 @@
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "Main.c" 2
-# 12 "Main.c"
 # 1 "./Configuracion_Bits.h" 1
 
 
@@ -2401,10 +2400,43 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\xc.h" 2 3
 # 27 "./Configuracion_Bits.h" 2
-# 12 "Main.c" 2
+# 1 "Main.c" 2
 
 # 1 "./MEF.h" 1
 
+
+
+# 1 "./Display_Lcd.h" 1
+
+
+
+# 1 "./MEF.h" 1
+# 4 "./Display_Lcd.h" 2
+
+
+
+
+
+
+
+
+void Pant_Inicio(void);
+void Pant_Menu(void);
+void Pant_Pulverizacion(void);
+void Pant_Fuga(void);
+void Pant_Flujo(void);
+# 4 "./MEF.h" 2
+
+# 1 "./Lcd.h" 1
+# 72 "./Lcd.h"
+void LCD_init(void);
+void LCD_command(unsigned char cmd);
+void LCD_array(int x,int y,char *date);
+void LCD_xy(int x,int y);
+void LCD_date(char date);
+void LCD_shift(unsigned char dir,unsigned char cant);
+void LCD_character(unsigned char adress,char caracter[]);
+# 5 "./MEF.h" 2
 
 
 
@@ -2413,7 +2445,7 @@ extern __bank0 __bit __timeout;
 
 void MEF_Init(void);
 void MEF_Actualizacion(void);
-# 13 "Main.c" 2
+# 2 "Main.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\stdio.h" 1 3
 
@@ -2512,9 +2544,8 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 #pragma printf_check(sprintf) const
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
-# 14 "Main.c" 2
-
-
+# 3 "Main.c" 2
+# 18 "Main.c"
 void Pines_Init(void);
 void Antirrebote(void);
 
@@ -2524,6 +2555,7 @@ void main(void)
 
     Pines_Init();
     MEF_Init();
+    LCD_init();
 
 
     WDTCONbits.SWDTEN = 1;

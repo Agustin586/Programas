@@ -1,3 +1,7 @@
+#include "Configuracion_Bits.h"
+#include "MEF.h"
+#include <stdio.h>
+
 #define INICIO      PORTBbits.RB0
 #define ENTER       PORTBbits.RB1
 #define DETENER     PORTBbits.RB2
@@ -9,9 +13,7 @@
 #define TICKS_T2    200   // Cada 20ms ingresa a tarea 2
 #define TICKS_T4    400   // Cada 40ms
 
-#include "Configuracion_Bits.h"
-#include "MEF.h"
-#include <stdio.h>
+#define Pin_Init    Pines_Init
 
 void Pines_Init(void);
 void Antirrebote(void);
@@ -20,9 +22,10 @@ void Antirrebote(void);
 void main(void)
 {   
     //Inicializaciones
-    Pines_Init();
+    Pin_Init();
     Mef_Init();
-    
+    Lcd_Init();    
+ 
     //Habilita el watch dog
     WDTCONbits.SWDTEN = 1;
     WDTCONbits.WDTPS  = 0b1010;     // Preescaler de wdt 1:32768 --> timer = 32768 / 32Khz ~= 1 segundo
@@ -52,7 +55,7 @@ void Pines_Init(void)
     ANSELHbits.ANS10 = 0;               // Setting RB1 how to a digital input
     ANSELHbits.ANS8 = 0;                // Setting RB2 how to a diigtla input
     ANSELHbits.ANS9 = 0;                // Setting RB3 how to a diigtla input
-    ANSELbits.ANS4  = 0;
+    ANSELbits.ANS4  = 0;                // Setting how to digital input
     
     ANS13 = 0;
     TRISB5 = 0;

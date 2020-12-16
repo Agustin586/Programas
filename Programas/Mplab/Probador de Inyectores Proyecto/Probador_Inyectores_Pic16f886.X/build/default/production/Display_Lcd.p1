@@ -1,73 +1,41 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"1343 C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h
-[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 1343:     struct {
-[s S51 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S51 . TRISA0 TRISA1 TRISA2 TRISA3 TRISA4 TRISA5 TRISA6 TRISA7 ]
-"1342
-[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 1342: typedef union {
-[u S50 `S51 1 ]
-[n S50 . . ]
-"1354
-[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 1354: extern volatile TRISAbits_t TRISAbits __attribute__((address(0x085)));
-[v _TRISAbits `VS50 ~T0 @X0 0 e@133 ]
-"3235
-[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 3235:     struct {
-[s S129 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S129 . ANS0 ANS1 ANS2 ANS3 ANS4 ]
-"3234
-[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 3234: typedef union {
-[u S128 `S129 1 ]
-[n S128 . . ]
-"3243
-[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 3243: extern volatile ANSELbits_t ANSELbits __attribute__((address(0x188)));
-[v _ANSELbits `VS128 ~T0 @X0 0 e@392 ]
-"1172
-[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 1172:     struct {
-[s S43 :1 `uc 1 :1 `uc 1 :4 `uc 1 :2 `uc 1 ]
-[n S43 . ADON GO_nDONE CHS ADCS ]
-"1178
-[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 1178:     struct {
-[s S44 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S44 . . GO CHS0 CHS1 CHS2 CHS3 ADCS0 ADCS1 ]
-"1188
-[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 1188:     struct {
-[s S45 :1 `uc 1 :1 `uc 1 ]
-[n S45 . . nDONE ]
-"1192
-[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 1192:     struct {
-[s S46 :1 `uc 1 :1 `uc 1 ]
-[n S46 . . GO_DONE ]
-"1171
-[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 1171: typedef union {
-[u S42 `S43 1 `S44 1 `S45 1 `S46 1 ]
-[n S42 . . . . . ]
-"1197
-[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 1197: extern volatile ADCON0bits_t ADCON0bits __attribute__((address(0x01F)));
-[v _ADCON0bits `VS42 ~T0 @X0 0 e@31 ]
-"2825
-[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 2825:     struct {
-[s S112 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S112 . . VCFG0 VCFG1 . ADFM ]
-"2824
-[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 2824: typedef union {
-[u S111 `S112 1 ]
-[n S111 . . ]
-"2833
-[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 2833: extern volatile ADCON1bits_t ADCON1bits __attribute__((address(0x09F)));
-[v _ADCON1bits `VS111 ~T0 @X0 0 e@159 ]
-"1166
-[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 1166: extern volatile unsigned char ADCON0 __attribute__((address(0x01F)));
-[v _ADCON0 `Vuc ~T0 @X0 0 e@31 ]
+"78 ./Lcd.h
+[; ;./Lcd.h: 78: void LCD_character(unsigned char adress,char caracter[]);
+[v _LCD_character `(v ~T0 @X0 0 ef2`uc`*uc ]
+"73
+[; ;./Lcd.h: 73: void LCD_command(unsigned char cmd);
+[v _LCD_command `(v ~T0 @X0 0 ef1`uc ]
+"74
+[; ;./Lcd.h: 74: void LCD_array(int x,int y,char *date);
+[v _LCD_array `(v ~T0 @X0 0 ef3`i`i`*uc ]
 [v F1196 `(v ~T0 @X0 1 tf1`ul ]
 "92 C:\Program Files (x86)\Microchip\xc8\pic\include\pic.h
 [v __delay `JF1196 ~T0 @X0 0 e ]
 [p i __delay ]
-"1159 C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h
-[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 1159: extern volatile unsigned char ADRESH __attribute__((address(0x01E)));
-[v _ADRESH `Vuc ~T0 @X0 0 e@30 ]
-"2812
-[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 2812: extern volatile unsigned char ADRESL __attribute__((address(0x09E)));
-[v _ADRESL `Vuc ~T0 @X0 0 e@158 ]
+"9 ./Configuracion_Bits.h
+[p x FOSC = HS ]
+"10
+[p x WDTE = OFF ]
+"11
+[p x PWRTE = ON ]
+"12
+[p x MCLRE = ON ]
+"13
+[p x CP = OFF ]
+"14
+[p x CPD = OFF ]
+"15
+[p x BOREN = OFF ]
+"16
+[p x IESO = ON ]
+"17
+[p x FCMEN = ON ]
+"18
+[p x LVP = OFF ]
+"21
+[p x BOR4V = BOR40V ]
+"22
+[p x WRT = OFF ]
 "54 C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h
 [; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -296,104 +264,143 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3370
 [; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 3370: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"3 ADC.c
-[; ;ADC.c: 3: void Adc_init(void)
-[v _Adc_init `(v ~T0 @X0 1 ef ]
-"4
-[; ;ADC.c: 4: {
+"4 Display_Lcd.c
+[; ;Display_Lcd.c: 4: void Pant_Inicio(void)
+[v _Pant_Inicio `(v ~T0 @X0 1 ef ]
+"5
+[; ;Display_Lcd.c: 5: {
 {
-[e :U _Adc_init ]
+[e :U _Pant_Inicio ]
 [f ]
-"6
-[; ;ADC.c: 6:     TRISAbits.TRISA0 = 1,ANSELbits.ANS0 = 1;
-[e ; = . . _TRISAbits 0 0 -> -> 1 `i `uc = . . _ANSELbits 0 0 -> -> 1 `i `uc ]
+[v F1230 `uc ~T0 @X0 -> 8 `i s ]
+[i F1230
+:U ..
 "7
-[; ;ADC.c: 7:     TRISAbits.TRISA1 = 1;ANSELbits.ANS1 = 1;
-[e = . . _TRISAbits 0 1 -> -> 1 `i `uc ]
-[e = . . _ANSELbits 0 1 -> -> 1 `i `uc ]
-"8
-[; ;ADC.c: 8:     TRISAbits.TRISA2 = 1,ANSELbits.ANS2 = 1;
-[e ; = . . _TRISAbits 0 2 -> -> 1 `i `uc = . . _ANSELbits 0 2 -> -> 1 `i `uc ]
-"9
-[; ;ADC.c: 9:     TRISAbits.TRISA3 = 1,ANSELbits.ANS3 = 1;
-[e ; = . . _TRISAbits 0 3 -> -> 1 `i `uc = . . _ANSELbits 0 3 -> -> 1 `i `uc ]
-"12
-[; ;ADC.c: 12:     ADCON0bits.ADCS = 0b10;
-[e = . . _ADCON0bits 0 3 -> -> 2 `i `uc ]
-"15
-[; ;ADC.c: 15:     ADCON1bits.ADFM = 1;
-[e = . . _ADCON1bits 0 4 -> -> 1 `i `uc ]
-"17
-[; ;ADC.c: 17:     ADCON1bits.VCFG0 = 0;
-[e = . . _ADCON1bits 0 1 -> -> 0 `i `uc ]
+[; ;Display_Lcd.c: 7:     char caracter1[8] =
+-> -> 6 `i `uc
+-> -> 9 `i `uc
+-> -> 9 `i `uc
+-> -> 6 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+]
+[v _caracter1 `uc ~T0 @X0 -> 8 `i a ]
+[e = _caracter1 F1230 ]
 "18
-[; ;ADC.c: 18:     ADCON1bits.VCFG1 = 0;
-[e = . . _ADCON1bits 0 2 -> -> 0 `i `uc ]
-"20
-[; ;ADC.c: 20:     return;
-[e $UE 134  ]
+[; ;Display_Lcd.c: 18:     LCD_character(0x01,caracter1);
+[e ( _LCD_character (2 , -> -> 1 `i `uc &U _caracter1 ]
+[v F1232 `uc ~T0 @X0 -> 8 `i s ]
+[i F1232
+:U ..
 "21
-[; ;ADC.c: 21: }
+[; ;Display_Lcd.c: 21:     char caracter[8] = {0,0,0,0,0,0,0,0};
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+]
+[v _caracter `uc ~T0 @X0 -> 8 `i a ]
+[e = _caracter F1232 ]
+"22
+[; ;Display_Lcd.c: 22:     LCD_character(0x00,caracter);
+[e ( _LCD_character (2 , -> -> 0 `i `uc &U _caracter ]
+"25
+[; ;Display_Lcd.c: 25:     LCD_command(0x01);
+[e ( _LCD_command (1 -> -> 1 `i `uc ]
+"26
+[; ;Display_Lcd.c: 26:     LCD_array(1,1,"====================");
+[e ( _LCD_array (3 , , -> 1 `i -> 1 `i :s 1C ]
+"27
+[; ;Display_Lcd.c: 27:     LCD_array(2,1,"PROBADOR AUTOMOTRIZ ");
+[e ( _LCD_array (3 , , -> 2 `i -> 1 `i :s 2C ]
+"28
+[; ;Display_Lcd.c: 28:     LCD_array(3,1,"   DE INYECTORES    ");
+[e ( _LCD_array (3 , , -> 3 `i -> 1 `i :s 3C ]
+"29
+[; ;Display_Lcd.c: 29:     LCD_array(4,1,"====================");
+[e ( _LCD_array (3 , , -> 4 `i -> 1 `i :s 4C ]
+"30
+[; ;Display_Lcd.c: 30:     _delay((unsigned long)((2000)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"33
+[; ;Display_Lcd.c: 33:     LCD_command(0x01);
+[e ( _LCD_command (1 -> -> 1 `i `uc ]
+"35
+[; ;Display_Lcd.c: 35:     return;
+[e $UE 134  ]
+"36
+[; ;Display_Lcd.c: 36: }
 [e :UE 134 ]
 }
-"23
-[; ;ADC.c: 23: int Adc(unsigned char channel)
-[v _Adc `(i ~T0 @X0 1 ef1`uc ]
-"24
-[; ;ADC.c: 24: {
-{
-[e :U _Adc ]
-"23
-[; ;ADC.c: 23: int Adc(unsigned char channel)
-[v _channel `uc ~T0 @X0 1 r1 ]
-"24
-[; ;ADC.c: 24: {
-[f ]
-"25
-[; ;ADC.c: 25:     int convertion;
-[v _convertion `i ~T0 @X0 1 a ]
-"27
-[; ;ADC.c: 27:     convertion = 0;
-[e = _convertion -> 0 `i ]
-"30
-[; ;ADC.c: 30:     ADCON0 &= 0xC3;
-[e =& _ADCON0 -> -> 195 `i `Vuc ]
-"31
-[; ;ADC.c: 31:     ADCON0 |= channel<<2;
-[e =| _ADCON0 -> << -> _channel `i -> 2 `i `Vuc ]
-"34
-[; ;ADC.c: 34:     ADCON0bits.ADON = 1;
-[e = . . _ADCON0bits 0 0 -> -> 1 `i `uc ]
-"35
-[; ;ADC.c: 35:     _delay((unsigned long)((70)*(20000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 70 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
+"38
+[; ;Display_Lcd.c: 38: void Pant_Menu(void)
+[v _Pant_Menu `(v ~T0 @X0 1 ef ]
 "39
-[; ;ADC.c: 39:     ADCON0bits.GO_nDONE = 1;
-[e = . . _ADCON0bits 0 1 -> -> 1 `i `uc ]
-"40
-[; ;ADC.c: 40:     while(ADCON0bits.GO_nDONE == 1);
-[e $U 136  ]
-[e :U 137 ]
-[e :U 136 ]
-[e $ == -> . . _ADCON0bits 0 1 `i -> 1 `i 137  ]
-[e :U 138 ]
-"41
-[; ;ADC.c: 41:     convertion = ADRESH, convertion = convertion<<8;
-[e ; = _convertion -> _ADRESH `i = _convertion << _convertion -> 8 `i ]
+[; ;Display_Lcd.c: 39: {
+{
+[e :U _Pant_Menu ]
+[f ]
 "42
-[; ;ADC.c: 42:     convertion |= ADRESL;
-[e =| _convertion -> _ADRESL `i ]
-"46
-[; ;ADC.c: 46:     ADCON0bits.ADON = 0;
-[e = . . _ADCON0bits 0 0 -> -> 0 `i `uc ]
-"47
-[; ;ADC.c: 47:     _delay((unsigned long)((70)*(20000000/4000000.0)));
-[e ( __delay (1 -> * -> -> 70 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
-"49
-[; ;ADC.c: 49:     return convertion;
-[e ) _convertion ]
+[; ;Display_Lcd.c: 42:     return;
 [e $UE 135  ]
-"50
-[; ;ADC.c: 50: }
+"43
+[; ;Display_Lcd.c: 43: }
 [e :UE 135 ]
 }
+"45
+[; ;Display_Lcd.c: 45: void Pant_Pulverizacion(void)
+[v _Pant_Pulverizacion `(v ~T0 @X0 1 ef ]
+"46
+[; ;Display_Lcd.c: 46: {
+{
+[e :U _Pant_Pulverizacion ]
+[f ]
+"48
+[; ;Display_Lcd.c: 48:     return;
+[e $UE 136  ]
+"49
+[; ;Display_Lcd.c: 49: }
+[e :UE 136 ]
+}
+"51
+[; ;Display_Lcd.c: 51: void Pant_Fuga(void)
+[v _Pant_Fuga `(v ~T0 @X0 1 ef ]
+"52
+[; ;Display_Lcd.c: 52: {
+{
+[e :U _Pant_Fuga ]
+[f ]
+"54
+[; ;Display_Lcd.c: 54:     return;
+[e $UE 137  ]
+"55
+[; ;Display_Lcd.c: 55: }
+[e :UE 137 ]
+}
+"57
+[; ;Display_Lcd.c: 57: void Pant_Flujo(void)
+[v _Pant_Flujo `(v ~T0 @X0 1 ef ]
+"58
+[; ;Display_Lcd.c: 58: {
+{
+[e :U _Pant_Flujo ]
+[f ]
+"60
+[; ;Display_Lcd.c: 60:     return;
+[e $UE 138  ]
+"61
+[; ;Display_Lcd.c: 61: }
+[e :UE 138 ]
+}
+[a 1C 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 0 ]
+[a 4C 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 0 ]
+[a 2C 80 82 79 66 65 68 79 82 32 65 85 84 79 77 79 84 82 73 90 32 0 ]
+[a 3C 32 32 32 68 69 32 73 78 89 69 67 84 79 82 69 83 32 32 32 32 0 ]

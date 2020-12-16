@@ -1,6 +1,9 @@
 #ifndef XC_MEF_H
 #define	XC_MEF_H
 
+#include "Display_Lcd.h"
+#include "Lcd.h"
+
 #define Mef_Init        MEF_Init
 #define Mef_Updated     MEF_Actualizacion
 
