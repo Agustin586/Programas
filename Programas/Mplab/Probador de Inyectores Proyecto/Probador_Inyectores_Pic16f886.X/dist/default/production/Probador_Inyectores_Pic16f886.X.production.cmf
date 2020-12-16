@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\aguat\AppData\Local\Temp\s9ho.o
+$C:\Users\aguat\AppData\Local\Temp\s5go.o
 end_init CODE 0 0 0 3 2
 config CONFIG 4 2007 2007 2 2
 $dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
@@ -70,53 +70,53 @@ STRING 800-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
-7FB cinit CODE >450:C:\Users\aguat\AppData\Local\Temp\s9ho.s
-7FB cinit CODE >453:C:\Users\aguat\AppData\Local\Temp\s9ho.s
-7FB cinit CODE >464:C:\Users\aguat\AppData\Local\Temp\s9ho.s
-7FC cinit CODE >470:C:\Users\aguat\AppData\Local\Temp\s9ho.s
-7FC cinit CODE >472:C:\Users\aguat\AppData\Local\Temp\s9ho.s
-7FD cinit CODE >473:C:\Users\aguat\AppData\Local\Temp\s9ho.s
-791 text4 CODE >104:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-791 text4 CODE >106:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-79A text4 CODE >107:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7D7 text3 CODE >62:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7D7 text3 CODE >64:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7D8 text3 CODE >66:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7D8 text3 CODE >71:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7DE text3 CODE >72:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7E3 text3 CODE >71:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7E7 text3 CODE >72:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7E9 text3 CODE >73:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7ED text3 CODE >76:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7FA text3 CODE >79:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-78F text2 CODE >55:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-78F text2 CODE >57:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-790 text2 CODE >60:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7A4 text1 CODE >81:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7A4 text1 CODE >84:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7A6 text1 CODE >85:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7A8 text1 CODE >86:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7A9 text1 CODE >87:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7AA text1 CODE >88:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7AD text1 CODE >89:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7AE text1 CODE >90:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7B0 text1 CODE >91:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7B1 text1 CODE >92:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7B2 text1 CODE >93:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7B3 text1 CODE >94:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7B4 text1 CODE >95:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7B5 text1 CODE >97:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7B6 text1 CODE >98:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7B8 text1 CODE >99:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7BA text1 CODE >102:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7BB maintext CODE >34:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7BB maintext CODE >37:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7C0 maintext CODE >38:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7C5 maintext CODE >41:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7C7 maintext CODE >42:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7CB maintext CODE >43:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7CC maintext CODE >45:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-7D1 maintext CODE >49:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7FB cinit CODE >602:C:\Users\aguat\AppData\Local\Temp\s5go.s
+7FB cinit CODE >605:C:\Users\aguat\AppData\Local\Temp\s5go.s
+7FB cinit CODE >616:C:\Users\aguat\AppData\Local\Temp\s5go.s
+7FC cinit CODE >622:C:\Users\aguat\AppData\Local\Temp\s5go.s
+7FC cinit CODE >624:C:\Users\aguat\AppData\Local\Temp\s5go.s
+7FD cinit CODE >625:C:\Users\aguat\AppData\Local\Temp\s5go.s
+791 text4 CODE >64:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+791 text4 CODE >66:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+79A text4 CODE >67:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7D7 text3 CODE >29:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\MEF.c
+7D7 text3 CODE >31:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\MEF.c
+7D8 text3 CODE >33:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\MEF.c
+7D8 text3 CODE >38:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\MEF.c
+7DE text3 CODE >39:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\MEF.c
+7E3 text3 CODE >38:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\MEF.c
+7E7 text3 CODE >39:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\MEF.c
+7E9 text3 CODE >40:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\MEF.c
+7ED text3 CODE >43:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\MEF.c
+7FA text3 CODE >46:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\MEF.c
+78F text2 CODE >22:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\MEF.c
+78F text2 CODE >24:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\MEF.c
+790 text2 CODE >27:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\MEF.c
+7A4 text1 CODE >41:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7A4 text1 CODE >44:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7A6 text1 CODE >45:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7A8 text1 CODE >46:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7A9 text1 CODE >47:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7AA text1 CODE >48:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7AD text1 CODE >49:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7AE text1 CODE >50:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7B0 text1 CODE >51:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7B1 text1 CODE >52:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7B2 text1 CODE >53:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7B3 text1 CODE >54:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7B4 text1 CODE >55:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7B5 text1 CODE >57:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7B6 text1 CODE >58:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7B8 text1 CODE >59:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7BA text1 CODE >62:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7BB maintext CODE >20:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7BB maintext CODE >23:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7C0 maintext CODE >24:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7C5 maintext CODE >27:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7C7 maintext CODE >28:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7CB maintext CODE >29:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7CC maintext CODE >31:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+7D1 maintext CODE >35:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -137,19 +137,19 @@ __Hspace_3 0 0 ABS 0 - -
 __Hspace_4 4010 0 ABS 0 - -
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 __Hstrings 0 0 ABS 0 strings -
-___sp 0 0 STACK 2 stack C:\Users\aguat\AppData\Local\Temp\s9ho.o
+___sp 0 0 STACK 2 stack C:\Users\aguat\AppData\Local\Temp\s5go.o
 _main F76 0 CODE 0 maintext dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
-start 0 0 CODE 0 init C:\Users\aguat\AppData\Local\Temp\s9ho.o
+start 0 0 CODE 0 init C:\Users\aguat\AppData\Local\Temp\s5go.o
 __size_of_main 0 0 ABS 0 - dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s9ho.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s9ho.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s9ho.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s9ho.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s9ho.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s9ho.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s5go.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s5go.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s5go.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s5go.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s5go.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s5go.o
 _WDTCONbits 105 0 ABS 0 - dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 _Antirrebote F22 0 CODE 0 text4 dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
@@ -157,15 +157,15 @@ wtemp0 7E 0 ABS 0 - dist/default/production\Probador_Inyectores_Pic16f886.X.prod
 __Hfunctab 0 0 ENTRY 0 functab -
 __Hclrtext 0 0 ABS 0 clrtext -
 __Lmaintext 0 0 ABS 0 maintext -
-___stackhi 0 0 ABS 0 - C:\Users\aguat\AppData\Local\Temp\s9ho.o
-___stacklo 0 0 ABS 0 - C:\Users\aguat\AppData\Local\Temp\s9ho.o
+___stackhi 0 0 ABS 0 - C:\Users\aguat\AppData\Local\Temp\s5go.o
+___stacklo 0 0 ABS 0 - C:\Users\aguat\AppData\Local\Temp\s5go.o
 __size_of_MEF_Actualizacion 0 0 ABS 0 - dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 start_initialization FF6 0 CODE 0 cinit dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 _TRISAbits 85 0 ABS 0 - dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 _TMR1IE 460 0 ABS 0 - dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 _TMR1IF 60 0 ABS 0 - dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 _TRISB5 435 0 ABS 0 - dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\aguat\AppData\Local\Temp\s9ho.o
+___int_sp 0 0 STACK 2 stack C:\Users\aguat\AppData\Local\Temp\s5go.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -211,7 +211,7 @@ __size_of_MEF_Init 0 0 ABS 0 - dist/default/production\Probador_Inyectores_Pic16
 __end_of_Antirrebote F48 0 CODE 0 text4 dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 __end_of_Pines_Init F76 0 CODE 0 text1 dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 __Lintentry 0 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\aguat\AppData\Local\Temp\s9ho.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\aguat\AppData\Local\Temp\s5go.o
 __pmaintext F76 0 CODE 0 maintext dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 0 0 CONFIG 4 config -

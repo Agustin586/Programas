@@ -1,6 +1,3 @@
-#include "Configuracion_Bits.h"
-#include <stdio.h>
-
 #define INICIO      PORTBbits.RB0
 #define ENTER       PORTBbits.RB1
 #define DETENER     PORTBbits.RB2
@@ -12,30 +9,19 @@
 #define TICKS_T2    200   // Cada 20ms ingresa a tarea 2
 #define TICKS_T4    400   // Cada 40ms
 
+#include "Configuracion_Bits.h"
+#include "MEF.h"
+#include <stdio.h>
+
 void Pines_Init(void);
-void MEF_Init(void);
-void MEF_Actualizacion(void);
 void Antirrebote(void);
-
-typedef enum
-{
-    ESTADO_MENU,
-    ESTADO_MODO_PULV,
-        SUBEST_ADC_MODO_PULV,
-        SUBEST_PWM_MODO_PULV,
-        SUBEST_TIEMPO_MODO_PULV,
-    ESTADO_MODO_FUGA,
-    ESTADO_MODO_FLUJO,
-}MEFestado_t;
-
-MEFestado_t Estado_Actual;
 
 ////////////////////////////////////////////////////////////////////////////////
 void main(void)
 {   
     //Inicializaciones
     Pines_Init();
-    MEF_Init();
+    Mef_Init();
     
     //Habilita el watch dog
     WDTCONbits.SWDTEN = 1;
@@ -46,35 +32,9 @@ void main(void)
     
     while(1)
     {
-        MEF_Actualizacion(); 
+        Mef_Updated(); 
     }
 
-    return;
-}
-////////////////////////////////////////////////////////////////////////////////
-void MEF_Init(void)
-{
-    Estado_Actual = ESTADO_MENU;
-    
-    return;
-}
-////////////////////////////////////////////////////////////////////////////////
-void MEF_Actualizacion(void)
-{
-    switch(Estado_Actual)
-    {
-        case ESTADO_MENU:
-        {
-            //Accion
-            //Seleccion_Modo();
-            //Transicion
-            if(ENTER)        Estado_Actual = ESTADO_MODO_PULV,Antirrebote();
-            else if(ENTER)   Estado_Actual = ESTADO_MODO_FUGA,Antirrebote();
-            else if(ENTER)   Estado_Actual = ESTADO_MODO_FLUJO,Antirrebote();
-        break;
-        }
-    }
-    
     return;
 }
 ////////////////////////////////////////////////////////////////////////////////

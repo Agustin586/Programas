@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\pic\dat\en_msgs.txt -cn \
   -h+dist/default/production\Probador_Inyectores_Pic16f886.X.production.sym \
   --cmf=dist/default/production\Probador_Inyectores_Pic16f886.X.production.cmf \
-  -z -Q16F886 -oC:\Users\aguat\AppData\Local\Temp\s9ho.2 \
+  -z -Q16F886 -oC:\Users\aguat\AppData\Local\Temp\s5go.2 \
   --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/Probador_Inyectores_Pic16f886.X.production.map \
   -E1 -ver=XC8 Compiler -ASTACK=0110h-016Fh -pstack=STACK \
@@ -19,7 +19,7 @@ Linker command line:
   -preset_vec=00h,intentry,init,end_init -ppowerup=CODE -pcinit=CODE \
   -pfunctab=ENTRY -AEEDATA=00h-0FFh/02100h -peeprom_data=EEDATA -DEEDATA=2 \
   -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 -k \
-  C:\Users\aguat\AppData\Local\Temp\s9ho.o \
+  C:\Users\aguat\AppData\Local\Temp\s5go.o \
   dist/default/production\Probador_Inyectores_Pic16f886.X.production.o 
 
 Object code version is 3.11
@@ -29,7 +29,7 @@ Machine type is 16F886
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\aguat\AppData\Local\Temp\s9ho.o
+C:\Users\aguat\AppData\Local\Temp\s5go.o
                 end_init                              0        0        3        0       0
                 config                             2007     2007        2        0       4
 dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
@@ -274,7 +274,7 @@ FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 34 in file "Main.c"
+		line 20 in file "Main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -305,7 +305,7 @@ Total ram usage:        0 bytes
 
  *************** function _Pines_Init *****************
  Defined at:
-		line 81 in file "Main.c"
+		line 41 in file "Main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -334,7 +334,7 @@ Total ram usage:        0 bytes
 
  *************** function _MEF_Init *****************
  Defined at:
-		line 55 in file "Main.c"
+		line 22 in file "MEF.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -363,7 +363,7 @@ Total ram usage:        0 bytes
 
  *************** function _MEF_Actualizacion *****************
  Defined at:
-		line 62 in file "Main.c"
+		line 29 in file "MEF.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -393,7 +393,7 @@ Total ram usage:        2 bytes
 
  *************** function _Antirrebote *****************
  Defined at:
-		line 104 in file "Main.c"
+		line 64 in file "Main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -424,14 +424,18 @@ Total ram usage:        2 bytes
 MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
-Main.c
+MEF.c
 		_MEF_Init      		CODE           	078F	0000	3
+		_MEF_Actualizacion		CODE           	07D7	0000	37
+
+MEF.c estimated size: 40
+
+Main.c
 		_Pines_Init    		CODE           	07A4	0000	24
 		_main          		CODE           	07BB	0000	29
 		_Antirrebote   		CODE           	0791	0000	20
-		_MEF_Actualizacion		CODE           	07D7	0000	37
 
-Main.c estimated size: 113
+Main.c estimated size: 73
 
 shared
 		__initialization		CODE           	07FB	0000	2
