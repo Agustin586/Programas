@@ -10,9 +10,9 @@ CND_CONF=default
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/PROBADOR_INYECTORES.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=PROBADOR_INYECTORES.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=probadorinyectores.x/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/Probador_Inyectores_Pic16f886.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=Probador_Inyectores_Pic16f886.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=probadorinyectorespic16f886.x/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/probadorinyectores.x/bin
+makeDirectory ${TMPDIR}/probadorinyectorespic16f886.x/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/probadorinyectores.x.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/probadorinyectorespic16f886.x.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/probadorinyectores.x.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/probadorinyectorespic16f886.x.tar *
 checkReturnCode
 
 # Cleanup
