@@ -1,5 +1,5 @@
 __size_of_Antirrebote 0 0 ABS 0
-__S0 129 0 ABS 0
+__S0 12F 0 ABS 0
 __S1 7A 0 ABS 0
 __S2 0 0 ABS 0
 __S3 0 0 ABS 0
@@ -68,13 +68,13 @@ end_of_initialization 2B 0 CODE 0
 __size_of_ISR 0 0 ABS 0
 ___stacklo 0 0 ABS 0
 _Fin_Delay BE 0 CODE 0
-_Timer1_Stop 113 0 CODE 0
+_Timer1_Stop 115 0 CODE 0
 _TRISBbits 86 0 ABS 0
 _PORTBbits 6 0 ABS 0
 _T1CONbits 10 0 ABS 0
 __Hstrings 0 0 ABS 0
 __Lstrings 0 0 ABS 0
-__end_ofi1_Timer1_Stop 125 0 CODE 0
+__end_ofi1_Timer1_Stop 12B 0 CODE 0
 __Hbank0 0 0 ABS 0
 __Lbank0 0 0 ABS 0
 __Hbank1 0 0 ABS 0
@@ -86,24 +86,24 @@ __Lbank3 0 0 ABS 0
 ___latbits 2 0 ABS 0
 __Hpowerup 0 0 CODE 0
 __Lpowerup 0 0 CODE 0
-__ptext1 113 0 CODE 0
+__ptext1 115 0 CODE 0
 __ptext2 102 0 CODE 0
 __ptext3 EE 0 CODE 0
-i1_Timer1_Stop 11C 0 CODE 0
+i1_Timer1_Stop 120 0 CODE 0
 __ptext4 D9 0 CODE 0
 __ptext5 7B 0 CODE 0
 __ptext6 BE 0 CODE 0
-__ptext7 11C 0 CODE 0
+__ptext7 120 0 CODE 0
 __end_of_Timer1_Init 102 0 CODE 0
-__end_of_Timer1_Stop 11C 0 CODE 0
+__end_of_Timer1_Stop 120 0 CODE 0
 __Hclrtext 0 0 ABS 0
 __Lclrtext 0 0 ABS 0
 __end_of_Antirrebote EE 0 CODE 0
-__end_of_Timer1_Start 113 0 CODE 0
+__end_of_Timer1_Start 115 0 CODE 0
 __end_of__initialization 2B 0 CODE 0
 __Hstack 0 0 STACK 2
 __Lstack 0 0 STACK 2
-__Hspace_0 129 0 ABS 0
+__Hspace_0 12F 0 ABS 0
 __Lspace_0 0 0 ABS 0
 __Hspace_1 7A 0 ABS 0
 __Lspace_1 0 0 ABS 0
@@ -118,7 +118,7 @@ __Hspace_4 4010 0 ABS 0
 __Lspace_4 0 0 ABS 0
 __HidataBANK0 0 0 ABS 0
 __LidataBANK0 0 0 ABS 0
-__pidataBANK0 125 0 CODE 0
+__pidataBANK0 12B 0 CODE 0
 __end_of_Fin_Delay D9 0 CODE 0
 __HbssCOMMON 0 0 ABS 0
 __LbssCOMMON 0 0 ABS 0
@@ -146,12 +146,12 @@ __size_ofi1_Timer1_Stop 0 0 ABS 0
 __initialization F 0 CODE 0
 %segments
 reset_vec 0 5 CODE 0 0
-intentry 8 251 CODE 8 0
+intentry 8 25D CODE 8 0
 cstackCOMMON 70 79 COMMON 70 1
 dataBANK0 20 25 BANK0 20 1
 %locals
 dist/default/production\Timer1_887.X.production.o
-C:\Users\aguat\AppData\Local\Temp\s8sc.s
+C:\Users\aguat\AppData\Local\Temp\sa8o.s
 620 F 0 CODE 0
 623 F 0 CODE 0
 643 F 0 CODE 0
@@ -170,37 +170,37 @@ C:\Users\aguat\AppData\Local\Temp\s8sc.s
 665 2B 0 CODE 0
 666 2C 0 CODE 0
 Main.c
-34 2F 0 CODE 0
-36 2F 0 CODE 0
-37 32 0 CODE 0
-39 33 0 CODE 0
-40 36 0 CODE 0
-41 37 0 CODE 0
-42 38 0 CODE 0
-45 3B 0 CODE 0
-46 40 0 CODE 0
-50 45 0 CODE 0
-52 4B 0 CODE 0
-53 4C 0 CODE 0
-54 54 0 CODE 0
-55 59 0 CODE 0
-57 5E 0 CODE 0
-59 64 0 CODE 0
-60 65 0 CODE 0
-61 6D 0 CODE 0
-62 72 0 CODE 0
+45 2F 0 CODE 0
+47 2F 0 CODE 0
+48 32 0 CODE 0
+50 33 0 CODE 0
+51 36 0 CODE 0
+52 37 0 CODE 0
+53 38 0 CODE 0
+56 3B 0 CODE 0
+57 40 0 CODE 0
+61 45 0 CODE 0
+63 4B 0 CODE 0
+64 4C 0 CODE 0
+65 54 0 CODE 0
+66 59 0 CODE 0
+68 5E 0 CODE 0
+70 64 0 CODE 0
+71 65 0 CODE 0
+72 6D 0 CODE 0
+73 72 0 CODE 0
 Timer1.c
-39 113 0 CODE 0
-41 113 0 CODE 0
-42 116 0 CODE 0
-44 11A 0 CODE 0
-47 11B 0 CODE 0
+39 115 0 CODE 0
+41 115 0 CODE 0
+42 118 0 CODE 0
+44 11C 0 CODE 0
+47 11F 0 CODE 0
 28 102 0 CODE 0
 30 102 0 CODE 0
 31 10C 0 CODE 0
 32 110 0 CODE 0
 34 111 0 CODE 0
-37 112 0 CODE 0
+37 114 0 CODE 0
 8 EE 0 CODE 0
 11 EE 0 CODE 0
 12 F1 0 CODE 0
@@ -213,28 +213,28 @@ Timer1.c
 22 FE 0 CODE 0
 26 101 0 CODE 0
 Main.c
-100 D9 0 CODE 0
-102 D9 0 CODE 0
-103 E3 0 CODE 0
-106 ED 0 CODE 0
-70 7B 0 CODE 0
-72 7B 0 CODE 0
-74 81 0 CODE 0
-76 A5 0 CODE 0
-77 A9 0 CODE 0
-78 AA 0 CODE 0
-80 AA 0 CODE 0
-83 B7 0 CODE 0
-70 4 0 CODE 0
-85 BE 0 CODE 0
-87 BE 0 CODE 0
-92 C6 0 CODE 0
-93 C9 0 CODE 0
-94 CE 0 CODE 0
-98 D8 0 CODE 0
+110 D9 0 CODE 0
+112 D9 0 CODE 0
+113 E3 0 CODE 0
+116 ED 0 CODE 0
+80 7B 0 CODE 0
+82 7B 0 CODE 0
+84 81 0 CODE 0
+86 A5 0 CODE 0
+87 A9 0 CODE 0
+88 AA 0 CODE 0
+90 AA 0 CODE 0
+93 B7 0 CODE 0
+80 4 0 CODE 0
+95 BE 0 CODE 0
+97 BE 0 CODE 0
+102 C6 0 CODE 0
+103 C9 0 CODE 0
+104 CE 0 CODE 0
+108 D8 0 CODE 0
 Timer1.c
-39 11C 0 CODE 0
-41 11C 0 CODE 0
-42 11F 0 CODE 0
-44 123 0 CODE 0
-47 124 0 CODE 0
+39 120 0 CODE 0
+41 120 0 CODE 0
+42 123 0 CODE 0
+44 127 0 CODE 0
+47 12A 0 CODE 0

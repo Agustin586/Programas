@@ -12,6 +12,7 @@
  *       en diferente valores: 1 segundo y 5 segundos
  *      *Para setear el valor del delay se utiliza la variable "Tiempo" la cual es unsigned long 
  *      *Libreria C99
+ *      *Tiempo = Valor * 10ms --> Para 10segundos Tiempo = 1000 * 10ms = 10s
  */
 
 #include "Configuracion_Bits.h" //Configura todos los bits y la frecuencia del oscilador
@@ -54,20 +55,20 @@ void main(void) {
     //Inicializaciones
     Timer1_Init();      //Configura el timer1 
     Timer1_Stop();      //Detiene el timer1
-
+    //
     while(1)
     {
         if(S1_PIN_READ)
         {
             LED_HIGH;
-            Tiempo = 100;
+            Tiempo = 100;   //1 segundo
             Timer1_Start();
             Antirrebote();
         }
         if(S5_PIN_READ)
         {
             LED_HIGH;
-            Tiempo = 500;
+            Tiempo = 500;   //5 segundos
             Timer1_Start();
             Antirrebote();
         }
