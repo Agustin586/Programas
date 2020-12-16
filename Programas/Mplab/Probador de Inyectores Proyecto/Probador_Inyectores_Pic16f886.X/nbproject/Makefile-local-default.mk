@@ -35,4 +35,4 @@ MP_AS_DIR="C:\Program Files (x86)\Microchip\xc8\bin"
 MP_LD_DIR="C:\Program Files (x86)\Microchip\xc8\bin"
 MP_AR_DIR="C:\Program Files (x86)\Microchip\xc8\bin"
 # MP_BC_DIR is not defined
-DFP_DIR="C:/Users/aguat/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.0.9"
+DFP_DIR="C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC16Fxxx_DFP/1.2.33"

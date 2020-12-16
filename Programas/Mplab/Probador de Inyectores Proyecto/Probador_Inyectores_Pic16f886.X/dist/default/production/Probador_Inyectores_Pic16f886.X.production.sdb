@@ -1,0 +1,111 @@
+[p GLOBOPT AUTOSTATIC PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F886 ]
+[d frameptr 0 ]
+"31 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+[e E1265 . `uc
+ESTADO_MENU 0
+ESTADO_MODO_PULV 1
+SUBEST_ADC_MODO_PULV 2
+SUBEST_PWM_MODO_PULV 3
+SUBEST_TIEMPO_MODO_PULV 4
+ESTADO_MODO_FUGA 5
+ESTADO_MODO_FLUJO 6
+]
+"62 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"34 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+[v _main main `(v  1 e 1 0 ]
+"55
+[v _MEF_Init MEF_Init `(v  1 e 1 0 ]
+"81
+[v _Pines_Init Pines_Init `(v  1 e 1 0 ]
+"104
+[v _Antirrebote Antirrebote `(v  1 e 1 0 ]
+"166 C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h
+[v _PORTA PORTA `VEuc  1 e 1 @5 ]
+"228
+[v _PORTB PORTB `VEuc  1 e 1 @6 ]
+"290
+[v _PORTC PORTC `VEuc  1 e 1 @7 ]
+[s S87 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 TRISA3 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+`uc 1 TRISA6 1 0 :1:6 
+`uc 1 TRISA7 1 0 :1:7 
+]
+"1354
+[u S96 . 1 `S87 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES96  1 e 1 @133 ]
+"1399
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"1461
+[v _TRISC TRISC `VEuc  1 e 1 @135 ]
+[s S38 . 1 `uc 1 SWDTEN 1 0 :1:0 
+`uc 1 WDTPS 1 0 :4:1 
+]
+"2871
+[s S41 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 WDTPS0 1 0 :1:1 
+`uc 1 WDTPS1 1 0 :1:2 
+`uc 1 WDTPS2 1 0 :1:3 
+`uc 1 WDTPS3 1 0 :1:4 
+]
+[u S47 . 1 `S38 1 . 1 0 `S41 1 . 1 0 ]
+[v _WDTCONbits WDTCONbits `VES47  1 e 1 @261 ]
+[s S130 . 1 `uc 1 ANS0 1 0 :1:0 
+`uc 1 ANS1 1 0 :1:1 
+`uc 1 ANS2 1 0 :1:2 
+`uc 1 ANS3 1 0 :1:3 
+`uc 1 ANS4 1 0 :1:4 
+]
+"3243
+[u S136 . 1 `S130 1 . 1 0 ]
+[v _ANSELbits ANSELbits `VES136  1 e 1 @392 ]
+[s S113 . 1 `uc 1 ANS8 1 0 :1:0 
+`uc 1 ANS9 1 0 :1:1 
+`uc 1 ANS10 1 0 :1:2 
+`uc 1 ANS11 1 0 :1:3 
+`uc 1 ANS12 1 0 :1:4 
+`uc 1 ANS13 1 0 :1:5 
+]
+"3288
+[u S120 . 1 `S113 1 . 1 0 ]
+[v _ANSELHbits ANSELHbits `VES120  1 e 1 @393 ]
+"3432
+[v _ANS13 ANS13 `VEb  1 e 0 @3149 ]
+"3933
+[v _RB5 RB5 `VEb  1 e 0 @53 ]
+"4152
+[v _TMR1IE TMR1IE `VEb  1 e 0 @1120 ]
+"4155
+[v _TMR1IF TMR1IF `VEb  1 e 0 @96 ]
+"4221
+[v _TRISB5 TRISB5 `VEb  1 e 0 @1077 ]
+"31 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
+[v _Estado_Actual Estado_Actual `E1265  1 e 1 0 ]
+"34
+[v _main main `(v  1 e 1 0 ]
+{
+"53
+} 0
+"81
+[v _Pines_Init Pines_Init `(v  1 e 1 0 ]
+{
+"102
+} 0
+"55
+[v _MEF_Init MEF_Init `(v  1 e 1 0 ]
+{
+"60
+} 0

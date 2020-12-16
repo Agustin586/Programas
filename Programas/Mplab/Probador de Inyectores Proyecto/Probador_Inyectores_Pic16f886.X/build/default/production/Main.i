@@ -7,6 +7,10 @@
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "Main.c" 2
+# 1 "./Configuracion_Bits.h" 1
+
+
+
 
 
 
@@ -2395,7 +2399,8 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\xc.h" 2 3
-# 24 "Main.c" 2
+# 27 "./Configuracion_Bits.h" 2
+# 1 "Main.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\stdio.h" 1 3
 
@@ -2494,152 +2499,76 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 #pragma printf_check(sprintf) const
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
-# 25 "Main.c" 2
-
-# 1 "./LCD_control.h" 1
-# 56 "./LCD_control.h"
-void LCD_init(void);
-void LCD_command(unsigned char cmd);
-void LCD_array(int x,int y,const char *date);
-void LCD_xy(int x,int y);
-void LCD_date(char date);
-void LCD_E(void);
-void LCD_shift(unsigned char dir,unsigned char cant);
-void LCD_character(unsigned char adress,char caracter[]);
-void LCD_numerogrande(int valor);
-# 26 "Main.c" 2
-
-# 1 "./ADC.h" 1
-
-
-
-void Adc_init(void);
-int Adc(unsigned char canal);
-# 27 "Main.c" 2
-
-# 1 "./Task_Control.h" 1
-
-
-# 1 "./LCD_control.h" 1
-# 56 "./LCD_control.h"
-void LCD_init(void);
-void LCD_command(unsigned char cmd);
-void LCD_array(int x,int y,const char *date);
-void LCD_xy(int x,int y);
-void LCD_date(char date);
-void LCD_E(void);
-void LCD_shift(unsigned char dir,unsigned char cant);
-void LCD_character(unsigned char adress,char caracter[]);
-void LCD_numerogrande(int valor);
-# 3 "./Task_Control.h" 2
-
-
-
-
-
-unsigned char Pwm,Min,Seg,Temp,Modo=0;
-unsigned int T_Tiempo=10000;
-unsigned int Rpm;
-_Bool Out_E=0;
-_Bool Fin=0;
-_Bool Temporizador=0;
-_Bool mod_min=0,mod_seg=0;
-
-
-
-
-
-
-void Task1(unsigned char *Estado);
-
-
-
-void E_Task1_Rpm(void);
-
-
-
-void E_Task1_Pwm(void);
-
-
-
-void E_Task1_Min(void);
-
-
-
-void E_Task1_Temp(void);
-
-
-
-
-
-void Task2(void);
-
-
-
-
-void Task3(void);
-# 28 "Main.c" 2
-
-# 1 "./Pwm_Soft.h" 1
-# 21 "./Pwm_Soft.h"
-void Pwm_init(void);
-void Pwm1_init(unsigned int frecuencia);
-void Pwm1(float duty);
-void Pwm1_stop(void);
-
-void Pwm_Signal(void);
-
-
-
-
-unsigned int freqPwmS1=0;
-
-unsigned int PwmS1=0;
-
-float Per_PwmS1=0,Pw_PwmS1=0;
-unsigned int P_W_T_S1=0,PER_T_S1=0;
-
-_Bool Act_PwmS1=0;
-# 29 "Main.c" 2
-# 52 "Main.c"
-void antirrebote(void);
-
-
-
-
-void Seleccion_Modo(unsigned char *opcion);
-
-
-
-void MP_Pulv(void);
-# 73 "Main.c"
-void Lcd_PPAR(void);
-
-
-
-
-void Lcd_PTM(unsigned char opcion);
-
-
-
-void __attribute__((picinterrupt(("")))) ISR(void);
-
-
-
-void Task_Ready(void);
-
-
-unsigned int T_Task1=200,T_Task2=200,T_Task3=400,T_Lcd=700;
-
-
-unsigned char Est_Task1=0,Est_Task2=0,Est_Task3=0,T_running=0;
-_Bool mostrar=0,clock100us=0;
+# 2 "Main.c" 2
+# 15 "Main.c"
+void Pines_Init(void);
+void MEF_Init(void);
+void MEF_Actualizacion(void);
+void Antirrebote(void);
+
+typedef enum
+{
+    ESTADO_MENU,
+    ESTADO_MODO_PULV,
+        SUBEST_ADC_MODO_PULV,
+        SUBEST_PWM_MODO_PULV,
+        SUBEST_TIEMPO_MODO_PULV,
+    ESTADO_MODO_FUGA,
+    ESTADO_MODO_FLUJO,
+}MEFestado_t;
+
+MEFestado_t Estado_Actual;
 
 
 void main(void)
 {
-    unsigned char opcion=1;
 
+    Pines_Init();
+    MEF_Init();
+
+
+    WDTCONbits.SWDTEN = 1;
+    WDTCONbits.WDTPS = 0b1010;
+    __asm("clrwdt");
+
+    TMR1IE=1,TMR1IF=1;
+
+    while(1)
+    {
+
+    }
+
+    return;
+}
+
+void MEF_Init(void)
+{
+    Estado_Actual = ESTADO_MENU;
+
+    return;
+}
+
+void MEF_Actualizacion(void)
+{
+    switch(Estado_Actual)
+    {
+        case ESTADO_MENU:
+        {
+
+
+
+            if(PORTBbits.RB1) Estado_Actual = ESTADO_MODO_PULV,Antirrebote();
+            else if(PORTBbits.RB1) Estado_Actual = ESTADO_MODO_FUGA,Antirrebote();
+            else if(PORTBbits.RB1) Estado_Actual = ESTADO_MODO_FLUJO,Antirrebote();
+        break;
+        }
+    }
+
+    return;
+}
+
+void Pines_Init(void)
+{
 
     TRISAbits.TRISA5 = 0;
     PORTA = 0;
@@ -2658,337 +2587,13 @@ void main(void)
     TRISB5 = 0;
     RB5 = 0;
 
-
-    LCD_init();
-    Adc_init();
-    Pwm_init();
-
-
-    char caracter1[8] =
-    {
-        0b00000110,
-        0b00001001,
-        0b00001001,
-        0b00000110,
-        0b00000000,
-        0b00000000,
-        0b00000000,
-        0b00000000
-    };
-    LCD_character(0x01,caracter1);
-
-
-    char caracter[8] = {0,0,0,0,0,0,0,0};
-    LCD_character(0x00,caracter);
-
-
-    LCD_command(0x01);
-    LCD_array(1,1,"====================");
-    LCD_array(2,1,"PROBADOR AUTOMOTRIZ ");
-    LCD_array(3,1,"   DE INYECTORES    ");
-    LCD_array(4,1,"====================");
-    _delay((unsigned long)((2000)*(20000000/4000.0)));
-
-
-    LCD_command(0x01);
-
-
-    WDTCONbits.SWDTEN = 1;
-    WDTCONbits.WDTPS = 0b1010;
-    __asm("clrwdt");
-
-
-
-
-
-    TMR1IE=1,TMR1IF=1;
-
-    while(1)
-    {
-
-        Out_E = 0;
-        Modo = 0;
-        opcion = 1;
-# 178 "Main.c"
-        while(PORTBbits.RB1==0) Seleccion_Modo(&opcion);
-
-        antirrebote(),LCD_command(0x01);
-        Modo = opcion;
-        Lcd_PPAR();
-
-        switch(opcion)
-        {
-
-            case 1:
-            {
-                MP_Pulv();
-            break;
-            }
-
-            case 2:
-            {
-
-            break;
-            }
-
-            case 3:
-            {
-
-            break;
-            }
-        }
-    }
-
     return;
 }
 
-
-
-void Seleccion_Modo(unsigned char *opcion)
+void Antirrebote(void)
 {
-    unsigned char opc_ant=0;
-
-    __asm("clrwdt");
-
-    opc_ant = *opcion;
-
-
-    if(*opcion == 1 && mostrar)
-    {
-        LCD_array(1,3,"PRUEBA PULVER.");
-        LCD_array(2,3,"PRUEBA FUGA");
-        LCD_array(3,3,"PRUEBA FLUJO INY.");
-        LCD_array(4,3,"LIMP. ULTRASONIDO");
-        mostrar = 0;
-    }
-
-    if(*opcion == 5 && mostrar) LCD_array(1,3,"MODO AUTOMATICO"),mostrar=0;
-    else if(*opcion == 6) LCD_command(0x01);
-
-    if(PORTBbits.RB3 == 1) antirrebote(),*opcion+=1;
-    else if(*opcion == 6) *opcion=1;
-
-
-    if((*opcion != opc_ant)|| *opcion == 1) Lcd_PTM(*opcion),_delay((unsigned long)((100)*(20000000/4000.0)));
-
-    return;
-}
-
-
-
-void MP_Pulv(void)
-{
-    unsigned char Maq_task1=1;
-
-
-    Out_E = 0;
-    Seg = 0;
-    mod_seg = 1;
-    mod_min = 0;
-
-
-    while(1)
-    {
-
-
-        if(PORTBbits.RB0 == 1) antirrebote(),Out_E=!Out_E;
-        else if(PORTBbits.RB2 == 1) antirrebote(),Pwm1_stop(),Out_E=!Out_E,Seg=1;
-
-
-
-
-        switch(T_running)
-        {
-
-            case 0:
-            {
-                __asm("clrwdt");
-            break;
-            }
-
-            case 1:
-            {
-                Task1(&Maq_task1),Est_Task1=0,T_running=0;
-            break;
-            }
-            case 2:
-            {
-                Task2(),Est_Task2=0,T_running=0;
-            break;
-            }
-            case 3:
-            {
-                Task3(),Est_Task3=0,T_running=0;
-            break;
-            }
-        }
-
-
-
-        if(Fin == 1 && Out_E == 1)
-        {
-            Pwm1_stop();
-            break;
-        }
-
-        if(PORTBbits.RB3 == 1) antirrebote(),mod_min=!mod_min,mod_seg=!mod_seg;
-    }
-
-
-    Fin=0,Out_E=0,LCD_command(0x01);
-
-    return;
-}
-
-
-
-void Lcd_PTM(unsigned char opcion)
-{
-    if(opcion == 1)
-    {
-        LCD_xy(2,1),LCD_date(0x00);
-        LCD_xy(3,1),LCD_date(0x00);
-        LCD_xy(4,1),LCD_date(0x00);
-        LCD_array(1,1,">");
-    }
-    else if(opcion == 2)
-    {
-        LCD_xy(1,1),LCD_date(0);
-        LCD_xy(3,1),LCD_date(0);
-        LCD_xy(4,1),LCD_date(0);
-        LCD_array(2,1,">");
-    }
-    else if(opcion == 3)
-    {
-        LCD_xy(1,1),LCD_date(0);
-        LCD_xy(2,1),LCD_date(0);
-        LCD_xy(4,1),LCD_date(0);
-        LCD_array(3,1,">");
-    }
-    else if(opcion == 4)
-    {
-        LCD_xy(1,1),LCD_date(0);
-        LCD_xy(3,1),LCD_date(0);
-        LCD_xy(2,1),LCD_date(0);
-        LCD_array(4,1,">");
-    }
-    else if(opcion == 5)
-    {
-        LCD_command(0x01);
-        LCD_array(1,1,">");
-    }
-
-    return;
-}
-
-
-
-void Lcd_PPAR(void)
-{
-    LCD_array(1,1,"RPM:");
-    LCD_array(2,1,"PWM:");
-    LCD_array(3,1,"TIEMPO:"),LCD_array(3,10,":");
-    LCD_array(4,1,"TEMPERATURA:"),LCD_xy(4,16),LCD_date(0x01);
-    LCD_array(4,17,"C");
-
-    return;
-}
-
-
-
-void __attribute__((picinterrupt(("")))) ISR(void)
-{
-    _Bool f_pwmS1=0;
-
-
-    if(TMR1IF == 1)
-    {
-        clock100us = !clock100us;
-        if(clock100us) RB5 = 1;
-        else RB5 = 0;
-
-        if(T_Task1 != 0 && Out_E == 0) T_Task1--;
-        if(T_Task2 != 0 && Out_E == 1) T_Task2--;
-        if(T_Task3 != 0 && Out_E == 1) T_Task3--;
-        if(T_Tiempo != 0 && Out_E == 1) T_Tiempo--;
-        if(T_Lcd != 0 && Modo == 0) T_Lcd--;
-
-
-        if(Act_PwmS1 && PwmS1!=PER_T_S1) PwmS1++;
-        if(PwmS1 == P_W_T_S1 || PwmS1 == PER_T_S1) f_pwmS1=1;
-
-        TMR1 = 65285;
-
-        TMR1ON = 1;
-        TMR1IF = 0;
-    }
-
-    if(!T_Task1 || !T_Lcd || !T_Task2 || !T_Task3) Task_Ready();
-    if(f_pwmS1 && Act_PwmS1) Pwm_Signal();
-
-
-    if(T_Tiempo == 0)
-    {
-        if(Seg == 0)
-        {
-            if(Min != 0)
-            {
-                Min--;
-                Seg = 59;
-            }
-        }
-        else Seg--;
-        T_Tiempo = 10000;
-        Temporizador = 1;
-    }
-
-    return;
-}
-
-
-
-void Task_Ready(void)
-{
-    if(T_Task1 == 0)
-    {
-        T_Task1 = 200;
-        Est_Task1 = 1;
-        T_running = 1;
-    }
-    if(T_Lcd == 0)
-    {
-        T_Lcd = 700;
-        mostrar = 1;
-    }
-    if(T_Task2 == 0)
-    {
-        T_Task2 = 400;
-        Est_Task2 = 1;
-        T_running = 2;
-    }
-    if(T_Task3 == 0)
-    {
-        T_Task3 = 400;
-        Est_Task3 = 1;
-        T_running = 3;
-    }
-
-    return;
-}
-
-
-
-void antirrebote(void)
-{
-    WDTCONbits.SWDTEN = 0;
-
-    PORTAbits.RA5 = 1;
-    _delay((unsigned long)((50)*(20000000/4000.0)));
-    PORTAbits.RA5 = 0;
-
-    while(PORTBbits.RB0 == 1 || PORTBbits.RB1 == 1 || PORTBbits.RB3 == 1 || PORTBbits.RB2 == 1) _delay((unsigned long)((30)*(20000000/4000.0)));
-
-    WDTCONbits.SWDTEN = 1;
+    _delay((unsigned long)((10)*(20000000/4000.0)));
+    while(PORTBbits.RB0 || PORTBbits.RB1 || PORTBbits.RB2 || PORTBbits.RB3) _delay((unsigned long)((10)*(20000000/4000.0)));
 
     return;
 }
