@@ -352,10 +352,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Menu_Modo.c: 24:     }
 }
 [e :U 136 ]
-"25
-[; ;Menu_Modo.c: 25:     return;
-[e $UE 134  ]
 "26
-[; ;Menu_Modo.c: 26: }
+[; ;Menu_Modo.c: 26:     return;
+[e $UE 134  ]
+"27
+[; ;Menu_Modo.c: 27: }
 [e :UE 134 ]
 }

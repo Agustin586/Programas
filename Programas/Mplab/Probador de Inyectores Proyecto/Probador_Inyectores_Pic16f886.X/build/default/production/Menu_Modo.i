@@ -2494,5 +2494,6 @@ void Select_Modo(void)
         if(Modo>=5||Modo<1) Modo=1;
         Pant_Selector(),Antirrebote();
     }
+
     return;
 }

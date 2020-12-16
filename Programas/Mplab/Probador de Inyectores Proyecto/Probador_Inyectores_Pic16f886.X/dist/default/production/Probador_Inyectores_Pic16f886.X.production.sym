@@ -234,7 +234,7 @@ strings 68C 76F STRING 68C 0
 text11 770 B43 CODE 770 0
 %locals
 dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
-C:\Users\aguat\AppData\Local\Temp\s7dc.s
+C:\Users\aguat\AppData\Local\Temp\s8n0.s
 1436 F 0 CODE 0
 1439 F 0 CODE 0
 1525 F 0 CODE 0
@@ -348,7 +348,7 @@ Menu_Modo.c
 21 4A7 0 CODE 0
 22 4AB 0 CODE 0
 23 4B4 0 CODE 0
-26 4BC 0 CODE 0
+27 4BC 0 CODE 0
 Display_Lcd.c
 42 23D 0 CODE 0
 44 23D 0 CODE 0

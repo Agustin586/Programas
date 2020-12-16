@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\aguat\AppData\Local\Temp\s7dc.o
+$C:\Users\aguat\AppData\Local\Temp\s8n0.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 C C 3 2
 config CONFIG 4 2007 2007 2 2
@@ -91,27 +91,27 @@ STRING 5A2-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
-F cinit CODE >1436:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-F cinit CODE >1439:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-F cinit CODE >1525:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-10 cinit CODE >1526:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-11 cinit CODE >1527:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-12 cinit CODE >1528:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-13 cinit CODE >1529:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-14 cinit CODE >1530:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-15 cinit CODE >1531:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-16 cinit CODE >1532:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-17 cinit CODE >1533:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-18 cinit CODE >1534:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-1D cinit CODE >1553:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-1E cinit CODE >1554:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-1F cinit CODE >1555:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-20 cinit CODE >1556:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-23 cinit CODE >1559:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-24 cinit CODE >1560:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-25 cinit CODE >1566:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-25 cinit CODE >1568:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-26 cinit CODE >1569:C:\Users\aguat\AppData\Local\Temp\s7dc.s
+F cinit CODE >1436:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+F cinit CODE >1439:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+F cinit CODE >1525:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+10 cinit CODE >1526:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+11 cinit CODE >1527:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+12 cinit CODE >1528:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+13 cinit CODE >1529:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+14 cinit CODE >1530:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+15 cinit CODE >1531:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+16 cinit CODE >1532:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+17 cinit CODE >1533:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+18 cinit CODE >1534:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+1D cinit CODE >1553:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+1E cinit CODE >1554:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+1F cinit CODE >1555:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+20 cinit CODE >1556:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+23 cinit CODE >1559:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+24 cinit CODE >1560:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+25 cinit CODE >1566:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+25 cinit CODE >1568:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+26 cinit CODE >1569:C:\Users\aguat\AppData\Local\Temp\s8n0.s
 4 intentry CODE >73:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
 57F text16 CODE >90:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
 57F text16 CODE >92:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
@@ -253,7 +253,7 @@ FB text12 CODE >95:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Githu
 4A7 text5 CODE >21:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Menu_Modo.c
 4AB text5 CODE >22:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Menu_Modo.c
 4B4 text5 CODE >23:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Menu_Modo.c
-4BC text5 CODE >26:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Menu_Modo.c
+4BC text5 CODE >27:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Menu_Modo.c
 459 text4 CODE >30:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\MEF.c
 459 text4 CODE >32:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\MEF.c
 45A text4 CODE >36:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\MEF.c
@@ -307,33 +307,33 @@ FB text12 CODE >95:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Githu
 51A maintext CODE >34:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
 51F maintext CODE >36:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
 525 maintext CODE >40:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Main.c
-596 clrtext CODE >1540:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-596 clrtext CODE >1541:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-597 clrtext CODE >1542:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-597 clrtext CODE >1543:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-598 clrtext CODE >1544:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-599 clrtext CODE >1545:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-59A clrtext CODE >1546:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-59B clrtext CODE >1547:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-59C clrtext CODE >1548:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-59D clrtext CODE >1549:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-56E inittext CODE >1499:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-56E inittext CODE >1500:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-56F inittext CODE >1501:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-570 inittext CODE >1502:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-571 inittext CODE >1503:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-572 inittext CODE >1510:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-572 inittext CODE >1511:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-575 inittext CODE >1512:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-576 inittext CODE >1513:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-577 inittext CODE >1514:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-578 inittext CODE >1515:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-579 inittext CODE >1516:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-57A inittext CODE >1517:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-57B inittext CODE >1518:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-57C inittext CODE >1519:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-57D inittext CODE >1520:C:\Users\aguat\AppData\Local\Temp\s7dc.s
-57E inittext CODE >1521:C:\Users\aguat\AppData\Local\Temp\s7dc.s
+596 clrtext CODE >1540:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+596 clrtext CODE >1541:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+597 clrtext CODE >1542:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+597 clrtext CODE >1543:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+598 clrtext CODE >1544:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+599 clrtext CODE >1545:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+59A clrtext CODE >1546:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+59B clrtext CODE >1547:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+59C clrtext CODE >1548:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+59D clrtext CODE >1549:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+56E inittext CODE >1499:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+56E inittext CODE >1500:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+56F inittext CODE >1501:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+570 inittext CODE >1502:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+571 inittext CODE >1503:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+572 inittext CODE >1510:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+572 inittext CODE >1511:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+575 inittext CODE >1512:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+576 inittext CODE >1513:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+577 inittext CODE >1514:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+578 inittext CODE >1515:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+579 inittext CODE >1516:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+57A inittext CODE >1517:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+57B inittext CODE >1518:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+57C inittext CODE >1519:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+57D inittext CODE >1520:C:\Users\aguat\AppData\Local\Temp\s8n0.s
+57E inittext CODE >1521:C:\Users\aguat\AppData\Local\Temp\s8n0.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -361,10 +361,10 @@ __Hstrings 0 0 ABS 0 strings -
 _Modo 7B 0 COMMON 1 bssCOMMON dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 _PEIE 5E 0 ABS 0 - dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 _TMR1 E 0 ABS 0 - dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\aguat\AppData\Local\Temp\s7dc.o
+___sp 0 0 STACK 2 stack C:\Users\aguat\AppData\Local\Temp\s8n0.o
 _main A16 0 CODE 0 maintext dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
-start 18 0 CODE 0 init C:\Users\aguat\AppData\Local\Temp\s7dc.o
+start 18 0 CODE 0 init C:\Users\aguat\AppData\Local\Temp\s8n0.o
 _Task_Ready AFE 0 CODE 0 text16 dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 __size_of_main 0 0 ABS 0 - dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
@@ -373,12 +373,12 @@ __LidataBANK0 0 0 ABS 0 idataBANK0 -
 _LCD_date 1C6 0 CODE 0 text12 dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 _LCD_init 5A0 0 CODE 0 text13 dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s7dc.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s7dc.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s7dc.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s7dc.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s7dc.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s7dc.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s8n0.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s8n0.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s8n0.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s8n0.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s8n0.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s8n0.o
 __end_of_LCD_date 336 0 CODE 0 text12 dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 __end_of_LCD_init 68C 0 CODE 0 text13 dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 _WDTCONbits 105 0 ABS 0 - dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
@@ -392,8 +392,8 @@ LCD_init@i 77 0 COMMON 1 cstackCOMMON dist/default/production\Probador_Inyectore
 __size_of_Select_Modo 0 0 ABS 0 - dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
 __size_of_LCD_command 0 0 ABS 0 - dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\aguat\AppData\Local\Temp\s7dc.o
-___stacklo 0 0 ABS 0 - C:\Users\aguat\AppData\Local\Temp\s7dc.o
+___stackhi 0 0 ABS 0 - C:\Users\aguat\AppData\Local\Temp\s8n0.o
+___stacklo 0 0 ABS 0 - C:\Users\aguat\AppData\Local\Temp\s8n0.o
 __size_of_MEF_Actualizacion 0 0 ABS 0 - dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 Pant_Inicio@F1247 50 0 BANK0 1 dataBANK0 dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 start_initialization 1E 0 CODE 0 cinit dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
@@ -408,7 +408,7 @@ _TMR1ON 80 0 ABS 0 - dist/default/production\Probador_Inyectores_Pic16f886.X.pro
 _TRISB4 434 0 ABS 0 - dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 _P_W_T_S1 30 0 BANK0 1 bssBANK0 dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 _Delay100ms 58 0 BANK0 1 dataBANK0 dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\aguat\AppData\Local\Temp\s7dc.o
+___int_sp 0 0 STACK 2 stack C:\Users\aguat\AppData\Local\Temp\s8n0.o
 LCD_character@adress 77 0 COMMON 1 cstackCOMMON dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
@@ -478,7 +478,7 @@ __end_of_Pines_Init AB6 0 CODE 0 text2 dist/default/production\Probador_Inyector
 _Select_Modo 92C 0 CODE 0 text5 dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
 __stringtab 68C 0 STRING 0 strings dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\aguat\AppData\Local\Temp\s7dc.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\aguat\AppData\Local\Temp\s8n0.o
 LCD_date@date 74 0 COMMON 1 cstackCOMMON dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 __pdataBANK0 50 0 BANK0 1 dataBANK0 dist/default/production\Probador_Inyectores_Pic16f886.X.production.o
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
