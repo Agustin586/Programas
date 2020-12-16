@@ -28,7 +28,7 @@ idataBANK0 CODE 0 12B 12B 4 2
 dataBANK0 BANK0 1 20 20 4 1
 bssCOMMON COMMON 1 76 76 4 1
 config CONFIG 4 2007 2007 2 2
-$C:\Users\aguat\AppData\Local\Temp\s2tc.o
+$C:\Users\aguat\AppData\Local\Temp\s7mo.o
 reset_vec CODE 0 0 0 3 2
 end_init CODE 0 C C 3 2
 config CONFIG 4 2007 2007 2 2
@@ -78,23 +78,23 @@ STRING 12F-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\Timer1_887.X.production.o
-F cinit CODE >620:C:\Users\aguat\AppData\Local\Temp\s2tc.s
-F cinit CODE >623:C:\Users\aguat\AppData\Local\Temp\s2tc.s
-F cinit CODE >643:C:\Users\aguat\AppData\Local\Temp\s2tc.s
-14 cinit CODE >644:C:\Users\aguat\AppData\Local\Temp\s2tc.s
-15 cinit CODE >645:C:\Users\aguat\AppData\Local\Temp\s2tc.s
-1A cinit CODE >646:C:\Users\aguat\AppData\Local\Temp\s2tc.s
-1B cinit CODE >647:C:\Users\aguat\AppData\Local\Temp\s2tc.s
-20 cinit CODE >648:C:\Users\aguat\AppData\Local\Temp\s2tc.s
-21 cinit CODE >649:C:\Users\aguat\AppData\Local\Temp\s2tc.s
-26 cinit CODE >650:C:\Users\aguat\AppData\Local\Temp\s2tc.s
-27 cinit CODE >654:C:\Users\aguat\AppData\Local\Temp\s2tc.s
-28 cinit CODE >655:C:\Users\aguat\AppData\Local\Temp\s2tc.s
-29 cinit CODE >656:C:\Users\aguat\AppData\Local\Temp\s2tc.s
-2A cinit CODE >657:C:\Users\aguat\AppData\Local\Temp\s2tc.s
-2B cinit CODE >663:C:\Users\aguat\AppData\Local\Temp\s2tc.s
-2B cinit CODE >665:C:\Users\aguat\AppData\Local\Temp\s2tc.s
-2C cinit CODE >666:C:\Users\aguat\AppData\Local\Temp\s2tc.s
+F cinit CODE >620:C:\Users\aguat\AppData\Local\Temp\s7mo.s
+F cinit CODE >623:C:\Users\aguat\AppData\Local\Temp\s7mo.s
+F cinit CODE >643:C:\Users\aguat\AppData\Local\Temp\s7mo.s
+14 cinit CODE >644:C:\Users\aguat\AppData\Local\Temp\s7mo.s
+15 cinit CODE >645:C:\Users\aguat\AppData\Local\Temp\s7mo.s
+1A cinit CODE >646:C:\Users\aguat\AppData\Local\Temp\s7mo.s
+1B cinit CODE >647:C:\Users\aguat\AppData\Local\Temp\s7mo.s
+20 cinit CODE >648:C:\Users\aguat\AppData\Local\Temp\s7mo.s
+21 cinit CODE >649:C:\Users\aguat\AppData\Local\Temp\s7mo.s
+26 cinit CODE >650:C:\Users\aguat\AppData\Local\Temp\s7mo.s
+27 cinit CODE >654:C:\Users\aguat\AppData\Local\Temp\s7mo.s
+28 cinit CODE >655:C:\Users\aguat\AppData\Local\Temp\s7mo.s
+29 cinit CODE >656:C:\Users\aguat\AppData\Local\Temp\s7mo.s
+2A cinit CODE >657:C:\Users\aguat\AppData\Local\Temp\s7mo.s
+2B cinit CODE >663:C:\Users\aguat\AppData\Local\Temp\s7mo.s
+2B cinit CODE >665:C:\Users\aguat\AppData\Local\Temp\s7mo.s
+2C cinit CODE >666:C:\Users\aguat\AppData\Local\Temp\s7mo.s
 4 intentry CODE >80:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Timer1_Pic16f887\Timer1_887.X\Main.c
 120 text7 CODE >39:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Timer1_Pic16f887\Timer1_887.X\Timer1.c
 120 text7 CODE >41:C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Timer1_Pic16f887\Timer1_887.X\Timer1.c
@@ -184,20 +184,20 @@ __Heeprom_data 0 0 EEDATA 3 eeprom_data -
 _T1CONbits 10 0 ABS 0 - dist/default/production\Timer1_887.X.production.o
 __Hstrings 0 0 ABS 0 strings -
 _TMR1 E 0 ABS 0 - dist/default/production\Timer1_887.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\aguat\AppData\Local\Temp\s2tc.o
+___sp 0 0 STACK 2 stack C:\Users\aguat\AppData\Local\Temp\s7mo.o
 _main 5E 0 CODE 0 maintext dist/default/production\Timer1_887.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\Timer1_887.X.production.o
-start 18 0 CODE 0 init C:\Users\aguat\AppData\Local\Temp\s2tc.o
+start 18 0 CODE 0 init C:\Users\aguat\AppData\Local\Temp\s7mo.o
 __size_of_main 0 0 ABS 0 - dist/default/production\Timer1_887.X.production.o
 __HbssCOMMON 0 0 ABS 0 bssCOMMON -
 __LidataBANK0 0 0 ABS 0 idataBANK0 -
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s2tc.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s2tc.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s2tc.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s2tc.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s2tc.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s2tc.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s7mo.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s7mo.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s7mo.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s7mo.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s7mo.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\aguat\AppData\Local\Temp\s7mo.o
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 _Antirrebote 1B2 0 CODE 0 text4 dist/default/production\Timer1_887.X.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production\Timer1_887.X.production.o
@@ -209,8 +209,8 @@ __Hclrtext 0 0 ABS 0 clrtext -
 _ANSELH 189 0 ABS 0 - dist/default/production\Timer1_887.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
 __size_of_Timer1_Start 0 0 ABS 0 - dist/default/production\Timer1_887.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\aguat\AppData\Local\Temp\s2tc.o
-___stacklo 0 0 ABS 0 - C:\Users\aguat\AppData\Local\Temp\s2tc.o
+___stackhi 0 0 ABS 0 - C:\Users\aguat\AppData\Local\Temp\s7mo.o
+___stacklo 0 0 ABS 0 - C:\Users\aguat\AppData\Local\Temp\s7mo.o
 __end_of_Timer1_Start 22A 0 CODE 0 text2 dist/default/production\Timer1_887.X.production.o
 start_initialization 1E 0 CODE 0 cinit dist/default/production\Timer1_887.X.production.o
 _TRISBbits 86 0 ABS 0 - dist/default/production\Timer1_887.X.production.o
@@ -218,7 +218,7 @@ __pcstackBANK0 24 0 BANK0 1 cstackBANK0 dist/default/production\Timer1_887.X.pro
 __end_of_Fin_Delay 1B2 0 CODE 0 text6 dist/default/production\Timer1_887.X.production.o
 _Tiempo 20 0 BANK0 1 dataBANK0 dist/default/production\Timer1_887.X.production.o
 __size_of_Fin_Delay 0 0 ABS 0 - dist/default/production\Timer1_887.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\aguat\AppData\Local\Temp\s2tc.o
+___int_sp 0 0 STACK 2 stack C:\Users\aguat\AppData\Local\Temp\s7mo.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
@@ -266,7 +266,7 @@ saved_w 7E 0 ABS 0 - dist/default/production\Timer1_887.X.production.o
 __end_of_Antirrebote 1DC 0 CODE 0 text4 dist/default/production\Timer1_887.X.production.o
 __end_of_ISR 17C 0 CODE 0 text5 dist/default/production\Timer1_887.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\aguat\AppData\Local\Temp\s2tc.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\aguat\AppData\Local\Temp\s7mo.o
 __pdataBANK0 20 0 BANK0 1 dataBANK0 dist/default/production\Timer1_887.X.production.o
 _PIE1bits 8C 0 ABS 0 - dist/default/production\Timer1_887.X.production.o
 __pmaintext 5E 0 CODE 0 maintext dist/default/production\Timer1_887.X.production.o

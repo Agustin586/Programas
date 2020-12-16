@@ -55,7 +55,7 @@ void main(void) {
     //Inicializaciones
     Timer1_Init();      //Configura el timer1 
     Timer1_Stop();      //Detiene el timer1
-
+    //
     while(1)
     {
         if(S1_PIN_READ)
