@@ -3,7 +3,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>PROBADOR_INYECTORES</name>
+            <name>Probador_Inyectores</name>
             <creation-uuid>ea783229-b518-4ef4-83cc-08a8d55e7ef2</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
