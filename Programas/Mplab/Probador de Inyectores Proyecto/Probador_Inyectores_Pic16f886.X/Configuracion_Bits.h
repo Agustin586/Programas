@@ -24,5 +24,9 @@
 // #pragma config statements should precede project file includes.
 // Use project enums instead of #define for ON and OFF.
 
+#include <xc.h>
+
+#define _XTAL_FREQ 20000000
+
 #endif	/* XC_CONFIGURACION_BITS_H */
 

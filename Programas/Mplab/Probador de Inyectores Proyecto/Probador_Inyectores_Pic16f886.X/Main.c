@@ -1,12 +1,5 @@
 #include "Configuracion_Bits.h"
-#include <xc.h>
 #include <stdio.h>
-#include "LCD_control.h"
-#include "ADC.h"
-#include "Task_Control.h"
-#include "Pwm_Soft.h"
-
-#define _XTAL_FREQ 20000000
 
 #define INICIO      PORTBbits.RB0
 #define ENTER       PORTBbits.RB1
@@ -18,65 +11,6 @@
 #define TICKS_PANT  700   // Cada 70ms escribe en la pantalla
 #define TICKS_T2    200   // Cada 20ms ingresa a tarea 2
 #define TICKS_T4    400   // Cada 40ms
-
-
-extern unsigned char Modo;
-
-///////////////////////////
-//Prototipos de funciones//
-///////////////////////////
-
-/**
- * Espera el tiempo de antirrebote para poder presionar
- */
-void antirrebote(void);                           
-/**
- * Escribe en la pantalla el cursor que se mueve
- * @param opcion
- */
-void Seleccion_Modo(void);   
-/**
- * Ingresa al modo de pulverizacion
- */
-void MP_Pulv(void);
-/**
- * Ingresa al modo de fuga
- */
-//void MP_Fuga(void);
-/**
- * Ingresa al modo de flujo
- */
-//void MP_Flujo(void);
-/**
- * Escribe en la pantalla los parametros principales
- */
-void Lcd_PPAR(void);              
-/**
- * Seleecion el modo de trabajo
- * @param opcion
- */
-void Lcd_PTM(unsigned char opcion); 
-/**
- * Interrupcion
- */
-void __interrupt() ISR(void);            
-/**
- * Elije la tarea a realizar
- */
-void Task_Ready(void);
-/**
- * Configura los pines como digitales y analogicos segun corresponda
- * Ademas configura otras cosas
- */
-void Pines_Init(void);
-void MEF_Init(void);
-void MEF_Actualizacion(void);
-
-unsigned int T_Task1=TICKS_T1,T_Task2=TICKS_T2,T_Task3=TICKS_T4,T_Lcd=TICKS_PANT;
-//T_running=0 --> ninguna tarea corriendo
-//T_running=1 --> tarea 1 corriendo
-unsigned char Est_Task1=0,Est_Task2=0,Est_Task3=0,T_running=0;
-_Bool mostrar=0,clock100us=0;
 
 typedef enum
 {
@@ -93,14 +27,9 @@ MEFestado_t Estado_Actual;
 
 ////////////////////////////////////////////////////////////////////////////////
 void main(void)
-{
-    unsigned char opcion=1;
-    
+{   
     //Inicializaciones
     Pines_Init();
-    LCD_init();
-    Adc_init();
-    Pwm_init();
     MEF_Init();
     
     //Caracter especial
