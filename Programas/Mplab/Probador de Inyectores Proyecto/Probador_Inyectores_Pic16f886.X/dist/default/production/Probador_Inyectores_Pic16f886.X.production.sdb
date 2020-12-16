@@ -25,17 +25,31 @@ ESTADO_MODO_FLUJO 6
 [v _main main `(v  1 e 1 0 ]
 "55
 [v _MEF_Init MEF_Init `(v  1 e 1 0 ]
+"62
+[v _MEF_Actualizacion MEF_Actualizacion `(v  1 e 1 0 ]
 "81
 [v _Pines_Init Pines_Init `(v  1 e 1 0 ]
 "104
 [v _Antirrebote Antirrebote `(v  1 e 1 0 ]
-"166 C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h
+"166 C:/Program Files (x86)/Microchip/MPLABX/v5.35/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f886.h
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
 "228
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
+[s S66 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"245
+[u S75 . 1 `S66 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES75  1 e 1 @6 ]
 "290
 [v _PORTC PORTC `VEuc  1 e 1 @7 ]
-[s S87 . 1 `uc 1 TRISA0 1 0 :1:0 
+[s S91 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 TRISA3 1 0 :1:3 
@@ -45,8 +59,8 @@ ESTADO_MODO_FLUJO 6
 `uc 1 TRISA7 1 0 :1:7 
 ]
 "1354
-[u S96 . 1 `S87 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES96  1 e 1 @133 ]
+[u S100 . 1 `S91 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES100  1 e 1 @133 ]
 "1399
 [v _TRISB TRISB `VEuc  1 e 1 @134 ]
 "1461
@@ -63,16 +77,16 @@ ESTADO_MODO_FLUJO 6
 ]
 [u S47 . 1 `S38 1 . 1 0 `S41 1 . 1 0 ]
 [v _WDTCONbits WDTCONbits `VES47  1 e 1 @261 ]
-[s S130 . 1 `uc 1 ANS0 1 0 :1:0 
+[s S134 . 1 `uc 1 ANS0 1 0 :1:0 
 `uc 1 ANS1 1 0 :1:1 
 `uc 1 ANS2 1 0 :1:2 
 `uc 1 ANS3 1 0 :1:3 
 `uc 1 ANS4 1 0 :1:4 
 ]
 "3243
-[u S136 . 1 `S130 1 . 1 0 ]
-[v _ANSELbits ANSELbits `VES136  1 e 1 @392 ]
-[s S113 . 1 `uc 1 ANS8 1 0 :1:0 
+[u S140 . 1 `S134 1 . 1 0 ]
+[v _ANSELbits ANSELbits `VES140  1 e 1 @392 ]
+[s S117 . 1 `uc 1 ANS8 1 0 :1:0 
 `uc 1 ANS9 1 0 :1:1 
 `uc 1 ANS10 1 0 :1:2 
 `uc 1 ANS11 1 0 :1:3 
@@ -80,8 +94,8 @@ ESTADO_MODO_FLUJO 6
 `uc 1 ANS13 1 0 :1:5 
 ]
 "3288
-[u S120 . 1 `S113 1 . 1 0 ]
-[v _ANSELHbits ANSELHbits `VES120  1 e 1 @393 ]
+[u S124 . 1 `S117 1 . 1 0 ]
+[v _ANSELHbits ANSELHbits `VES124  1 e 1 @393 ]
 "3432
 [v _ANS13 ANS13 `VEb  1 e 0 @3149 ]
 "3933
@@ -108,4 +122,14 @@ ESTADO_MODO_FLUJO 6
 [v _MEF_Init MEF_Init `(v  1 e 1 0 ]
 {
 "60
+} 0
+"62
+[v _MEF_Actualizacion MEF_Actualizacion `(v  1 e 1 0 ]
+{
+"79
+} 0
+"104
+[v _Antirrebote Antirrebote `(v  1 e 1 0 ]
+{
+"110
 } 0

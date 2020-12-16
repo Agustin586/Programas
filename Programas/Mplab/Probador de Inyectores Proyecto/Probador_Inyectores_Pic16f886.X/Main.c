@@ -46,7 +46,7 @@ void main(void)
     
     while(1)
     {
-        
+        MEF_Actualizacion(); 
     }
 
     return;
