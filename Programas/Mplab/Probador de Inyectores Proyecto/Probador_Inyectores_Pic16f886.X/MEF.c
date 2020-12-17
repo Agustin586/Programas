@@ -44,12 +44,12 @@ void MEF_Actualizacion(void)
         case ESTADO_MENU:
         {
             //Accion
-            Seleccion_Modo();
+            Seleccion_Modo(),CLRWDT();
             
             //Transicion
-            if(ENTER)        Estado_Actual = ESTADO_MODO_PULV,Antirrebote();
-            else if(ENTER)   Estado_Actual = ESTADO_MODO_FUGA,Antirrebote();
-            else if(ENTER)   Estado_Actual = ESTADO_MODO_FLUJO,Antirrebote();
+            if(ENTER && Modo==1)        Estado_Actual = ESTADO_MODO_PULV,Antirrebote();
+            else if(ENTER && Modo==2)   Estado_Actual = ESTADO_MODO_FUGA,Antirrebote();
+            else if(ENTER && Modo==3)   Estado_Actual = ESTADO_MODO_FLUJO,Antirrebote();
         break;
         }
     }

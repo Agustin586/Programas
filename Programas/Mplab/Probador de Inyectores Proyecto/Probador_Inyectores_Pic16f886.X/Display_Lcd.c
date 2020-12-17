@@ -45,11 +45,6 @@ void Pant_Selector(void)
     else if(Modo == 2)  Lcd_cadena(1,1," "),Lcd_cadena(2,1,">");
     else if(Modo == 3)  Lcd_cadena(2,1," "),Lcd_cadena(3,1,">");
     else if(Modo == 4)  Lcd_cadena(3,1," "),Lcd_cadena(4,1,">");
-//    else if(Modo == 5)
-//    {
-//        Lcd_comando(CLEAR);
-//        Lcd_cadena(1,1,">");
-//    }
     
     return;
 }
