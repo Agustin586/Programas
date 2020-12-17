@@ -8,10 +8,11 @@
 #define MOVER       PORTBbits.RB3
 #define BUZZER      PORTAbits.RA5
 
-#define TICKS_T1            200   // Cada 20ms cambia de estado
-#define TICKS_DELAY100ms    1000  // Cada 100ms escribe en la pantalla
-#define TICKS_T2            200   // Cada 20ms ingresa a tarea 2
-#define TICKS_T4            400   // Cada 40ms
+#define TICKS_T1                200   // Cada 20ms cambia de estado
+#define TICKS_DELAY100ms        1000  // Cada 100ms escribe en la pantalla
+#define TICKS_TEMPO_WDT500ms    5000  // Cada 500ms limpia el watch dog
+#define TICKS_T2                200   // Cada 20ms ingresa a tarea 2
+#define TICKS_T4                400   // Cada 40ms
 
 #define Pin_Init    Pines_Init
 
@@ -22,7 +23,7 @@ void __interrupt () ISR (void);
 
 unsigned char Modo=0;
 _Bool Mostrar=0;
-volatile unsigned int Delay100ms=TICKS_DELAY100ms;
+volatile unsigned int Delay100ms=TICKS_DELAY100ms,Tempo_WDT=TICKS_TEMPO_WDT500ms;
 
 ////////////////////////////////////////////////////////////////////////////////
 void main(void)
@@ -75,14 +76,16 @@ void __interrupt () ISR (void)
     //Interrupcion por timer 0 
     if(TMR1IF == 1)
     {
-        if(Delay100ms!= 0 && !Mostrar)       Delay100ms--;    //Temporizador de muestra del display          
+        if(Delay100ms!=0 && !Mostrar)       Delay100ms--;    // Temporizador de muestra del display 
+        if(Tempo_WDT!=0)                    Tempo_WDT--;     // Limpia el wdt
+        
         
         TMR1 = 65285;     // 100us
         TMR1ON = 1;
         TMR1IF = 0;       // Limpia la bandera de desborde
     }
     
-    if(!Delay100ms)          Task_Ready();
+    if(!Delay100ms || !Tempo_WDT)          Task_Ready();
     
     return;
 }
@@ -93,6 +96,11 @@ void Task_Ready(void)
     {
         Mostrar = 1;
         Delay100ms = TICKS_DELAY100ms;
+    }
+    if(!Tempo_WDT)
+    {
+        CLRWDT();
+        Tempo_WDT = TICKS_TEMPO_WDT500ms;
     }
     
     return;

@@ -2460,13 +2460,15 @@ _Bool Act_PwmS1=0;
 
 
 
+
 void MEF_Init(void);
 void MEF_Actualizacion(void);
+void MEF_Subest_Actualizacion(void);
 # 4 "./Display_Lcd.h" 2
 # 13 "./Display_Lcd.h"
 void Pant_Inicio(void);
 void Pant_Menu(void);
-void Pant_Pulverizacion(void);
+void Pant_Modos(void);
 void Pant_Fuga(void);
 void Pant_Flujo(void);
 void Pant_Selector(void);
@@ -2518,11 +2520,6 @@ void Pant_Selector(void)
     else if(Modo == 3) LCD_array(2,1," "),LCD_array(3,1,">");
     else if(Modo == 4) LCD_array(3,1," "),LCD_array(4,1,">");
 
-
-
-
-
-
     return;
 }
 
@@ -2536,8 +2533,13 @@ void Pant_Menu(void)
     return;
 }
 
-void Pant_Pulverizacion(void)
+void Pant_Modos(void)
 {
+    LCD_array(1,1,"RPM:");
+    LCD_array(2,1,"PWM:");
+    LCD_array(3,1,"TIEMPO:"),LCD_array(3,10,":");
+    LCD_array(4,1,"TEMPERATURA:"),LCD_xy(4,16),LCD_date(0x01);
+    LCD_array(4,17,"C");
 
     return;
 }

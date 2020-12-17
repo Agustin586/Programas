@@ -59,8 +59,21 @@ void Pant_Menu(void)
     return;
 }
 
-void Pant_Pulverizacion(void)
+void Pant_Modos(void)
 {
+    Lcd_cadena(1,1,"RPM:");
+    Lcd_cadena(2,1,"PWM:");
+    Lcd_cadena(3,1,"TIEMPO:"),Lcd_cadena(3,10,":");
+    Lcd_cadena(4,1,"TEMPERATURA:"),Lcd_posicion(4,16),Lcd_dato(CARACTER_POS1);
+    Lcd_cadena(4,17,"C");
+    
+    return;
+}
+
+void Pant_Val_Act(void)
+{
+    char buffer[20];
+    
     
     return;
 }

@@ -2461,13 +2461,15 @@ _Bool Act_PwmS1=0;
 
 
 
+
 void MEF_Init(void);
 void MEF_Actualizacion(void);
+void MEF_Subest_Actualizacion(void);
 # 4 "./Display_Lcd.h" 2
 # 13 "./Display_Lcd.h"
 void Pant_Inicio(void);
 void Pant_Menu(void);
-void Pant_Pulverizacion(void);
+void Pant_Modos(void);
 void Pant_Fuga(void);
 void Pant_Flujo(void);
 void Pant_Selector(void);

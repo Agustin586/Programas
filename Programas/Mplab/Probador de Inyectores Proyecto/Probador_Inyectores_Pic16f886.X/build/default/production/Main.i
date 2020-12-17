@@ -2415,7 +2415,7 @@ extern __bank0 __bit __timeout;
 # 13 "./Display_Lcd.h"
 void Pant_Inicio(void);
 void Pant_Menu(void);
-void Pant_Pulverizacion(void);
+void Pant_Modos(void);
 void Pant_Fuga(void);
 void Pant_Flujo(void);
 void Pant_Selector(void);
@@ -2468,8 +2468,10 @@ _Bool Act_PwmS1=0;
 
 
 
+
 void MEF_Init(void);
 void MEF_Actualizacion(void);
+void MEF_Subest_Actualizacion(void);
 # 2 "Main.c" 2
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\stdio.h" 1 3
@@ -2570,7 +2572,7 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 # 3 "Main.c" 2
-# 18 "Main.c"
+# 19 "Main.c"
 void Pines_Init(void);
 void Antirrebote(void);
 void Task_Ready(void);
@@ -2578,7 +2580,7 @@ void __attribute__((picinterrupt(("")))) ISR (void);
 
 unsigned char Modo=0;
 _Bool Mostrar=0;
-volatile unsigned int Delay100ms=1000;
+volatile unsigned int Delay100ms=1000,Tempo_WDT=5000;
 
 
 void main(void)
@@ -2631,14 +2633,15 @@ void __attribute__((picinterrupt(("")))) ISR (void)
 
     if(TMR1IF == 1)
     {
-        if(Delay100ms!= 0 && !Mostrar) Delay100ms--;
+        if(Delay100ms!=0 && !Mostrar) Delay100ms--;
+        if(Tempo_WDT!=0) Tempo_WDT--;
 
         TMR1 = 65285;
         TMR1ON = 1;
         TMR1IF = 0;
     }
 
-    if(!Delay100ms) Task_Ready();
+    if(!Delay100ms || !Tempo_WDT) Task_Ready();
 
     return;
 }
@@ -2649,6 +2652,11 @@ void Task_Ready(void)
     {
         Mostrar = 1;
         Delay100ms = 1000;
+    }
+    if(!Tempo_WDT)
+    {
+        __asm("clrwdt");
+        Tempo_WDT = 5000;
     }
 
     return;
