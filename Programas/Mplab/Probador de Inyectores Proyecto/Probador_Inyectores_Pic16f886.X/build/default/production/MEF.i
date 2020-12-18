@@ -2412,10 +2412,11 @@ extern __bank0 __bit __timeout;
 
 # 1 "./MEF.h" 1
 # 4 "./Display_Lcd.h" 2
-# 13 "./Display_Lcd.h"
+# 14 "./Display_Lcd.h"
 void Pant_Inicio(void);
 void Pant_Menu(void);
-void Pant_Pulverizacion(void);
+void Pant_Modos(void);
+void Pant_Val_Act(void);
 void Pant_Fuga(void);
 void Pant_Flujo(void);
 void Pant_Selector(void);
@@ -2463,6 +2464,49 @@ unsigned int P_W_T_S1=0,PER_T_S1=0;
 _Bool Act_PwmS1=0;
 # 7 "./MEF.h" 2
 
+# 1 "./ADC.h" 1
+# 10 "./ADC.h"
+void Adc_init(void);
+int Adc(unsigned char canal);
+# 8 "./MEF.h" 2
+
+# 1 "./Modo_Pulverizacion.h" 1
+
+
+
+# 1 "./Adc_Read.h" 1
+# 11 "./Adc_Read.h"
+void Adc_Rpm_Read(void);
+void Adc_Pwm_Read(void);
+void Adc_Min_Read(void);
+void Adc_Temp_Read(void);
+# 4 "./Modo_Pulverizacion.h" 2
+
+
+
+
+void Lec_Adc_Modo_Pulv(void);
+# 9 "./MEF.h" 2
+
+# 1 "./Modo_Fuga.h" 1
+
+
+
+
+
+void Lec_Adc_Modo_Fuga(void);
+# 10 "./MEF.h" 2
+
+# 1 "./Modo_Flujo.h" 1
+
+
+
+
+
+void Lec_Adc_Modo_Flujo(void);
+# 11 "./MEF.h" 2
+
+
 
 
 
@@ -2470,12 +2514,15 @@ _Bool Act_PwmS1=0;
 
 void MEF_Init(void);
 void MEF_Actualizacion(void);
+void MEF_Subest_Actualizacion(void);
 # 2 "MEF.c" 2
 
 
 
 
 extern void Antirrebote(void);
+extern unsigned char Modo;
+extern _Bool Act_Variables;
 
 
 typedef enum
@@ -2483,18 +2530,27 @@ typedef enum
     ESTADO_INICIO,
     ESTADO_MENU,
     ESTADO_MODO_PULV,
-        SUBEST_ADC_MODO_PULV,
-        SUBEST_PWM_MODO_PULV,
-        SUBEST_TIEMPO_MODO_PULV,
     ESTADO_MODO_FUGA,
     ESTADO_MODO_FLUJO,
 }MEFestado_t;
 
 MEFestado_t Estado_Actual;
 
+typedef enum
+{
+    SUBEST_INICIAL,
+    SUBEST_DISPLAY,
+    SUBEST_ADC,
+    SUBEST_PWM,
+    SUBEST_TIEMPO,
+}MEFsubestado_t;
+
+MEFsubestado_t Subestado_Actual;
+
 void MEF_Init(void)
 {
     Estado_Actual = ESTADO_INICIO;
+    Subestado_Actual = SUBEST_INICIAL;
 
     return;
 }
@@ -2506,22 +2562,78 @@ void MEF_Actualizacion(void)
         case ESTADO_INICIO:
         {
             Pant_Inicio();
-            WDTCONbits.SWDTEN = 1;
-            WDTCONbits.WDTPS = 0b1010;
-            __asm("clrwdt");
 
             Estado_Actual = ESTADO_MENU;
         break;
         }
         case ESTADO_MENU:
         {
-
             Select_Modo();
 
+            if(PORTBbits.RB1 && Modo==1) Estado_Actual = ESTADO_MODO_PULV,Antirrebote();
+            else if(PORTBbits.RB1 && Modo==2) Estado_Actual = ESTADO_MODO_FUGA,Antirrebote();
+            else if(PORTBbits.RB1 && Modo==3) Estado_Actual = ESTADO_MODO_FLUJO,Antirrebote();
+        break;
+        }
+        case ESTADO_MODO_PULV:
+        {
+            MEF_Subest_Actualizacion();
 
-            if(PORTBbits.RB1) Estado_Actual = ESTADO_MODO_PULV,Antirrebote();
-            else if(PORTBbits.RB1) Estado_Actual = ESTADO_MODO_FUGA,Antirrebote();
-            else if(PORTBbits.RB1) Estado_Actual = ESTADO_MODO_FLUJO,Antirrebote();
+
+        break;
+        }
+        case ESTADO_MODO_FUGA:
+        {
+
+        break;
+        }
+        case ESTADO_MODO_FLUJO:
+        {
+
+        break;
+        }
+    }
+
+    return;
+}
+
+void MEF_Subest_Actualizacion(void)
+{
+    switch(Subestado_Actual)
+    {
+        case SUBEST_INICIAL:
+        {
+            Pant_Modos();
+
+            Subestado_Actual = SUBEST_DISPLAY;
+        break;
+        }
+        case SUBEST_DISPLAY:
+        {
+            Pant_Val_Act();
+
+            Subestado_Actual = SUBEST_ADC;
+        break;
+        }
+        case SUBEST_ADC:
+        {
+            if(Estado_Actual==ESTADO_MODO_PULV) Lec_Adc_Modo_Pulv();
+            else if(Estado_Actual==ESTADO_MODO_FUGA) Lec_Adc_Modo_Fuga();
+            else if(Estado_Actual==ESTADO_MODO_FLUJO) Lec_Adc_Modo_Flujo();
+
+            if(Act_Variables) Subestado_Actual = SUBEST_DISPLAY,Act_Variables=0;
+        break;
+        }
+        case SUBEST_PWM:
+        {
+
+
+        break;
+        }
+        case SUBEST_TIEMPO:
+        {
+
+
         break;
         }
     }

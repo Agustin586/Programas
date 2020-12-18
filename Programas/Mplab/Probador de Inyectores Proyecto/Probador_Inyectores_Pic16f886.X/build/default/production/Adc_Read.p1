@@ -1,30 +1,21 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"8 Menu_Modo.c
-[; ;Menu_Modo.c: 8: extern _Bool Mostrar;
-[v _Mostrar `a ~T0 @X0 0 e ]
-"15 ./Display_Lcd.h
-[; ;./Display_Lcd.h: 15: void Pant_Menu(void);
-[v _Pant_Menu `(v ~T0 @X0 0 ef ]
-"234 C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h
-[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 234:     struct {
-[s S8 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S8 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
-"233
-[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 233: typedef union {
-[u S7 `S8 1 ]
-[n S7 . . ]
-"245
-[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 245: extern volatile PORTBbits_t PORTBbits __attribute__((address(0x006)));
-[v _PORTBbits `VS7 ~T0 @X0 0 e@6 ]
-"7 Menu_Modo.c
-[; ;Menu_Modo.c: 7: extern unsigned char Modo;
-[v _Modo `uc ~T0 @X0 0 e ]
-"20 ./Display_Lcd.h
-[; ;./Display_Lcd.h: 20: void Pant_Selector(void);
-[v _Pant_Selector `(v ~T0 @X0 0 ef ]
-"10 Menu_Modo.c
-[; ;Menu_Modo.c: 10: extern void Antirrebote(void);
-[v _Antirrebote `(v ~T0 @X0 0 ef ]
+"11 ./ADC.h
+[; ;./ADC.h: 11: int Adc(unsigned char canal);
+[v _Adc `(i ~T0 @X0 0 ef1`uc ]
+"4 Adc_Read.c
+[; ;Adc_Read.c: 4: extern unsigned int Rpm;
+[v _Rpm `ui ~T0 @X0 0 e ]
+"5
+[; ;Adc_Read.c: 5: extern unsigned char Pwm,Min,Seg,Temp;
+[v _Pwm `uc ~T0 @X0 0 e ]
+"6
+[; ;Adc_Read.c: 6: extern _Bool mod_tiempo;
+[v _mod_tiempo `a ~T0 @X0 0 e ]
+"5
+[; ;Adc_Read.c: 5: extern unsigned char Pwm,Min,Seg,Temp;
+[v _Min `uc ~T0 @X0 0 e ]
+[v _Seg `uc ~T0 @X0 0 e ]
+[v _Temp `uc ~T0 @X0 0 e ]
 "9 ./Configuracion_Bits.h
 [p x FOSC = HS ]
 "10
@@ -277,85 +268,137 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3370
 [; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 3370: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"30 ./Pwm_Soft.h
-[; ;./Pwm_Soft.h: 30: unsigned int freqPwmS1=0;
-[v _freqPwmS1 `ui ~T0 @X0 1 e ]
-[i _freqPwmS1
--> -> 0 `i `ui
-]
-"32
-[; ;./Pwm_Soft.h: 32: unsigned int PwmS1=0;
-[v _PwmS1 `ui ~T0 @X0 1 e ]
-[i _PwmS1
--> -> 0 `i `ui
-]
-"34
-[; ;./Pwm_Soft.h: 34: float Per_PwmS1=0,Pw_PwmS1=0;
-[v _Per_PwmS1 `f ~T0 @X0 1 e ]
-[i _Per_PwmS1
--> -> 0 `i `f
-]
-[v _Pw_PwmS1 `f ~T0 @X0 1 e ]
-[i _Pw_PwmS1
--> -> 0 `i `f
-]
-"35
-[; ;./Pwm_Soft.h: 35: unsigned int P_W_T_S1=0,PER_T_S1=0;
-[v _P_W_T_S1 `ui ~T0 @X0 1 e ]
-[i _P_W_T_S1
--> -> 0 `i `ui
-]
-[v _PER_T_S1 `ui ~T0 @X0 1 e ]
-[i _PER_T_S1
--> -> 0 `i `ui
-]
-"37
-[; ;./Pwm_Soft.h: 37: _Bool Act_PwmS1=0;
-[v _Act_PwmS1 `a ~T0 @X0 1 e ]
-[i _Act_PwmS1
--> -> 0 `i `a
-]
-"12 Menu_Modo.c
-[; ;Menu_Modo.c: 12: void Select_Modo(void)
-[v _Select_Modo `(v ~T0 @X0 1 ef ]
-"13
-[; ;Menu_Modo.c: 13: {
+"9 Adc_Read.c
+[; ;Adc_Read.c: 9: void Adc_Rpm_Read(void)
+[v _Adc_Rpm_Read `(v ~T0 @X0 1 ef ]
+"10
+[; ;Adc_Read.c: 10: {
 {
-[e :U _Select_Modo ]
+[e :U _Adc_Rpm_Read ]
 [f ]
-"14
-[; ;Menu_Modo.c: 14:     __asm("clrwdt");
-[; <" clrwdt ;# ">
+"11
+[; ;Adc_Read.c: 11:     unsigned int valor,cent=0,dec_m=0,uni_m=0;
+[v _valor `ui ~T0 @X0 1 a ]
+[v _cent `ui ~T0 @X0 1 a ]
+[e = _cent -> -> 0 `i `ui ]
+[v _dec_m `ui ~T0 @X0 1 a ]
+[e = _dec_m -> -> 0 `i `ui ]
+[v _uni_m `ui ~T0 @X0 1 a ]
+[e = _uni_m -> -> 0 `i `ui ]
+"13
+[; ;Adc_Read.c: 13:     valor = (int)((Adc(0)*5.0/1023.0)*10000.0/5.0);
+[e = _valor -> -> / * / * -> ( _Adc (1 -> -> 0 `i `uc `d .5.0 .1023.0 .10000.0 .5.0 `i `ui ]
+"15
+[; ;Adc_Read.c: 15:     dec_m = (int)(valor/10000)*10000;
+[e = _dec_m -> * -> / _valor -> -> 10000 `i `ui `i -> 10000 `i `ui ]
 "16
-[; ;Menu_Modo.c: 16:     if(Mostrar) Pant_Menu(),Mostrar=0;
-[e $ ! != -> _Mostrar `i -> 0 `i 135  ]
-[e ; ( _Pant_Menu ..  = _Mostrar -> -> 0 `i `a ]
-[e :U 135 ]
-"18
-[; ;Menu_Modo.c: 18:     if(PORTBbits.RB3 || Modo==0)
-[e $ ! || != -> . . _PORTBbits 0 3 `i -> 0 `i == -> _Modo `i -> 0 `i 136  ]
+[; ;Adc_Read.c: 16:     uni_m = (int)((valor-dec_m)/1000)*1000;
+[e = _uni_m -> * -> / - _valor _dec_m -> -> 1000 `i `ui `i -> 1000 `i `ui ]
+"17
+[; ;Adc_Read.c: 17:     cent = (int)((valor-(uni_m+dec_m))/100)*100;
+[e = _cent -> * -> / - _valor + _uni_m _dec_m -> -> 100 `i `ui `i -> 100 `i `ui ]
 "19
-[; ;Menu_Modo.c: 19:     {
-{
+[; ;Adc_Read.c: 19:     valor = cent+uni_m+dec_m;
+[e = _valor + + _cent _uni_m _dec_m ]
 "20
-[; ;Menu_Modo.c: 20:         Modo+=1;
-[e =+ _Modo -> -> 1 `i `uc ]
-"21
-[; ;Menu_Modo.c: 21:         if(Modo>=5||Modo<1) Modo=1;
-[e $ ! || >= -> _Modo `i -> 5 `i < -> _Modo `i -> 1 `i 137  ]
-[e = _Modo -> -> 1 `i `uc ]
-[e :U 137 ]
+[; ;Adc_Read.c: 20:     Rpm = valor;
+[e = _Rpm _valor ]
 "22
-[; ;Menu_Modo.c: 22:         Pant_Selector(),Antirrebote();
-[e ; ( _Pant_Selector ..  ( _Antirrebote ..  ]
+[; ;Adc_Read.c: 22:     if(Rpm == 0) Rpm = 60;
+[e $ ! == _Rpm -> -> 0 `i `ui 135  ]
+[e = _Rpm -> -> 60 `i `ui ]
+[e $U 136  ]
 "23
-[; ;Menu_Modo.c: 23:     }
-}
+[; ;Adc_Read.c: 23:     else if(Rpm > 10000) Rpm = 10000;
+[e :U 135 ]
+[e $ ! > _Rpm -> -> 10000 `i `ui 137  ]
+[e = _Rpm -> -> 10000 `i `ui ]
+[e :U 137 ]
 [e :U 136 ]
-"26
-[; ;Menu_Modo.c: 26:     return;
+"25
+[; ;Adc_Read.c: 25:     return;
 [e $UE 134  ]
-"27
-[; ;Menu_Modo.c: 27: }
+"26
+[; ;Adc_Read.c: 26: }
 [e :UE 134 ]
+}
+"28
+[; ;Adc_Read.c: 28: void Adc_Pwm_Read(void)
+[v _Adc_Pwm_Read `(v ~T0 @X0 1 ef ]
+"29
+[; ;Adc_Read.c: 29: {
+{
+[e :U _Adc_Pwm_Read ]
+[f ]
+"30
+[; ;Adc_Read.c: 30:     Pwm = (int)((Adc(1)*5.0/1023.0)*100.0/5.0);
+[e = _Pwm -> -> / * / * -> ( _Adc (1 -> -> 1 `i `uc `d .5.0 .1023.0 .100.0 .5.0 `i `uc ]
+"31
+[; ;Adc_Read.c: 31:     if(Pwm > 95) Pwm = 95;
+[e $ ! > -> _Pwm `i -> 95 `i 139  ]
+[e = _Pwm -> -> 95 `i `uc ]
+[e $U 140  ]
+"32
+[; ;Adc_Read.c: 32:     else if(Pwm < 5) Pwm = 5;
+[e :U 139 ]
+[e $ ! < -> _Pwm `i -> 5 `i 141  ]
+[e = _Pwm -> -> 5 `i `uc ]
+[e :U 141 ]
+[e :U 140 ]
+"34
+[; ;Adc_Read.c: 34:     return;
+[e $UE 138  ]
+"35
+[; ;Adc_Read.c: 35: }
+[e :UE 138 ]
+}
+"37
+[; ;Adc_Read.c: 37: void Adc_Min_Read(void)
+[v _Adc_Min_Read `(v ~T0 @X0 1 ef ]
+"38
+[; ;Adc_Read.c: 38: {
+{
+[e :U _Adc_Min_Read ]
+[f ]
+"39
+[; ;Adc_Read.c: 39:     if(mod_tiempo == 0) Min = (int)((Adc(2)*5.0/1023.0)*59.0/5.0);
+[e $ ! == -> _mod_tiempo `i -> 0 `i 143  ]
+[e = _Min -> -> / * / * -> ( _Adc (1 -> -> 2 `i `uc `d .5.0 .1023.0 .59.0 .5.0 `i `uc ]
+[e $U 144  ]
+"40
+[; ;Adc_Read.c: 40:     else if(mod_tiempo == 1) Seg = (int)((Adc(2)*5.0/1023.0)*59.0/5.0);
+[e :U 143 ]
+[e $ ! == -> _mod_tiempo `i -> 1 `i 145  ]
+[e = _Seg -> -> / * / * -> ( _Adc (1 -> -> 2 `i `uc `d .5.0 .1023.0 .59.0 .5.0 `i `uc ]
+[e :U 145 ]
+[e :U 144 ]
+"42
+[; ;Adc_Read.c: 42:     if(Seg == 0) Seg = 1;
+[e $ ! == -> _Seg `i -> 0 `i 146  ]
+[e = _Seg -> -> 1 `i `uc ]
+[e :U 146 ]
+"44
+[; ;Adc_Read.c: 44:     return;
+[e $UE 142  ]
+"45
+[; ;Adc_Read.c: 45: }
+[e :UE 142 ]
+}
+"47
+[; ;Adc_Read.c: 47: void Adc_Temp_Read(void)
+[v _Adc_Temp_Read `(v ~T0 @X0 1 ef ]
+"48
+[; ;Adc_Read.c: 48: {
+{
+[e :U _Adc_Temp_Read ]
+[f ]
+"49
+[; ;Adc_Read.c: 49:     Temp = (int)((Adc(3)*5.0/1023.0)*100.0);
+[e = _Temp -> -> * / * -> ( _Adc (1 -> -> 3 `i `uc `d .5.0 .1023.0 .100.0 `i `uc ]
+"51
+[; ;Adc_Read.c: 51:     return;
+[e $UE 147  ]
+"52
+[; ;Adc_Read.c: 52: }
+[e :UE 147 ]
 }

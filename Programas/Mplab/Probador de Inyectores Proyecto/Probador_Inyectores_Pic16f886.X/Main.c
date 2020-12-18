@@ -8,10 +8,11 @@
 #define MOVER       PORTBbits.RB3
 #define BUZZER      PORTAbits.RA5
 
-#define TICKS_T1            200   // Cada 20ms cambia de estado
-#define TICKS_DELAY100ms    1000  // Cada 100ms escribe en la pantalla
-#define TICKS_T2            200   // Cada 20ms ingresa a tarea 2
-#define TICKS_T4            400   // Cada 40ms
+#define TICKS_T1                200   // Cada 20ms cambia de estado
+#define TICKS_DELAY100ms        1000  // Cada 100ms escribe en la pantalla
+#define TICKS_DELAY500ms        2000  // Cada 200ms limpia el watch dog y actualizar variables en lcd
+#define TICKS_T2                200   // Cada 20ms ingresa a tarea 2
+#define TICKS_T4                400   // Cada 40ms
 
 #define Pin_Init    Pines_Init
 
@@ -20,9 +21,10 @@ void Antirrebote(void);
 void Task_Ready(void);
 void __interrupt () ISR (void);
 
-unsigned char Modo=0;
-_Bool Mostrar=0;
-volatile unsigned int Delay100ms=TICKS_DELAY100ms;
+unsigned char Modo=0,Pwm=0,Min=0,Seg=0,Temp=0; 
+_Bool Mostrar=0,Act_Variables=0,mod_tiempo=0;
+volatile unsigned int Delay100ms=TICKS_DELAY100ms,Delay500ms=TICKS_DELAY500ms;
+unsigned int Rpm=0;
 
 ////////////////////////////////////////////////////////////////////////////////
 void main(void)
@@ -32,8 +34,12 @@ void main(void)
     Mef_Init();
     Lcd_Init();
     Timer1_Init();
+    Adc_Init();
     
     TMR1IE=1,TMR1IF=1;      // Activa la interrupcion de tmr1
+    
+    WDTCONbits.SWDTEN = 1;          //Habilita el watch dog
+    WDTCONbits.WDTPS  = 0b1010;     // Preescaler de wdt 1:32768 --> timer = 32768 / 32Khz ~= 1 segundo
     
     while(1)
     {
@@ -75,14 +81,16 @@ void __interrupt () ISR (void)
     //Interrupcion por timer 0 
     if(TMR1IF == 1)
     {
-        if(Delay100ms!= 0 && !Mostrar)       Delay100ms--;    //Temporizador de muestra del display          
+        if(Delay100ms!=0 && !Mostrar)       Delay100ms--;    // Temporizador de muestra del display 
+        if(Delay500ms!=0)                   Delay500ms--;    // Limpia el wdt y actualiza variables del lcd
+        
         
         TMR1 = 65285;     // 100us
         TMR1ON = 1;
         TMR1IF = 0;       // Limpia la bandera de desborde
     }
     
-    if(!Delay100ms)          Task_Ready();
+    if(!Delay100ms || !Delay500ms)          Task_Ready();
     
     return;
 }
@@ -93,6 +101,12 @@ void Task_Ready(void)
     {
         Mostrar = 1;
         Delay100ms = TICKS_DELAY100ms;
+    }
+    if(!Delay500ms)
+    {
+        CLRWDT();
+        Act_Variables = 1;
+        Delay500ms = TICKS_DELAY500ms;
     }
     
     return;

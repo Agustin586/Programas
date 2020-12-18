@@ -1,7 +1,9 @@
 #include "Configuracion_Bits.h"
 #include "Display_Lcd.h"
+#include <stdio.h>
 
-extern unsigned char Modo;
+extern unsigned char Modo,Pwm,Min,Seg,Temp;
+extern unsigned int Rpm;
 
 void Pant_Inicio(void)
 {
@@ -45,11 +47,6 @@ void Pant_Selector(void)
     else if(Modo == 2)  Lcd_cadena(1,1," "),Lcd_cadena(2,1,">");
     else if(Modo == 3)  Lcd_cadena(2,1," "),Lcd_cadena(3,1,">");
     else if(Modo == 4)  Lcd_cadena(3,1," "),Lcd_cadena(4,1,">");
-//    else if(Modo == 5)
-//    {
-//        Lcd_comando(CLEAR);
-//        Lcd_cadena(1,1,">");
-//    }
     
     return;
 }
@@ -64,8 +61,32 @@ void Pant_Menu(void)
     return;
 }
 
-void Pant_Pulverizacion(void)
+void Pant_Modos(void)
 {
+    Lcd_comando(CLEAR);
+    Lcd_cadena(1,1,"RPM:");
+    Lcd_cadena(2,1,"PWM:");
+    Lcd_cadena(3,1,"TIEMPO:"),Lcd_cadena(3,10,":");
+    Lcd_cadena(4,1,"TEMPERATURA:"),Lcd_posicion(4,16),Lcd_dato(CARACTER_POS1);
+    Lcd_cadena(4,17,"C");
+    
+    return;
+}
+
+void Pant_Val_Act(void)
+{
+    char buffer[20];
+    
+    sprintf(buffer,"%05u",Rpm);
+    Lcd_cadena(1,5,buffer);
+    sprintf(buffer,"%02d",Pwm);
+    Lcd_cadena(2,5,buffer);
+    sprintf(buffer,"%02d",Min);
+    Lcd_cadena(3,8,buffer);
+    sprintf(buffer,"%02d",Seg);
+    Lcd_cadena(3,11,buffer);
+    sprintf(buffer,"%02d",Temp);
+    Lcd_cadena(4,13,buffer);
     
     return;
 }

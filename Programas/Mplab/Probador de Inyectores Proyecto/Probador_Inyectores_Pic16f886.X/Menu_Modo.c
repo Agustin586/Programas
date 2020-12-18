@@ -15,7 +15,6 @@ void Select_Modo(void)
     
     if(Mostrar) Pantalla_Menu(),Mostrar=0;
     
-    
     if(MOVER || Modo==0)
     {
         Modo+=1;

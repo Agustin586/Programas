@@ -1,30 +1,73 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"8 Menu_Modo.c
-[; ;Menu_Modo.c: 8: extern _Bool Mostrar;
-[v _Mostrar `a ~T0 @X0 0 e ]
-"15 ./Display_Lcd.h
-[; ;./Display_Lcd.h: 15: void Pant_Menu(void);
-[v _Pant_Menu `(v ~T0 @X0 0 ef ]
-"234 C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h
-[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 234:     struct {
-[s S8 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S8 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
-"233
-[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 233: typedef union {
-[u S7 `S8 1 ]
-[n S7 . . ]
-"245
-[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 245: extern volatile PORTBbits_t PORTBbits __attribute__((address(0x006)));
-[v _PORTBbits `VS7 ~T0 @X0 0 e@6 ]
-"7 Menu_Modo.c
-[; ;Menu_Modo.c: 7: extern unsigned char Modo;
-[v _Modo `uc ~T0 @X0 0 e ]
-"20 ./Display_Lcd.h
-[; ;./Display_Lcd.h: 20: void Pant_Selector(void);
-[v _Pant_Selector `(v ~T0 @X0 0 ef ]
-"10 Menu_Modo.c
-[; ;Menu_Modo.c: 10: extern void Antirrebote(void);
-[v _Antirrebote `(v ~T0 @X0 0 ef ]
+"1343 C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 1343:     struct {
+[s S51 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S51 . TRISA0 TRISA1 TRISA2 TRISA3 TRISA4 TRISA5 TRISA6 TRISA7 ]
+"1342
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 1342: typedef union {
+[u S50 `S51 1 ]
+[n S50 . . ]
+"1354
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 1354: extern volatile TRISAbits_t TRISAbits __attribute__((address(0x085)));
+[v _TRISAbits `VS50 ~T0 @X0 0 e@133 ]
+"3235
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 3235:     struct {
+[s S129 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S129 . ANS0 ANS1 ANS2 ANS3 ANS4 ]
+"3234
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 3234: typedef union {
+[u S128 `S129 1 ]
+[n S128 . . ]
+"3243
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 3243: extern volatile ANSELbits_t ANSELbits __attribute__((address(0x188)));
+[v _ANSELbits `VS128 ~T0 @X0 0 e@392 ]
+"1172
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 1172:     struct {
+[s S43 :1 `uc 1 :1 `uc 1 :4 `uc 1 :2 `uc 1 ]
+[n S43 . ADON GO_nDONE CHS ADCS ]
+"1178
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 1178:     struct {
+[s S44 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S44 . . GO CHS0 CHS1 CHS2 CHS3 ADCS0 ADCS1 ]
+"1188
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 1188:     struct {
+[s S45 :1 `uc 1 :1 `uc 1 ]
+[n S45 . . nDONE ]
+"1192
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 1192:     struct {
+[s S46 :1 `uc 1 :1 `uc 1 ]
+[n S46 . . GO_DONE ]
+"1171
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 1171: typedef union {
+[u S42 `S43 1 `S44 1 `S45 1 `S46 1 ]
+[n S42 . . . . . ]
+"1197
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 1197: extern volatile ADCON0bits_t ADCON0bits __attribute__((address(0x01F)));
+[v _ADCON0bits `VS42 ~T0 @X0 0 e@31 ]
+"2825
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 2825:     struct {
+[s S112 :4 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S112 . . VCFG0 VCFG1 . ADFM ]
+"2824
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 2824: typedef union {
+[u S111 `S112 1 ]
+[n S111 . . ]
+"2833
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 2833: extern volatile ADCON1bits_t ADCON1bits __attribute__((address(0x09F)));
+[v _ADCON1bits `VS111 ~T0 @X0 0 e@159 ]
+"1166
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 1166: extern volatile unsigned char ADCON0 __attribute__((address(0x01F)));
+[v _ADCON0 `Vuc ~T0 @X0 0 e@31 ]
+[v F1196 `(v ~T0 @X0 1 tf1`ul ]
+"92 C:\Program Files (x86)\Microchip\xc8\pic\include\pic.h
+[v __delay `JF1196 ~T0 @X0 0 e ]
+[p i __delay ]
+"1159 C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 1159: extern volatile unsigned char ADRESH __attribute__((address(0x01E)));
+[v _ADRESH `Vuc ~T0 @X0 0 e@30 ]
+"2812
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 2812: extern volatile unsigned char ADRESL __attribute__((address(0x09E)));
+[v _ADRESL `Vuc ~T0 @X0 0 e@158 ]
 "9 ./Configuracion_Bits.h
 [p x FOSC = HS ]
 "10
@@ -277,85 +320,104 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3370
 [; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 3370: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"30 ./Pwm_Soft.h
-[; ;./Pwm_Soft.h: 30: unsigned int freqPwmS1=0;
-[v _freqPwmS1 `ui ~T0 @X0 1 e ]
-[i _freqPwmS1
--> -> 0 `i `ui
-]
-"32
-[; ;./Pwm_Soft.h: 32: unsigned int PwmS1=0;
-[v _PwmS1 `ui ~T0 @X0 1 e ]
-[i _PwmS1
--> -> 0 `i `ui
-]
-"34
-[; ;./Pwm_Soft.h: 34: float Per_PwmS1=0,Pw_PwmS1=0;
-[v _Per_PwmS1 `f ~T0 @X0 1 e ]
-[i _Per_PwmS1
--> -> 0 `i `f
-]
-[v _Pw_PwmS1 `f ~T0 @X0 1 e ]
-[i _Pw_PwmS1
--> -> 0 `i `f
-]
-"35
-[; ;./Pwm_Soft.h: 35: unsigned int P_W_T_S1=0,PER_T_S1=0;
-[v _P_W_T_S1 `ui ~T0 @X0 1 e ]
-[i _P_W_T_S1
--> -> 0 `i `ui
-]
-[v _PER_T_S1 `ui ~T0 @X0 1 e ]
-[i _PER_T_S1
--> -> 0 `i `ui
-]
-"37
-[; ;./Pwm_Soft.h: 37: _Bool Act_PwmS1=0;
-[v _Act_PwmS1 `a ~T0 @X0 1 e ]
-[i _Act_PwmS1
--> -> 0 `i `a
-]
-"12 Menu_Modo.c
-[; ;Menu_Modo.c: 12: void Select_Modo(void)
-[v _Select_Modo `(v ~T0 @X0 1 ef ]
-"13
-[; ;Menu_Modo.c: 13: {
+"5 ADC.c
+[; ;ADC.c: 5: void Adc_init(void)
+[v _Adc_init `(v ~T0 @X0 1 ef ]
+"6
+[; ;ADC.c: 6: {
 {
-[e :U _Select_Modo ]
+[e :U _Adc_init ]
 [f ]
+"8
+[; ;ADC.c: 8:     TRISAbits.TRISA0 = 1,ANSELbits.ANS0 = 1;
+[e ; = . . _TRISAbits 0 0 -> -> 1 `i `uc = . . _ANSELbits 0 0 -> -> 1 `i `uc ]
+"9
+[; ;ADC.c: 9:     TRISAbits.TRISA1 = 1;ANSELbits.ANS1 = 1;
+[e = . . _TRISAbits 0 1 -> -> 1 `i `uc ]
+[e = . . _ANSELbits 0 1 -> -> 1 `i `uc ]
+"10
+[; ;ADC.c: 10:     TRISAbits.TRISA2 = 1,ANSELbits.ANS2 = 1;
+[e ; = . . _TRISAbits 0 2 -> -> 1 `i `uc = . . _ANSELbits 0 2 -> -> 1 `i `uc ]
+"11
+[; ;ADC.c: 11:     TRISAbits.TRISA3 = 1,ANSELbits.ANS3 = 1;
+[e ; = . . _TRISAbits 0 3 -> -> 1 `i `uc = . . _ANSELbits 0 3 -> -> 1 `i `uc ]
 "14
-[; ;Menu_Modo.c: 14:     __asm("clrwdt");
-[; <" clrwdt ;# ">
-"16
-[; ;Menu_Modo.c: 16:     if(Mostrar) Pant_Menu(),Mostrar=0;
-[e $ ! != -> _Mostrar `i -> 0 `i 135  ]
-[e ; ( _Pant_Menu ..  = _Mostrar -> -> 0 `i `a ]
-[e :U 135 ]
-"18
-[; ;Menu_Modo.c: 18:     if(PORTBbits.RB3 || Modo==0)
-[e $ ! || != -> . . _PORTBbits 0 3 `i -> 0 `i == -> _Modo `i -> 0 `i 136  ]
+[; ;ADC.c: 14:     ADCON0bits.ADCS = 0b10;
+[e = . . _ADCON0bits 0 3 -> -> 2 `i `uc ]
+"17
+[; ;ADC.c: 17:     ADCON1bits.ADFM = 1;
+[e = . . _ADCON1bits 0 4 -> -> 1 `i `uc ]
 "19
-[; ;Menu_Modo.c: 19:     {
-{
+[; ;ADC.c: 19:     ADCON1bits.VCFG0 = 0;
+[e = . . _ADCON1bits 0 1 -> -> 0 `i `uc ]
 "20
-[; ;Menu_Modo.c: 20:         Modo+=1;
-[e =+ _Modo -> -> 1 `i `uc ]
-"21
-[; ;Menu_Modo.c: 21:         if(Modo>=5||Modo<1) Modo=1;
-[e $ ! || >= -> _Modo `i -> 5 `i < -> _Modo `i -> 1 `i 137  ]
-[e = _Modo -> -> 1 `i `uc ]
-[e :U 137 ]
+[; ;ADC.c: 20:     ADCON1bits.VCFG1 = 0;
+[e = . . _ADCON1bits 0 2 -> -> 0 `i `uc ]
 "22
-[; ;Menu_Modo.c: 22:         Pant_Selector(),Antirrebote();
-[e ; ( _Pant_Selector ..  ( _Antirrebote ..  ]
-"23
-[; ;Menu_Modo.c: 23:     }
-}
-[e :U 136 ]
-"26
-[; ;Menu_Modo.c: 26:     return;
+[; ;ADC.c: 22:     return;
 [e $UE 134  ]
-"27
-[; ;Menu_Modo.c: 27: }
+"23
+[; ;ADC.c: 23: }
 [e :UE 134 ]
+}
+"25
+[; ;ADC.c: 25: int Adc(unsigned char channel)
+[v _Adc `(i ~T0 @X0 1 ef1`uc ]
+"26
+[; ;ADC.c: 26: {
+{
+[e :U _Adc ]
+"25
+[; ;ADC.c: 25: int Adc(unsigned char channel)
+[v _channel `uc ~T0 @X0 1 r1 ]
+"26
+[; ;ADC.c: 26: {
+[f ]
+"27
+[; ;ADC.c: 27:     int convertion;
+[v _convertion `i ~T0 @X0 1 a ]
+"29
+[; ;ADC.c: 29:     convertion = 0;
+[e = _convertion -> 0 `i ]
+"32
+[; ;ADC.c: 32:     ADCON0 &= 0xC3;
+[e =& _ADCON0 -> -> 195 `i `Vuc ]
+"33
+[; ;ADC.c: 33:     ADCON0 |= channel<<2;
+[e =| _ADCON0 -> << -> _channel `i -> 2 `i `Vuc ]
+"36
+[; ;ADC.c: 36:     ADCON0bits.ADON = 1;
+[e = . . _ADCON0bits 0 0 -> -> 1 `i `uc ]
+"37
+[; ;ADC.c: 37:     _delay((unsigned long)((70)*(20000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 70 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
+"41
+[; ;ADC.c: 41:     ADCON0bits.GO_nDONE = 1;
+[e = . . _ADCON0bits 0 1 -> -> 1 `i `uc ]
+"42
+[; ;ADC.c: 42:     while(ADCON0bits.GO_nDONE == 1);
+[e $U 136  ]
+[e :U 137 ]
+[e :U 136 ]
+[e $ == -> . . _ADCON0bits 0 1 `i -> 1 `i 137  ]
+[e :U 138 ]
+"43
+[; ;ADC.c: 43:     convertion = ADRESH, convertion = convertion<<8;
+[e ; = _convertion -> _ADRESH `i = _convertion << _convertion -> 8 `i ]
+"44
+[; ;ADC.c: 44:     convertion |= ADRESL;
+[e =| _convertion -> _ADRESL `i ]
+"48
+[; ;ADC.c: 48:     ADCON0bits.ADON = 0;
+[e = . . _ADCON0bits 0 0 -> -> 0 `i `uc ]
+"49
+[; ;ADC.c: 49:     _delay((unsigned long)((70)*(20000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 70 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
+"51
+[; ;ADC.c: 51:     return convertion;
+[e ) _convertion ]
+[e $UE 135  ]
+"52
+[; ;ADC.c: 52: }
+[e :UE 135 ]
 }
