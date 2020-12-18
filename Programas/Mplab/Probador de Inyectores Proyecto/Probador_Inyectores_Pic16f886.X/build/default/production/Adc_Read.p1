@@ -361,14 +361,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _Adc_Min_Read ]
 [f ]
 "39
-[; ;Adc_Read.c: 39:     if(mod_tiempo == 0) Min = (int)((Adc(2)*5.0/1023.0)*59.0/5.0);
-[e $ ! == -> _mod_tiempo `i -> 0 `i 143  ]
+[; ;Adc_Read.c: 39:     if(mod_tiempo) Min = (int)((Adc(2)*5.0/1023.0)*59.0/5.0);
+[e $ ! != -> _mod_tiempo `i -> 0 `i 143  ]
 [e = _Min -> -> / * / * -> ( _Adc (1 -> -> 2 `i `uc `d .5.0 .1023.0 .59.0 .5.0 `i `uc ]
 [e $U 144  ]
 "40
-[; ;Adc_Read.c: 40:     else if(mod_tiempo == 1) Seg = (int)((Adc(2)*5.0/1023.0)*59.0/5.0);
+[; ;Adc_Read.c: 40:     else if(!mod_tiempo) Seg = (int)((Adc(2)*5.0/1023.0)*59.0/5.0);
 [e :U 143 ]
-[e $ ! == -> _mod_tiempo `i -> 1 `i 145  ]
+[e $ ! ! != -> _mod_tiempo `i -> 0 `i 145  ]
 [e = _Seg -> -> / * / * -> ( _Adc (1 -> -> 2 `i `uc `d .5.0 .1023.0 .59.0 .5.0 `i `uc ]
 [e :U 145 ]
 [e :U 144 ]

@@ -1,9 +1,9 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"8 Menu_Modo.c
-[; ;Menu_Modo.c: 8: extern _Bool Mostrar;
+"10 Menu_Modo.c
+[; ;Menu_Modo.c: 10: extern _Bool Mostrar,Output;
 [v _Mostrar `a ~T0 @X0 0 e ]
-"14 ./Display_Lcd.h
-[; ;./Display_Lcd.h: 14: void Pant_Menu(void);
+"15 ./Display_Lcd.h
+[; ;./Display_Lcd.h: 15: void Pant_Menu(void);
 [v _Pant_Menu `(v ~T0 @X0 0 ef ]
 "234 C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h
 [; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 234:     struct {
@@ -16,15 +16,36 @@ Version 4.0 HI-TECH Software Intermediate Code
 "245
 [; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 245: extern volatile PORTBbits_t PORTBbits __attribute__((address(0x006)));
 [v _PORTBbits `VS7 ~T0 @X0 0 e@6 ]
-"7 Menu_Modo.c
-[; ;Menu_Modo.c: 7: extern unsigned char Modo;
+"9 Menu_Modo.c
+[; ;Menu_Modo.c: 9: extern unsigned char Modo;
 [v _Modo `uc ~T0 @X0 0 e ]
-"18 ./Display_Lcd.h
-[; ;./Display_Lcd.h: 18: void Pant_Selector(void);
+"19 ./Display_Lcd.h
+[; ;./Display_Lcd.h: 19: void Pant_Selector(void);
 [v _Pant_Selector `(v ~T0 @X0 0 ef ]
-"10 Menu_Modo.c
-[; ;Menu_Modo.c: 10: extern void Antirrebote(void);
+"12 Menu_Modo.c
+[; ;Menu_Modo.c: 12: extern void Antirrebote(void);
 [v _Antirrebote `(v ~T0 @X0 0 ef ]
+"10
+[; ;Menu_Modo.c: 10: extern _Bool Mostrar,Output;
+[v _Output `a ~T0 @X0 0 e ]
+"20 ./Display_Lcd.h
+[; ;./Display_Lcd.h: 20: void Pant_Detener(void);
+[v _Pant_Detener `(v ~T0 @X0 0 ef ]
+"172 C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 172:     struct {
+[s S6 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S6 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
+"171
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 171: typedef union {
+[u S5 `S6 1 ]
+[n S5 . . ]
+"183
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 183: extern volatile PORTAbits_t PORTAbits __attribute__((address(0x005)));
+[v _PORTAbits `VS5 ~T0 @X0 0 e@5 ]
+[v F1196 `(v ~T0 @X0 1 tf1`ul ]
+"92 C:\Program Files (x86)\Microchip\xc8\pic\include\pic.h
+[v __delay `JF1196 ~T0 @X0 0 e ]
+[p i __delay ]
 "9 ./Configuracion_Bits.h
 [p x FOSC = HS ]
 "10
@@ -315,47 +336,107 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _Act_PwmS1
 -> -> 0 `i `a
 ]
-"12 Menu_Modo.c
-[; ;Menu_Modo.c: 12: void Select_Modo(void)
+"14 Menu_Modo.c
+[; ;Menu_Modo.c: 14: void Select_Modo(void)
 [v _Select_Modo `(v ~T0 @X0 1 ef ]
-"13
-[; ;Menu_Modo.c: 13: {
+"15
+[; ;Menu_Modo.c: 15: {
 {
 [e :U _Select_Modo ]
 [f ]
-"14
-[; ;Menu_Modo.c: 14:     __asm("clrwdt");
-[; <" clrwdt ;# ">
 "16
-[; ;Menu_Modo.c: 16:     if(Mostrar) Pant_Menu(),Mostrar=0;
+[; ;Menu_Modo.c: 16:     __asm("clrwdt");
+[; <" clrwdt ;# ">
+"18
+[; ;Menu_Modo.c: 18:     if(Mostrar) Pant_Menu(),Mostrar=0;
 [e $ ! != -> _Mostrar `i -> 0 `i 135  ]
 [e ; ( _Pant_Menu ..  = _Mostrar -> -> 0 `i `a ]
 [e :U 135 ]
-"18
-[; ;Menu_Modo.c: 18:     if(PORTBbits.RB3 || Modo==0)
-[e $ ! || != -> . . _PORTBbits 0 3 `i -> 0 `i == -> _Modo `i -> 0 `i 136  ]
-"19
-[; ;Menu_Modo.c: 19:     {
-{
 "20
-[; ;Menu_Modo.c: 20:         Modo+=1;
-[e =+ _Modo -> -> 1 `i `uc ]
+[; ;Menu_Modo.c: 20:     if(PORTBbits.RB3 || Modo==0)
+[e $ ! || != -> . . _PORTBbits 0 3 `i -> 0 `i == -> _Modo `i -> 0 `i 136  ]
 "21
-[; ;Menu_Modo.c: 21:         if(Modo>=5||Modo<1) Modo=1;
+[; ;Menu_Modo.c: 21:     {
+{
+"22
+[; ;Menu_Modo.c: 22:         Modo+=1;
+[e =+ _Modo -> -> 1 `i `uc ]
+"23
+[; ;Menu_Modo.c: 23:         if(Modo>=5||Modo<1) Modo=1;
 [e $ ! || >= -> _Modo `i -> 5 `i < -> _Modo `i -> 1 `i 137  ]
 [e = _Modo -> -> 1 `i `uc ]
 [e :U 137 ]
-"22
-[; ;Menu_Modo.c: 22:         Pant_Selector(),Antirrebote();
+"24
+[; ;Menu_Modo.c: 24:         Pant_Selector(),Antirrebote();
 [e ; ( _Pant_Selector ..  ( _Antirrebote ..  ]
-"23
-[; ;Menu_Modo.c: 23:     }
+"25
+[; ;Menu_Modo.c: 25:     }
 }
 [e :U 136 ]
-"25
-[; ;Menu_Modo.c: 25:     return;
+"27
+[; ;Menu_Modo.c: 27:     return;
 [e $UE 134  ]
-"26
-[; ;Menu_Modo.c: 26: }
+"28
+[; ;Menu_Modo.c: 28: }
 [e :UE 134 ]
+}
+"30
+[; ;Menu_Modo.c: 30: void Detener(void)
+[v _Detener `(v ~T0 @X0 1 ef ]
+"31
+[; ;Menu_Modo.c: 31: {
+{
+[e :U _Detener ]
+[f ]
+"32
+[; ;Menu_Modo.c: 32:     Antirrebote();
+[e ( _Antirrebote ..  ]
+"33
+[; ;Menu_Modo.c: 33:     Output = !Output;
+[e = _Output -> -> ! != -> _Output `i -> 0 `i `i `a ]
+"34
+[; ;Menu_Modo.c: 34:     PORTBbits.RB4=0;
+[e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
+"36
+[; ;Menu_Modo.c: 36:     Pant_Detener();
+[e ( _Pant_Detener ..  ]
+"38
+[; ;Menu_Modo.c: 38:     for(char i=0;i<3;i++)
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 3 `i 139  ]
+[e $U 140  ]
+[e :U 139 ]
+"39
+[; ;Menu_Modo.c: 39:     {
+{
+"40
+[; ;Menu_Modo.c: 40:         PORTAbits.RA5 = 1;
+[e = . . _PORTAbits 0 5 -> -> 1 `i `uc ]
+"41
+[; ;Menu_Modo.c: 41:         _delay((unsigned long)((100)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"42
+[; ;Menu_Modo.c: 42:         PORTAbits.RA5 = 0;
+[e = . . _PORTAbits 0 5 -> -> 0 `i `uc ]
+"43
+[; ;Menu_Modo.c: 43:         _delay((unsigned long)((100)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"44
+[; ;Menu_Modo.c: 44:     }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 3 `i 139  ]
+[e :U 140 ]
+}
+"46
+[; ;Menu_Modo.c: 46:     _delay((unsigned long)((1200)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1200 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"48
+[; ;Menu_Modo.c: 48:     return;
+[e $UE 138  ]
+"49
+[; ;Menu_Modo.c: 49: }
+[e :UE 138 ]
 }

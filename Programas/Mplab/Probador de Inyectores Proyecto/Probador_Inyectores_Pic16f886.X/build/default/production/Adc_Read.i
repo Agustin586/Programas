@@ -2460,8 +2460,8 @@ void Adc_Pwm_Read(void)
 
 void Adc_Min_Read(void)
 {
-    if(mod_tiempo == 0) Min = (int)((Adc(2)*5.0/1023.0)*59.0/5.0);
-    else if(mod_tiempo == 1) Seg = (int)((Adc(2)*5.0/1023.0)*59.0/5.0);
+    if(mod_tiempo) Min = (int)((Adc(2)*5.0/1023.0)*59.0/5.0);
+    else if(!mod_tiempo) Seg = (int)((Adc(2)*5.0/1023.0)*59.0/5.0);
 
     if(Seg == 0) Seg = 1;
 

@@ -100,7 +100,13 @@ void Pant_Temporizador(void)
     sprintf(buffer,"%02d",Seg);
     Lcd_cadena(3,11,buffer);
     
-    
+    return;
+}
+
+void Pant_Detener(void)
+{
+    Lcd_comando(CLEAR);
+    Lcd_cadena(2,3,"Proceso Detenido");
     
     return;
 }
