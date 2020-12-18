@@ -2409,8 +2409,10 @@ extern __bank0 __bit __timeout;
 
 
 
+
 void Select_Modo(void);
 void Detener(void);
+void Fin_Proceso(void);
 # 2 "Menu_Modo.c" 2
 
 # 1 "./Display_Lcd.h" 1
@@ -2485,14 +2487,7 @@ void Salida_Modo_Pulv(void);
 # 9 "./MEF.h" 2
 
 # 1 "./Modo_Fuga.h" 1
-
-
-
-
-
-
-
-
+# 10 "./Modo_Fuga.h"
 void Lec_Adc_Modo_Fuga(void);
 void Salida_Modo_Fuga(void);
 # 10 "./MEF.h" 2
@@ -2513,7 +2508,7 @@ void MEF_Init(void);
 void MEF_Actualizacion(void);
 void MEF_Subest_Actualizacion(void);
 # 4 "./Display_Lcd.h" 2
-# 14 "./Display_Lcd.h"
+# 18 "./Display_Lcd.h"
 void Pant_Inicio(void);
 void Pant_Menu(void);
 void Pant_Modos(void);
@@ -2521,6 +2516,10 @@ void Pant_Val_Act(void);
 void Pant_Temporizador(void);
 void Pant_Selector(void);
 void Pant_Detener(void);
+void Pant_Pulverizacion(void);
+void Pant_Fuga(void);
+void Pant_Flujo(void);
+void Proceso_Fin(void);
 # 3 "Menu_Modo.c" 2
 
 
@@ -2528,7 +2527,7 @@ void Pant_Detener(void);
 
 
 
-extern unsigned char Modo;
+extern unsigned char Modo,Min,Seg;
 extern _Bool Mostrar,Output;
 
 extern void Antirrebote(void);
@@ -2566,6 +2565,25 @@ void Detener(void)
     }
 
     _delay((unsigned long)((1200)*(20000000/4000.0)));
+
+    return;
+}
+
+void Fin_Proceso(void)
+{
+    if(!Min && !Seg)
+    {
+        Proceso_Fin();
+        Output = !Output;
+        for(char i=0;i<3;i++)
+        {
+            PORTAbits.RA5 = 1;
+            _delay((unsigned long)((100)*(20000000/4000.0)));
+            PORTAbits.RA5 = 0;
+            _delay((unsigned long)((100)*(20000000/4000.0)));
+        }
+        _delay((unsigned long)((1200)*(20000000/4000.0)));
+    }
 
     return;
 }

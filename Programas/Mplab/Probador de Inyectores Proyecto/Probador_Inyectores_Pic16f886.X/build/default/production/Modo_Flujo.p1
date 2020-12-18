@@ -300,10 +300,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 "17
 [; ;Modo_Flujo.c: 17:     PORTBbits.RB4=1;
 [e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
-"21
-[; ;Modo_Flujo.c: 21:     return;
+"19
+[; ;Modo_Flujo.c: 19:     return;
 [e $UE 135  ]
-"22
-[; ;Modo_Flujo.c: 22: }
+"20
+[; ;Modo_Flujo.c: 20: }
 [e :UE 135 ]
 }

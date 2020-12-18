@@ -16,7 +16,5 @@ void Salida_Modo_Flujo(void)
 {
     SALIDA_HIGH;
     
-    
-    
     return;
 }

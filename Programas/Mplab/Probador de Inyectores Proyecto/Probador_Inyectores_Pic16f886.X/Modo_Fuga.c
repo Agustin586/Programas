@@ -14,7 +14,7 @@ void Lec_Adc_Modo_Fuga(void)
 
 void Salida_Modo_Fuga(void)
 {
-    
+    SALIDA_LOW;
     
     return;
 }

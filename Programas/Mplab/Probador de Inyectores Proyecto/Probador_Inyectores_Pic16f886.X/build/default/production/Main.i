@@ -2412,7 +2412,7 @@ extern __bank0 __bit __timeout;
 
 # 1 "./MEF.h" 1
 # 4 "./Display_Lcd.h" 2
-# 14 "./Display_Lcd.h"
+# 18 "./Display_Lcd.h"
 void Pant_Inicio(void);
 void Pant_Menu(void);
 void Pant_Modos(void);
@@ -2420,6 +2420,10 @@ void Pant_Val_Act(void);
 void Pant_Temporizador(void);
 void Pant_Selector(void);
 void Pant_Detener(void);
+void Pant_Pulverizacion(void);
+void Pant_Fuga(void);
+void Pant_Flujo(void);
+void Proceso_Fin(void);
 # 4 "./MEF.h" 2
 
 # 1 "./Lcd.h" 1
@@ -2440,8 +2444,10 @@ void LCD_character(unsigned char adress,char caracter[]);
 
 
 
+
 void Select_Modo(void);
 void Detener(void);
+void Fin_Proceso(void);
 # 6 "./MEF.h" 2
 
 # 1 "./Pwm_Soft.h" 1
@@ -2493,14 +2499,7 @@ void Salida_Modo_Pulv(void);
 # 9 "./MEF.h" 2
 
 # 1 "./Modo_Fuga.h" 1
-
-
-
-
-
-
-
-
+# 10 "./Modo_Fuga.h"
 void Lec_Adc_Modo_Fuga(void);
 void Salida_Modo_Fuga(void);
 # 10 "./MEF.h" 2

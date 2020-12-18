@@ -2,8 +2,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "10 Menu_Modo.c
 [; ;Menu_Modo.c: 10: extern _Bool Mostrar,Output;
 [v _Mostrar `a ~T0 @X0 0 e ]
-"15 ./Display_Lcd.h
-[; ;./Display_Lcd.h: 15: void Pant_Menu(void);
+"19 ./Display_Lcd.h
+[; ;./Display_Lcd.h: 19: void Pant_Menu(void);
 [v _Pant_Menu `(v ~T0 @X0 0 ef ]
 "234 C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h
 [; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 234:     struct {
@@ -17,10 +17,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 245: extern volatile PORTBbits_t PORTBbits __attribute__((address(0x006)));
 [v _PORTBbits `VS7 ~T0 @X0 0 e@6 ]
 "9 Menu_Modo.c
-[; ;Menu_Modo.c: 9: extern unsigned char Modo;
+[; ;Menu_Modo.c: 9: extern unsigned char Modo,Min,Seg;
 [v _Modo `uc ~T0 @X0 0 e ]
-"19 ./Display_Lcd.h
-[; ;./Display_Lcd.h: 19: void Pant_Selector(void);
+"23 ./Display_Lcd.h
+[; ;./Display_Lcd.h: 23: void Pant_Selector(void);
 [v _Pant_Selector `(v ~T0 @X0 0 ef ]
 "12 Menu_Modo.c
 [; ;Menu_Modo.c: 12: extern void Antirrebote(void);
@@ -28,8 +28,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "10
 [; ;Menu_Modo.c: 10: extern _Bool Mostrar,Output;
 [v _Output `a ~T0 @X0 0 e ]
-"20 ./Display_Lcd.h
-[; ;./Display_Lcd.h: 20: void Pant_Detener(void);
+"24 ./Display_Lcd.h
+[; ;./Display_Lcd.h: 24: void Pant_Detener(void);
 [v _Pant_Detener `(v ~T0 @X0 0 ef ]
 "172 C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h
 [; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 172:     struct {
@@ -46,6 +46,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 "92 C:\Program Files (x86)\Microchip\xc8\pic\include\pic.h
 [v __delay `JF1196 ~T0 @X0 0 e ]
 [p i __delay ]
+"9 Menu_Modo.c
+[; ;Menu_Modo.c: 9: extern unsigned char Modo,Min,Seg;
+[v _Min `uc ~T0 @X0 0 e ]
+[v _Seg `uc ~T0 @X0 0 e ]
+"28 ./Display_Lcd.h
+[; ;./Display_Lcd.h: 28: void Proceso_Fin(void);
+[v _Proceso_Fin `(v ~T0 @X0 0 ef ]
 "9 ./Configuracion_Bits.h
 [p x FOSC = HS ]
 "10
@@ -373,19 +380,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Menu_Modo.c: 25:     }
 }
 [e :U 136 ]
-<<<<<<< HEAD
-"26
-[; ;Menu_Modo.c: 26:     return;
-[e $UE 134  ]
-"27
-[; ;Menu_Modo.c: 27: }
-=======
 "27
 [; ;Menu_Modo.c: 27:     return;
 [e $UE 134  ]
 "28
 [; ;Menu_Modo.c: 28: }
->>>>>>> Testeo_Inyectores
 [e :UE 134 ]
 }
 "30
@@ -447,4 +446,68 @@ Version 4.0 HI-TECH Software Intermediate Code
 "49
 [; ;Menu_Modo.c: 49: }
 [e :UE 138 ]
+}
+"51
+[; ;Menu_Modo.c: 51: void Fin_Proceso(void)
+[v _Fin_Proceso `(v ~T0 @X0 1 ef ]
+"52
+[; ;Menu_Modo.c: 52: {
+{
+[e :U _Fin_Proceso ]
+[f ]
+"53
+[; ;Menu_Modo.c: 53:     if(!Min && !Seg)
+[e $ ! && ! != -> _Min `i -> 0 `i ! != -> _Seg `i -> 0 `i 143  ]
+"54
+[; ;Menu_Modo.c: 54:     {
+{
+"55
+[; ;Menu_Modo.c: 55:         Proceso_Fin();
+[e ( _Proceso_Fin ..  ]
+"56
+[; ;Menu_Modo.c: 56:         Output = !Output;
+[e = _Output -> -> ! != -> _Output `i -> 0 `i `i `a ]
+"57
+[; ;Menu_Modo.c: 57:         for(char i=0;i<3;i++)
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 3 `i 144  ]
+[e $U 145  ]
+[e :U 144 ]
+"58
+[; ;Menu_Modo.c: 58:         {
+{
+"59
+[; ;Menu_Modo.c: 59:             PORTAbits.RA5 = 1;
+[e = . . _PORTAbits 0 5 -> -> 1 `i `uc ]
+"60
+[; ;Menu_Modo.c: 60:             _delay((unsigned long)((100)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"61
+[; ;Menu_Modo.c: 61:             PORTAbits.RA5 = 0;
+[e = . . _PORTAbits 0 5 -> -> 0 `i `uc ]
+"62
+[; ;Menu_Modo.c: 62:             _delay((unsigned long)((100)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"63
+[; ;Menu_Modo.c: 63:         }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 3 `i 144  ]
+[e :U 145 ]
+}
+"64
+[; ;Menu_Modo.c: 64:         _delay((unsigned long)((1200)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1200 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"65
+[; ;Menu_Modo.c: 65:     }
+}
+[e :U 143 ]
+"67
+[; ;Menu_Modo.c: 67:     return;
+[e $UE 142  ]
+"68
+[; ;Menu_Modo.c: 68: }
+[e :UE 142 ]
 }

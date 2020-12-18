@@ -2448,7 +2448,5 @@ void Salida_Modo_Flujo(void)
 {
     PORTBbits.RB4=1;
 
-
-
     return;
 }

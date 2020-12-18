@@ -105,6 +105,10 @@ void MEF_Subest_Actualizacion(void)
     {
         case SUBEST_INICIAL:
         {
+            if(Estado_Actual==ESTADO_MODO_PULV)         Pantalla_Pulverizacion(); 
+            else if(Estado_Actual==ESTADO_MODO_FUGA)    Pantalla_Fuga();
+            else if(Estado_Actual==ESTADO_MODO_FLUJO)   Pantalla_Flujo();
+            
             Pantalla_Modos_Pulv_Fuga_Flujo(); 
             
             Subestado_Actual = SUBEST_DISPLAY;
@@ -142,17 +146,7 @@ void MEF_Subest_Actualizacion(void)
         case SUBEST_TIEMPO:
         {
             Pantalla_Temporizador();
-            if(!Min && !Seg)
-            {
-                Output = !Output;
-                for(char i=0;i<3;i++)
-                {
-                    BUZZER = 1;
-                    __delay_ms(100);
-                    BUZZER = 0;
-                    __delay_ms(100);
-                }
-            }
+            Analiza_Estado_Proceso();
             
             if(Output)  Subestado_Actual = SUBEST_SALIDA;
             else        Subestado_Actual = SUBEST_RESET;

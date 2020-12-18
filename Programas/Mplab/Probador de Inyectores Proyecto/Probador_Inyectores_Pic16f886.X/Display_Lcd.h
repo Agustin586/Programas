@@ -10,6 +10,10 @@
 #define Pantalla_Temporizador           Pant_Temporizador
 #define Pantalla_Selector               Pant_Selector
 #define Pantalla_Detener                Pant_Detener
+#define Pantalla_Pulverizacion          Pant_Pulverizacion
+#define Pantalla_Fuga                   Pant_Fuga
+#define Pantalla_Flujo                  Pant_Flujo
+#define Proceso_Finalizado              Proceso_Fin
 
 void Pant_Inicio(void);
 void Pant_Menu(void);
@@ -18,6 +22,10 @@ void Pant_Val_Act(void);
 void Pant_Temporizador(void);
 void Pant_Selector(void);
 void Pant_Detener(void);
+void Pant_Pulverizacion(void);
+void Pant_Fuga(void);
+void Pant_Flujo(void);
+void Proceso_Fin(void);
 
 #endif	/* XC_DISPLAY_LCD_H */
 

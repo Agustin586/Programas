@@ -2432,6 +2432,7 @@ void Adc_Temp_Read(void);
 
 
 
+
 void Lec_Adc_Modo_Fuga(void);
 void Salida_Modo_Fuga(void);
 # 2 "Modo_Fuga.c" 2
@@ -2450,7 +2451,7 @@ void Lec_Adc_Modo_Fuga(void)
 
 void Salida_Modo_Fuga(void)
 {
-
+    PORTBbits.RB4=0;
 
     return;
 }

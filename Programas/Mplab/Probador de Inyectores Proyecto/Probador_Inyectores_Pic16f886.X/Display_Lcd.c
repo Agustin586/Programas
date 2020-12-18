@@ -110,3 +110,43 @@ void Pant_Detener(void)
     
     return;
 }
+
+void Pant_Pulverizacion(void)
+{
+    Lcd_comando(CLEAR);
+    Lcd_cadena(2,1,"    Modo Prueba:");
+    Lcd_cadena(3,1,"    PULVERIZACION");
+    __delay_ms(1500);
+    
+    return;
+}
+
+void Pant_Fuga(void)
+{
+    Lcd_comando(CLEAR);
+    Lcd_cadena(2,1,"    Modo Prueba:");
+    Lcd_cadena(3,1,"    FUGA");
+    __delay_ms(1500);
+    
+    return;
+}
+
+void Pant_Flujo(void)
+{
+    Lcd_comando(CLEAR);
+//    Lcd_cadena(1,1,"                    ");
+    Lcd_cadena(2,1,"    Modo Prueba:");
+    Lcd_cadena(3,1,"    FLUJO");
+    __delay_ms(1500);
+    
+    return;
+}
+
+void Proceso_Fin(void)
+{
+    Lcd_comando(CLEAR);
+    Lcd_cadena(1,1,"                    ");
+    Lcd_cadena(2,1," Proceso Finalizado");
+    
+    return;
+}

@@ -5,6 +5,7 @@
 
 #define Lectura_Adc_Fuga    Lec_Adc_Modo_Fuga
 #define Salida_Fuga         Salida_Modo_Fuga
+#define SALIDA_LOW          PORTBbits.RB4=0
 
 void Lec_Adc_Modo_Fuga(void);
 void Salida_Modo_Fuga(void);

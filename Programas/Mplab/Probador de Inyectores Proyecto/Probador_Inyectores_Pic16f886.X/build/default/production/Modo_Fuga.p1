@@ -5,6 +5,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 "14
 [; ;./Adc_Read.h: 14: void Adc_Temp_Read(void);
 [v _Adc_Temp_Read `(v ~T0 @X0 0 ef ]
+"234 C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 234:     struct {
+[s S8 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S8 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"233
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 233: typedef union {
+[u S7 `S8 1 ]
+[n S7 . . ]
+"245
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 245: extern volatile PORTBbits_t PORTBbits __attribute__((address(0x006)));
+[v _PORTBbits `VS7 ~T0 @X0 0 e@6 ]
 "9 ./Configuracion_Bits.h
 [p x FOSC = HS ]
 "10
@@ -286,6 +297,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _Salida_Modo_Fuga ]
 [f ]
+"17
+[; ;Modo_Fuga.c: 17:     PORTBbits.RB4=0;
+[e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
 "19
 [; ;Modo_Fuga.c: 19:     return;
 [e $UE 135  ]

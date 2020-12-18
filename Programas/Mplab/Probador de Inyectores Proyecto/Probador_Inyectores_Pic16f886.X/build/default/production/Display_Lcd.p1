@@ -330,8 +330,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _Pant_Inicio ]
 [f ]
-[v F1325 `uc ~T0 @X0 -> 8 `i s ]
-[i F1325
+[v F1330 `uc ~T0 @X0 -> 8 `i s ]
+[i F1330
 :U ..
 "11
 [; ;Display_Lcd.c: 11:     char caracter1[8] =
@@ -346,12 +346,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _caracter1 `uc ~T0 @X0 -> 8 `i a ]
-[e = _caracter1 F1325 ]
+[e = _caracter1 F1330 ]
 "22
 [; ;Display_Lcd.c: 22:     LCD_character(0x01,caracter1);
 [e ( _LCD_character (2 , -> -> 1 `i `uc &U _caracter1 ]
-[v F1327 `uc ~T0 @X0 -> 8 `i s ]
-[i F1327
+[v F1332 `uc ~T0 @X0 -> 8 `i s ]
+[i F1332
 :U ..
 "25
 [; ;Display_Lcd.c: 25:     char caracter[8] = {0,0,0,0,0,0,0,0};
@@ -366,7 +366,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _caracter `uc ~T0 @X0 -> 8 `i a ]
-[e = _caracter F1327 ]
+[e = _caracter F1332 ]
 "26
 [; ;Display_Lcd.c: 26:     LCD_character(0x00,caracter);
 [e ( _LCD_character (2 , -> -> 0 `i `uc &U _caracter ]
@@ -601,19 +601,128 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Display_Lcd.c: 112: }
 [e :UE 148 ]
 }
+"114
+[; ;Display_Lcd.c: 114: void Pant_Pulverizacion(void)
+[v _Pant_Pulverizacion `(v ~T0 @X0 1 ef ]
+"115
+[; ;Display_Lcd.c: 115: {
+{
+[e :U _Pant_Pulverizacion ]
+[f ]
+"116
+[; ;Display_Lcd.c: 116:     LCD_command(0x01);
+[e ( _LCD_command (1 -> -> 1 `i `uc ]
+"117
+[; ;Display_Lcd.c: 117:     LCD_array(2,1,"    Modo Prueba:");
+[e ( _LCD_array (3 , , -> 2 `i -> 1 `i :s 32C ]
+"118
+[; ;Display_Lcd.c: 118:     LCD_array(3,1,"    PULVERIZACION");
+[e ( _LCD_array (3 , , -> 3 `i -> 1 `i :s 33C ]
+"119
+[; ;Display_Lcd.c: 119:     _delay((unsigned long)((1500)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1500 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"121
+[; ;Display_Lcd.c: 121:     return;
+[e $UE 149  ]
+"122
+[; ;Display_Lcd.c: 122: }
+[e :UE 149 ]
+}
+"124
+[; ;Display_Lcd.c: 124: void Pant_Fuga(void)
+[v _Pant_Fuga `(v ~T0 @X0 1 ef ]
+"125
+[; ;Display_Lcd.c: 125: {
+{
+[e :U _Pant_Fuga ]
+[f ]
+"126
+[; ;Display_Lcd.c: 126:     LCD_command(0x01);
+[e ( _LCD_command (1 -> -> 1 `i `uc ]
+"127
+[; ;Display_Lcd.c: 127:     LCD_array(2,1,"    Modo Prueba:");
+[e ( _LCD_array (3 , , -> 2 `i -> 1 `i :s 34C ]
+"128
+[; ;Display_Lcd.c: 128:     LCD_array(3,1,"    FUGA");
+[e ( _LCD_array (3 , , -> 3 `i -> 1 `i :s 35C ]
+"129
+[; ;Display_Lcd.c: 129:     _delay((unsigned long)((1500)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1500 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"131
+[; ;Display_Lcd.c: 131:     return;
+[e $UE 150  ]
+"132
+[; ;Display_Lcd.c: 132: }
+[e :UE 150 ]
+}
+"134
+[; ;Display_Lcd.c: 134: void Pant_Flujo(void)
+[v _Pant_Flujo `(v ~T0 @X0 1 ef ]
+"135
+[; ;Display_Lcd.c: 135: {
+{
+[e :U _Pant_Flujo ]
+[f ]
+"136
+[; ;Display_Lcd.c: 136:     LCD_command(0x01);
+[e ( _LCD_command (1 -> -> 1 `i `uc ]
+"138
+[; ;Display_Lcd.c: 138:     LCD_array(2,1,"    Modo Prueba:");
+[e ( _LCD_array (3 , , -> 2 `i -> 1 `i :s 36C ]
+"139
+[; ;Display_Lcd.c: 139:     LCD_array(3,1,"    FLUJO");
+[e ( _LCD_array (3 , , -> 3 `i -> 1 `i :s 37C ]
+"140
+[; ;Display_Lcd.c: 140:     _delay((unsigned long)((1500)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 1500 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"142
+[; ;Display_Lcd.c: 142:     return;
+[e $UE 151  ]
+"143
+[; ;Display_Lcd.c: 143: }
+[e :UE 151 ]
+}
+"145
+[; ;Display_Lcd.c: 145: void Proceso_Fin(void)
+[v _Proceso_Fin `(v ~T0 @X0 1 ef ]
+"146
+[; ;Display_Lcd.c: 146: {
+{
+[e :U _Proceso_Fin ]
+[f ]
+"147
+[; ;Display_Lcd.c: 147:     LCD_command(0x01);
+[e ( _LCD_command (1 -> -> 1 `i `uc ]
+"148
+[; ;Display_Lcd.c: 148:     LCD_array(1,1,"                    ");
+[e ( _LCD_array (3 , , -> 1 `i -> 1 `i :s 38C ]
+"149
+[; ;Display_Lcd.c: 149:     LCD_array(2,1," Proceso Finalizado");
+[e ( _LCD_array (3 , , -> 2 `i -> 1 `i :s 39C ]
+"151
+[; ;Display_Lcd.c: 151:     return;
+[e $UE 152  ]
+"152
+[; ;Display_Lcd.c: 152: }
+[e :UE 152 ]
+}
 [p f _sprintf 8422532 ]
 [a 24C 37 48 53 117 0 ]
 [a 31C 80 114 111 99 101 115 111 32 68 101 116 101 110 105 100 111 0 ]
+[a 39C 32 80 114 111 99 101 115 111 32 70 105 110 97 108 105 122 97 100 111 0 ]
 [a 25C 37 48 50 100 0 ]
 [a 26C 37 48 50 100 0 ]
 [a 27C 37 48 50 100 0 ]
 [a 28C 37 48 50 100 0 ]
 [a 29C 37 48 50 100 0 ]
 [a 30C 37 48 50 100 0 ]
+[a 37C 32 32 32 32 70 76 85 74 79 0 ]
 [a 16C 70 76 85 74 79 0 ]
 [a 17C 76 73 77 80 46 32 85 76 84 82 65 83 79 78 73 68 79 0 ]
+[a 33C 32 32 32 32 80 85 76 86 69 82 73 90 65 67 73 79 78 0 ]
 [a 14C 80 85 76 86 69 82 73 90 65 67 73 79 78 0 ]
 [a 23C 67 0 ]
+[a 35C 32 32 32 32 70 85 71 65 0 ]
 [a 15C 70 85 71 65 0 ]
 [a 5C 62 0 ]
 [a 7C 62 0 ]
@@ -622,6 +731,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [a 13C 62 0 ]
 [a 1C 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 0 ]
 [a 4C 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 61 0 ]
+[a 32C 32 32 32 32 77 111 100 111 32 80 114 117 101 98 97 58 0 ]
+[a 34C 32 32 32 32 77 111 100 111 32 80 114 117 101 98 97 58 0 ]
+[a 36C 32 32 32 32 77 111 100 111 32 80 114 117 101 98 97 58 0 ]
 [a 20C 84 73 69 77 80 79 58 0 ]
 [a 19C 80 87 77 58 0 ]
 [a 18C 82 80 77 58 0 ]
@@ -629,6 +741,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [a 21C 58 0 ]
 [a 2C 80 82 79 66 65 68 79 82 32 65 85 84 79 77 79 84 82 73 90 32 0 ]
 [a 3C 32 32 32 68 69 32 73 78 89 69 67 84 79 82 69 83 32 32 32 32 0 ]
+[a 38C 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 0 ]
 [a 6C 32 0 ]
 [a 8C 32 0 ]
 [a 10C 32 0 ]
