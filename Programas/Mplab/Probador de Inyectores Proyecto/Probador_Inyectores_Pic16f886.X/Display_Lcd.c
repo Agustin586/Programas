@@ -91,14 +91,22 @@ void Pant_Val_Act(void)
     return;
 }
 
-void Pant_Fuga(void)
+void Pant_Temporizador(void)
 {
+    char buffer[20];
+    
+    sprintf(buffer,"%02d",Min);
+    Lcd_cadena(3,8,buffer);
+    sprintf(buffer,"%02d",Seg);
+    Lcd_cadena(3,11,buffer);
     
     return;
 }
 
-void Pant_Flujo(void)
+void Pant_Detener(void)
 {
+    Lcd_comando(CLEAR);
+    Lcd_cadena(2,3,"Proceso Detenido");
     
     return;
 }

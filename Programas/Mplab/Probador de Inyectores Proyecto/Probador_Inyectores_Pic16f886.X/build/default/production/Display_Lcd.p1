@@ -330,8 +330,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _Pant_Inicio ]
 [f ]
-[v F1321 `uc ~T0 @X0 -> 8 `i s ]
-[i F1321
+[v F1325 `uc ~T0 @X0 -> 8 `i s ]
+[i F1325
 :U ..
 "11
 [; ;Display_Lcd.c: 11:     char caracter1[8] =
@@ -346,12 +346,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _caracter1 `uc ~T0 @X0 -> 8 `i a ]
-[e = _caracter1 F1321 ]
+[e = _caracter1 F1325 ]
 "22
 [; ;Display_Lcd.c: 22:     LCD_character(0x01,caracter1);
 [e ( _LCD_character (2 , -> -> 1 `i `uc &U _caracter1 ]
-[v F1323 `uc ~T0 @X0 -> 8 `i s ]
-[i F1323
+[v F1327 `uc ~T0 @X0 -> 8 `i s ]
+[i F1327
 :U ..
 "25
 [; ;Display_Lcd.c: 25:     char caracter[8] = {0,0,0,0,0,0,0,0};
@@ -366,7 +366,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _caracter `uc ~T0 @X0 -> 8 `i a ]
-[e = _caracter F1323 ]
+[e = _caracter F1327 ]
 "26
 [; ;Display_Lcd.c: 26:     LCD_character(0x00,caracter);
 [e ( _LCD_character (2 , -> -> 0 `i `uc &U _caracter ]
@@ -551,41 +551,65 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :UE 146 ]
 }
 "94
-[; ;Display_Lcd.c: 94: void Pant_Fuga(void)
-[v _Pant_Fuga `(v ~T0 @X0 1 ef ]
+[; ;Display_Lcd.c: 94: void Pant_Temporizador(void)
+[v _Pant_Temporizador `(v ~T0 @X0 1 ef ]
 "95
 [; ;Display_Lcd.c: 95: {
 {
-[e :U _Pant_Fuga ]
+[e :U _Pant_Temporizador ]
 [f ]
-"97
-[; ;Display_Lcd.c: 97:     return;
-[e $UE 147  ]
+"96
+[; ;Display_Lcd.c: 96:     char buffer[20];
+[v _buffer `uc ~T0 @X0 -> 20 `i a ]
 "98
-[; ;Display_Lcd.c: 98: }
-[e :UE 147 ]
-}
+[; ;Display_Lcd.c: 98:     sprintf(buffer,"%02d",Min);
+[e ( _sprintf (1 , (. , &U _buffer :s 29C -> _Min `i ]
+"99
+[; ;Display_Lcd.c: 99:     LCD_array(3,8,buffer);
+[e ( _LCD_array (3 , , -> 3 `i -> 8 `i &U _buffer ]
 "100
-[; ;Display_Lcd.c: 100: void Pant_Flujo(void)
-[v _Pant_Flujo `(v ~T0 @X0 1 ef ]
+[; ;Display_Lcd.c: 100:     sprintf(buffer,"%02d",Seg);
+[e ( _sprintf (1 , (. , &U _buffer :s 30C -> _Seg `i ]
 "101
-[; ;Display_Lcd.c: 101: {
-{
-[e :U _Pant_Flujo ]
-[f ]
+[; ;Display_Lcd.c: 101:     LCD_array(3,11,buffer);
+[e ( _LCD_array (3 , , -> 3 `i -> 11 `i &U _buffer ]
 "103
 [; ;Display_Lcd.c: 103:     return;
-[e $UE 148  ]
+[e $UE 147  ]
 "104
 [; ;Display_Lcd.c: 104: }
+[e :UE 147 ]
+}
+"106
+[; ;Display_Lcd.c: 106: void Pant_Detener(void)
+[v _Pant_Detener `(v ~T0 @X0 1 ef ]
+"107
+[; ;Display_Lcd.c: 107: {
+{
+[e :U _Pant_Detener ]
+[f ]
+"108
+[; ;Display_Lcd.c: 108:     LCD_command(0x01);
+[e ( _LCD_command (1 -> -> 1 `i `uc ]
+"109
+[; ;Display_Lcd.c: 109:     LCD_array(2,3,"Proceso Detenido");
+[e ( _LCD_array (3 , , -> 2 `i -> 3 `i :s 31C ]
+"111
+[; ;Display_Lcd.c: 111:     return;
+[e $UE 148  ]
+"112
+[; ;Display_Lcd.c: 112: }
 [e :UE 148 ]
 }
 [p f _sprintf 8422532 ]
 [a 24C 37 48 53 117 0 ]
+[a 31C 80 114 111 99 101 115 111 32 68 101 116 101 110 105 100 111 0 ]
 [a 25C 37 48 50 100 0 ]
 [a 26C 37 48 50 100 0 ]
 [a 27C 37 48 50 100 0 ]
 [a 28C 37 48 50 100 0 ]
+[a 29C 37 48 50 100 0 ]
+[a 30C 37 48 50 100 0 ]
 [a 16C 70 76 85 74 79 0 ]
 [a 17C 76 73 77 80 46 32 85 76 84 82 65 83 79 78 73 68 79 0 ]
 [a 14C 80 85 76 86 69 82 73 90 65 67 73 79 78 0 ]

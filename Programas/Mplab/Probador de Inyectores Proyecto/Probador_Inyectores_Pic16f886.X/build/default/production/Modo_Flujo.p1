@@ -1,4 +1,21 @@
 Version 4.0 HI-TECH Software Intermediate Code
+"13 ./Adc_Read.h
+[; ;./Adc_Read.h: 13: void Adc_Min_Read(void);
+[v _Adc_Min_Read `(v ~T0 @X0 0 ef ]
+"14
+[; ;./Adc_Read.h: 14: void Adc_Temp_Read(void);
+[v _Adc_Temp_Read `(v ~T0 @X0 0 ef ]
+"234 C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 234:     struct {
+[s S8 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S8 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"233
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 233: typedef union {
+[u S7 `S8 1 ]
+[n S7 . . ]
+"245
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 245: extern volatile PORTBbits_t PORTBbits __attribute__((address(0x006)));
+[v _PORTBbits `VS7 ~T0 @X0 0 e@6 ]
 "9 ./Configuracion_Bits.h
 [p x FOSC = HS ]
 "10
@@ -259,10 +276,34 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _Lec_Adc_Modo_Flujo ]
 [f ]
-"8
-[; ;Modo_Flujo.c: 8:     return;
+"7
+[; ;Modo_Flujo.c: 7:     Adc_Min_Read();
+[e ( _Adc_Min_Read ..  ]
+"10
+[; ;Modo_Flujo.c: 10:     Adc_Temp_Read();
+[e ( _Adc_Temp_Read ..  ]
+"12
+[; ;Modo_Flujo.c: 12:     return;
 [e $UE 134  ]
-"9
-[; ;Modo_Flujo.c: 9: }
+"13
+[; ;Modo_Flujo.c: 13: }
 [e :UE 134 ]
+}
+"15
+[; ;Modo_Flujo.c: 15: void Salida_Modo_Flujo(void)
+[v _Salida_Modo_Flujo `(v ~T0 @X0 1 ef ]
+"16
+[; ;Modo_Flujo.c: 16: {
+{
+[e :U _Salida_Modo_Flujo ]
+[f ]
+"17
+[; ;Modo_Flujo.c: 17:     PORTBbits.RB4=1;
+[e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
+"21
+[; ;Modo_Flujo.c: 21:     return;
+[e $UE 135  ]
+"22
+[; ;Modo_Flujo.c: 22: }
+[e :UE 135 ]
 }

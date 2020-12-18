@@ -2408,7 +2408,9 @@ extern __bank0 __bit __timeout;
 
 
 
+
 void Select_Modo(void);
+void Detener(void);
 # 2 "Menu_Modo.c" 2
 
 # 1 "./Display_Lcd.h" 1
@@ -2477,7 +2479,9 @@ void Adc_Temp_Read(void);
 
 
 
+
 void Lec_Adc_Modo_Pulv(void);
+void Salida_Modo_Pulv(void);
 # 9 "./MEF.h" 2
 
 # 1 "./Modo_Fuga.h" 1
@@ -2486,16 +2490,17 @@ void Lec_Adc_Modo_Pulv(void);
 
 
 
+
+
+
 void Lec_Adc_Modo_Fuga(void);
+void Salida_Modo_Fuga(void);
 # 10 "./MEF.h" 2
 
 # 1 "./Modo_Flujo.h" 1
-
-
-
-
-
+# 13 "./Modo_Flujo.h"
 void Lec_Adc_Modo_Flujo(void);
+void Salida_Modo_Flujo(void);
 # 11 "./MEF.h" 2
 
 
@@ -2513,16 +2518,18 @@ void Pant_Inicio(void);
 void Pant_Menu(void);
 void Pant_Modos(void);
 void Pant_Val_Act(void);
-void Pant_Fuga(void);
-void Pant_Flujo(void);
+void Pant_Temporizador(void);
 void Pant_Selector(void);
+void Pant_Detener(void);
 # 3 "Menu_Modo.c" 2
 
 
 
 
+
+
 extern unsigned char Modo;
-extern _Bool Mostrar;
+extern _Bool Mostrar,Output;
 
 extern void Antirrebote(void);
 
@@ -2538,6 +2545,27 @@ void Select_Modo(void)
         if(Modo>=5||Modo<1) Modo=1;
         Pant_Selector(),Antirrebote();
     }
+
+    return;
+}
+
+void Detener(void)
+{
+    Antirrebote();
+    Output = !Output;
+    PORTBbits.RB4=0;
+
+    Pant_Detener();
+
+    for(char i=0;i<3;i++)
+    {
+        PORTAbits.RA5 = 1;
+        _delay((unsigned long)((100)*(20000000/4000.0)));
+        PORTAbits.RA5 = 0;
+        _delay((unsigned long)((100)*(20000000/4000.0)));
+    }
+
+    _delay((unsigned long)((1200)*(20000000/4000.0)));
 
     return;
 }

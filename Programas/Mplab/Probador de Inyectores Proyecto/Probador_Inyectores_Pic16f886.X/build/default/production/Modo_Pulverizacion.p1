@@ -290,3 +290,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Modo_Pulverizacion.c: 19: }
 [e :UE 134 ]
 }
+"21
+[; ;Modo_Pulverizacion.c: 21: void Salida_Modo_Pulv(void)
+[v _Salida_Modo_Pulv `(v ~T0 @X0 1 ef ]
+"22
+[; ;Modo_Pulverizacion.c: 22: {
+{
+[e :U _Salida_Modo_Pulv ]
+[f ]
+"25
+[; ;Modo_Pulverizacion.c: 25:     return;
+[e $UE 135  ]
+"26
+[; ;Modo_Pulverizacion.c: 26: }
+[e :UE 135 ]
+}

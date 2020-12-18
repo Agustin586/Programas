@@ -7,10 +7,15 @@
 #define DETENER     PORTBbits.RB2
 #define MOVER       PORTBbits.RB3
 #define BUZZER      PORTAbits.RA5
+#define SALIDA_PIN  PORTBbits.RB4
+#define SALIDA_TRIS TRISBbits.TRISB4
+#define SALIDA_HIGH PORTBbits.RB4=1
+#define SALIDA_LOW  PORTBbits.RB4=0
 
 #define TICKS_T1                200   // Cada 20ms cambia de estado
 #define TICKS_DELAY100ms        1000  // Cada 100ms escribe en la pantalla
-#define TICKS_DELAY500ms        2000  // Cada 200ms limpia el watch dog y actualizar variables en lcd
+#define TICKS_DELAY200ms        2000  // Cada 200ms limpia el watch dog y actualizar variables en lcd
+#define TICKS_DELAY1s           10000 // Cada 1s resta al temporizador
 #define TICKS_T2                200   // Cada 20ms ingresa a tarea 2
 #define TICKS_T4                400   // Cada 40ms
 
@@ -22,8 +27,8 @@ void Task_Ready(void);
 void __interrupt () ISR (void);
 
 unsigned char Modo=0,Pwm=0,Min=0,Seg=0,Temp=0; 
-_Bool Mostrar=0,Act_Variables=0,mod_tiempo=0;
-volatile unsigned int Delay100ms=TICKS_DELAY100ms,Delay500ms=TICKS_DELAY500ms;
+_Bool Mostrar=0,Act_Variables=0,mod_tiempo=0,Output=0,Temporizador=0,Reset=0;
+volatile unsigned int Delay100ms=TICKS_DELAY100ms,Delay200ms=TICKS_DELAY200ms,Delay1s=TICKS_DELAY1s;
 unsigned int Rpm=0;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -65,12 +70,16 @@ void Pines_Init(void)
     ANSELHbits.ANS9 = 0;                // Setting RB3 how to a diigtla input
     ANSELbits.ANS4  = 0;                // Setting how to digital input
     
+    SALIDA_TRIS = 0;
+    
     return;
 }
 ////////////////////////////////////////////////////////////////////////////////
 void Antirrebote(void)
 {
-    __delay_ms(10);
+    BUZZER = 1;
+    __delay_ms(50);
+    BUZZER = 0;
     while(INICIO || ENTER || DETENER || MOVER)  __delay_ms(10);
     
     return;
@@ -82,15 +91,15 @@ void __interrupt () ISR (void)
     if(TMR1IF == 1)
     {
         if(Delay100ms!=0 && !Mostrar)       Delay100ms--;    // Temporizador de muestra del display 
-        if(Delay500ms!=0)                   Delay500ms--;    // Limpia el wdt y actualiza variables del lcd
-        
+        if(Delay200ms!=0)                   Delay200ms--;    // Limpia el wdt y actualiza variables del lcd
+        if(Delay1s!=0 && Output)            Delay1s--;       //Temporizador de contador de segundos
         
         TMR1 = 65285;     // 100us
         TMR1ON = 1;
         TMR1IF = 0;       // Limpia la bandera de desborde
     }
     
-    if(!Delay100ms || !Delay500ms)          Task_Ready();
+    if(!Delay100ms || !Delay200ms || !Delay1s)          Task_Ready();
     
     return;
 }
@@ -102,11 +111,21 @@ void Task_Ready(void)
         Mostrar = 1;
         Delay100ms = TICKS_DELAY100ms;
     }
-    if(!Delay500ms)
+    if(!Delay200ms)
     {
         CLRWDT();
         Act_Variables = 1;
-        Delay500ms = TICKS_DELAY500ms;
+        Delay200ms = TICKS_DELAY200ms;
+    }
+    if(!Delay1s)
+    {
+        if(Seg == 0)
+        {
+            if(Min != 0)    Min--,Seg=59;
+        }
+        else Seg--;
+        Temporizador = 1;
+        Delay1s = TICKS_DELAY1s;
     }
     
     return;

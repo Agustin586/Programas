@@ -2431,7 +2431,9 @@ void Adc_Temp_Read(void);
 
 
 
+
 void Lec_Adc_Modo_Pulv(void);
+void Salida_Modo_Pulv(void);
 # 2 "Modo_Pulverizacion.c" 2
 
 
@@ -2448,6 +2450,13 @@ void Lec_Adc_Modo_Pulv(void)
 
 
     Adc_Temp_Read();
+
+    return;
+}
+
+void Salida_Modo_Pulv(void)
+{
+
 
     return;
 }

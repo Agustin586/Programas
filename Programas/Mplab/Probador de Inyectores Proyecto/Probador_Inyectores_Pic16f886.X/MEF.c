@@ -1,11 +1,16 @@
 #include "Configuracion_Bits.h"
 #include "MEF.h"
 
-#define  ENTER  PORTBbits.RB1
+#define  ENTER      PORTBbits.RB1
+#define  INICIO     PORTBbits.RB0
+#define  DETENER    PORTBbits.RB2
+#define  BUZZER     PORTAbits.RA5
+#define MOVER       PORTBbits.RB3
 
 extern void Antirrebote(void);
-extern unsigned char Modo;
-extern _Bool Act_Variables;
+extern unsigned char Modo,Min,Seg,Temp,Pwm;
+extern _Bool Act_Variables,Output,Reset,Temporizador,mod_tiempo;
+extern unsigned int Rpm;
 
 ////////////////////////////////////////////////////////////////////////////////
 typedef enum
@@ -15,6 +20,7 @@ typedef enum
     ESTADO_MODO_PULV,
     ESTADO_MODO_FUGA,
     ESTADO_MODO_FLUJO,
+    ESTADO_MODO_RESET,
 }MEFestado_t;
 
 MEFestado_t Estado_Actual;
@@ -24,8 +30,9 @@ typedef enum
     SUBEST_INICIAL,
     SUBEST_DISPLAY,
     SUBEST_ADC,
-    SUBEST_PWM,
+    SUBEST_SALIDA,
     SUBEST_TIEMPO,
+    SUBEST_RESET,
 }MEFsubestado_t;
 
 MEFsubestado_t  Subestado_Actual;
@@ -62,17 +69,29 @@ void MEF_Actualizacion(void)
         {
             Mef_Subest_Updated();
             
-            
+            if(Reset)                   Estado_Actual = ESTADO_MODO_RESET;
         break;
         }
         case ESTADO_MODO_FUGA:
         {
+            Mef_Subest_Updated();
             
+            if(Reset)                   Estado_Actual = ESTADO_MODO_RESET;
         break;
         }
         case ESTADO_MODO_FLUJO:
         {
+            Mef_Subest_Updated();
             
+            if(Reset)                   Estado_Actual = ESTADO_MODO_RESET;
+        break;
+        }
+        case ESTADO_MODO_RESET:
+        {
+            Subestado_Actual = SUBEST_INICIAL;
+            Reset = 0;
+            
+            Estado_Actual = ESTADO_MENU;
         break;
         }
     }
@@ -104,19 +123,49 @@ void MEF_Subest_Actualizacion(void)
             else if(Estado_Actual==ESTADO_MODO_FUGA)    Lectura_Adc_Fuga();
             else if(Estado_Actual==ESTADO_MODO_FLUJO)   Lectura_Adc_Flujo();
             
+            if(MOVER)   mod_tiempo=!mod_tiempo,Antirrebote();
+            
             if(Act_Variables)   Subestado_Actual = SUBEST_DISPLAY,Act_Variables=0;
+            if(INICIO)          Subestado_Actual = SUBEST_SALIDA,Antirrebote(),Output=!Output;
         break;
         }
-        case SUBEST_PWM:
+        case SUBEST_SALIDA:
         {
-            
-            
+            if(Estado_Actual==ESTADO_MODO_PULV)         Salida_Pulverizacion();
+            else if(Estado_Actual==ESTADO_MODO_FUGA)    Salida_Fuga();
+            else if(Estado_Actual==ESTADO_MODO_FLUJO)   Salida_Flujo();
+                
+            if(Temporizador)    Subestado_Actual = SUBEST_TIEMPO;
+            if(DETENER)         Subestado_Actual = SUBEST_INICIAL,Detener_Proceso();
         break;
         }
         case SUBEST_TIEMPO:
         {
+            Pantalla_Temporizador();
+            if(!Min && !Seg)
+            {
+                Output = !Output;
+                for(char i=0;i<3;i++)
+                {
+                    BUZZER = 1;
+                    __delay_ms(100);
+                    BUZZER = 0;
+                    __delay_ms(100);
+                }
+            }
             
+            if(Output)  Subestado_Actual = SUBEST_SALIDA;
+            else        Subestado_Actual = SUBEST_RESET;
+        break;
+        }
+        case SUBEST_RESET:
+        {
+            Rpm=0,Pwm=0,Min=0,Seg=0,Temp=0,Modo=0;
+            SALIDA_LOW;
+            Lcd_comando(CLEAR);            
+            Reset = 1;
             
+            Subestado_Actual = SUBEST_INICIAL;
         break;
         }
     }

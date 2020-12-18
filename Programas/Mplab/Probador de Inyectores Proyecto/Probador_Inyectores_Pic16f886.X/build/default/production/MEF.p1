@@ -1,17 +1,17 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"20 MEF.c
-[; ;MEF.c: 20: MEFestado_t Estado_Actual;
-[c E1260 0 1 2 3 4 .. ]
-[n E1260 . ESTADO_INICIO ESTADO_MENU ESTADO_MODO_PULV ESTADO_MODO_FUGA ESTADO_MODO_FLUJO  ]
-"31
-[; ;MEF.c: 31: MEFsubestado_t Subestado_Actual;
-[c E1268 0 1 2 3 4 .. ]
-[n E1268 . SUBEST_INICIAL SUBEST_DISPLAY SUBEST_ADC SUBEST_PWM SUBEST_TIEMPO  ]
+"26 MEF.c
+[; ;MEF.c: 26: MEFestado_t Estado_Actual;
+[c E1273 0 1 2 3 4 5 .. ]
+[n E1273 . ESTADO_INICIO ESTADO_MENU ESTADO_MODO_PULV ESTADO_MODO_FUGA ESTADO_MODO_FLUJO ESTADO_MODO_RESET  ]
+"38
+[; ;MEF.c: 38: MEFsubestado_t Subestado_Actual;
+[c E1282 0 1 2 3 4 5 .. ]
+[n E1282 . SUBEST_INICIAL SUBEST_DISPLAY SUBEST_ADC SUBEST_SALIDA SUBEST_TIEMPO SUBEST_RESET  ]
 "14 ./Display_Lcd.h
 [; ;./Display_Lcd.h: 14: void Pant_Inicio(void);
 [v _Pant_Inicio `(v ~T0 @X0 0 ef ]
-"6 ./Menu_Modo.h
-[; ;./Menu_Modo.h: 6: void Select_Modo(void);
+"7 ./Menu_Modo.h
+[; ;./Menu_Modo.h: 7: void Select_Modo(void);
 [v _Select_Modo `(v ~T0 @X0 0 ef ]
 "234 C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h
 [; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 234:     struct {
@@ -24,33 +24,85 @@ Version 4.0 HI-TECH Software Intermediate Code
 "245
 [; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 245: extern volatile PORTBbits_t PORTBbits __attribute__((address(0x006)));
 [v _PORTBbits `VS7 ~T0 @X0 0 e@6 ]
-"7 MEF.c
-[; ;MEF.c: 7: extern unsigned char Modo;
+"11 MEF.c
+[; ;MEF.c: 11: extern unsigned char Modo,Min,Seg,Temp,Pwm;
 [v _Modo `uc ~T0 @X0 0 e ]
-"6
-[; ;MEF.c: 6: extern void Antirrebote(void);
+"10
+[; ;MEF.c: 10: extern void Antirrebote(void);
 [v _Antirrebote `(v ~T0 @X0 0 ef ]
 "20 ./MEF.h
 [; ;./MEF.h: 20: void MEF_Subest_Actualizacion(void);
 [v _MEF_Subest_Actualizacion `(v ~T0 @X0 0 ef ]
+"12 MEF.c
+[; ;MEF.c: 12: extern _Bool Act_Variables,Output,Reset,Temporizador,mod_tiempo;
+[v _Reset `a ~T0 @X0 0 e ]
 "16 ./Display_Lcd.h
 [; ;./Display_Lcd.h: 16: void Pant_Modos(void);
 [v _Pant_Modos `(v ~T0 @X0 0 ef ]
 "17
 [; ;./Display_Lcd.h: 17: void Pant_Val_Act(void);
 [v _Pant_Val_Act `(v ~T0 @X0 0 ef ]
-"8 ./Modo_Pulverizacion.h
-[; ;./Modo_Pulverizacion.h: 8: void Lec_Adc_Modo_Pulv(void);
+"9 ./Modo_Pulverizacion.h
+[; ;./Modo_Pulverizacion.h: 9: void Lec_Adc_Modo_Pulv(void);
 [v _Lec_Adc_Modo_Pulv `(v ~T0 @X0 0 ef ]
-"6 ./Modo_Fuga.h
-[; ;./Modo_Fuga.h: 6: void Lec_Adc_Modo_Fuga(void);
+"9 ./Modo_Fuga.h
+[; ;./Modo_Fuga.h: 9: void Lec_Adc_Modo_Fuga(void);
 [v _Lec_Adc_Modo_Fuga `(v ~T0 @X0 0 ef ]
-"6 ./Modo_Flujo.h
-[; ;./Modo_Flujo.h: 6: void Lec_Adc_Modo_Flujo(void);
+"13 ./Modo_Flujo.h
+[; ;./Modo_Flujo.h: 13: void Lec_Adc_Modo_Flujo(void);
 [v _Lec_Adc_Modo_Flujo `(v ~T0 @X0 0 ef ]
-"8 MEF.c
-[; ;MEF.c: 8: extern _Bool Act_Variables;
+"12 MEF.c
+[; ;MEF.c: 12: extern _Bool Act_Variables,Output,Reset,Temporizador,mod_tiempo;
+[v _mod_tiempo `a ~T0 @X0 0 e ]
 [v _Act_Variables `a ~T0 @X0 0 e ]
+[v _Output `a ~T0 @X0 0 e ]
+"10 ./Modo_Pulverizacion.h
+[; ;./Modo_Pulverizacion.h: 10: void Salida_Modo_Pulv(void);
+[v _Salida_Modo_Pulv `(v ~T0 @X0 0 ef ]
+"10 ./Modo_Fuga.h
+[; ;./Modo_Fuga.h: 10: void Salida_Modo_Fuga(void);
+[v _Salida_Modo_Fuga `(v ~T0 @X0 0 ef ]
+"14 ./Modo_Flujo.h
+[; ;./Modo_Flujo.h: 14: void Salida_Modo_Flujo(void);
+[v _Salida_Modo_Flujo `(v ~T0 @X0 0 ef ]
+"12 MEF.c
+[; ;MEF.c: 12: extern _Bool Act_Variables,Output,Reset,Temporizador,mod_tiempo;
+[v _Temporizador `a ~T0 @X0 0 e ]
+"8 ./Menu_Modo.h
+[; ;./Menu_Modo.h: 8: void Detener(void);
+[v _Detener `(v ~T0 @X0 0 ef ]
+"18 ./Display_Lcd.h
+[; ;./Display_Lcd.h: 18: void Pant_Temporizador(void);
+[v _Pant_Temporizador `(v ~T0 @X0 0 ef ]
+"11 MEF.c
+[; ;MEF.c: 11: extern unsigned char Modo,Min,Seg,Temp,Pwm;
+[v _Min `uc ~T0 @X0 0 e ]
+[v _Seg `uc ~T0 @X0 0 e ]
+"172 C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 172:     struct {
+[s S6 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S6 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
+"171
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 171: typedef union {
+[u S5 `S6 1 ]
+[n S5 . . ]
+"183
+[; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 183: extern volatile PORTAbits_t PORTAbits __attribute__((address(0x005)));
+[v _PORTAbits `VS5 ~T0 @X0 0 e@5 ]
+[v F1196 `(v ~T0 @X0 1 tf1`ul ]
+"92 C:\Program Files (x86)\Microchip\xc8\pic\include\pic.h
+[v __delay `JF1196 ~T0 @X0 0 e ]
+[p i __delay ]
+"13 MEF.c
+[; ;MEF.c: 13: extern unsigned int Rpm;
+[v _Rpm `ui ~T0 @X0 0 e ]
+"11
+[; ;MEF.c: 11: extern unsigned char Modo,Min,Seg,Temp,Pwm;
+[v _Pwm `uc ~T0 @X0 0 e ]
+[v _Temp `uc ~T0 @X0 0 e ]
+"73 ./Lcd.h
+[; ;./Lcd.h: 73: void LCD_command(unsigned char cmd);
+[v _LCD_command `(v ~T0 @X0 0 ef1`uc ]
 "9 ./Configuracion_Bits.h
 [p x FOSC = HS ]
 "10
@@ -341,108 +393,93 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _Act_PwmS1
 -> -> 0 `i `a
 ]
-"20 MEF.c
-[; ;MEF.c: 20: MEFestado_t Estado_Actual;
-[v _Estado_Actual `E1260 ~T0 @X0 1 e ]
-"31
-[; ;MEF.c: 31: MEFsubestado_t Subestado_Actual;
-[v _Subestado_Actual `E1268 ~T0 @X0 1 e ]
-"33
-[; ;MEF.c: 33: void MEF_Init(void)
+"26 MEF.c
+[; ;MEF.c: 26: MEFestado_t Estado_Actual;
+[v _Estado_Actual `E1273 ~T0 @X0 1 e ]
+"38
+[; ;MEF.c: 38: MEFsubestado_t Subestado_Actual;
+[v _Subestado_Actual `E1282 ~T0 @X0 1 e ]
+"40
+[; ;MEF.c: 40: void MEF_Init(void)
 [v _MEF_Init `(v ~T0 @X0 1 ef ]
-"34
-[; ;MEF.c: 34: {
+"41
+[; ;MEF.c: 41: {
 {
 [e :U _MEF_Init ]
 [f ]
-"35
-[; ;MEF.c: 35:     Estado_Actual = ESTADO_INICIO;
-[e = _Estado_Actual . `E1260 0 ]
-"36
-[; ;MEF.c: 36:     Subestado_Actual = SUBEST_INICIAL;
-[e = _Subestado_Actual . `E1268 0 ]
-"38
-[; ;MEF.c: 38:     return;
+"42
+[; ;MEF.c: 42:     Estado_Actual = ESTADO_INICIO;
+[e = _Estado_Actual . `E1273 0 ]
+"43
+[; ;MEF.c: 43:     Subestado_Actual = SUBEST_INICIAL;
+[e = _Subestado_Actual . `E1282 0 ]
+"45
+[; ;MEF.c: 45:     return;
 [e $UE 134  ]
-"39
-[; ;MEF.c: 39: }
+"46
+[; ;MEF.c: 46: }
 [e :UE 134 ]
 }
-"41
-[; ;MEF.c: 41: void MEF_Actualizacion(void)
+"48
+[; ;MEF.c: 48: void MEF_Actualizacion(void)
 [v _MEF_Actualizacion `(v ~T0 @X0 1 ef ]
-"42
-[; ;MEF.c: 42: {
+"49
+[; ;MEF.c: 49: {
 {
 [e :U _MEF_Actualizacion ]
 [f ]
-"43
-[; ;MEF.c: 43:     switch(Estado_Actual)
-[e $U 137  ]
-"44
-[; ;MEF.c: 44:     {
-{
-"45
-[; ;MEF.c: 45:         case ESTADO_INICIO:
-[e :U 138 ]
-"46
-[; ;MEF.c: 46:         {
-{
-"47
-[; ;MEF.c: 47:             Pant_Inicio();
-[e ( _Pant_Inicio ..  ]
-"49
-[; ;MEF.c: 49:             Estado_Actual = ESTADO_MENU;
-[e = _Estado_Actual . `E1260 1 ]
 "50
-[; ;MEF.c: 50:         break;
-[e $U 136  ]
+[; ;MEF.c: 50:     switch(Estado_Actual)
+[e $U 137  ]
 "51
-[; ;MEF.c: 51:         }
-}
+[; ;MEF.c: 51:     {
+{
 "52
-[; ;MEF.c: 52:         case ESTADO_MENU:
-[e :U 139 ]
+[; ;MEF.c: 52:         case ESTADO_INICIO:
+[e :U 138 ]
 "53
 [; ;MEF.c: 53:         {
 {
 "54
-[; ;MEF.c: 54:             Select_Modo();
-[e ( _Select_Modo ..  ]
+[; ;MEF.c: 54:             Pant_Inicio();
+[e ( _Pant_Inicio ..  ]
 "56
-[; ;MEF.c: 56:             if(PORTBbits.RB1 && Modo==1) Estado_Actual = ESTADO_MODO_PULV,Antirrebote();
-[e $ ! && != -> . . _PORTBbits 0 1 `i -> 0 `i == -> _Modo `i -> 1 `i 140  ]
-[e ; = _Estado_Actual . `E1260 2 ( _Antirrebote ..  ]
-[e $U 141  ]
+[; ;MEF.c: 56:             Estado_Actual = ESTADO_MENU;
+[e = _Estado_Actual . `E1273 1 ]
 "57
-[; ;MEF.c: 57:             else if(PORTBbits.RB1 && Modo==2) Estado_Actual = ESTADO_MODO_FUGA,Antirrebote();
+[; ;MEF.c: 57:         break;
+[e $U 136  ]
+"58
+[; ;MEF.c: 58:         }
+}
+"59
+[; ;MEF.c: 59:         case ESTADO_MENU:
+[e :U 139 ]
+"60
+[; ;MEF.c: 60:         {
+{
+"61
+[; ;MEF.c: 61:             Select_Modo();
+[e ( _Select_Modo ..  ]
+"63
+[; ;MEF.c: 63:             if(PORTBbits.RB1 && Modo==1) Estado_Actual = ESTADO_MODO_PULV,Antirrebote();
+[e $ ! && != -> . . _PORTBbits 0 1 `i -> 0 `i == -> _Modo `i -> 1 `i 140  ]
+[e ; = _Estado_Actual . `E1273 2 ( _Antirrebote ..  ]
+[e $U 141  ]
+"64
+[; ;MEF.c: 64:             else if(PORTBbits.RB1 && Modo==2) Estado_Actual = ESTADO_MODO_FUGA,Antirrebote();
 [e :U 140 ]
 [e $ ! && != -> . . _PORTBbits 0 1 `i -> 0 `i == -> _Modo `i -> 2 `i 142  ]
-[e ; = _Estado_Actual . `E1260 3 ( _Antirrebote ..  ]
+[e ; = _Estado_Actual . `E1273 3 ( _Antirrebote ..  ]
 [e $U 143  ]
-"58
-[; ;MEF.c: 58:             else if(PORTBbits.RB1 && Modo==3) Estado_Actual = ESTADO_MODO_FLUJO,Antirrebote();
+"65
+[; ;MEF.c: 65:             else if(PORTBbits.RB1 && Modo==3) Estado_Actual = ESTADO_MODO_FLUJO,Antirrebote();
 [e :U 142 ]
 [e $ ! && != -> . . _PORTBbits 0 1 `i -> 0 `i == -> _Modo `i -> 3 `i 144  ]
-[e ; = _Estado_Actual . `E1260 4 ( _Antirrebote ..  ]
+[e ; = _Estado_Actual . `E1273 4 ( _Antirrebote ..  ]
 [e :U 144 ]
 [e :U 143 ]
 [e :U 141 ]
-"59
-[; ;MEF.c: 59:         break;
-[e $U 136  ]
-"60
-[; ;MEF.c: 60:         }
-}
-"61
-[; ;MEF.c: 61:         case ESTADO_MODO_PULV:
-[e :U 145 ]
-"62
-[; ;MEF.c: 62:         {
-{
-"63
-[; ;MEF.c: 63:             MEF_Subest_Actualizacion();
-[e ( _MEF_Subest_Actualizacion ..  ]
 "66
 [; ;MEF.c: 66:         break;
 [e $U 136  ]
@@ -450,174 +487,355 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MEF.c: 67:         }
 }
 "68
-[; ;MEF.c: 68:         case ESTADO_MODO_FUGA:
-[e :U 146 ]
+[; ;MEF.c: 68:         case ESTADO_MODO_PULV:
+[e :U 145 ]
 "69
 [; ;MEF.c: 69:         {
 {
-"71
-[; ;MEF.c: 71:         break;
-[e $U 136  ]
+"70
+[; ;MEF.c: 70:             MEF_Subest_Actualizacion();
+[e ( _MEF_Subest_Actualizacion ..  ]
 "72
-[; ;MEF.c: 72:         }
-}
+[; ;MEF.c: 72:             if(Reset) Estado_Actual = ESTADO_MODO_RESET;
+[e $ ! != -> _Reset `i -> 0 `i 146  ]
+[e = _Estado_Actual . `E1273 5 ]
+[e :U 146 ]
 "73
-[; ;MEF.c: 73:         case ESTADO_MODO_FLUJO:
-[e :U 147 ]
-"74
-[; ;MEF.c: 74:         {
-{
-"76
-[; ;MEF.c: 76:         break;
+[; ;MEF.c: 73:         break;
 [e $U 136  ]
-"77
-[; ;MEF.c: 77:         }
+"74
+[; ;MEF.c: 74:         }
 }
-"78
-[; ;MEF.c: 78:     }
+"75
+[; ;MEF.c: 75:         case ESTADO_MODO_FUGA:
+[e :U 147 ]
+"76
+[; ;MEF.c: 76:         {
+{
+"77
+[; ;MEF.c: 77:             MEF_Subest_Actualizacion();
+[e ( _MEF_Subest_Actualizacion ..  ]
+"79
+[; ;MEF.c: 79:             if(Reset) Estado_Actual = ESTADO_MODO_RESET;
+[e $ ! != -> _Reset `i -> 0 `i 148  ]
+[e = _Estado_Actual . `E1273 5 ]
+[e :U 148 ]
+"80
+[; ;MEF.c: 80:         break;
+[e $U 136  ]
+"81
+[; ;MEF.c: 81:         }
+}
+"82
+[; ;MEF.c: 82:         case ESTADO_MODO_FLUJO:
+[e :U 149 ]
+"83
+[; ;MEF.c: 83:         {
+{
+"84
+[; ;MEF.c: 84:             MEF_Subest_Actualizacion();
+[e ( _MEF_Subest_Actualizacion ..  ]
+"86
+[; ;MEF.c: 86:             if(Reset) Estado_Actual = ESTADO_MODO_RESET;
+[e $ ! != -> _Reset `i -> 0 `i 150  ]
+[e = _Estado_Actual . `E1273 5 ]
+[e :U 150 ]
+"87
+[; ;MEF.c: 87:         break;
+[e $U 136  ]
+"88
+[; ;MEF.c: 88:         }
+}
+"89
+[; ;MEF.c: 89:         case ESTADO_MODO_RESET:
+[e :U 151 ]
+"90
+[; ;MEF.c: 90:         {
+{
+"91
+[; ;MEF.c: 91:             Subestado_Actual = SUBEST_INICIAL;
+[e = _Subestado_Actual . `E1282 0 ]
+"92
+[; ;MEF.c: 92:             Reset = 0;
+[e = _Reset -> -> 0 `i `a ]
+"94
+[; ;MEF.c: 94:             Estado_Actual = ESTADO_MENU;
+[e = _Estado_Actual . `E1273 1 ]
+"95
+[; ;MEF.c: 95:         break;
+[e $U 136  ]
+"96
+[; ;MEF.c: 96:         }
+}
+"97
+[; ;MEF.c: 97:     }
 }
 [e $U 136  ]
 [e :U 137 ]
-[e [\ -> _Estado_Actual `ui , $ -> . `E1260 0 `ui 138
- , $ -> . `E1260 1 `ui 139
- , $ -> . `E1260 2 `ui 145
- , $ -> . `E1260 3 `ui 146
- , $ -> . `E1260 4 `ui 147
+[e [\ -> _Estado_Actual `ui , $ -> . `E1273 0 `ui 138
+ , $ -> . `E1273 1 `ui 139
+ , $ -> . `E1273 2 `ui 145
+ , $ -> . `E1273 3 `ui 147
+ , $ -> . `E1273 4 `ui 149
+ , $ -> . `E1273 5 `ui 151
  136 ]
 [e :U 136 ]
-"80
-[; ;MEF.c: 80:     return;
+"99
+[; ;MEF.c: 99:     return;
 [e $UE 135  ]
-"81
-[; ;MEF.c: 81: }
+"100
+[; ;MEF.c: 100: }
 [e :UE 135 ]
 }
-"83
-[; ;MEF.c: 83: void MEF_Subest_Actualizacion(void)
+"102
+[; ;MEF.c: 102: void MEF_Subest_Actualizacion(void)
 [v _MEF_Subest_Actualizacion `(v ~T0 @X0 1 ef ]
-"84
-[; ;MEF.c: 84: {
+"103
+[; ;MEF.c: 103: {
 {
 [e :U _MEF_Subest_Actualizacion ]
 [f ]
-"85
-[; ;MEF.c: 85:     switch(Subestado_Actual)
-[e $U 150  ]
-"86
-[; ;MEF.c: 86:     {
-{
-"87
-[; ;MEF.c: 87:         case SUBEST_INICIAL:
-[e :U 151 ]
-"88
-[; ;MEF.c: 88:         {
-{
-"89
-[; ;MEF.c: 89:             Pant_Modos();
-[e ( _Pant_Modos ..  ]
-"91
-[; ;MEF.c: 91:             Subestado_Actual = SUBEST_DISPLAY;
-[e = _Subestado_Actual . `E1268 1 ]
-"92
-[; ;MEF.c: 92:         break;
-[e $U 149  ]
-"93
-[; ;MEF.c: 93:         }
-}
-"94
-[; ;MEF.c: 94:         case SUBEST_DISPLAY:
-[e :U 152 ]
-"95
-[; ;MEF.c: 95:         {
-{
-"96
-[; ;MEF.c: 96:             Pant_Val_Act();
-[e ( _Pant_Val_Act ..  ]
-"98
-[; ;MEF.c: 98:             Subestado_Actual = SUBEST_ADC;
-[e = _Subestado_Actual . `E1268 2 ]
-"99
-[; ;MEF.c: 99:         break;
-[e $U 149  ]
-"100
-[; ;MEF.c: 100:         }
-}
-"101
-[; ;MEF.c: 101:         case SUBEST_ADC:
-[e :U 153 ]
-"102
-[; ;MEF.c: 102:         {
-{
-"103
-[; ;MEF.c: 103:             if(Estado_Actual==ESTADO_MODO_PULV) Lec_Adc_Modo_Pulv();
-[e $ ! == -> _Estado_Actual `ui -> . `E1260 2 `ui 154  ]
-[e ( _Lec_Adc_Modo_Pulv ..  ]
-[e $U 155  ]
 "104
-[; ;MEF.c: 104:             else if(Estado_Actual==ESTADO_MODO_FUGA) Lec_Adc_Modo_Fuga();
-[e :U 154 ]
-[e $ ! == -> _Estado_Actual `ui -> . `E1260 3 `ui 156  ]
-[e ( _Lec_Adc_Modo_Fuga ..  ]
-[e $U 157  ]
+[; ;MEF.c: 104:     switch(Subestado_Actual)
+[e $U 154  ]
 "105
-[; ;MEF.c: 105:             else if(Estado_Actual==ESTADO_MODO_FLUJO) Lec_Adc_Modo_Flujo();
-[e :U 156 ]
-[e $ ! == -> _Estado_Actual `ui -> . `E1260 4 `ui 158  ]
-[e ( _Lec_Adc_Modo_Flujo ..  ]
-[e :U 158 ]
-[e :U 157 ]
+[; ;MEF.c: 105:     {
+{
+"106
+[; ;MEF.c: 106:         case SUBEST_INICIAL:
 [e :U 155 ]
 "107
-[; ;MEF.c: 107:             if(Act_Variables) Subestado_Actual = SUBEST_DISPLAY,Act_Variables=0;
-[e $ ! != -> _Act_Variables `i -> 0 `i 159  ]
-[e ; = _Subestado_Actual . `E1268 1 = _Act_Variables -> -> 0 `i `a ]
-[e :U 159 ]
+[; ;MEF.c: 107:         {
+{
 "108
-[; ;MEF.c: 108:         break;
-[e $U 149  ]
-"109
-[; ;MEF.c: 109:         }
-}
+[; ;MEF.c: 108:             Pant_Modos();
+[e ( _Pant_Modos ..  ]
 "110
-[; ;MEF.c: 110:         case SUBEST_PWM:
-[e :U 160 ]
+[; ;MEF.c: 110:             Subestado_Actual = SUBEST_DISPLAY;
+[e = _Subestado_Actual . `E1282 1 ]
 "111
-[; ;MEF.c: 111:         {
-{
+[; ;MEF.c: 111:         break;
+[e $U 153  ]
+"112
+[; ;MEF.c: 112:         }
+}
+"113
+[; ;MEF.c: 113:         case SUBEST_DISPLAY:
+[e :U 156 ]
 "114
-[; ;MEF.c: 114:         break;
-[e $U 149  ]
-"115
-[; ;MEF.c: 115:         }
-}
-"116
-[; ;MEF.c: 116:         case SUBEST_TIEMPO:
-[e :U 161 ]
-"117
-[; ;MEF.c: 117:         {
+[; ;MEF.c: 114:         {
 {
+"115
+[; ;MEF.c: 115:             Pant_Val_Act();
+[e ( _Pant_Val_Act ..  ]
+"117
+[; ;MEF.c: 117:             Subestado_Actual = SUBEST_ADC;
+[e = _Subestado_Actual . `E1282 2 ]
+"118
+[; ;MEF.c: 118:         break;
+[e $U 153  ]
+"119
+[; ;MEF.c: 119:         }
+}
 "120
-[; ;MEF.c: 120:         break;
-[e $U 149  ]
+[; ;MEF.c: 120:         case SUBEST_ADC:
+[e :U 157 ]
 "121
-[; ;MEF.c: 121:         }
-}
+[; ;MEF.c: 121:         {
+{
 "122
-[; ;MEF.c: 122:     }
-}
-[e $U 149  ]
-[e :U 150 ]
-[e [\ -> _Subestado_Actual `ui , $ -> . `E1268 0 `ui 151
- , $ -> . `E1268 1 `ui 152
- , $ -> . `E1268 2 `ui 153
- , $ -> . `E1268 3 `ui 160
- , $ -> . `E1268 4 `ui 161
- 149 ]
-[e :U 149 ]
+[; ;MEF.c: 122:             if(Estado_Actual==ESTADO_MODO_PULV) Lec_Adc_Modo_Pulv();
+[e $ ! == -> _Estado_Actual `ui -> . `E1273 2 `ui 158  ]
+[e ( _Lec_Adc_Modo_Pulv ..  ]
+[e $U 159  ]
+"123
+[; ;MEF.c: 123:             else if(Estado_Actual==ESTADO_MODO_FUGA) Lec_Adc_Modo_Fuga();
+[e :U 158 ]
+[e $ ! == -> _Estado_Actual `ui -> . `E1273 3 `ui 160  ]
+[e ( _Lec_Adc_Modo_Fuga ..  ]
+[e $U 161  ]
 "124
-[; ;MEF.c: 124:     return;
-[e $UE 148  ]
-"125
-[; ;MEF.c: 125: }
-[e :UE 148 ]
+[; ;MEF.c: 124:             else if(Estado_Actual==ESTADO_MODO_FLUJO) Lec_Adc_Modo_Flujo();
+[e :U 160 ]
+[e $ ! == -> _Estado_Actual `ui -> . `E1273 4 `ui 162  ]
+[e ( _Lec_Adc_Modo_Flujo ..  ]
+[e :U 162 ]
+[e :U 161 ]
+[e :U 159 ]
+"126
+[; ;MEF.c: 126:             if(PORTBbits.RB3) mod_tiempo=!mod_tiempo,Antirrebote();
+[e $ ! != -> . . _PORTBbits 0 3 `i -> 0 `i 163  ]
+[e ; = _mod_tiempo -> -> ! != -> _mod_tiempo `i -> 0 `i `i `a ( _Antirrebote ..  ]
+[e :U 163 ]
+"128
+[; ;MEF.c: 128:             if(Act_Variables) Subestado_Actual = SUBEST_DISPLAY,Act_Variables=0;
+[e $ ! != -> _Act_Variables `i -> 0 `i 164  ]
+[e ; = _Subestado_Actual . `E1282 1 = _Act_Variables -> -> 0 `i `a ]
+[e :U 164 ]
+"129
+[; ;MEF.c: 129:             if(PORTBbits.RB0) Subestado_Actual = SUBEST_SALIDA,Antirrebote(),Output=!Output;
+[e $ ! != -> . . _PORTBbits 0 0 `i -> 0 `i 165  ]
+[e ; ; = _Subestado_Actual . `E1282 3 ( _Antirrebote ..  = _Output -> -> ! != -> _Output `i -> 0 `i `i `a ]
+[e :U 165 ]
+"130
+[; ;MEF.c: 130:         break;
+[e $U 153  ]
+"131
+[; ;MEF.c: 131:         }
+}
+"132
+[; ;MEF.c: 132:         case SUBEST_SALIDA:
+[e :U 166 ]
+"133
+[; ;MEF.c: 133:         {
+{
+"134
+[; ;MEF.c: 134:             if(Estado_Actual==ESTADO_MODO_PULV) Salida_Modo_Pulv();
+[e $ ! == -> _Estado_Actual `ui -> . `E1273 2 `ui 167  ]
+[e ( _Salida_Modo_Pulv ..  ]
+[e $U 168  ]
+"135
+[; ;MEF.c: 135:             else if(Estado_Actual==ESTADO_MODO_FUGA) Salida_Modo_Fuga();
+[e :U 167 ]
+[e $ ! == -> _Estado_Actual `ui -> . `E1273 3 `ui 169  ]
+[e ( _Salida_Modo_Fuga ..  ]
+[e $U 170  ]
+"136
+[; ;MEF.c: 136:             else if(Estado_Actual==ESTADO_MODO_FLUJO) Salida_Modo_Flujo();
+[e :U 169 ]
+[e $ ! == -> _Estado_Actual `ui -> . `E1273 4 `ui 171  ]
+[e ( _Salida_Modo_Flujo ..  ]
+[e :U 171 ]
+[e :U 170 ]
+[e :U 168 ]
+"138
+[; ;MEF.c: 138:             if(Temporizador) Subestado_Actual = SUBEST_TIEMPO;
+[e $ ! != -> _Temporizador `i -> 0 `i 172  ]
+[e = _Subestado_Actual . `E1282 4 ]
+[e :U 172 ]
+"139
+[; ;MEF.c: 139:             if(PORTBbits.RB2) Subestado_Actual = SUBEST_INICIAL,Detener();
+[e $ ! != -> . . _PORTBbits 0 2 `i -> 0 `i 173  ]
+[e ; = _Subestado_Actual . `E1282 0 ( _Detener ..  ]
+[e :U 173 ]
+"140
+[; ;MEF.c: 140:         break;
+[e $U 153  ]
+"141
+[; ;MEF.c: 141:         }
+}
+"142
+[; ;MEF.c: 142:         case SUBEST_TIEMPO:
+[e :U 174 ]
+"143
+[; ;MEF.c: 143:         {
+{
+"144
+[; ;MEF.c: 144:             Pant_Temporizador();
+[e ( _Pant_Temporizador ..  ]
+"145
+[; ;MEF.c: 145:             if(!Min && !Seg)
+[e $ ! && ! != -> _Min `i -> 0 `i ! != -> _Seg `i -> 0 `i 175  ]
+"146
+[; ;MEF.c: 146:             {
+{
+"147
+[; ;MEF.c: 147:                 Output = !Output;
+[e = _Output -> -> ! != -> _Output `i -> 0 `i `i `a ]
+"148
+[; ;MEF.c: 148:                 for(char i=0;i<3;i++)
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 3 `i 176  ]
+[e $U 177  ]
+[e :U 176 ]
+"149
+[; ;MEF.c: 149:                 {
+{
+"150
+[; ;MEF.c: 150:                     PORTAbits.RA5 = 1;
+[e = . . _PORTAbits 0 5 -> -> 1 `i `uc ]
+"151
+[; ;MEF.c: 151:                     _delay((unsigned long)((100)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"152
+[; ;MEF.c: 152:                     PORTAbits.RA5 = 0;
+[e = . . _PORTAbits 0 5 -> -> 0 `i `uc ]
+"153
+[; ;MEF.c: 153:                     _delay((unsigned long)((100)*(20000000/4000.0)));
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
+"154
+[; ;MEF.c: 154:                 }
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 3 `i 176  ]
+[e :U 177 ]
+}
+"155
+[; ;MEF.c: 155:             }
+}
+[e :U 175 ]
+"157
+[; ;MEF.c: 157:             if(Output) Subestado_Actual = SUBEST_SALIDA;
+[e $ ! != -> _Output `i -> 0 `i 179  ]
+[e = _Subestado_Actual . `E1282 3 ]
+[e $U 180  ]
+"158
+[; ;MEF.c: 158:             else Subestado_Actual = SUBEST_RESET;
+[e :U 179 ]
+[e = _Subestado_Actual . `E1282 5 ]
+[e :U 180 ]
+"159
+[; ;MEF.c: 159:         break;
+[e $U 153  ]
+"160
+[; ;MEF.c: 160:         }
+}
+"161
+[; ;MEF.c: 161:         case SUBEST_RESET:
+[e :U 181 ]
+"162
+[; ;MEF.c: 162:         {
+{
+"163
+[; ;MEF.c: 163:             Rpm=0,Pwm=0,Min=0,Seg=0,Temp=0,Modo=0;
+[e ; ; ; ; ; = _Rpm -> -> 0 `i `ui = _Pwm -> -> 0 `i `uc = _Min -> -> 0 `i `uc = _Seg -> -> 0 `i `uc = _Temp -> -> 0 `i `uc = _Modo -> -> 0 `i `uc ]
+"164
+[; ;MEF.c: 164:             PORTBbits.RB4=0;
+[e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
+"165
+[; ;MEF.c: 165:             LCD_command(0x01);
+[e ( _LCD_command (1 -> -> 1 `i `uc ]
+"166
+[; ;MEF.c: 166:             Reset = 1;
+[e = _Reset -> -> 1 `i `a ]
+"168
+[; ;MEF.c: 168:             Subestado_Actual = SUBEST_INICIAL;
+[e = _Subestado_Actual . `E1282 0 ]
+"169
+[; ;MEF.c: 169:         break;
+[e $U 153  ]
+"170
+[; ;MEF.c: 170:         }
+}
+"171
+[; ;MEF.c: 171:     }
+}
+[e $U 153  ]
+[e :U 154 ]
+[e [\ -> _Subestado_Actual `ui , $ -> . `E1282 0 `ui 155
+ , $ -> . `E1282 1 `ui 156
+ , $ -> . `E1282 2 `ui 157
+ , $ -> . `E1282 3 `ui 166
+ , $ -> . `E1282 4 `ui 174
+ , $ -> . `E1282 5 `ui 181
+ 153 ]
+[e :U 153 ]
+"173
+[; ;MEF.c: 173:     return;
+[e $UE 152  ]
+"174
+[; ;MEF.c: 174: }
+[e :UE 152 ]
 }

@@ -3,11 +3,18 @@
 
 void Lec_Adc_Modo_Fuga(void)
 {
-    //Primero lee el adc del rpm 
-    
     //Segundo lee el adc de los minutos
+    Min_read();
     
     //Tercero lee el adc de la temperatura 
+    Temp_read();
+    
+    return;
+}
+
+void Salida_Modo_Fuga(void)
+{
+    
     
     return;
 }

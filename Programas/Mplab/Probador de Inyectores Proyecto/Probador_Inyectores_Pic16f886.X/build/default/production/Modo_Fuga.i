@@ -2406,18 +2406,50 @@ extern __bank0 __bit __timeout;
 
 
 
+# 1 "./Adc_Read.h" 1
+
+
+
+# 1 "./ADC.h" 1
+# 10 "./ADC.h"
+void Adc_init(void);
+int Adc(unsigned char canal);
+# 4 "./Adc_Read.h" 2
+
+
+
+
+
+
+
+void Adc_Rpm_Read(void);
+void Adc_Pwm_Read(void);
+void Adc_Min_Read(void);
+void Adc_Temp_Read(void);
+# 4 "./Modo_Fuga.h" 2
+
+
+
 
 
 void Lec_Adc_Modo_Fuga(void);
+void Salida_Modo_Fuga(void);
 # 2 "Modo_Fuga.c" 2
 
 
 void Lec_Adc_Modo_Fuga(void)
 {
 
+    Adc_Min_Read();
 
 
+    Adc_Temp_Read();
 
+    return;
+}
+
+void Salida_Modo_Fuga(void)
+{
 
 
     return;
