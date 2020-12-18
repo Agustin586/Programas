@@ -91,14 +91,16 @@ void Pant_Val_Act(void)
     return;
 }
 
-void Pant_Fuga(void)
+void Pant_Temporizador(void)
 {
+    char buffer[20];
     
-    return;
-}
-
-void Pant_Flujo(void)
-{
+    sprintf(buffer,"%02d",Min);
+    Lcd_cadena(3,8,buffer);
+    sprintf(buffer,"%02d",Seg);
+    Lcd_cadena(3,11,buffer);
+    
+    
     
     return;
 }

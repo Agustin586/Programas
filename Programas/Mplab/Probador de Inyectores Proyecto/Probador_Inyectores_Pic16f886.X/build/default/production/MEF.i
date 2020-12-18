@@ -2412,13 +2412,12 @@ extern __bank0 __bit __timeout;
 
 # 1 "./MEF.h" 1
 # 4 "./Display_Lcd.h" 2
-# 14 "./Display_Lcd.h"
+# 13 "./Display_Lcd.h"
 void Pant_Inicio(void);
 void Pant_Menu(void);
 void Pant_Modos(void);
 void Pant_Val_Act(void);
-void Pant_Fuga(void);
-void Pant_Flujo(void);
+void Pant_Temporizador(void);
 void Pant_Selector(void);
 # 4 "./MEF.h" 2
 
@@ -2485,7 +2484,9 @@ void Adc_Temp_Read(void);
 
 
 
+
 void Lec_Adc_Modo_Pulv(void);
+void Salida_Modo_Pulv(void);
 # 9 "./MEF.h" 2
 
 # 1 "./Modo_Fuga.h" 1
@@ -2494,16 +2495,17 @@ void Lec_Adc_Modo_Pulv(void);
 
 
 
+
+
+
 void Lec_Adc_Modo_Fuga(void);
+void Salida_Modo_Fuga(void);
 # 10 "./MEF.h" 2
 
 # 1 "./Modo_Flujo.h" 1
-
-
-
-
-
+# 13 "./Modo_Flujo.h"
 void Lec_Adc_Modo_Flujo(void);
+void Salida_Modo_Flujo(void);
 # 11 "./MEF.h" 2
 
 
@@ -2520,9 +2522,12 @@ void MEF_Subest_Actualizacion(void);
 
 
 
+
+
+
 extern void Antirrebote(void);
-extern unsigned char Modo;
-extern _Bool Act_Variables;
+extern unsigned char Modo,Min,Seg;
+extern _Bool Act_Variables,Output,Reset,Temporizador;
 
 
 typedef enum
@@ -2541,7 +2546,7 @@ typedef enum
     SUBEST_INICIAL,
     SUBEST_DISPLAY,
     SUBEST_ADC,
-    SUBEST_PWM,
+    SUBEST_SALIDA,
     SUBEST_TIEMPO,
 }MEFsubestado_t;
 
@@ -2562,6 +2567,7 @@ void MEF_Actualizacion(void)
         case ESTADO_INICIO:
         {
             Pant_Inicio();
+            Output = 0;
 
             Estado_Actual = ESTADO_MENU;
         break;
@@ -2579,17 +2585,21 @@ void MEF_Actualizacion(void)
         {
             MEF_Subest_Actualizacion();
 
-
+            if(Reset) Estado_Actual = ESTADO_MENU,LCD_command(0x01);
         break;
         }
         case ESTADO_MODO_FUGA:
         {
+            MEF_Subest_Actualizacion();
 
+            if(Reset) Estado_Actual = ESTADO_MENU,LCD_command(0x01);
         break;
         }
         case ESTADO_MODO_FLUJO:
         {
+            MEF_Subest_Actualizacion();
 
+            if(Reset) Estado_Actual = ESTADO_MENU,LCD_command(0x01);
         break;
         }
     }
@@ -2622,18 +2632,36 @@ void MEF_Subest_Actualizacion(void)
             else if(Estado_Actual==ESTADO_MODO_FLUJO) Lec_Adc_Modo_Flujo();
 
             if(Act_Variables) Subestado_Actual = SUBEST_DISPLAY,Act_Variables=0;
+            if(PORTBbits.RB0) Subestado_Actual = SUBEST_SALIDA,Antirrebote(),Output=!Output;
         break;
         }
-        case SUBEST_PWM:
+        case SUBEST_SALIDA:
         {
+            if(Estado_Actual==ESTADO_MODO_PULV) Salida_Modo_Pulv();
+            else if(Estado_Actual==ESTADO_MODO_FUGA) Salida_Modo_Fuga();
+            else if(Estado_Actual==ESTADO_MODO_FLUJO) Salida_Modo_Flujo();
 
-
+            if(PORTBbits.RB2) Subestado_Actual = SUBEST_ADC,Antirrebote();
+            if(Temporizador) Subestado_Actual = SUBEST_TIEMPO;
         break;
         }
         case SUBEST_TIEMPO:
         {
+            Pant_Temporizador();
+            if(!Min && !Seg)
+            {
+                Output = !Output;
+                for(char i=0;i<3;i++)
+                {
+                    PORTAbits.RA5 = 1;
+                    _delay((unsigned long)((100)*(20000000/4000.0)));
+                    PORTAbits.RA5 = 0;
+                    _delay((unsigned long)((100)*(20000000/4000.0)));
+                }
+            }
 
-
+            if(Output) Subestado_Actual = SUBEST_SALIDA;
+            else Subestado_Actual = SUBEST_INICIAL,Reset=1;
         break;
         }
     }

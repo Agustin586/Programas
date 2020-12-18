@@ -2406,14 +2406,48 @@ extern __bank0 __bit __timeout;
 
 
 
+# 1 "./Adc_Read.h" 1
 
 
+
+# 1 "./ADC.h" 1
+# 10 "./ADC.h"
+void Adc_init(void);
+int Adc(unsigned char canal);
+# 4 "./Adc_Read.h" 2
+
+
+
+
+
+
+
+void Adc_Rpm_Read(void);
+void Adc_Pwm_Read(void);
+void Adc_Min_Read(void);
+void Adc_Temp_Read(void);
+# 4 "./Modo_Flujo.h" 2
+# 13 "./Modo_Flujo.h"
 void Lec_Adc_Modo_Flujo(void);
+void Salida_Modo_Flujo(void);
 # 2 "Modo_Flujo.c" 2
 
 
 void Lec_Adc_Modo_Flujo(void)
 {
+
+    Adc_Min_Read();
+
+
+    Adc_Temp_Read();
+
+    return;
+}
+
+void Salida_Modo_Flujo(void)
+{
+    PORTBbits.RB4=1;
+
 
 
     return;

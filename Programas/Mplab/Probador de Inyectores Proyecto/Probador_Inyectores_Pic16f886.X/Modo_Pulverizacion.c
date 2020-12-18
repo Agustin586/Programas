@@ -17,3 +17,10 @@ void Lec_Adc_Modo_Pulv(void)
     
     return;
 }
+
+void Salida_Modo_Pulv(void)
+{
+    
+    
+    return;
+}

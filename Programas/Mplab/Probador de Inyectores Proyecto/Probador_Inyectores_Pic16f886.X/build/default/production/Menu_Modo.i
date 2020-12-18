@@ -2477,7 +2477,9 @@ void Adc_Temp_Read(void);
 
 
 
+
 void Lec_Adc_Modo_Pulv(void);
+void Salida_Modo_Pulv(void);
 # 9 "./MEF.h" 2
 
 # 1 "./Modo_Fuga.h" 1
@@ -2486,16 +2488,17 @@ void Lec_Adc_Modo_Pulv(void);
 
 
 
+
+
+
 void Lec_Adc_Modo_Fuga(void);
+void Salida_Modo_Fuga(void);
 # 10 "./MEF.h" 2
 
 # 1 "./Modo_Flujo.h" 1
-
-
-
-
-
+# 13 "./Modo_Flujo.h"
 void Lec_Adc_Modo_Flujo(void);
+void Salida_Modo_Flujo(void);
 # 11 "./MEF.h" 2
 
 
@@ -2508,13 +2511,12 @@ void MEF_Init(void);
 void MEF_Actualizacion(void);
 void MEF_Subest_Actualizacion(void);
 # 4 "./Display_Lcd.h" 2
-# 14 "./Display_Lcd.h"
+# 13 "./Display_Lcd.h"
 void Pant_Inicio(void);
 void Pant_Menu(void);
 void Pant_Modos(void);
 void Pant_Val_Act(void);
-void Pant_Fuga(void);
-void Pant_Flujo(void);
+void Pant_Temporizador(void);
 void Pant_Selector(void);
 # 3 "Menu_Modo.c" 2
 

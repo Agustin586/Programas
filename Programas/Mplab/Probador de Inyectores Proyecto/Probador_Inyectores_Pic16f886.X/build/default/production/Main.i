@@ -2412,13 +2412,12 @@ extern __bank0 __bit __timeout;
 
 # 1 "./MEF.h" 1
 # 4 "./Display_Lcd.h" 2
-# 14 "./Display_Lcd.h"
+# 13 "./Display_Lcd.h"
 void Pant_Inicio(void);
 void Pant_Menu(void);
 void Pant_Modos(void);
 void Pant_Val_Act(void);
-void Pant_Fuga(void);
-void Pant_Flujo(void);
+void Pant_Temporizador(void);
 void Pant_Selector(void);
 # 4 "./MEF.h" 2
 
@@ -2485,7 +2484,9 @@ void Adc_Temp_Read(void);
 
 
 
+
 void Lec_Adc_Modo_Pulv(void);
+void Salida_Modo_Pulv(void);
 # 9 "./MEF.h" 2
 
 # 1 "./Modo_Fuga.h" 1
@@ -2494,16 +2495,17 @@ void Lec_Adc_Modo_Pulv(void);
 
 
 
+
+
+
 void Lec_Adc_Modo_Fuga(void);
+void Salida_Modo_Fuga(void);
 # 10 "./MEF.h" 2
 
 # 1 "./Modo_Flujo.h" 1
-
-
-
-
-
+# 13 "./Modo_Flujo.h"
 void Lec_Adc_Modo_Flujo(void);
+void Salida_Modo_Flujo(void);
 # 11 "./MEF.h" 2
 
 
@@ -2615,15 +2617,15 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 # 3 "Main.c" 2
-# 19 "Main.c"
+# 24 "Main.c"
 void Pines_Init(void);
 void Antirrebote(void);
 void Task_Ready(void);
 void __attribute__((picinterrupt(("")))) ISR (void);
 
 unsigned char Modo=0,Pwm=0,Min=0,Seg=0,Temp=0;
-_Bool Mostrar=0,Act_Variables=0,mod_tiempo=0;
-volatile unsigned int Delay100ms=1000,Delay500ms=2000;
+_Bool Mostrar=0,Act_Variables=0,mod_tiempo=0,Output=0,Temporizador=0,Reset=0;
+volatile unsigned int Delay100ms=1000,Delay200ms=2000,Delay1s=10000;
 unsigned int Rpm=0;
 
 
@@ -2665,12 +2667,16 @@ void Pines_Init(void)
     ANSELHbits.ANS9 = 0;
     ANSELbits.ANS4 = 0;
 
+    TRISBbits.TRISB4 = 0;
+
     return;
 }
 
 void Antirrebote(void)
 {
-    _delay((unsigned long)((10)*(20000000/4000.0)));
+    PORTAbits.RA5 = 1;
+    _delay((unsigned long)((50)*(20000000/4000.0)));
+    PORTAbits.RA5 = 0;
     while(PORTBbits.RB0 || PORTBbits.RB1 || PORTBbits.RB2 || PORTBbits.RB3) _delay((unsigned long)((10)*(20000000/4000.0)));
 
     return;
@@ -2682,15 +2688,15 @@ void __attribute__((picinterrupt(("")))) ISR (void)
     if(TMR1IF == 1)
     {
         if(Delay100ms!=0 && !Mostrar) Delay100ms--;
-        if(Delay500ms!=0) Delay500ms--;
-
+        if(Delay200ms!=0) Delay200ms--;
+        if(Delay1s!=0 && Output) Delay1s--;
 
         TMR1 = 65285;
         TMR1ON = 1;
         TMR1IF = 0;
     }
 
-    if(!Delay100ms || !Delay500ms) Task_Ready();
+    if(!Delay100ms || !Delay200ms || !Delay1s) Task_Ready();
 
     return;
 }
@@ -2702,11 +2708,21 @@ void Task_Ready(void)
         Mostrar = 1;
         Delay100ms = 1000;
     }
-    if(!Delay500ms)
+    if(!Delay200ms)
     {
         __asm("clrwdt");
         Act_Variables = 1;
-        Delay500ms = 2000;
+        Delay200ms = 2000;
+    }
+    if(!Delay1s)
+    {
+        if(Seg == 0)
+        {
+            if(Min != 0) Min--,Seg=59;
+        }
+        else Seg--;
+        Temporizador = 1;
+        Delay1s = 10000;
     }
 
     return;
