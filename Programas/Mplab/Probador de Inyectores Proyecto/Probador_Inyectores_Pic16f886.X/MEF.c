@@ -5,6 +5,7 @@
 
 extern void Antirrebote(void);
 extern unsigned char Modo;
+extern _Bool Act_Variables;
 
 ////////////////////////////////////////////////////////////////////////////////
 typedef enum
@@ -44,9 +45,6 @@ void MEF_Actualizacion(void)
         case ESTADO_INICIO:
         {
             Pantalla_Inicio();
-            WDTCONbits.SWDTEN = 1;          //Habilita el watch dog
-            WDTCONbits.WDTPS  = 0b1010;     // Preescaler de wdt 1:32768 --> timer = 32768 / 32Khz ~= 1 segundo
-            CLRWDT();
             
             Estado_Actual = ESTADO_MENU;
         break;
@@ -97,13 +95,16 @@ void MEF_Subest_Actualizacion(void)
         {
             Pantalla_Actualiza_Valores();
             
-            
+            Subestado_Actual = SUBEST_ADC;
         break;
         }
         case SUBEST_ADC:
         {
+            if(Estado_Actual==ESTADO_MODO_PULV)         Lectura_Adc_Pulverizacion(); 
+            else if(Estado_Actual==ESTADO_MODO_FUGA)    Lectura_Adc_Fuga();
+            else if(Estado_Actual==ESTADO_MODO_FLUJO)   Lectura_Adc_Flujo();
             
-            
+            if(Act_Variables)   Subestado_Actual = SUBEST_DISPLAY,Act_Variables=0;
         break;
         }
         case SUBEST_PWM:

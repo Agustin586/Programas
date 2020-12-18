@@ -1,7 +1,9 @@
 #include "Configuracion_Bits.h"
 #include "Display_Lcd.h"
+#include <stdio.h>
 
-extern unsigned char Modo;
+extern unsigned char Modo,Pwm,Min,Seg,Temp;
+extern unsigned int Rpm;
 
 void Pant_Inicio(void)
 {
@@ -61,6 +63,7 @@ void Pant_Menu(void)
 
 void Pant_Modos(void)
 {
+    Lcd_comando(CLEAR);
     Lcd_cadena(1,1,"RPM:");
     Lcd_cadena(2,1,"PWM:");
     Lcd_cadena(3,1,"TIEMPO:"),Lcd_cadena(3,10,":");
@@ -74,6 +77,16 @@ void Pant_Val_Act(void)
 {
     char buffer[20];
     
+    sprintf(buffer,"%05u",Rpm);
+    Lcd_cadena(1,5,buffer);
+    sprintf(buffer,"%02d",Pwm);
+    Lcd_cadena(2,5,buffer);
+    sprintf(buffer,"%02d",Min);
+    Lcd_cadena(3,8,buffer);
+    sprintf(buffer,"%02d",Seg);
+    Lcd_cadena(3,11,buffer);
+    sprintf(buffer,"%02d",Temp);
+    Lcd_cadena(4,13,buffer);
     
     return;
 }

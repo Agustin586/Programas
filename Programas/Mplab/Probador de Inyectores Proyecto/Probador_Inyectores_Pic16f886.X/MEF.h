@@ -5,6 +5,10 @@
 #include "Lcd.h"
 #include "Menu_Modo.h"
 #include "Pwm_Soft.h"
+#include "ADC.h"
+#include "Modo_Pulverizacion.h"
+#include "Modo_Fuga.h"
+#include "Modo_Flujo.h"
 
 #define Mef_Init            MEF_Init
 #define Mef_Updated         MEF_Actualizacion

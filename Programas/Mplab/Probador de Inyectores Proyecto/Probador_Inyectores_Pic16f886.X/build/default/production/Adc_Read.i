@@ -1,4 +1,4 @@
-# 1 "Main.c"
+# 1 "Adc_Read.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "Main.c" 2
+# 1 "Adc_Read.c" 2
 # 1 "./Configuracion_Bits.h" 1
 
 
@@ -2400,314 +2400,77 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\xc.h" 2 3
 # 27 "./Configuracion_Bits.h" 2
-# 1 "Main.c" 2
+# 1 "Adc_Read.c" 2
 
-# 1 "./MEF.h" 1
-
-
-
-# 1 "./Display_Lcd.h" 1
+# 1 "./Adc_Read.h" 1
 
 
-
-# 1 "./MEF.h" 1
-# 4 "./Display_Lcd.h" 2
-# 14 "./Display_Lcd.h"
-void Pant_Inicio(void);
-void Pant_Menu(void);
-void Pant_Modos(void);
-void Pant_Val_Act(void);
-void Pant_Fuga(void);
-void Pant_Flujo(void);
-void Pant_Selector(void);
-# 4 "./MEF.h" 2
-
-# 1 "./Lcd.h" 1
-# 72 "./Lcd.h"
-void LCD_init(void);
-void LCD_command(unsigned char cmd);
-void LCD_array(int x,int y,char *date);
-void LCD_xy(int x,int y);
-void LCD_date(char date);
-void LCD_shift(unsigned char dir,unsigned char cant);
-void LCD_character(unsigned char adress,char caracter[]);
-# 5 "./MEF.h" 2
-
-# 1 "./Menu_Modo.h" 1
-
-
-
-
-
-void Select_Modo(void);
-# 6 "./MEF.h" 2
-
-# 1 "./Pwm_Soft.h" 1
-# 20 "./Pwm_Soft.h"
-void Pwm_init(void);
-void Pwm1_init(unsigned int frecuencia);
-void Pwm1(float duty);
-void Pwm1_stop(void);
-
-void Pwm_Signal(void);
-
-
-
-
-unsigned int freqPwmS1=0;
-
-unsigned int PwmS1=0;
-
-float Per_PwmS1=0,Pw_PwmS1=0;
-unsigned int P_W_T_S1=0,PER_T_S1=0;
-
-_Bool Act_PwmS1=0;
-# 7 "./MEF.h" 2
 
 # 1 "./ADC.h" 1
 # 10 "./ADC.h"
 void Adc_init(void);
 int Adc(unsigned char canal);
-# 8 "./MEF.h" 2
-
-# 1 "./Modo_Pulverizacion.h" 1
+# 4 "./Adc_Read.h" 2
 
 
 
-# 1 "./Adc_Read.h" 1
-# 11 "./Adc_Read.h"
+
+
+
+
 void Adc_Rpm_Read(void);
 void Adc_Pwm_Read(void);
 void Adc_Min_Read(void);
 void Adc_Temp_Read(void);
-# 4 "./Modo_Pulverizacion.h" 2
+# 2 "Adc_Read.c" 2
 
 
+extern unsigned int Rpm;
+extern unsigned char Pwm,Min,Seg,Temp;
+extern _Bool mod_tiempo;
 
 
-void Lec_Adc_Modo_Pulv(void);
-# 9 "./MEF.h" 2
-
-# 1 "./Modo_Fuga.h" 1
-
-
-
-
-
-void Lec_Adc_Modo_Fuga(void);
-# 10 "./MEF.h" 2
-
-# 1 "./Modo_Flujo.h" 1
-
-
-
-
-
-void Lec_Adc_Modo_Flujo(void);
-# 11 "./MEF.h" 2
-
-
-
-
-
-
-
-void MEF_Init(void);
-void MEF_Actualizacion(void);
-void MEF_Subest_Actualizacion(void);
-# 2 "Main.c" 2
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\stdio.h" 1 3
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\__size_t.h" 1 3
-
-
-
-typedef unsigned size_t;
-# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\stdio.h" 2 3
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\__null.h" 1 3
-# 5 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\stdio.h" 2 3
-
-
-
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\stdarg.h" 1 3
-
-
-
-
-
-
-typedef void * va_list[1];
-
-#pragma intrinsic(__va_start)
-extern void * __va_start(void);
-
-#pragma intrinsic(__va_arg)
-extern void * __va_arg(void *, ...);
-# 11 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\stdio.h" 2 3
-# 43 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\stdio.h" 3
-struct __prbuf
+void Adc_Rpm_Read(void)
 {
- char * ptr;
- void (* func)(char);
-};
-# 85 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\stdio.h" 3
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\conio.h" 1 3
+    unsigned int valor,cent=0,dec_m=0,uni_m=0;
 
+    valor = (int)((Adc(0)*5.0/1023.0)*10000.0/5.0);
 
+    dec_m = (int)(valor/10000)*10000;
+    uni_m = (int)((valor-dec_m)/1000)*1000;
+    cent = (int)((valor-(uni_m+dec_m))/100)*100;
 
+    valor = cent+uni_m+dec_m;
+    Rpm = valor;
 
-
-
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\errno.h" 1 3
-# 29 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\errno.h" 3
-extern int errno;
-# 8 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\conio.h" 2 3
-
-
-
-
-extern void init_uart(void);
-
-extern char getch(void);
-extern char getche(void);
-extern void putch(char);
-extern void ungetch(char);
-
-extern __bit kbhit(void);
-
-
-
-extern char * cgets(char *);
-extern void cputs(const char *);
-# 85 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\stdio.h" 2 3
-
-
-
-extern int cprintf(char *, ...);
-#pragma printf_check(cprintf)
-
-
-
-extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-# 180 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\stdio.h" 3
-#pragma printf_check(vprintf) const
-#pragma printf_check(vsprintf) const
-
-extern char * gets(char *);
-extern int puts(const char *);
-extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-
-#pragma printf_check(printf) const
-#pragma printf_check(sprintf) const
-extern int sprintf(char *, const char *, ...);
-extern int printf(const char *, ...);
-# 3 "Main.c" 2
-# 19 "Main.c"
-void Pines_Init(void);
-void Antirrebote(void);
-void Task_Ready(void);
-void __attribute__((picinterrupt(("")))) ISR (void);
-
-unsigned char Modo=0,Pwm=0,Min=0,Seg=0,Temp=0;
-_Bool Mostrar=0,Act_Variables=0,mod_tiempo=0;
-volatile unsigned int Delay100ms=1000,Delay500ms=2000;
-unsigned int Rpm=0;
-
-
-void main(void)
-{
-
-    Pines_Init();
-    MEF_Init();
-    LCD_init();
-    Pwm_init();
-    Adc_init();
-
-    TMR1IE=1,TMR1IF=1;
-
-    WDTCONbits.SWDTEN = 1;
-    WDTCONbits.WDTPS = 0b1010;
-
-    while(1)
-    {
-        MEF_Actualizacion();
-    }
+    if(Rpm == 0) Rpm = 60;
+    else if(Rpm > 10000) Rpm = 10000;
 
     return;
 }
 
-void Pines_Init(void)
+void Adc_Pwm_Read(void)
 {
-
-    TRISAbits.TRISA5 = 0;
-    PORTA = 0;
-    PORTB = 0;
-    PORTC = 0;
-    TRISB = 0xFF;
-    TRISC = 0x00;
-    ANSELHbits.ANS12 = 0;
-    ANSELHbits.ANS11 = 0;
-    ANSELHbits.ANS10 = 0;
-    ANSELHbits.ANS8 = 0;
-    ANSELHbits.ANS9 = 0;
-    ANSELbits.ANS4 = 0;
+    Pwm = (int)((Adc(1)*5.0/1023.0)*100.0/5.0);
+    if(Pwm > 95) Pwm = 95;
+    else if(Pwm < 5) Pwm = 5;
 
     return;
 }
 
-void Antirrebote(void)
+void Adc_Min_Read(void)
 {
-    _delay((unsigned long)((10)*(20000000/4000.0)));
-    while(PORTBbits.RB0 || PORTBbits.RB1 || PORTBbits.RB2 || PORTBbits.RB3) _delay((unsigned long)((10)*(20000000/4000.0)));
+    if(mod_tiempo == 0) Min = (int)((Adc(2)*5.0/1023.0)*59.0/5.0);
+    else if(mod_tiempo == 1) Seg = (int)((Adc(2)*5.0/1023.0)*59.0/5.0);
+
+    if(Seg == 0) Seg = 1;
 
     return;
 }
 
-void __attribute__((picinterrupt(("")))) ISR (void)
+void Adc_Temp_Read(void)
 {
-
-    if(TMR1IF == 1)
-    {
-        if(Delay100ms!=0 && !Mostrar) Delay100ms--;
-        if(Delay500ms!=0) Delay500ms--;
-
-
-        TMR1 = 65285;
-        TMR1ON = 1;
-        TMR1IF = 0;
-    }
-
-    if(!Delay100ms || !Delay500ms) Task_Ready();
-
-    return;
-}
-
-void Task_Ready(void)
-{
-    if(!Delay100ms)
-    {
-        Mostrar = 1;
-        Delay100ms = 1000;
-    }
-    if(!Delay500ms)
-    {
-        __asm("clrwdt");
-        Act_Variables = 1;
-        Delay500ms = 2000;
-    }
+    Temp = (int)((Adc(3)*5.0/1023.0)*100.0);
 
     return;
 }

@@ -2455,6 +2455,48 @@ unsigned int P_W_T_S1=0,PER_T_S1=0;
 _Bool Act_PwmS1=0;
 # 7 "./MEF.h" 2
 
+# 1 "./ADC.h" 1
+# 10 "./ADC.h"
+void Adc_init(void);
+int Adc(unsigned char canal);
+# 8 "./MEF.h" 2
+
+# 1 "./Modo_Pulverizacion.h" 1
+
+
+
+# 1 "./Adc_Read.h" 1
+# 11 "./Adc_Read.h"
+void Adc_Rpm_Read(void);
+void Adc_Pwm_Read(void);
+void Adc_Min_Read(void);
+void Adc_Temp_Read(void);
+# 4 "./Modo_Pulverizacion.h" 2
+
+
+
+
+void Lec_Adc_Modo_Pulv(void);
+# 9 "./MEF.h" 2
+
+# 1 "./Modo_Fuga.h" 1
+
+
+
+
+
+void Lec_Adc_Modo_Fuga(void);
+# 10 "./MEF.h" 2
+
+# 1 "./Modo_Flujo.h" 1
+
+
+
+
+
+void Lec_Adc_Modo_Flujo(void);
+# 11 "./MEF.h" 2
+
 
 
 
@@ -2465,17 +2507,118 @@ void MEF_Init(void);
 void MEF_Actualizacion(void);
 void MEF_Subest_Actualizacion(void);
 # 4 "./Display_Lcd.h" 2
-# 13 "./Display_Lcd.h"
+# 14 "./Display_Lcd.h"
 void Pant_Inicio(void);
 void Pant_Menu(void);
 void Pant_Modos(void);
+void Pant_Val_Act(void);
 void Pant_Fuga(void);
 void Pant_Flujo(void);
 void Pant_Selector(void);
 # 2 "Display_Lcd.c" 2
 
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\stdio.h" 1 3
 
-extern unsigned char Modo;
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\__size_t.h" 1 3
+
+
+
+typedef unsigned size_t;
+# 4 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\stdio.h" 2 3
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\__null.h" 1 3
+# 5 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\stdio.h" 2 3
+
+
+
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\stdarg.h" 1 3
+
+
+
+
+
+
+typedef void * va_list[1];
+
+#pragma intrinsic(__va_start)
+extern void * __va_start(void);
+
+#pragma intrinsic(__va_arg)
+extern void * __va_arg(void *, ...);
+# 11 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\stdio.h" 2 3
+# 43 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\stdio.h" 3
+struct __prbuf
+{
+ char * ptr;
+ void (* func)(char);
+};
+# 85 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\stdio.h" 3
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\conio.h" 1 3
+
+
+
+
+
+
+
+# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\errno.h" 1 3
+# 29 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\errno.h" 3
+extern int errno;
+# 8 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\conio.h" 2 3
+
+
+
+
+extern void init_uart(void);
+
+extern char getch(void);
+extern char getche(void);
+extern void putch(char);
+extern void ungetch(char);
+
+extern __bit kbhit(void);
+
+
+
+extern char * cgets(char *);
+extern void cputs(const char *);
+# 85 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\stdio.h" 2 3
+
+
+
+extern int cprintf(char *, ...);
+#pragma printf_check(cprintf)
+
+
+
+extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+# 180 "C:\\Program Files (x86)\\Microchip\\xc8\\pic\\include\\c90\\stdio.h" 3
+#pragma printf_check(vprintf) const
+#pragma printf_check(vsprintf) const
+
+extern char * gets(char *);
+extern int puts(const char *);
+extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+
+#pragma printf_check(printf) const
+#pragma printf_check(sprintf) const
+extern int sprintf(char *, const char *, ...);
+extern int printf(const char *, ...);
+# 3 "Display_Lcd.c" 2
+
+
+extern unsigned char Modo,Pwm,Min,Seg,Temp;
+extern unsigned int Rpm;
 
 void Pant_Inicio(void)
 {
@@ -2535,11 +2678,30 @@ void Pant_Menu(void)
 
 void Pant_Modos(void)
 {
+    LCD_command(0x01);
     LCD_array(1,1,"RPM:");
     LCD_array(2,1,"PWM:");
     LCD_array(3,1,"TIEMPO:"),LCD_array(3,10,":");
     LCD_array(4,1,"TEMPERATURA:"),LCD_xy(4,16),LCD_date(0x01);
     LCD_array(4,17,"C");
+
+    return;
+}
+
+void Pant_Val_Act(void)
+{
+    char buffer[20];
+
+    sprintf(buffer,"%05u",Rpm);
+    LCD_array(1,5,buffer);
+    sprintf(buffer,"%02d",Pwm);
+    LCD_array(2,5,buffer);
+    sprintf(buffer,"%02d",Min);
+    LCD_array(3,8,buffer);
+    sprintf(buffer,"%02d",Seg);
+    LCD_array(3,11,buffer);
+    sprintf(buffer,"%02d",Temp);
+    LCD_array(4,13,buffer);
 
     return;
 }

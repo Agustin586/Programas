@@ -10,7 +10,7 @@
 
 #define TICKS_T1                200   // Cada 20ms cambia de estado
 #define TICKS_DELAY100ms        1000  // Cada 100ms escribe en la pantalla
-#define TICKS_TEMPO_WDT500ms    5000  // Cada 500ms limpia el watch dog
+#define TICKS_DELAY500ms        2000  // Cada 200ms limpia el watch dog y actualizar variables en lcd
 #define TICKS_T2                200   // Cada 20ms ingresa a tarea 2
 #define TICKS_T4                400   // Cada 40ms
 
@@ -21,9 +21,10 @@ void Antirrebote(void);
 void Task_Ready(void);
 void __interrupt () ISR (void);
 
-unsigned char Modo=0;
-_Bool Mostrar=0;
-volatile unsigned int Delay100ms=TICKS_DELAY100ms,Tempo_WDT=TICKS_TEMPO_WDT500ms;
+unsigned char Modo=0,Pwm=0,Min=0,Seg=0,Temp=0; 
+_Bool Mostrar=0,Act_Variables=0,mod_tiempo=0;
+volatile unsigned int Delay100ms=TICKS_DELAY100ms,Delay500ms=TICKS_DELAY500ms;
+unsigned int Rpm=0;
 
 ////////////////////////////////////////////////////////////////////////////////
 void main(void)
@@ -33,8 +34,12 @@ void main(void)
     Mef_Init();
     Lcd_Init();
     Timer1_Init();
+    Adc_Init();
     
     TMR1IE=1,TMR1IF=1;      // Activa la interrupcion de tmr1
+    
+    WDTCONbits.SWDTEN = 1;          //Habilita el watch dog
+    WDTCONbits.WDTPS  = 0b1010;     // Preescaler de wdt 1:32768 --> timer = 32768 / 32Khz ~= 1 segundo
     
     while(1)
     {
@@ -77,7 +82,7 @@ void __interrupt () ISR (void)
     if(TMR1IF == 1)
     {
         if(Delay100ms!=0 && !Mostrar)       Delay100ms--;    // Temporizador de muestra del display 
-        if(Tempo_WDT!=0)                    Tempo_WDT--;     // Limpia el wdt
+        if(Delay500ms!=0)                   Delay500ms--;    // Limpia el wdt y actualiza variables del lcd
         
         
         TMR1 = 65285;     // 100us
@@ -85,7 +90,7 @@ void __interrupt () ISR (void)
         TMR1IF = 0;       // Limpia la bandera de desborde
     }
     
-    if(!Delay100ms || !Tempo_WDT)          Task_Ready();
+    if(!Delay100ms || !Delay500ms)          Task_Ready();
     
     return;
 }
@@ -97,10 +102,11 @@ void Task_Ready(void)
         Mostrar = 1;
         Delay100ms = TICKS_DELAY100ms;
     }
-    if(!Tempo_WDT)
+    if(!Delay500ms)
     {
         CLRWDT();
-        Tempo_WDT = TICKS_TEMPO_WDT500ms;
+        Act_Variables = 1;
+        Delay500ms = TICKS_DELAY500ms;
     }
     
     return;

@@ -15,12 +15,12 @@ void Select_Modo(void)
     
     if(Mostrar) Pantalla_Menu(),Mostrar=0;
     
-    
     if(MOVER || Modo==0)
     {
         Modo+=1;
         if(Modo>=5||Modo<1) Modo=1;
         Pantalla_Selector(),Antirrebote();
     }
+    
     return;
 }

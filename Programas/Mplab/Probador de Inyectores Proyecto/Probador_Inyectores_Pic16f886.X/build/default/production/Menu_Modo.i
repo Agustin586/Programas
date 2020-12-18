@@ -2456,6 +2456,48 @@ unsigned int P_W_T_S1=0,PER_T_S1=0;
 _Bool Act_PwmS1=0;
 # 7 "./MEF.h" 2
 
+# 1 "./ADC.h" 1
+# 10 "./ADC.h"
+void Adc_init(void);
+int Adc(unsigned char canal);
+# 8 "./MEF.h" 2
+
+# 1 "./Modo_Pulverizacion.h" 1
+
+
+
+# 1 "./Adc_Read.h" 1
+# 11 "./Adc_Read.h"
+void Adc_Rpm_Read(void);
+void Adc_Pwm_Read(void);
+void Adc_Min_Read(void);
+void Adc_Temp_Read(void);
+# 4 "./Modo_Pulverizacion.h" 2
+
+
+
+
+void Lec_Adc_Modo_Pulv(void);
+# 9 "./MEF.h" 2
+
+# 1 "./Modo_Fuga.h" 1
+
+
+
+
+
+void Lec_Adc_Modo_Fuga(void);
+# 10 "./MEF.h" 2
+
+# 1 "./Modo_Flujo.h" 1
+
+
+
+
+
+void Lec_Adc_Modo_Flujo(void);
+# 11 "./MEF.h" 2
+
 
 
 
@@ -2466,10 +2508,11 @@ void MEF_Init(void);
 void MEF_Actualizacion(void);
 void MEF_Subest_Actualizacion(void);
 # 4 "./Display_Lcd.h" 2
-# 13 "./Display_Lcd.h"
+# 14 "./Display_Lcd.h"
 void Pant_Inicio(void);
 void Pant_Menu(void);
 void Pant_Modos(void);
+void Pant_Val_Act(void);
 void Pant_Fuga(void);
 void Pant_Flujo(void);
 void Pant_Selector(void);
@@ -2489,12 +2532,12 @@ void Select_Modo(void)
 
     if(Mostrar) Pant_Menu(),Mostrar=0;
 
-
     if(PORTBbits.RB3 || Modo==0)
     {
         Modo+=1;
         if(Modo>=5||Modo<1) Modo=1;
         Pant_Selector(),Antirrebote();
     }
+
     return;
 }

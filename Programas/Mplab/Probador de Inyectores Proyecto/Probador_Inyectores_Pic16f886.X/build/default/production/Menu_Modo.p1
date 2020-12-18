@@ -2,8 +2,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "8 Menu_Modo.c
 [; ;Menu_Modo.c: 8: extern _Bool Mostrar;
 [v _Mostrar `a ~T0 @X0 0 e ]
-"14 ./Display_Lcd.h
-[; ;./Display_Lcd.h: 14: void Pant_Menu(void);
+"15 ./Display_Lcd.h
+[; ;./Display_Lcd.h: 15: void Pant_Menu(void);
 [v _Pant_Menu `(v ~T0 @X0 0 ef ]
 "234 C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h
 [; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 234:     struct {
@@ -19,8 +19,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "7 Menu_Modo.c
 [; ;Menu_Modo.c: 7: extern unsigned char Modo;
 [v _Modo `uc ~T0 @X0 0 e ]
-"18 ./Display_Lcd.h
-[; ;./Display_Lcd.h: 18: void Pant_Selector(void);
+"20 ./Display_Lcd.h
+[; ;./Display_Lcd.h: 20: void Pant_Selector(void);
 [v _Pant_Selector `(v ~T0 @X0 0 ef ]
 "10 Menu_Modo.c
 [; ;Menu_Modo.c: 10: extern void Antirrebote(void);
@@ -331,25 +331,25 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ ! != -> _Mostrar `i -> 0 `i 135  ]
 [e ; ( _Pant_Menu ..  = _Mostrar -> -> 0 `i `a ]
 [e :U 135 ]
-"19
-[; ;Menu_Modo.c: 19:     if(PORTBbits.RB3 || Modo==0)
+"18
+[; ;Menu_Modo.c: 18:     if(PORTBbits.RB3 || Modo==0)
 [e $ ! || != -> . . _PORTBbits 0 3 `i -> 0 `i == -> _Modo `i -> 0 `i 136  ]
-"20
-[; ;Menu_Modo.c: 20:     {
+"19
+[; ;Menu_Modo.c: 19:     {
 {
-"21
-[; ;Menu_Modo.c: 21:         Modo+=1;
+"20
+[; ;Menu_Modo.c: 20:         Modo+=1;
 [e =+ _Modo -> -> 1 `i `uc ]
-"22
-[; ;Menu_Modo.c: 22:         if(Modo>=5||Modo<1) Modo=1;
+"21
+[; ;Menu_Modo.c: 21:         if(Modo>=5||Modo<1) Modo=1;
 [e $ ! || >= -> _Modo `i -> 5 `i < -> _Modo `i -> 1 `i 137  ]
 [e = _Modo -> -> 1 `i `uc ]
 [e :U 137 ]
-"23
-[; ;Menu_Modo.c: 23:         Pant_Selector(),Antirrebote();
+"22
+[; ;Menu_Modo.c: 22:         Pant_Selector(),Antirrebote();
 [e ; ( _Pant_Selector ..  ( _Antirrebote ..  ]
-"24
-[; ;Menu_Modo.c: 24:     }
+"23
+[; ;Menu_Modo.c: 23:     }
 }
 [e :U 136 ]
 "25
