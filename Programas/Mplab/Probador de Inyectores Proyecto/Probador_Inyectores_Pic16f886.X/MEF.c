@@ -128,7 +128,7 @@ void MEF_Subest_Actualizacion(void)
             else if(Estado_Actual==ESTADO_MODO_FLUJO)   Lectura_Adc_Flujo();
             
             if(MOVER)   mod_tiempo=!mod_tiempo,Antirrebote();
-//            if(DETENER)         Subestado_Actual = SUBEST_RESET,Detener_Proceso();
+
             if(Act_Variables)   Subestado_Actual = SUBEST_DISPLAY,Act_Variables=0;
             if(INICIO)          Subestado_Actual = SUBEST_SALIDA,Antirrebote(),Output=!Output;
             if(DETENER)         Subestado_Actual = SUBEST_RESET,Output=!Output,Detener_Proceso();
