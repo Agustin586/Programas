@@ -11,6 +11,21 @@ Version 4.0 HI-TECH Software Intermediate Code
 "14
 [; ;./Adc_Read.h: 14: void Adc_Temp_Read(void);
 [v _Adc_Temp_Read `(v ~T0 @X0 0 ef ]
+"12 ./Modo_Pulverizacion.h
+[; ;./Modo_Pulverizacion.h: 12: extern _Bool Pwm_Seteado;
+[v _Pwm_Seteado `a ~T0 @X0 0 e ]
+"21 ./Pwm_Soft.h
+[; ;./Pwm_Soft.h: 21: void Pwm1_init(unsigned int frecuencia);
+[v _Pwm1_init `(v ~T0 @X0 0 ef1`ui ]
+"10 ./Modo_Pulverizacion.h
+[; ;./Modo_Pulverizacion.h: 10: extern unsigned int Rpm;
+[v _Rpm `ui ~T0 @X0 0 e ]
+"22 ./Pwm_Soft.h
+[; ;./Pwm_Soft.h: 22: void Pwm1(float duty);
+[v _Pwm1 `(v ~T0 @X0 0 ef1`f ]
+"11 ./Modo_Pulverizacion.h
+[; ;./Modo_Pulverizacion.h: 11: extern unsigned char Pwm;
+[v _Pwm `uc ~T0 @X0 0 e ]
 "9 ./Configuracion_Bits.h
 [p x FOSC = HS ]
 "10
@@ -263,6 +278,44 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3370
 [; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 3370: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
+"30 ./Pwm_Soft.h
+[; ;./Pwm_Soft.h: 30: unsigned int freqPwmS1=0;
+[v _freqPwmS1 `ui ~T0 @X0 1 e ]
+[i _freqPwmS1
+-> -> 0 `i `ui
+]
+"32
+[; ;./Pwm_Soft.h: 32: unsigned int PwmS1=0;
+[v _PwmS1 `ui ~T0 @X0 1 e ]
+[i _PwmS1
+-> -> 0 `i `ui
+]
+"34
+[; ;./Pwm_Soft.h: 34: float Per_PwmS1=0,Pw_PwmS1=0;
+[v _Per_PwmS1 `f ~T0 @X0 1 e ]
+[i _Per_PwmS1
+-> -> 0 `i `f
+]
+[v _Pw_PwmS1 `f ~T0 @X0 1 e ]
+[i _Pw_PwmS1
+-> -> 0 `i `f
+]
+"35
+[; ;./Pwm_Soft.h: 35: unsigned int P_W_T_S1=0,PER_T_S1=0;
+[v _P_W_T_S1 `ui ~T0 @X0 1 e ]
+[i _P_W_T_S1
+-> -> 0 `i `ui
+]
+[v _PER_T_S1 `ui ~T0 @X0 1 e ]
+[i _PER_T_S1
+-> -> 0 `i `ui
+]
+"37
+[; ;./Pwm_Soft.h: 37: _Bool Act_PwmS1=0;
+[v _Act_PwmS1 `a ~T0 @X0 1 e ]
+[i _Act_PwmS1
+-> -> 0 `i `a
+]
 "4 Modo_Pulverizacion.c
 [; ;Modo_Pulverizacion.c: 4: void Lec_Adc_Modo_Pulv(void)
 [v _Lec_Adc_Modo_Pulv `(v ~T0 @X0 1 ef ]
@@ -298,10 +351,29 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _Salida_Modo_Pulv ]
 [f ]
+"23
+[; ;Modo_Pulverizacion.c: 23:     if(!Pwm_Seteado)
+[e $ ! ! != -> _Pwm_Seteado `i -> 0 `i 136  ]
+"24
+[; ;Modo_Pulverizacion.c: 24:     {
+{
 "25
-[; ;Modo_Pulverizacion.c: 25:     return;
-[e $UE 135  ]
+[; ;Modo_Pulverizacion.c: 25:         Pwm1_init((int)(Rpm/60.0));
+[e ( _Pwm1_init (1 -> -> / -> _Rpm `d .60.0 `i `ui ]
 "26
-[; ;Modo_Pulverizacion.c: 26: }
+[; ;Modo_Pulverizacion.c: 26:         Pwm1(Pwm);
+[e ( _Pwm1 (1 -> _Pwm `f ]
+"27
+[; ;Modo_Pulverizacion.c: 27:         Pwm_Seteado = 1;
+[e = _Pwm_Seteado -> -> 1 `i `a ]
+"28
+[; ;Modo_Pulverizacion.c: 28:     }
+}
+[e :U 136 ]
+"30
+[; ;Modo_Pulverizacion.c: 30:     return;
+[e $UE 135  ]
+"31
+[; ;Modo_Pulverizacion.c: 31: }
 [e :UE 135 ]
 }

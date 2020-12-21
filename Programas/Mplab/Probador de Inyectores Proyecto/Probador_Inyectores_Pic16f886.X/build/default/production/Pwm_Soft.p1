@@ -390,8 +390,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Pwm_Soft.c: 40:     freqPwmS1 = frecuencia;
 [e = _freqPwmS1 _frecuencia ]
 "41
-[; ;Pwm_Soft.c: 41:     Per_PwmS1 = (1.0/frecuencia)-0.005;
-[e = _Per_PwmS1 -> - / .1.0 -> _frecuencia `d .0.005 `f ]
+[; ;Pwm_Soft.c: 41:     Per_PwmS1 = 1.0/frecuencia;
+[e = _Per_PwmS1 -> / .1.0 -> _frecuencia `d `f ]
 "42
 [; ;Pwm_Soft.c: 42:     PER_T_S1 = Per_PwmS1 / 0.0001;
 [e = _PER_T_S1 -> / -> _Per_PwmS1 `d .0.0001 `ui ]

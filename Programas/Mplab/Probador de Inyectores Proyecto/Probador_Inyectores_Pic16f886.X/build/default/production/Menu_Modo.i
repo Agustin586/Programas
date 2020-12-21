@@ -2406,9 +2406,34 @@ extern __bank0 __bit __timeout;
 
 
 
+# 1 "./Pwm_Soft.h" 1
+# 20 "./Pwm_Soft.h"
+void Pwm_init(void);
+void Pwm1_init(unsigned int frecuencia);
+void Pwm1(float duty);
+void Pwm1_stop(void);
+
+void Pwm_Signal(void);
 
 
 
+
+unsigned int freqPwmS1=0;
+
+unsigned int PwmS1=0;
+
+float Per_PwmS1=0,Pw_PwmS1=0;
+unsigned int P_W_T_S1=0,PER_T_S1=0;
+
+_Bool Act_PwmS1=0;
+# 4 "./Menu_Modo.h" 2
+
+
+
+
+
+
+extern _Bool Pwm_Seteado;
 
 void Select_Modo(void);
 void Detener(void);
@@ -2439,25 +2464,6 @@ void LCD_character(unsigned char adress,char caracter[]);
 
 
 # 1 "./Pwm_Soft.h" 1
-# 20 "./Pwm_Soft.h"
-void Pwm_init(void);
-void Pwm1_init(unsigned int frecuencia);
-void Pwm1(float duty);
-void Pwm1_stop(void);
-
-void Pwm_Signal(void);
-
-
-
-
-unsigned int freqPwmS1=0;
-
-unsigned int PwmS1=0;
-
-float Per_PwmS1=0,Pw_PwmS1=0;
-unsigned int P_W_T_S1=0,PER_T_S1=0;
-
-_Bool Act_PwmS1=0;
 # 7 "./MEF.h" 2
 
 # 1 "./ADC.h" 1
@@ -2478,9 +2484,16 @@ void Adc_Min_Read(void);
 void Adc_Temp_Read(void);
 # 4 "./Modo_Pulverizacion.h" 2
 
+# 1 "./Pwm_Soft.h" 1
+# 5 "./Modo_Pulverizacion.h" 2
 
 
 
+
+
+extern unsigned int Rpm;
+extern unsigned char Pwm;
+extern _Bool Pwm_Seteado;
 
 void Lec_Adc_Modo_Pulv(void);
 void Salida_Modo_Pulv(void);
@@ -2553,6 +2566,8 @@ void Detener(void)
     Antirrebote();
     Output = !Output;
     PORTBbits.RB4=0;
+    Pwm_Seteado=0;
+    Pwm1_stop();
 
     Pant_Detener();
 
@@ -2575,6 +2590,9 @@ void Fin_Proceso(void)
     {
         Proceso_Fin();
         Output = !Output;
+        PORTBbits.RB4=0;
+        Pwm_Seteado=0;
+        Pwm1_stop();
         for(char i=0;i<3;i++)
         {
             PORTAbits.RA5 = 1;

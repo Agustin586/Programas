@@ -330,8 +330,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _Pant_Inicio ]
 [f ]
-[v F1330 `uc ~T0 @X0 -> 8 `i s ]
-[i F1330
+[v F1334 `uc ~T0 @X0 -> 8 `i s ]
+[i F1334
 :U ..
 "11
 [; ;Display_Lcd.c: 11:     char caracter1[8] =
@@ -346,12 +346,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _caracter1 `uc ~T0 @X0 -> 8 `i a ]
-[e = _caracter1 F1330 ]
+[e = _caracter1 F1334 ]
 "22
 [; ;Display_Lcd.c: 22:     LCD_character(0x01,caracter1);
 [e ( _LCD_character (2 , -> -> 1 `i `uc &U _caracter1 ]
-[v F1332 `uc ~T0 @X0 -> 8 `i s ]
-[i F1332
+[v F1336 `uc ~T0 @X0 -> 8 `i s ]
+[i F1336
 :U ..
 "25
 [; ;Display_Lcd.c: 25:     char caracter[8] = {0,0,0,0,0,0,0,0};
@@ -366,7 +366,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _caracter `uc ~T0 @X0 -> 8 `i a ]
-[e = _caracter F1332 ]
+[e = _caracter F1336 ]
 "26
 [; ;Display_Lcd.c: 26:     LCD_character(0x00,caracter);
 [e ( _LCD_character (2 , -> -> 0 `i `uc &U _caracter ]

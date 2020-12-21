@@ -1,17 +1,17 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "26 MEF.c
 [; ;MEF.c: 26: MEFestado_t Estado_Actual;
-[c E1278 0 1 2 3 4 5 .. ]
-[n E1278 . ESTADO_INICIO ESTADO_MENU ESTADO_MODO_PULV ESTADO_MODO_FUGA ESTADO_MODO_FLUJO ESTADO_MODO_RESET  ]
+[c E1282 0 1 2 3 4 5 .. ]
+[n E1282 . ESTADO_INICIO ESTADO_MENU ESTADO_MODO_PULV ESTADO_MODO_FUGA ESTADO_MODO_FLUJO ESTADO_MODO_RESET  ]
 "38
 [; ;MEF.c: 38: MEFsubestado_t Subestado_Actual;
-[c E1287 0 1 2 3 4 5 .. ]
-[n E1287 . SUBEST_INICIAL SUBEST_DISPLAY SUBEST_ADC SUBEST_SALIDA SUBEST_TIEMPO SUBEST_RESET  ]
+[c E1291 0 1 2 3 4 5 .. ]
+[n E1291 . SUBEST_INICIAL SUBEST_DISPLAY SUBEST_ADC SUBEST_SALIDA SUBEST_TIEMPO SUBEST_RESET  ]
 "18 ./Display_Lcd.h
 [; ;./Display_Lcd.h: 18: void Pant_Inicio(void);
 [v _Pant_Inicio `(v ~T0 @X0 0 ef ]
-"8 ./Menu_Modo.h
-[; ;./Menu_Modo.h: 8: void Select_Modo(void);
+"12 ./Menu_Modo.h
+[; ;./Menu_Modo.h: 12: void Select_Modo(void);
 [v _Select_Modo `(v ~T0 @X0 0 ef ]
 "234 C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h
 [; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 234:     struct {
@@ -51,8 +51,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "21
 [; ;./Display_Lcd.h: 21: void Pant_Val_Act(void);
 [v _Pant_Val_Act `(v ~T0 @X0 0 ef ]
-"9 ./Modo_Pulverizacion.h
-[; ;./Modo_Pulverizacion.h: 9: void Lec_Adc_Modo_Pulv(void);
+"14 ./Modo_Pulverizacion.h
+[; ;./Modo_Pulverizacion.h: 14: void Lec_Adc_Modo_Pulv(void);
 [v _Lec_Adc_Modo_Pulv `(v ~T0 @X0 0 ef ]
 "10 ./Modo_Fuga.h
 [; ;./Modo_Fuga.h: 10: void Lec_Adc_Modo_Fuga(void);
@@ -65,8 +65,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _mod_tiempo `a ~T0 @X0 0 e ]
 [v _Act_Variables `a ~T0 @X0 0 e ]
 [v _Output `a ~T0 @X0 0 e ]
-"10 ./Modo_Pulverizacion.h
-[; ;./Modo_Pulverizacion.h: 10: void Salida_Modo_Pulv(void);
+"15 ./Modo_Pulverizacion.h
+[; ;./Modo_Pulverizacion.h: 15: void Salida_Modo_Pulv(void);
 [v _Salida_Modo_Pulv `(v ~T0 @X0 0 ef ]
 "11 ./Modo_Fuga.h
 [; ;./Modo_Fuga.h: 11: void Salida_Modo_Fuga(void);
@@ -77,14 +77,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "12 MEF.c
 [; ;MEF.c: 12: extern _Bool Act_Variables,Output,Reset,Temporizador,mod_tiempo;
 [v _Temporizador `a ~T0 @X0 0 e ]
-"9 ./Menu_Modo.h
-[; ;./Menu_Modo.h: 9: void Detener(void);
+"13 ./Menu_Modo.h
+[; ;./Menu_Modo.h: 13: void Detener(void);
 [v _Detener `(v ~T0 @X0 0 ef ]
 "22 ./Display_Lcd.h
 [; ;./Display_Lcd.h: 22: void Pant_Temporizador(void);
 [v _Pant_Temporizador `(v ~T0 @X0 0 ef ]
-"10 ./Menu_Modo.h
-[; ;./Menu_Modo.h: 10: void Fin_Proceso(void);
+"14 ./Menu_Modo.h
+[; ;./Menu_Modo.h: 14: void Fin_Proceso(void);
 [v _Fin_Proceso `(v ~T0 @X0 0 ef ]
 "13 MEF.c
 [; ;MEF.c: 13: extern unsigned int Rpm;
@@ -390,10 +390,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 ]
 "26 MEF.c
 [; ;MEF.c: 26: MEFestado_t Estado_Actual;
-[v _Estado_Actual `E1278 ~T0 @X0 1 e ]
+[v _Estado_Actual `E1282 ~T0 @X0 1 e ]
 "38
 [; ;MEF.c: 38: MEFsubestado_t Subestado_Actual;
-[v _Subestado_Actual `E1287 ~T0 @X0 1 e ]
+[v _Subestado_Actual `E1291 ~T0 @X0 1 e ]
 "40
 [; ;MEF.c: 40: void MEF_Init(void)
 [v _MEF_Init `(v ~T0 @X0 1 ef ]
@@ -404,10 +404,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "42
 [; ;MEF.c: 42:     Estado_Actual = ESTADO_INICIO;
-[e = _Estado_Actual . `E1278 0 ]
+[e = _Estado_Actual . `E1282 0 ]
 "43
 [; ;MEF.c: 43:     Subestado_Actual = SUBEST_INICIAL;
-[e = _Subestado_Actual . `E1287 0 ]
+[e = _Subestado_Actual . `E1291 0 ]
 "45
 [; ;MEF.c: 45:     return;
 [e $UE 134  ]
@@ -440,7 +440,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _Pant_Inicio ..  ]
 "56
 [; ;MEF.c: 56:             Estado_Actual = ESTADO_MENU;
-[e = _Estado_Actual . `E1278 1 ]
+[e = _Estado_Actual . `E1282 1 ]
 "57
 [; ;MEF.c: 57:         break;
 [e $U 136  ]
@@ -459,19 +459,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 "63
 [; ;MEF.c: 63:             if(PORTBbits.RB1 && Modo==1) Estado_Actual = ESTADO_MODO_PULV,Antirrebote();
 [e $ ! && != -> . . _PORTBbits 0 1 `i -> 0 `i == -> _Modo `i -> 1 `i 140  ]
-[e ; = _Estado_Actual . `E1278 2 ( _Antirrebote ..  ]
+[e ; = _Estado_Actual . `E1282 2 ( _Antirrebote ..  ]
 [e $U 141  ]
 "64
 [; ;MEF.c: 64:             else if(PORTBbits.RB1 && Modo==2) Estado_Actual = ESTADO_MODO_FUGA,Antirrebote();
 [e :U 140 ]
 [e $ ! && != -> . . _PORTBbits 0 1 `i -> 0 `i == -> _Modo `i -> 2 `i 142  ]
-[e ; = _Estado_Actual . `E1278 3 ( _Antirrebote ..  ]
+[e ; = _Estado_Actual . `E1282 3 ( _Antirrebote ..  ]
 [e $U 143  ]
 "65
 [; ;MEF.c: 65:             else if(PORTBbits.RB1 && Modo==3) Estado_Actual = ESTADO_MODO_FLUJO,Antirrebote();
 [e :U 142 ]
 [e $ ! && != -> . . _PORTBbits 0 1 `i -> 0 `i == -> _Modo `i -> 3 `i 144  ]
-[e ; = _Estado_Actual . `E1278 4 ( _Antirrebote ..  ]
+[e ; = _Estado_Actual . `E1282 4 ( _Antirrebote ..  ]
 [e :U 144 ]
 [e :U 143 ]
 [e :U 141 ]
@@ -493,7 +493,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "72
 [; ;MEF.c: 72:             if(Reset) Estado_Actual = ESTADO_MODO_RESET;
 [e $ ! != -> _Reset `i -> 0 `i 146  ]
-[e = _Estado_Actual . `E1278 5 ]
+[e = _Estado_Actual . `E1282 5 ]
 [e :U 146 ]
 "73
 [; ;MEF.c: 73:         break;
@@ -513,7 +513,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "79
 [; ;MEF.c: 79:             if(Reset) Estado_Actual = ESTADO_MODO_RESET;
 [e $ ! != -> _Reset `i -> 0 `i 148  ]
-[e = _Estado_Actual . `E1278 5 ]
+[e = _Estado_Actual . `E1282 5 ]
 [e :U 148 ]
 "80
 [; ;MEF.c: 80:         break;
@@ -533,7 +533,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "86
 [; ;MEF.c: 86:             if(Reset) Estado_Actual = ESTADO_MODO_RESET;
 [e $ ! != -> _Reset `i -> 0 `i 150  ]
-[e = _Estado_Actual . `E1278 5 ]
+[e = _Estado_Actual . `E1282 5 ]
 [e :U 150 ]
 "87
 [; ;MEF.c: 87:         break;
@@ -549,13 +549,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "91
 [; ;MEF.c: 91:             Subestado_Actual = SUBEST_INICIAL;
-[e = _Subestado_Actual . `E1287 0 ]
+[e = _Subestado_Actual . `E1291 0 ]
 "92
 [; ;MEF.c: 92:             Reset = 0;
 [e = _Reset -> -> 0 `i `a ]
 "94
 [; ;MEF.c: 94:             Estado_Actual = ESTADO_MENU;
-[e = _Estado_Actual . `E1278 1 ]
+[e = _Estado_Actual . `E1282 1 ]
 "95
 [; ;MEF.c: 95:         break;
 [e $U 136  ]
@@ -567,12 +567,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 136  ]
 [e :U 137 ]
-[e [\ -> _Estado_Actual `ui , $ -> . `E1278 0 `ui 138
- , $ -> . `E1278 1 `ui 139
- , $ -> . `E1278 2 `ui 145
- , $ -> . `E1278 3 `ui 147
- , $ -> . `E1278 4 `ui 149
- , $ -> . `E1278 5 `ui 151
+[e [\ -> _Estado_Actual `ui , $ -> . `E1282 0 `ui 138
+ , $ -> . `E1282 1 `ui 139
+ , $ -> . `E1282 2 `ui 145
+ , $ -> . `E1282 3 `ui 147
+ , $ -> . `E1282 4 `ui 149
+ , $ -> . `E1282 5 `ui 151
  136 ]
 [e :U 136 ]
 "99
@@ -604,19 +604,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "108
 [; ;MEF.c: 108:             if(Estado_Actual==ESTADO_MODO_PULV) Pant_Pulverizacion();
-[e $ ! == -> _Estado_Actual `ui -> . `E1278 2 `ui 156  ]
+[e $ ! == -> _Estado_Actual `ui -> . `E1282 2 `ui 156  ]
 [e ( _Pant_Pulverizacion ..  ]
 [e $U 157  ]
 "109
 [; ;MEF.c: 109:             else if(Estado_Actual==ESTADO_MODO_FUGA) Pant_Fuga();
 [e :U 156 ]
-[e $ ! == -> _Estado_Actual `ui -> . `E1278 3 `ui 158  ]
+[e $ ! == -> _Estado_Actual `ui -> . `E1282 3 `ui 158  ]
 [e ( _Pant_Fuga ..  ]
 [e $U 159  ]
 "110
 [; ;MEF.c: 110:             else if(Estado_Actual==ESTADO_MODO_FLUJO) Pant_Flujo();
 [e :U 158 ]
-[e $ ! == -> _Estado_Actual `ui -> . `E1278 4 `ui 160  ]
+[e $ ! == -> _Estado_Actual `ui -> . `E1282 4 `ui 160  ]
 [e ( _Pant_Flujo ..  ]
 [e :U 160 ]
 [e :U 159 ]
@@ -626,7 +626,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _Pant_Modos ..  ]
 "114
 [; ;MEF.c: 114:             Subestado_Actual = SUBEST_DISPLAY;
-[e = _Subestado_Actual . `E1287 1 ]
+[e = _Subestado_Actual . `E1291 1 ]
 "115
 [; ;MEF.c: 115:         break;
 [e $U 153  ]
@@ -644,7 +644,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ( _Pant_Val_Act ..  ]
 "121
 [; ;MEF.c: 121:             Subestado_Actual = SUBEST_ADC;
-[e = _Subestado_Actual . `E1287 2 ]
+[e = _Subestado_Actual . `E1291 2 ]
 "122
 [; ;MEF.c: 122:         break;
 [e $U 153  ]
@@ -659,19 +659,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "126
 [; ;MEF.c: 126:             if(Estado_Actual==ESTADO_MODO_PULV) Lec_Adc_Modo_Pulv();
-[e $ ! == -> _Estado_Actual `ui -> . `E1278 2 `ui 163  ]
+[e $ ! == -> _Estado_Actual `ui -> . `E1282 2 `ui 163  ]
 [e ( _Lec_Adc_Modo_Pulv ..  ]
 [e $U 164  ]
 "127
 [; ;MEF.c: 127:             else if(Estado_Actual==ESTADO_MODO_FUGA) Lec_Adc_Modo_Fuga();
 [e :U 163 ]
-[e $ ! == -> _Estado_Actual `ui -> . `E1278 3 `ui 165  ]
+[e $ ! == -> _Estado_Actual `ui -> . `E1282 3 `ui 165  ]
 [e ( _Lec_Adc_Modo_Fuga ..  ]
 [e $U 166  ]
 "128
 [; ;MEF.c: 128:             else if(Estado_Actual==ESTADO_MODO_FLUJO) Lec_Adc_Modo_Flujo();
 [e :U 165 ]
-[e $ ! == -> _Estado_Actual `ui -> . `E1278 4 `ui 167  ]
+[e $ ! == -> _Estado_Actual `ui -> . `E1282 4 `ui 167  ]
 [e ( _Lec_Adc_Modo_Flujo ..  ]
 [e :U 167 ]
 [e :U 166 ]
@@ -684,12 +684,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "132
 [; ;MEF.c: 132:             if(Act_Variables) Subestado_Actual = SUBEST_DISPLAY,Act_Variables=0;
 [e $ ! != -> _Act_Variables `i -> 0 `i 169  ]
-[e ; = _Subestado_Actual . `E1287 1 = _Act_Variables -> -> 0 `i `a ]
+[e ; = _Subestado_Actual . `E1291 1 = _Act_Variables -> -> 0 `i `a ]
 [e :U 169 ]
 "133
 [; ;MEF.c: 133:             if(PORTBbits.RB0) Subestado_Actual = SUBEST_SALIDA,Antirrebote(),Output=!Output;
 [e $ ! != -> . . _PORTBbits 0 0 `i -> 0 `i 170  ]
-[e ; ; = _Subestado_Actual . `E1287 3 ( _Antirrebote ..  = _Output -> -> ! != -> _Output `i -> 0 `i `i `a ]
+[e ; ; = _Subestado_Actual . `E1291 3 ( _Antirrebote ..  = _Output -> -> ! != -> _Output `i -> 0 `i `i `a ]
 [e :U 170 ]
 "134
 [; ;MEF.c: 134:         break;
@@ -705,19 +705,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 "138
 [; ;MEF.c: 138:             if(Estado_Actual==ESTADO_MODO_PULV) Salida_Modo_Pulv();
-[e $ ! == -> _Estado_Actual `ui -> . `E1278 2 `ui 172  ]
+[e $ ! == -> _Estado_Actual `ui -> . `E1282 2 `ui 172  ]
 [e ( _Salida_Modo_Pulv ..  ]
 [e $U 173  ]
 "139
 [; ;MEF.c: 139:             else if(Estado_Actual==ESTADO_MODO_FUGA) Salida_Modo_Fuga();
 [e :U 172 ]
-[e $ ! == -> _Estado_Actual `ui -> . `E1278 3 `ui 174  ]
+[e $ ! == -> _Estado_Actual `ui -> . `E1282 3 `ui 174  ]
 [e ( _Salida_Modo_Fuga ..  ]
 [e $U 175  ]
 "140
 [; ;MEF.c: 140:             else if(Estado_Actual==ESTADO_MODO_FLUJO) Salida_Modo_Flujo();
 [e :U 174 ]
-[e $ ! == -> _Estado_Actual `ui -> . `E1278 4 `ui 176  ]
+[e $ ! == -> _Estado_Actual `ui -> . `E1282 4 `ui 176  ]
 [e ( _Salida_Modo_Flujo ..  ]
 [e :U 176 ]
 [e :U 175 ]
@@ -725,12 +725,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "142
 [; ;MEF.c: 142:             if(Temporizador) Subestado_Actual = SUBEST_TIEMPO;
 [e $ ! != -> _Temporizador `i -> 0 `i 177  ]
-[e = _Subestado_Actual . `E1287 4 ]
+[e = _Subestado_Actual . `E1291 4 ]
 [e :U 177 ]
 "143
-[; ;MEF.c: 143:             if(PORTBbits.RB2) Subestado_Actual = SUBEST_INICIAL,Detener();
+[; ;MEF.c: 143:             if(PORTBbits.RB2) Subestado_Actual = SUBEST_RESET,Detener();
 [e $ ! != -> . . _PORTBbits 0 2 `i -> 0 `i 178  ]
-[e ; = _Subestado_Actual . `E1287 0 ( _Detener ..  ]
+[e ; = _Subestado_Actual . `E1291 5 ( _Detener ..  ]
 [e :U 178 ]
 "144
 [; ;MEF.c: 144:         break;
@@ -753,12 +753,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "151
 [; ;MEF.c: 151:             if(Output) Subestado_Actual = SUBEST_SALIDA;
 [e $ ! != -> _Output `i -> 0 `i 180  ]
-[e = _Subestado_Actual . `E1287 3 ]
+[e = _Subestado_Actual . `E1291 3 ]
 [e $U 181  ]
 "152
 [; ;MEF.c: 152:             else Subestado_Actual = SUBEST_RESET;
 [e :U 180 ]
-[e = _Subestado_Actual . `E1287 5 ]
+[e = _Subestado_Actual . `E1291 5 ]
 [e :U 181 ]
 "153
 [; ;MEF.c: 153:         break;
@@ -786,7 +786,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e = _Reset -> -> 1 `i `a ]
 "162
 [; ;MEF.c: 162:             Subestado_Actual = SUBEST_INICIAL;
-[e = _Subestado_Actual . `E1287 0 ]
+[e = _Subestado_Actual . `E1291 0 ]
 "163
 [; ;MEF.c: 163:         break;
 [e $U 153  ]
@@ -798,12 +798,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 153  ]
 [e :U 154 ]
-[e [\ -> _Subestado_Actual `ui , $ -> . `E1287 0 `ui 155
- , $ -> . `E1287 1 `ui 161
- , $ -> . `E1287 2 `ui 162
- , $ -> . `E1287 3 `ui 171
- , $ -> . `E1287 4 `ui 179
- , $ -> . `E1287 5 `ui 182
+[e [\ -> _Subestado_Actual `ui , $ -> . `E1291 0 `ui 155
+ , $ -> . `E1291 1 `ui 161
+ , $ -> . `E1291 2 `ui 162
+ , $ -> . `E1291 3 `ui 171
+ , $ -> . `E1291 4 `ui 179
+ , $ -> . `E1291 5 `ui 182
  153 ]
 [e :U 153 ]
 "167

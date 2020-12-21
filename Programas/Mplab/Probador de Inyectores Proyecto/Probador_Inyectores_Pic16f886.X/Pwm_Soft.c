@@ -38,7 +38,7 @@ void Pwm1_init(unsigned int frecuencia)
     
     //Obtiene la frecuencia y el periodo de la onda
     freqPwmS1 = frecuencia;
-    Per_PwmS1 = (1.0/frecuencia)-0.005;
+    Per_PwmS1 = 1.0/frecuencia;
     PER_T_S1  = Per_PwmS1 / 0.0001;    //100us
     
     //Carga el valor de parametros

@@ -140,7 +140,7 @@ void MEF_Subest_Actualizacion(void)
             else if(Estado_Actual==ESTADO_MODO_FLUJO)   Salida_Flujo();
                 
             if(Temporizador)    Subestado_Actual = SUBEST_TIEMPO;
-            if(DETENER)         Subestado_Actual = SUBEST_INICIAL,Detener_Proceso();
+            if(DETENER)         Subestado_Actual = SUBEST_RESET,Detener_Proceso();
         break;
         }
         case SUBEST_TIEMPO:

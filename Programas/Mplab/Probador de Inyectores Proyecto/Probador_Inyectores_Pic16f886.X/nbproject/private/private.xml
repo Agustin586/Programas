@@ -2,6 +2,19 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/aguat/OneDrive/Programacion%20Microcontroladores/Github/Programas/Mplab/Probador%20de%20Inyectores%20Proyecto/Probador_Inyectores_Pic16f886.X/MEF.c</file>
+            <file>file:/C:/Users/aguat/OneDrive/Programacion%20Microcontroladores/Github/Programas/Mplab/Probador%20de%20Inyectores%20Proyecto/Probador_Inyectores_Pic16f886.X/Adc_Read.c</file>
+            <file>file:/C:/Users/aguat/OneDrive/Programacion%20Microcontroladores/Github/Programas/Mplab/Probador%20de%20Inyectores%20Proyecto/Probador_Inyectores_Pic16f886.X/Main.c</file>
+            <file>file:/C:/Users/aguat/OneDrive/Programacion%20Microcontroladores/Github/Programas/Mplab/Probador%20de%20Inyectores%20Proyecto/Probador_Inyectores_Pic16f886.X/Display_Lcd.h</file>
+            <file>file:/C:/Users/aguat/OneDrive/Programacion%20Microcontroladores/Github/Programas/Mplab/Probador%20de%20Inyectores%20Proyecto/Probador_Inyectores_Pic16f886.X/Menu_Modo.c</file>
+            <file>file:/C:/Users/aguat/OneDrive/Programacion%20Microcontroladores/Github/Programas/Mplab/Probador%20de%20Inyectores%20Proyecto/Probador_Inyectores_Pic16f886.X/Modo_Pulverizacion.c</file>
+            <file>file:/C:/Users/aguat/OneDrive/Programacion%20Microcontroladores/Github/Programas/Mplab/Probador%20de%20Inyectores%20Proyecto/Probador_Inyectores_Pic16f886.X/Display_Lcd.c</file>
+            <file>file:/C:/Users/aguat/OneDrive/Programacion%20Microcontroladores/Github/Programas/Mplab/Probador%20de%20Inyectores%20Proyecto/Probador_Inyectores_Pic16f886.X/Modo_Fuga.c</file>
+            <file>file:/C:/Users/aguat/OneDrive/Programacion%20Microcontroladores/Github/Programas/Mplab/Probador%20de%20Inyectores%20Proyecto/Probador_Inyectores_Pic16f886.X/Modo_Fuga.h</file>
+            <file>file:/C:/Users/aguat/OneDrive/Programacion%20Microcontroladores/Github/Programas/Mplab/Probador%20de%20Inyectores%20Proyecto/Probador_Inyectores_Pic16f886.X/Modo_Flujo.h</file>
+            <file>file:/C:/Users/aguat/OneDrive/Programacion%20Microcontroladores/Github/Programas/Mplab/Probador%20de%20Inyectores%20Proyecto/Probador_Inyectores_Pic16f886.X/Modo_Flujo.c</file>
+            <file>file:/C:/Users/aguat/OneDrive/Programacion%20Microcontroladores/Github/Programas/Mplab/Probador%20de%20Inyectores%20Proyecto/Probador_Inyectores_Pic16f886.X/Menu_Modo.h</file>
+        </group>
     </open-files>
 </project-private>

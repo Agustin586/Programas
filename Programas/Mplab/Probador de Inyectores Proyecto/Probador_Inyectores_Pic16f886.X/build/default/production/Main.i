@@ -2441,15 +2441,6 @@ void LCD_character(unsigned char adress,char caracter[]);
 
 
 
-
-
-
-
-void Select_Modo(void);
-void Detener(void);
-void Fin_Proceso(void);
-# 6 "./MEF.h" 2
-
 # 1 "./Pwm_Soft.h" 1
 # 20 "./Pwm_Soft.h"
 void Pwm_init(void);
@@ -2470,6 +2461,21 @@ float Per_PwmS1=0,Pw_PwmS1=0;
 unsigned int P_W_T_S1=0,PER_T_S1=0;
 
 _Bool Act_PwmS1=0;
+# 4 "./Menu_Modo.h" 2
+
+
+
+
+
+
+extern _Bool Pwm_Seteado;
+
+void Select_Modo(void);
+void Detener(void);
+void Fin_Proceso(void);
+# 6 "./MEF.h" 2
+
+# 1 "./Pwm_Soft.h" 1
 # 7 "./MEF.h" 2
 
 # 1 "./ADC.h" 1
@@ -2490,9 +2496,16 @@ void Adc_Min_Read(void);
 void Adc_Temp_Read(void);
 # 4 "./Modo_Pulverizacion.h" 2
 
+# 1 "./Pwm_Soft.h" 1
+# 5 "./Modo_Pulverizacion.h" 2
 
 
 
+
+
+extern unsigned int Rpm;
+extern unsigned char Pwm;
+extern _Bool Pwm_Seteado;
 
 void Lec_Adc_Modo_Pulv(void);
 void Salida_Modo_Pulv(void);
@@ -2619,14 +2632,14 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 # 3 "Main.c" 2
-# 24 "Main.c"
+# 22 "Main.c"
 void Pines_Init(void);
 void Antirrebote(void);
 void Task_Ready(void);
 void __attribute__((picinterrupt(("")))) ISR (void);
 
 unsigned char Modo=0,Pwm=0,Min=0,Seg=0,Temp=0;
-_Bool Mostrar=0,Act_Variables=0,mod_tiempo=0,Output=0,Temporizador=0,Reset=0;
+_Bool Mostrar=0,Act_Variables=0,mod_tiempo=0,Output=0,Temporizador=0,Reset=0,Pwm_Seteado=0;
 volatile unsigned int Delay100ms=1000,Delay200ms=2000,Delay1s=10000;
 unsigned int Rpm=0;
 
@@ -2639,6 +2652,7 @@ void main(void)
     LCD_init();
     Pwm_init();
     Adc_init();
+    Pwm1_stop();
 
     TMR1IE=1,TMR1IF=1;
 
@@ -2686,12 +2700,16 @@ void Antirrebote(void)
 
 void __attribute__((picinterrupt(("")))) ISR (void)
 {
+    _Bool f_pwmS1=0;
+
 
     if(TMR1IF == 1)
     {
         if(Delay100ms!=0 && !Mostrar) Delay100ms--;
         if(Delay200ms!=0) Delay200ms--;
         if(Delay1s!=0 && Output) Delay1s--;
+        if(Act_PwmS1 && PwmS1!=PER_T_S1) PwmS1++;
+        if(PwmS1 == P_W_T_S1 || PwmS1 == PER_T_S1) f_pwmS1=1;
 
         TMR1 = 65285;
         TMR1ON = 1;
@@ -2699,6 +2717,7 @@ void __attribute__((picinterrupt(("")))) ISR (void)
     }
 
     if(!Delay100ms || !Delay200ms || !Delay1s) Task_Ready();
+    if(f_pwmS1 && Act_PwmS1) Pwm_Signal();
 
     return;
 }

@@ -2428,9 +2428,35 @@ void Adc_Min_Read(void);
 void Adc_Temp_Read(void);
 # 4 "./Modo_Pulverizacion.h" 2
 
+# 1 "./Pwm_Soft.h" 1
+# 20 "./Pwm_Soft.h"
+void Pwm_init(void);
+void Pwm1_init(unsigned int frecuencia);
+void Pwm1(float duty);
+void Pwm1_stop(void);
+
+void Pwm_Signal(void);
 
 
 
+
+unsigned int freqPwmS1=0;
+
+unsigned int PwmS1=0;
+
+float Per_PwmS1=0,Pw_PwmS1=0;
+unsigned int P_W_T_S1=0,PER_T_S1=0;
+
+_Bool Act_PwmS1=0;
+# 5 "./Modo_Pulverizacion.h" 2
+
+
+
+
+
+extern unsigned int Rpm;
+extern unsigned char Pwm;
+extern _Bool Pwm_Seteado;
 
 void Lec_Adc_Modo_Pulv(void);
 void Salida_Modo_Pulv(void);
@@ -2456,7 +2482,12 @@ void Lec_Adc_Modo_Pulv(void)
 
 void Salida_Modo_Pulv(void)
 {
-
+    if(!Pwm_Seteado)
+    {
+        Pwm1_init((int)(Rpm/60.0));
+        Pwm1(Pwm);
+        Pwm_Seteado = 1;
+    }
 
     return;
 }

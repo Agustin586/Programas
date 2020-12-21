@@ -32,6 +32,8 @@ void Detener(void)
     Antirrebote();
     Output = !Output;
     SALIDA_LOW;
+    Pwm_Seteado=0;
+    PwmS1_stop();
     
     Pantalla_Detener();
     
@@ -54,6 +56,9 @@ void Fin_Proceso(void)
     {
         Proceso_Finalizado();
         Output = !Output;
+        SALIDA_LOW;
+        Pwm_Seteado=0;
+        PwmS1_stop();
         for(char i=0;i<3;i++)
         {
             BUZZER = 1;

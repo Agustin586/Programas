@@ -2433,7 +2433,7 @@ void Pwm1_init(unsigned int frecuencia)
 
 
     freqPwmS1 = frecuencia;
-    Per_PwmS1 = (1.0/frecuencia)-0.005;
+    Per_PwmS1 = 1.0/frecuencia;
     PER_T_S1 = Per_PwmS1 / 0.0001;
 
 

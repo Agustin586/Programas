@@ -20,7 +20,12 @@ void Lec_Adc_Modo_Pulv(void)
 
 void Salida_Modo_Pulv(void)
 {
-    
+    if(!Pwm_Seteado)
+    {
+        PwmS1_init((int)(Rpm/60.0));
+        PwmS1_set(Pwm);
+        Pwm_Seteado = 1;
+    }
     
     return;
 }

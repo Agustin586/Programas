@@ -16,8 +16,6 @@
 #define TICKS_DELAY100ms        1000  // Cada 100ms escribe en la pantalla
 #define TICKS_DELAY200ms        2000  // Cada 200ms limpia el watch dog y actualizar variables en lcd
 #define TICKS_DELAY1s           10000 // Cada 1s resta al temporizador
-#define TICKS_T2                200   // Cada 20ms ingresa a tarea 2
-#define TICKS_T4                400   // Cada 40ms
 
 #define Pin_Init    Pines_Init
 
@@ -27,7 +25,7 @@ void Task_Ready(void);
 void __interrupt () ISR (void);
 
 unsigned char Modo=0,Pwm=0,Min=0,Seg=0,Temp=0; 
-_Bool Mostrar=0,Act_Variables=0,mod_tiempo=0,Output=0,Temporizador=0,Reset=0;
+_Bool Mostrar=0,Act_Variables=0,mod_tiempo=0,Output=0,Temporizador=0,Reset=0,Pwm_Seteado=0;
 volatile unsigned int Delay100ms=TICKS_DELAY100ms,Delay200ms=TICKS_DELAY200ms,Delay1s=TICKS_DELAY1s;
 unsigned int Rpm=0;
 
@@ -40,6 +38,7 @@ void main(void)
     Lcd_Init();
     Timer1_Init();
     Adc_Init();
+    PwmS1_stop();
     
     TMR1IE=1,TMR1IF=1;      // Activa la interrupcion de tmr1
     
@@ -87,12 +86,16 @@ void Antirrebote(void)
 ////////////////////////////////////////////////////////////////////////////////
 void __interrupt () ISR (void)
 {
+    _Bool f_pwmS1=0;
+    
     //Interrupcion por timer 0 
     if(TMR1IF == 1)
     {
         if(Delay100ms!=0 && !Mostrar)       Delay100ms--;    // Temporizador de muestra del display 
         if(Delay200ms!=0)                   Delay200ms--;    // Limpia el wdt y actualiza variables del lcd
-        if(Delay1s!=0 && Output)            Delay1s--;       //Temporizador de contador de segundos
+        if(Delay1s!=0 && Output)            Delay1s--;       // Temporizador de contador de segundos
+        if(Act_PwmS1 && PwmS1!=PER_T_S1)            PwmS1++;
+        if(PwmS1 == P_W_T_S1 || PwmS1 == PER_T_S1)  f_pwmS1=1;
         
         TMR1 = 65285;     // 100us
         TMR1ON = 1;
@@ -100,6 +103,7 @@ void __interrupt () ISR (void)
     }
     
     if(!Delay100ms || !Delay200ms || !Delay1s)          Task_Ready();
+    if(f_pwmS1 && Act_PwmS1)                            Pwm_Signal();
     
     return;
 }

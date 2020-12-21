@@ -1,7 +1,7 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"24 Main.c
-[; ;Main.c: 24: void Pines_Init(void);
+"22 Main.c
+[; ;Main.c: 22: void Pines_Init(void);
 [v _Pines_Init `(v ~T0 @X0 0 ef ]
 "18 ./MEF.h
 [; ;./MEF.h: 18: void MEF_Init(void);
@@ -15,6 +15,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "10 ./ADC.h
 [; ;./ADC.h: 10: void Adc_init(void);
 [v _Adc_init `(v ~T0 @X0 0 ef ]
+"23 ./Pwm_Soft.h
+[; ;./Pwm_Soft.h: 23: void Pwm1_stop(void);
+[v _Pwm1_stop `(v ~T0 @X0 0 ef ]
 "4152 C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h
 [; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 4152: extern volatile __bit TMR1IE __attribute__((address(0x460)));
 [v _TMR1IE `Vb ~T0 @X0 0 e@1120 ]
@@ -132,9 +135,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 "4158
 [; ;C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f886.h: 4158: extern volatile __bit TMR1ON __attribute__((address(0x80)));
 [v _TMR1ON `Vb ~T0 @X0 0 e@128 ]
-"26 Main.c
-[; ;Main.c: 26: void Task_Ready(void);
+"24 Main.c
+[; ;Main.c: 24: void Task_Ready(void);
 [v _Task_Ready `(v ~T0 @X0 0 ef ]
+"25 ./Pwm_Soft.h
+[; ;./Pwm_Soft.h: 25: void Pwm_Signal(void);
+[v _Pwm_Signal `(v ~T0 @X0 0 ef ]
 "9 ./Configuracion_Bits.h
 [p x FOSC = HS ]
 "10
@@ -425,8 +431,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _Act_PwmS1
 -> -> 0 `i `a
 ]
-"29 Main.c
-[; ;Main.c: 29: unsigned char Modo=0,Pwm=0,Min=0,Seg=0,Temp=0;
+"27 Main.c
+[; ;Main.c: 27: unsigned char Modo=0,Pwm=0,Min=0,Seg=0,Temp=0;
 [v _Modo `uc ~T0 @X0 1 e ]
 [i _Modo
 -> -> 0 `i `uc
@@ -447,8 +453,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _Temp
 -> -> 0 `i `uc
 ]
-"30
-[; ;Main.c: 30: _Bool Mostrar=0,Act_Variables=0,mod_tiempo=0,Output=0,Temporizador=0,Reset=0;
+"28
+[; ;Main.c: 28: _Bool Mostrar=0,Act_Variables=0,mod_tiempo=0,Output=0,Temporizador=0,Reset=0,Pwm_Seteado=0;
 [v _Mostrar `a ~T0 @X0 1 e ]
 [i _Mostrar
 -> -> 0 `i `a
@@ -473,8 +479,12 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _Reset
 -> -> 0 `i `a
 ]
-"31
-[; ;Main.c: 31: volatile unsigned int Delay100ms=1000,Delay200ms=2000,Delay1s=10000;
+[v _Pwm_Seteado `a ~T0 @X0 1 e ]
+[i _Pwm_Seteado
+-> -> 0 `i `a
+]
+"29
+[; ;Main.c: 29: volatile unsigned int Delay100ms=1000,Delay200ms=2000,Delay1s=10000;
 [v _Delay100ms `Vui ~T0 @X0 1 e ]
 [i _Delay100ms
 -> -> 1000 `i `ui
@@ -487,291 +497,313 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _Delay1s
 -> -> 10000 `i `ui
 ]
-"32
-[; ;Main.c: 32: unsigned int Rpm=0;
+"30
+[; ;Main.c: 30: unsigned int Rpm=0;
 [v _Rpm `ui ~T0 @X0 1 e ]
 [i _Rpm
 -> -> 0 `i `ui
 ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"35
-[; ;Main.c: 35: void main(void)
+"33
+[; ;Main.c: 33: void main(void)
 [v _main `(v ~T0 @X0 1 ef ]
-"36
-[; ;Main.c: 36: {
+"34
+[; ;Main.c: 34: {
 {
 [e :U _main ]
 [f ]
-"38
-[; ;Main.c: 38:     Pines_Init();
+"36
+[; ;Main.c: 36:     Pines_Init();
 [e ( _Pines_Init ..  ]
-"39
-[; ;Main.c: 39:     MEF_Init();
+"37
+[; ;Main.c: 37:     MEF_Init();
 [e ( _MEF_Init ..  ]
-"40
-[; ;Main.c: 40:     LCD_init();
+"38
+[; ;Main.c: 38:     LCD_init();
 [e ( _LCD_init ..  ]
-"41
-[; ;Main.c: 41:     Pwm_init();
+"39
+[; ;Main.c: 39:     Pwm_init();
 [e ( _Pwm_init ..  ]
-"42
-[; ;Main.c: 42:     Adc_init();
+"40
+[; ;Main.c: 40:     Adc_init();
 [e ( _Adc_init ..  ]
-"44
-[; ;Main.c: 44:     TMR1IE=1,TMR1IF=1;
+"41
+[; ;Main.c: 41:     Pwm1_stop();
+[e ( _Pwm1_stop ..  ]
+"43
+[; ;Main.c: 43:     TMR1IE=1,TMR1IF=1;
 [e ; -> = _TMR1IE -> -> 1 `i `b `i -> = _TMR1IF -> -> 1 `i `b `i ]
-"46
-[; ;Main.c: 46:     WDTCONbits.SWDTEN = 1;
+"45
+[; ;Main.c: 45:     WDTCONbits.SWDTEN = 1;
 [e = . . _WDTCONbits 0 0 -> -> 1 `i `uc ]
-"47
-[; ;Main.c: 47:     WDTCONbits.WDTPS = 0b1010;
+"46
+[; ;Main.c: 46:     WDTCONbits.WDTPS = 0b1010;
 [e = . . _WDTCONbits 0 1 -> -> 10 `i `uc ]
-"49
-[; ;Main.c: 49:     while(1)
+"48
+[; ;Main.c: 48:     while(1)
 [e :U 137 ]
-"50
-[; ;Main.c: 50:     {
+"49
+[; ;Main.c: 49:     {
 {
-"51
-[; ;Main.c: 51:         MEF_Actualizacion();
+"50
+[; ;Main.c: 50:         MEF_Actualizacion();
 [e ( _MEF_Actualizacion ..  ]
-"52
-[; ;Main.c: 52:     }
+"51
+[; ;Main.c: 51:     }
 }
 [e :U 136 ]
 [e $U 137  ]
 [e :U 138 ]
-"54
-[; ;Main.c: 54:     return;
+"53
+[; ;Main.c: 53:     return;
 [e $UE 135  ]
-"55
-[; ;Main.c: 55: }
+"54
+[; ;Main.c: 54: }
 [e :UE 135 ]
 }
-"57
-[; ;Main.c: 57: void Pines_Init(void)
+"56
+[; ;Main.c: 56: void Pines_Init(void)
 [v _Pines_Init `(v ~T0 @X0 1 ef ]
-"58
-[; ;Main.c: 58: {
+"57
+[; ;Main.c: 57: {
 {
 [e :U _Pines_Init ]
 [f ]
-"60
-[; ;Main.c: 60:     TRISAbits.TRISA5 = 0;
+"59
+[; ;Main.c: 59:     TRISAbits.TRISA5 = 0;
 [e = . . _TRISAbits 0 5 -> -> 0 `i `uc ]
-"61
-[; ;Main.c: 61:     PORTA = 0;
+"60
+[; ;Main.c: 60:     PORTA = 0;
 [e = _PORTA -> -> 0 `i `uc ]
-"62
-[; ;Main.c: 62:     PORTB = 0;
+"61
+[; ;Main.c: 61:     PORTB = 0;
 [e = _PORTB -> -> 0 `i `uc ]
-"63
-[; ;Main.c: 63:     PORTC = 0;
+"62
+[; ;Main.c: 62:     PORTC = 0;
 [e = _PORTC -> -> 0 `i `uc ]
-"64
-[; ;Main.c: 64:     TRISB = 0xFF;
+"63
+[; ;Main.c: 63:     TRISB = 0xFF;
 [e = _TRISB -> -> 255 `i `uc ]
-"65
-[; ;Main.c: 65:     TRISC = 0x00;
+"64
+[; ;Main.c: 64:     TRISC = 0x00;
 [e = _TRISC -> -> 0 `i `uc ]
-"66
-[; ;Main.c: 66:     ANSELHbits.ANS12 = 0;
+"65
+[; ;Main.c: 65:     ANSELHbits.ANS12 = 0;
 [e = . . _ANSELHbits 0 4 -> -> 0 `i `uc ]
-"67
-[; ;Main.c: 67:     ANSELHbits.ANS11 = 0;
+"66
+[; ;Main.c: 66:     ANSELHbits.ANS11 = 0;
 [e = . . _ANSELHbits 0 3 -> -> 0 `i `uc ]
-"68
-[; ;Main.c: 68:     ANSELHbits.ANS10 = 0;
+"67
+[; ;Main.c: 67:     ANSELHbits.ANS10 = 0;
 [e = . . _ANSELHbits 0 2 -> -> 0 `i `uc ]
-"69
-[; ;Main.c: 69:     ANSELHbits.ANS8 = 0;
+"68
+[; ;Main.c: 68:     ANSELHbits.ANS8 = 0;
 [e = . . _ANSELHbits 0 0 -> -> 0 `i `uc ]
-"70
-[; ;Main.c: 70:     ANSELHbits.ANS9 = 0;
+"69
+[; ;Main.c: 69:     ANSELHbits.ANS9 = 0;
 [e = . . _ANSELHbits 0 1 -> -> 0 `i `uc ]
-"71
-[; ;Main.c: 71:     ANSELbits.ANS4 = 0;
+"70
+[; ;Main.c: 70:     ANSELbits.ANS4 = 0;
 [e = . . _ANSELbits 0 4 -> -> 0 `i `uc ]
-"73
-[; ;Main.c: 73:     TRISBbits.TRISB4 = 0;
+"72
+[; ;Main.c: 72:     TRISBbits.TRISB4 = 0;
 [e = . . _TRISBbits 0 4 -> -> 0 `i `uc ]
-"75
-[; ;Main.c: 75:     return;
+"74
+[; ;Main.c: 74:     return;
 [e $UE 139  ]
-"76
-[; ;Main.c: 76: }
+"75
+[; ;Main.c: 75: }
 [e :UE 139 ]
 }
-"78
-[; ;Main.c: 78: void Antirrebote(void)
+"77
+[; ;Main.c: 77: void Antirrebote(void)
 [v _Antirrebote `(v ~T0 @X0 1 ef ]
-"79
-[; ;Main.c: 79: {
+"78
+[; ;Main.c: 78: {
 {
 [e :U _Antirrebote ]
 [f ]
-"80
-[; ;Main.c: 80:     PORTAbits.RA5 = 1;
+"79
+[; ;Main.c: 79:     PORTAbits.RA5 = 1;
 [e = . . _PORTAbits 0 5 -> -> 1 `i `uc ]
-"81
-[; ;Main.c: 81:     _delay((unsigned long)((50)*(20000000/4000.0)));
+"80
+[; ;Main.c: 80:     _delay((unsigned long)((50)*(20000000/4000.0)));
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
-"82
-[; ;Main.c: 82:     PORTAbits.RA5 = 0;
+"81
+[; ;Main.c: 81:     PORTAbits.RA5 = 0;
 [e = . . _PORTAbits 0 5 -> -> 0 `i `uc ]
-"83
-[; ;Main.c: 83:     while(PORTBbits.RB0 || PORTBbits.RB1 || PORTBbits.RB2 || PORTBbits.RB3) _delay((unsigned long)((10)*(20000000/4000.0)));
+"82
+[; ;Main.c: 82:     while(PORTBbits.RB0 || PORTBbits.RB1 || PORTBbits.RB2 || PORTBbits.RB3) _delay((unsigned long)((10)*(20000000/4000.0)));
 [e $U 141  ]
 [e :U 142 ]
 [e ( __delay (1 -> * -> -> 10 `i `d / -> -> 20000000 `l `d .4000.0 `ul ]
 [e :U 141 ]
 [e $ || || || != -> . . _PORTBbits 0 0 `i -> 0 `i != -> . . _PORTBbits 0 1 `i -> 0 `i != -> . . _PORTBbits 0 2 `i -> 0 `i != -> . . _PORTBbits 0 3 `i -> 0 `i 142  ]
 [e :U 143 ]
-"85
-[; ;Main.c: 85:     return;
+"84
+[; ;Main.c: 84:     return;
 [e $UE 140  ]
-"86
-[; ;Main.c: 86: }
+"85
+[; ;Main.c: 85: }
 [e :UE 140 ]
 }
 [v $root$_ISR `(v ~T0 @X0 0 e ]
-"88
-[; ;Main.c: 88: void __attribute__((picinterrupt(("")))) ISR (void)
+"87
+[; ;Main.c: 87: void __attribute__((picinterrupt(("")))) ISR (void)
 [v _ISR `(v ~T2 @X0 1 ef ]
-"89
-[; ;Main.c: 89: {
+"88
+[; ;Main.c: 88: {
 {
 [e :U _ISR ]
 [f ]
-"91
-[; ;Main.c: 91:     if(TMR1IF == 1)
-[e $ ! == -> _TMR1IF `i -> 1 `i 145  ]
+"89
+[; ;Main.c: 89:     _Bool f_pwmS1=0;
+[v _f_pwmS1 `a ~T0 @X0 1 a ]
+[e = _f_pwmS1 -> -> 0 `i `a ]
 "92
-[; ;Main.c: 92:     {
-{
+[; ;Main.c: 92:     if(TMR1IF == 1)
+[e $ ! == -> _TMR1IF `i -> 1 `i 145  ]
 "93
-[; ;Main.c: 93:         if(Delay100ms!=0 && !Mostrar) Delay100ms--;
+[; ;Main.c: 93:     {
+{
+"94
+[; ;Main.c: 94:         if(Delay100ms!=0 && !Mostrar) Delay100ms--;
 [e $ ! && != _Delay100ms -> -> 0 `i `ui ! != -> _Mostrar `i -> 0 `i 146  ]
 [e -- _Delay100ms -> -> 1 `i `Vui ]
 [e :U 146 ]
-"94
-[; ;Main.c: 94:         if(Delay200ms!=0) Delay200ms--;
+"95
+[; ;Main.c: 95:         if(Delay200ms!=0) Delay200ms--;
 [e $ ! != _Delay200ms -> -> 0 `i `ui 147  ]
 [e -- _Delay200ms -> -> 1 `i `Vui ]
 [e :U 147 ]
-"95
-[; ;Main.c: 95:         if(Delay1s!=0 && Output) Delay1s--;
+"96
+[; ;Main.c: 96:         if(Delay1s!=0 && Output) Delay1s--;
 [e $ ! && != _Delay1s -> -> 0 `i `ui != -> _Output `i -> 0 `i 148  ]
 [e -- _Delay1s -> -> 1 `i `Vui ]
 [e :U 148 ]
 "97
-[; ;Main.c: 97:         TMR1 = 65285;
-[e = _TMR1 -> -> 65285 `l `us ]
+[; ;Main.c: 97:         if(Act_PwmS1 && PwmS1!=PER_T_S1) PwmS1++;
+[e $ ! && != -> _Act_PwmS1 `i -> 0 `i != _PwmS1 _PER_T_S1 149  ]
+[e ++ _PwmS1 -> -> 1 `i `ui ]
+[e :U 149 ]
 "98
-[; ;Main.c: 98:         TMR1ON = 1;
-[e = _TMR1ON -> -> 1 `i `b ]
-"99
-[; ;Main.c: 99:         TMR1IF = 0;
-[e = _TMR1IF -> -> 0 `i `b ]
+[; ;Main.c: 98:         if(PwmS1 == P_W_T_S1 || PwmS1 == PER_T_S1) f_pwmS1=1;
+[e $ ! || == _PwmS1 _P_W_T_S1 == _PwmS1 _PER_T_S1 150  ]
+[e = _f_pwmS1 -> -> 1 `i `a ]
+[e :U 150 ]
 "100
-[; ;Main.c: 100:     }
+[; ;Main.c: 100:         TMR1 = 65285;
+[e = _TMR1 -> -> 65285 `l `us ]
+"101
+[; ;Main.c: 101:         TMR1ON = 1;
+[e = _TMR1ON -> -> 1 `i `b ]
+"102
+[; ;Main.c: 102:         TMR1IF = 0;
+[e = _TMR1IF -> -> 0 `i `b ]
+"103
+[; ;Main.c: 103:     }
 }
 [e :U 145 ]
-"102
-[; ;Main.c: 102:     if(!Delay100ms || !Delay200ms || !Delay1s) Task_Ready();
-[e $ ! || || ! != _Delay100ms -> -> 0 `i `ui ! != _Delay200ms -> -> 0 `i `ui ! != _Delay1s -> -> 0 `i `ui 149  ]
-[e ( _Task_Ready ..  ]
-[e :U 149 ]
-"104
-[; ;Main.c: 104:     return;
-[e $UE 144  ]
 "105
-[; ;Main.c: 105: }
+[; ;Main.c: 105:     if(!Delay100ms || !Delay200ms || !Delay1s) Task_Ready();
+[e $ ! || || ! != _Delay100ms -> -> 0 `i `ui ! != _Delay200ms -> -> 0 `i `ui ! != _Delay1s -> -> 0 `i `ui 151  ]
+[e ( _Task_Ready ..  ]
+[e :U 151 ]
+"106
+[; ;Main.c: 106:     if(f_pwmS1 && Act_PwmS1) Pwm_Signal();
+[e $ ! && != -> _f_pwmS1 `i -> 0 `i != -> _Act_PwmS1 `i -> 0 `i 152  ]
+[e ( _Pwm_Signal ..  ]
+[e :U 152 ]
+"108
+[; ;Main.c: 108:     return;
+[e $UE 144  ]
+"109
+[; ;Main.c: 109: }
 [e :UE 144 ]
 }
-"107
-[; ;Main.c: 107: void Task_Ready(void)
+"111
+[; ;Main.c: 111: void Task_Ready(void)
 [v _Task_Ready `(v ~T0 @X0 1 ef ]
-"108
-[; ;Main.c: 108: {
+"112
+[; ;Main.c: 112: {
 {
 [e :U _Task_Ready ]
 [f ]
-"109
-[; ;Main.c: 109:     if(!Delay100ms)
-[e $ ! ! != _Delay100ms -> -> 0 `i `ui 151  ]
-"110
-[; ;Main.c: 110:     {
-{
-"111
-[; ;Main.c: 111:         Mostrar = 1;
-[e = _Mostrar -> -> 1 `i `a ]
-"112
-[; ;Main.c: 112:         Delay100ms = 1000;
-[e = _Delay100ms -> -> 1000 `i `ui ]
 "113
-[; ;Main.c: 113:     }
-}
-[e :U 151 ]
+[; ;Main.c: 113:     if(!Delay100ms)
+[e $ ! ! != _Delay100ms -> -> 0 `i `ui 154  ]
 "114
-[; ;Main.c: 114:     if(!Delay200ms)
-[e $ ! ! != _Delay200ms -> -> 0 `i `ui 152  ]
+[; ;Main.c: 114:     {
+{
 "115
-[; ;Main.c: 115:     {
-{
+[; ;Main.c: 115:         Mostrar = 1;
+[e = _Mostrar -> -> 1 `i `a ]
 "116
-[; ;Main.c: 116:         __asm("clrwdt");
-[; <" clrwdt ;# ">
+[; ;Main.c: 116:         Delay100ms = 1000;
+[e = _Delay100ms -> -> 1000 `i `ui ]
 "117
-[; ;Main.c: 117:         Act_Variables = 1;
-[e = _Act_Variables -> -> 1 `i `a ]
-"118
-[; ;Main.c: 118:         Delay200ms = 2000;
-[e = _Delay200ms -> -> 2000 `i `ui ]
-"119
-[; ;Main.c: 119:     }
+[; ;Main.c: 117:     }
 }
-[e :U 152 ]
-"120
-[; ;Main.c: 120:     if(!Delay1s)
-[e $ ! ! != _Delay1s -> -> 0 `i `ui 153  ]
-"121
-[; ;Main.c: 121:     {
-{
-"122
-[; ;Main.c: 122:         if(Seg == 0)
-[e $ ! == -> _Seg `i -> 0 `i 154  ]
-"123
-[; ;Main.c: 123:         {
-{
-"124
-[; ;Main.c: 124:             if(Min != 0) Min--,Seg=59;
-[e $ ! != -> _Min `i -> 0 `i 155  ]
-[e ; -- _Min -> -> 1 `i `uc = _Seg -> -> 59 `i `uc ]
-[e :U 155 ]
-"125
-[; ;Main.c: 125:         }
-}
-[e $U 156  ]
-"126
-[; ;Main.c: 126:         else Seg--;
 [e :U 154 ]
-[e -- _Seg -> -> 1 `i `uc ]
-[e :U 156 ]
-"127
-[; ;Main.c: 127:         Temporizador = 1;
-[e = _Temporizador -> -> 1 `i `a ]
-"128
-[; ;Main.c: 128:         Delay1s = 10000;
-[e = _Delay1s -> -> 10000 `i `ui ]
-"129
-[; ;Main.c: 129:     }
+"118
+[; ;Main.c: 118:     if(!Delay200ms)
+[e $ ! ! != _Delay200ms -> -> 0 `i `ui 155  ]
+"119
+[; ;Main.c: 119:     {
+{
+"120
+[; ;Main.c: 120:         __asm("clrwdt");
+[; <" clrwdt ;# ">
+"121
+[; ;Main.c: 121:         Act_Variables = 1;
+[e = _Act_Variables -> -> 1 `i `a ]
+"122
+[; ;Main.c: 122:         Delay200ms = 2000;
+[e = _Delay200ms -> -> 2000 `i `ui ]
+"123
+[; ;Main.c: 123:     }
 }
-[e :U 153 ]
+[e :U 155 ]
+"124
+[; ;Main.c: 124:     if(!Delay1s)
+[e $ ! ! != _Delay1s -> -> 0 `i `ui 156  ]
+"125
+[; ;Main.c: 125:     {
+{
+"126
+[; ;Main.c: 126:         if(Seg == 0)
+[e $ ! == -> _Seg `i -> 0 `i 157  ]
+"127
+[; ;Main.c: 127:         {
+{
+"128
+[; ;Main.c: 128:             if(Min != 0) Min--,Seg=59;
+[e $ ! != -> _Min `i -> 0 `i 158  ]
+[e ; -- _Min -> -> 1 `i `uc = _Seg -> -> 59 `i `uc ]
+[e :U 158 ]
+"129
+[; ;Main.c: 129:         }
+}
+[e $U 159  ]
+"130
+[; ;Main.c: 130:         else Seg--;
+[e :U 157 ]
+[e -- _Seg -> -> 1 `i `uc ]
+[e :U 159 ]
 "131
-[; ;Main.c: 131:     return;
-[e $UE 150  ]
+[; ;Main.c: 131:         Temporizador = 1;
+[e = _Temporizador -> -> 1 `i `a ]
 "132
-[; ;Main.c: 132: }
-[e :UE 150 ]
+[; ;Main.c: 132:         Delay1s = 10000;
+[e = _Delay1s -> -> 10000 `i `ui ]
+"133
+[; ;Main.c: 133:     }
+}
+[e :U 156 ]
+"135
+[; ;Main.c: 135:     return;
+[e $UE 153  ]
+"136
+[; ;Main.c: 136: }
+[e :UE 153 ]
 }

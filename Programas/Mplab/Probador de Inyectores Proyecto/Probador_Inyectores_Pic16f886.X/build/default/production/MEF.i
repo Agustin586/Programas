@@ -2441,15 +2441,6 @@ void LCD_character(unsigned char adress,char caracter[]);
 
 
 
-
-
-
-
-void Select_Modo(void);
-void Detener(void);
-void Fin_Proceso(void);
-# 6 "./MEF.h" 2
-
 # 1 "./Pwm_Soft.h" 1
 # 20 "./Pwm_Soft.h"
 void Pwm_init(void);
@@ -2470,6 +2461,21 @@ float Per_PwmS1=0,Pw_PwmS1=0;
 unsigned int P_W_T_S1=0,PER_T_S1=0;
 
 _Bool Act_PwmS1=0;
+# 4 "./Menu_Modo.h" 2
+
+
+
+
+
+
+extern _Bool Pwm_Seteado;
+
+void Select_Modo(void);
+void Detener(void);
+void Fin_Proceso(void);
+# 6 "./MEF.h" 2
+
+# 1 "./Pwm_Soft.h" 1
 # 7 "./MEF.h" 2
 
 # 1 "./ADC.h" 1
@@ -2490,9 +2496,16 @@ void Adc_Min_Read(void);
 void Adc_Temp_Read(void);
 # 4 "./Modo_Pulverizacion.h" 2
 
+# 1 "./Pwm_Soft.h" 1
+# 5 "./Modo_Pulverizacion.h" 2
 
 
 
+
+
+extern unsigned int Rpm;
+extern unsigned char Pwm;
+extern _Bool Pwm_Seteado;
 
 void Lec_Adc_Modo_Pulv(void);
 void Salida_Modo_Pulv(void);
@@ -2661,7 +2674,7 @@ void MEF_Subest_Actualizacion(void)
             else if(Estado_Actual==ESTADO_MODO_FLUJO) Salida_Modo_Flujo();
 
             if(Temporizador) Subestado_Actual = SUBEST_TIEMPO;
-            if(PORTBbits.RB2) Subestado_Actual = SUBEST_INICIAL,Detener();
+            if(PORTBbits.RB2) Subestado_Actual = SUBEST_RESET,Detener();
         break;
         }
         case SUBEST_TIEMPO:
