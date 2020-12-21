@@ -2665,6 +2665,7 @@ void MEF_Subest_Actualizacion(void)
 
             if(Act_Variables) Subestado_Actual = SUBEST_DISPLAY,Act_Variables=0;
             if(PORTBbits.RB0) Subestado_Actual = SUBEST_SALIDA,Antirrebote(),Output=!Output;
+            if(PORTBbits.RB2) Subestado_Actual = SUBEST_RESET,Output=!Output,Detener();
         break;
         }
         case SUBEST_SALIDA:

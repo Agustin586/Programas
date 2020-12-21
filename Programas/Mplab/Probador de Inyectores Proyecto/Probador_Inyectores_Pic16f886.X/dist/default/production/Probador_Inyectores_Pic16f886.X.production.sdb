@@ -117,7 +117,7 @@ SUBEST_RESET 5
 [v _Select_Modo Select_Modo `(v  1 e 1 0 ]
 "30
 [v _Detener Detener `(v  1 e 1 0 ]
-"53
+"52
 [v _Fin_Proceso Fin_Proceso `(v  1 e 1 0 ]
 "4 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Modo_Flujo.c
 [v _Lec_Adc_Modo_Flujo Lec_Adc_Modo_Flujo `(v  1 e 1 0 ]
@@ -435,7 +435,7 @@ SUBEST_RESET 5
 "102 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\MEF.c
 [v _MEF_Subest_Actualizacion MEF_Subest_Actualizacion `(v  1 e 1 0 ]
 {
-"168
+"169
 } 0
 "21 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Modo_Pulverizacion.c
 [v _Salida_Modo_Pulv Salida_Modo_Pulv `(v  1 e 1 0 ]
@@ -692,12 +692,12 @@ SUBEST_RESET 5
 [v Adc@channel channel `uc  1 a 1 2 ]
 "52
 } 0
-"53 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Menu_Modo.c
+"52 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Menu_Modo.c
 [v _Fin_Proceso Fin_Proceso `(v  1 e 1 0 ]
 {
-"62
+"61
 [v Fin_Proceso@i i `uc  1 a 1 12 ]
-"73
+"72
 } 0
 "145 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Display_Lcd.c
 [v _Proceso_Fin Proceso_Fin `(v  1 e 1 0 ]
@@ -709,7 +709,7 @@ SUBEST_RESET 5
 {
 "40
 [v Detener@i i `uc  1 a 1 12 ]
-"51
+"50
 } 0
 "71 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\Probador de Inyectores Proyecto\Probador_Inyectores_Pic16f886.X\Pwm_Soft.c
 [v _Pwm1_stop Pwm1_stop `(v  1 e 1 0 ]

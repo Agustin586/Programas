@@ -2578,7 +2578,6 @@ void Detener(void)
         PORTAbits.RA5 = 0;
         _delay((unsigned long)((100)*(20000000/4000.0)));
     }
-
     _delay((unsigned long)((1200)*(20000000/4000.0)));
 
     return;

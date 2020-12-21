@@ -65,6 +65,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _mod_tiempo `a ~T0 @X0 0 e ]
 [v _Act_Variables `a ~T0 @X0 0 e ]
 [v _Output `a ~T0 @X0 0 e ]
+"13 ./Menu_Modo.h
+[; ;./Menu_Modo.h: 13: void Detener(void);
+[v _Detener `(v ~T0 @X0 0 ef ]
 "15 ./Modo_Pulverizacion.h
 [; ;./Modo_Pulverizacion.h: 15: void Salida_Modo_Pulv(void);
 [v _Salida_Modo_Pulv `(v ~T0 @X0 0 ef ]
@@ -77,9 +80,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "12 MEF.c
 [; ;MEF.c: 12: extern _Bool Act_Variables,Output,Reset,Temporizador,mod_tiempo;
 [v _Temporizador `a ~T0 @X0 0 e ]
-"13 ./Menu_Modo.h
-[; ;./Menu_Modo.h: 13: void Detener(void);
-[v _Detener `(v ~T0 @X0 0 ef ]
 "22 ./Display_Lcd.h
 [; ;./Display_Lcd.h: 22: void Pant_Temporizador(void);
 [v _Pant_Temporizador `(v ~T0 @X0 0 ef ]
@@ -692,124 +692,129 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e ; ; = _Subestado_Actual . `E1291 3 ( _Antirrebote ..  = _Output -> -> ! != -> _Output `i -> 0 `i `i `a ]
 [e :U 170 ]
 "134
-[; ;MEF.c: 134:         break;
-[e $U 153  ]
-"135
-[; ;MEF.c: 135:         }
-}
-"136
-[; ;MEF.c: 136:         case SUBEST_SALIDA:
+[; ;MEF.c: 134:             if(PORTBbits.RB2) Subestado_Actual = SUBEST_RESET,Output=!Output,Detener();
+[e $ ! != -> . . _PORTBbits 0 2 `i -> 0 `i 171  ]
+[e ; ; = _Subestado_Actual . `E1291 5 = _Output -> -> ! != -> _Output `i -> 0 `i `i `a ( _Detener ..  ]
 [e :U 171 ]
+"135
+[; ;MEF.c: 135:         break;
+[e $U 153  ]
+"136
+[; ;MEF.c: 136:         }
+}
 "137
-[; ;MEF.c: 137:         {
-{
-"138
-[; ;MEF.c: 138:             if(Estado_Actual==ESTADO_MODO_PULV) Salida_Modo_Pulv();
-[e $ ! == -> _Estado_Actual `ui -> . `E1282 2 `ui 172  ]
-[e ( _Salida_Modo_Pulv ..  ]
-[e $U 173  ]
-"139
-[; ;MEF.c: 139:             else if(Estado_Actual==ESTADO_MODO_FUGA) Salida_Modo_Fuga();
+[; ;MEF.c: 137:         case SUBEST_SALIDA:
 [e :U 172 ]
-[e $ ! == -> _Estado_Actual `ui -> . `E1282 3 `ui 174  ]
-[e ( _Salida_Modo_Fuga ..  ]
-[e $U 175  ]
+"138
+[; ;MEF.c: 138:         {
+{
+"139
+[; ;MEF.c: 139:             if(Estado_Actual==ESTADO_MODO_PULV) Salida_Modo_Pulv();
+[e $ ! == -> _Estado_Actual `ui -> . `E1282 2 `ui 173  ]
+[e ( _Salida_Modo_Pulv ..  ]
+[e $U 174  ]
 "140
-[; ;MEF.c: 140:             else if(Estado_Actual==ESTADO_MODO_FLUJO) Salida_Modo_Flujo();
-[e :U 174 ]
-[e $ ! == -> _Estado_Actual `ui -> . `E1282 4 `ui 176  ]
-[e ( _Salida_Modo_Flujo ..  ]
-[e :U 176 ]
-[e :U 175 ]
+[; ;MEF.c: 140:             else if(Estado_Actual==ESTADO_MODO_FUGA) Salida_Modo_Fuga();
 [e :U 173 ]
-"142
-[; ;MEF.c: 142:             if(Temporizador) Subestado_Actual = SUBEST_TIEMPO;
-[e $ ! != -> _Temporizador `i -> 0 `i 177  ]
-[e = _Subestado_Actual . `E1291 4 ]
+[e $ ! == -> _Estado_Actual `ui -> . `E1282 3 `ui 175  ]
+[e ( _Salida_Modo_Fuga ..  ]
+[e $U 176  ]
+"141
+[; ;MEF.c: 141:             else if(Estado_Actual==ESTADO_MODO_FLUJO) Salida_Modo_Flujo();
+[e :U 175 ]
+[e $ ! == -> _Estado_Actual `ui -> . `E1282 4 `ui 177  ]
+[e ( _Salida_Modo_Flujo ..  ]
 [e :U 177 ]
+[e :U 176 ]
+[e :U 174 ]
 "143
-[; ;MEF.c: 143:             if(PORTBbits.RB2) Subestado_Actual = SUBEST_RESET,Detener();
-[e $ ! != -> . . _PORTBbits 0 2 `i -> 0 `i 178  ]
-[e ; = _Subestado_Actual . `E1291 5 ( _Detener ..  ]
+[; ;MEF.c: 143:             if(Temporizador) Subestado_Actual = SUBEST_TIEMPO;
+[e $ ! != -> _Temporizador `i -> 0 `i 178  ]
+[e = _Subestado_Actual . `E1291 4 ]
 [e :U 178 ]
 "144
-[; ;MEF.c: 144:         break;
-[e $U 153  ]
-"145
-[; ;MEF.c: 145:         }
-}
-"146
-[; ;MEF.c: 146:         case SUBEST_TIEMPO:
+[; ;MEF.c: 144:             if(PORTBbits.RB2) Subestado_Actual = SUBEST_RESET,Detener();
+[e $ ! != -> . . _PORTBbits 0 2 `i -> 0 `i 179  ]
+[e ; = _Subestado_Actual . `E1291 5 ( _Detener ..  ]
 [e :U 179 ]
+"145
+[; ;MEF.c: 145:         break;
+[e $U 153  ]
+"146
+[; ;MEF.c: 146:         }
+}
 "147
-[; ;MEF.c: 147:         {
-{
-"148
-[; ;MEF.c: 148:             Pant_Temporizador();
-[e ( _Pant_Temporizador ..  ]
-"149
-[; ;MEF.c: 149:             Fin_Proceso();
-[e ( _Fin_Proceso ..  ]
-"151
-[; ;MEF.c: 151:             if(Output) Subestado_Actual = SUBEST_SALIDA;
-[e $ ! != -> _Output `i -> 0 `i 180  ]
-[e = _Subestado_Actual . `E1291 3 ]
-[e $U 181  ]
-"152
-[; ;MEF.c: 152:             else Subestado_Actual = SUBEST_RESET;
+[; ;MEF.c: 147:         case SUBEST_TIEMPO:
 [e :U 180 ]
-[e = _Subestado_Actual . `E1291 5 ]
-[e :U 181 ]
-"153
-[; ;MEF.c: 153:         break;
-[e $U 153  ]
-"154
-[; ;MEF.c: 154:         }
-}
-"155
-[; ;MEF.c: 155:         case SUBEST_RESET:
-[e :U 182 ]
-"156
-[; ;MEF.c: 156:         {
+"148
+[; ;MEF.c: 148:         {
 {
-"157
-[; ;MEF.c: 157:             Rpm=0,Pwm=0,Min=0,Seg=0,Temp=0,Modo=0;
-[e ; ; ; ; ; = _Rpm -> -> 0 `i `ui = _Pwm -> -> 0 `i `uc = _Min -> -> 0 `i `uc = _Seg -> -> 0 `i `uc = _Temp -> -> 0 `i `uc = _Modo -> -> 0 `i `uc ]
-"158
-[; ;MEF.c: 158:             PORTBbits.RB4=0;
-[e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
-"159
-[; ;MEF.c: 159:             LCD_command(0x01);
-[e ( _LCD_command (1 -> -> 1 `i `uc ]
-"160
-[; ;MEF.c: 160:             Reset = 1;
-[e = _Reset -> -> 1 `i `a ]
-"162
-[; ;MEF.c: 162:             Subestado_Actual = SUBEST_INICIAL;
-[e = _Subestado_Actual . `E1291 0 ]
-"163
-[; ;MEF.c: 163:         break;
+"149
+[; ;MEF.c: 149:             Pant_Temporizador();
+[e ( _Pant_Temporizador ..  ]
+"150
+[; ;MEF.c: 150:             Fin_Proceso();
+[e ( _Fin_Proceso ..  ]
+"152
+[; ;MEF.c: 152:             if(Output) Subestado_Actual = SUBEST_SALIDA;
+[e $ ! != -> _Output `i -> 0 `i 181  ]
+[e = _Subestado_Actual . `E1291 3 ]
+[e $U 182  ]
+"153
+[; ;MEF.c: 153:             else Subestado_Actual = SUBEST_RESET;
+[e :U 181 ]
+[e = _Subestado_Actual . `E1291 5 ]
+[e :U 182 ]
+"154
+[; ;MEF.c: 154:         break;
 [e $U 153  ]
-"164
-[; ;MEF.c: 164:         }
+"155
+[; ;MEF.c: 155:         }
 }
+"156
+[; ;MEF.c: 156:         case SUBEST_RESET:
+[e :U 183 ]
+"157
+[; ;MEF.c: 157:         {
+{
+"158
+[; ;MEF.c: 158:             Rpm=0,Pwm=0,Min=0,Seg=0,Temp=0,Modo=0;
+[e ; ; ; ; ; = _Rpm -> -> 0 `i `ui = _Pwm -> -> 0 `i `uc = _Min -> -> 0 `i `uc = _Seg -> -> 0 `i `uc = _Temp -> -> 0 `i `uc = _Modo -> -> 0 `i `uc ]
+"159
+[; ;MEF.c: 159:             PORTBbits.RB4=0;
+[e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
+"160
+[; ;MEF.c: 160:             LCD_command(0x01);
+[e ( _LCD_command (1 -> -> 1 `i `uc ]
+"161
+[; ;MEF.c: 161:             Reset = 1;
+[e = _Reset -> -> 1 `i `a ]
+"163
+[; ;MEF.c: 163:             Subestado_Actual = SUBEST_INICIAL;
+[e = _Subestado_Actual . `E1291 0 ]
+"164
+[; ;MEF.c: 164:         break;
+[e $U 153  ]
 "165
-[; ;MEF.c: 165:     }
+[; ;MEF.c: 165:         }
+}
+"166
+[; ;MEF.c: 166:     }
 }
 [e $U 153  ]
 [e :U 154 ]
 [e [\ -> _Subestado_Actual `ui , $ -> . `E1291 0 `ui 155
  , $ -> . `E1291 1 `ui 161
  , $ -> . `E1291 2 `ui 162
- , $ -> . `E1291 3 `ui 171
- , $ -> . `E1291 4 `ui 179
- , $ -> . `E1291 5 `ui 182
+ , $ -> . `E1291 3 `ui 172
+ , $ -> . `E1291 4 `ui 180
+ , $ -> . `E1291 5 `ui 183
  153 ]
 [e :U 153 ]
-"167
-[; ;MEF.c: 167:     return;
-[e $UE 152  ]
 "168
-[; ;MEF.c: 168: }
+[; ;MEF.c: 168:     return;
+[e $UE 152  ]
+"169
+[; ;MEF.c: 169: }
 [e :UE 152 ]
 }
