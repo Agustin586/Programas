@@ -1,0 +1,26 @@
+0	1	mikroCPIC1618.exe -MSF -DBG -pP18F4550 -DL -O11111115 -fo48 -N"C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\MikroC\Proyecto_Laboratorio\Programa\MyProject.mcppi" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Defs\" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\uses\P18\" -SP"C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\MikroC\Proyecto_Laboratorio\Programa\" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Packages\RTC 2 Click\Uses\" -IP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\uses\P18\" -IP"C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\MikroC\Proyecto_Laboratorio\Programa\" -IP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Packages\RTC 2 Click\Uses\" "MiniLaboratorio.c" "MEF.c" "Serial.c" "Display.c" "Clock.c" "__Lib_Math.mcl" "__Lib_MathDouble.mcl" "__Lib_System.mcl" "__Lib_Delays.mcl" "__Lib_CType.mcl" "__Lib_CString.mcl" "__Lib_CStdlib.mcl" "__Lib_Conversions.mcl" "__Lib_Sprintf.mcl" "__Lib_SoftI2C.mcl" "__Lib_I2C_b10.mcl" "__Lib_UART_c67.mcl" "__Lib_TFT.mcl" "__Lib_TFT_Defs.mcl" "RTC_2_P18.mcl"	 
+hint: 0	1139	Available RAM: 2027 [bytes], Available ROM: 32768 [bytes]	 
+diagnostics: 0	122	Compilation Started	serial.h
+warning: 39	1504	Initialization of extern object 'Pos'	display.h
+warning: 90	1509	Generated baud rate is 56075 bps (error = 0.13 percent)	MiniLaboratorio.c
+hint: 0	1004	interrupt handler (ISR_HP at 0x0008)	MiniLaboratorio.c
+hint: 0	1004	interrupt handler (ISR_LP at 0x0018)	MiniLaboratorio.c
+diagnostics: 276	123	Compiled Successfully	MiniLaboratorio.c
+diagnostics: 0	122	Compilation Started	serial.h
+warning: 39	1504	Initialization of extern object 'Pos'	display.h
+diagnostics: 81	123	Compiled Successfully	MEF.c
+diagnostics: 0	122	Compilation Started	serial.h
+diagnostics: 26	123	Compiled Successfully	Serial.c
+diagnostics: 0	122	Compilation Started	stdint.h
+warning: 39	1504	Initialization of extern object 'Pos'	display.h
+diagnostics: 197	123	Compiled Successfully	Display.c
+diagnostics: 0	122	Compilation Started	stdint.h
+warning: 5	1505	Suspicious pointer conversion	Clock.c
+diagnostics: 21	123	Compiled Successfully	Clock.c
+diagnostics: 0	127	All files Compiled in 1781 ms	 
+hint: 0	1144	Used RAM (bytes): 477 (24%)  Free RAM (bytes): 1550 (76%)	Used RAM (bytes): 477 (24%)  Free RAM (bytes): 1550 (76%)
+hint: 0	1144	Used ROM (bytes): 24768 (76%)  Free ROM (bytes): 8000 (24%)	Used ROM (bytes): 24768 (76%)  Free ROM (bytes): 8000 (24%)
+diagnostics: 0	125	Project Linked Successfully	MyProject.mcppi
+diagnostics: 0	128	Linked in 625 ms	 
+diagnostics: 0	129	Project 'MyProject.mcppi' completed: 2515 ms	 
+diagnostics: 0	103	Finished successfully: 14 ene. 2021, 01:58:07	MyProject.mcppi
