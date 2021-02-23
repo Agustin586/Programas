@@ -1,0 +1,100 @@
+
+(rules PCB DimmerDigital_Pic16f628a
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 2846)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.0)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.0)
+    )
+  )
+  (rule
+    (width 800.0)
+    (clear 450.2)
+    (clear 400.0 (type smd_to_turn_gap))
+    (clear 112.6 (type smd_smd))
+  )
+  (padstack "Via[0-1]_2000:700_um"
+    (shape
+      (circle F.Cu 2000.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 2000.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_2000:700_um" "Via[0-1]_2000:700_um" default
+  )
+  (via 
+    "Via[0-1]_2000:700_um-kicad_default" "Via[0-1]_2000:700_um" "kicad_default"
+  )
+  (via 
+    "Via[0-1]_2000:700_um-Control_Triac" "Via[0-1]_2000:700_um" "Control_Triac"
+  )
+  (via_rule
+    default "Via[0-1]_2000:700_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_2000:700_um-kicad_default"
+  )
+  (via_rule
+    "Control_Triac" "Via[0-1]_2000:700_um-Control_Triac"
+  )
+  (class default
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 800.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    "/Control_Pic/Qe" "/Control_Pic/Qd" "/Control_Pic/DIGITO_1" "/Control_Pic/Qc" "Net-(AFF1-Pad5)" "/Control_Pic/Qb" "/Control_Pic/Qa" "/Control_Pic/Qf"
+    "/Control_Pic/Qg" "/Control_Pic/DIGITO_2" "Net-(AFF2-Pad5)" "/Control_Pic/DIGITO_3" "Net-(AFF3-Pad5)" "GND_5V" VCC 5V
+    "Net-(D3-Pad2)" "Net-(D4-Pad2)" "Net-(D5-Pad2)" "/Control_Pic/PICKIT" "/Control_Pic/MCLR" "/Control_Pic/RESET" "/Control_Pic/D2" "/Control_Pic/D3"
+    "/Control_Pic/LE" "/Control_Pic/LT" "/Control_Pic/BT" "Net-(Q2-Pad2)" "Net-(Q3-Pad2)" "Net-(Q4-Pad2)" "Net-(R3-Pad2)" "Habilitacion_Triac"
+    CrucexCero "Net-(R7-Pad2)" "Net-(R8-Pad2)" "Net-(R9-Pad2)" "Net-(R11-Pad2)" "Net-(R12-Pad2)" "Net-(R13-Pad2)" "Net-(R14-Pad2)"
+    "/Control_Pic/START_S" "/Control_Pic/UP" "/Control_Pic/DOWN" "/Control_Pic/BLINK" "/Control_Pic/D1" "Net-(U1-Pad3)" "/Control_Pic/B" "/Control_Pic/A"
+    "Net-(U4-Pad3)" "/Control_Pic/D" "/Control_Pic/C" "/Control_Pic/BUZZER" "Net-(J3-Pad1)"
+    (clearance_class "kicad_default")
+    (via_rule kicad_default)
+    (rule
+      (width 800.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "Control_Triac"
+    "Net-(C1-Pad1)" "/Control_220v/Ac1" "/Control_220v/Ac2" "Net-(J1-Pad2)" "Net-(J2-Pad2)" "Net-(R1-Pad1)" "Net-(R5-Pad1)" "Net-(R6-Pad1)"
+    "Net-(U1-Pad5)" "/Control_220v/GATE" "/Control_220v/CARGA1" "/Control_220v/PUENTE+" "/Control_220v/PUENTE-"
+    (clearance_class "Control_Triac")
+    (via_rule Control_Triac)
+    (rule
+      (width 2500.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)

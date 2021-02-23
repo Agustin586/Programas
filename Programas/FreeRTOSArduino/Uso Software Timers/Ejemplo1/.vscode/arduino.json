@@ -1,0 +1,7 @@
+{
+    "sketch": "app.ino",
+    "board": "arduino:avr:mega",
+    "configuration": "cpu=atmega2560",
+    "programmer": "ArduinoISP",
+    "port": "COM8"
+}

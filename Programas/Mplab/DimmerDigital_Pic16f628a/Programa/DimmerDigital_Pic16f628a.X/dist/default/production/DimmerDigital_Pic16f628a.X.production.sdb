@@ -1,0 +1,329 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F628A ]
+[d frameptr 0 ]
+"5 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"43 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\common\lbdiv.c
+[v ___lbdiv __lbdiv `(uc  1 e 1 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"242
+[v ___flsub __flsub `(d  1 e 4 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+"4 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"10 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\common\xxtofl.c
+[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"85 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\DimmerDigital_Pic16f628a\Programa\DimmerDigital_Pic16f628a.X\Main.c
+[v _main main `(v  1 e 1 0 ]
+"101
+[v _Perifericos_Init Perifericos_Init `(v  1 e 1 0 ]
+"123
+[v _InOutPines_Init InOutPines_Init `(v  1 e 1 0 ]
+"152
+[v _Control Control `(v  1 e 1 0 ]
+"177
+[v _CargaDigitos CargaDigitos `(v  1 e 1 0 ]
+"216
+[v _Antirrebote Antirrebote `(v  1 e 1 0 ]
+"223
+[v _ISR ISR `II(v  1 e 1 0 ]
+"261
+[v _TimerReady TimerReady `(v  1 e 1 0 ]
+"166 C:\Program Files (x86)\Microchip\xc8\pic\include\proc\pic16f628a.h
+[v _PORTA PORTA `VEuc  1 e 1 @5 ]
+[s S189 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+"183
+[u S198 . 1 `S189 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES198  1 e 1 @5 ]
+[s S168 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"245
+[u S177 . 1 `S168 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES177  1 e 1 @6 ]
+[s S66 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"333
+[s S75 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 TMR0IE 1 0 :1:5 
+]
+[u S80 . 1 `S66 1 . 1 0 `S75 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES80  1 e 1 @11 ]
+"445
+[v _TMR1 TMR1 `VEus  1 e 2 @14 ]
+[s S39 . 1 `uc 1 TMR1ON 1 0 :1:0 
+`uc 1 TMR1CS 1 0 :1:1 
+`uc 1 nT1SYNC 1 0 :1:2 
+`uc 1 T1OSCEN 1 0 :1:3 
+`uc 1 T1CKPS 1 0 :2:4 
+]
+"485
+[s S45 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 T1CKPS0 1 0 :1:4 
+`uc 1 T1CKPS1 1 0 :1:5 
+]
+[u S49 . 1 `S39 1 . 1 0 `S45 1 . 1 0 ]
+[v _T1CONbits T1CONbits `VES49  1 e 1 @16 ]
+"767
+[v _CMCON CMCON `VEuc  1 e 1 @31 ]
+[s S98 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nRBPU 1 0 :1:7 
+]
+"857
+[s S105 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+]
+[u S109 . 1 `S98 1 . 1 0 `S105 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES109  1 e 1 @129 ]
+[s S147 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 TRISA3 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+`uc 1 TRISA6 1 0 :1:6 
+`uc 1 TRISA7 1 0 :1:7 
+]
+"924
+[u S156 . 1 `S147 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES156  1 e 1 @133 ]
+[s S126 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+"986
+[u S135 . 1 `S126 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES135  1 e 1 @134 ]
+"1431
+[v _INTF INTF `VEb  1 e 0 @89 ]
+"1575
+[v _TMR1CS TMR1CS `VEb  1 e 0 @129 ]
+"1578
+[v _TMR1IE TMR1IE `VEb  1 e 0 @1120 ]
+"1581
+[v _TMR1IF TMR1IF `VEb  1 e 0 @96 ]
+"1584
+[v _TMR1ON TMR1ON `VEb  1 e 0 @128 ]
+"78 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\DimmerDigital_Pic16f628a\Programa\DimmerDigital_Pic16f628a.X\Main.c
+[v _SalTriac_E SalTriac_E `VEa  1 e 1 0 ]
+"79
+[v _Disp_E Disp_E `a  1 e 1 0 ]
+"80
+[v _TimerSalTriac TimerSalTriac `VEui  1 e 2 0 ]
+[v _TimerBlink TimerBlink `VEui  1 e 2 0 ]
+[v _TimerMultiplexacion TimerMultiplexacion `VEui  1 e 2 0 ]
+"81
+[v _Duty Duty `uc  1 e 1 0 ]
+[v _ValorTimerTriac ValorTimerTriac `uc  1 e 1 0 ]
+"82
+[v _DigitoActivo DigitoActivo `VEuc  1 e 1 0 ]
+"85
+[v _main main `(v  1 e 1 0 ]
+{
+"100
+} 0
+"101
+[v _Perifericos_Init Perifericos_Init `(v  1 e 1 0 ]
+{
+"122
+} 0
+"123
+[v _InOutPines_Init InOutPines_Init `(v  1 e 1 0 ]
+{
+"151
+} 0
+"152
+[v _Control Control `(v  1 e 1 0 ]
+{
+"176
+} 0
+"10 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\common\xxtofl.c
+[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
+{
+[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
+"13
+[v ___xxtofl@arg arg `ul  1 a 4 10 ]
+"12
+[v ___xxtofl@exp exp `uc  1 a 1 9 ]
+"10
+[v ___xxtofl@sign sign `uc  1 a 1 wreg ]
+[v ___xxtofl@val val `l  1 p 4 0 ]
+"15
+[v ___xxtofl@sign sign `uc  1 a 1 8 ]
+"44
+} 0
+"43 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
+{
+"45
+[v ___fltol@exp1 exp1 `uc  1 a 1 57 ]
+[v ___fltol@sign1 sign1 `uc  1 a 1 56 ]
+"43
+[v ___fltol@f1 f1 `d  1 p 4 48 ]
+"70
+} 0
+"242 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\common\sprcadd.c
+[v ___flsub __flsub `(d  1 e 4 0 ]
+{
+[v ___flsub@a a `d  1 p 4 40 ]
+[v ___flsub@b b `d  1 p 4 44 ]
+"250
+} 0
+"10
+[v ___fladd __fladd `(d  1 e 4 0 ]
+{
+"17
+[v ___fladd@grs grs `uc  1 a 1 19 ]
+"15
+[v ___fladd@bexp bexp `uc  1 a 1 18 ]
+"16
+[v ___fladd@aexp aexp `uc  1 a 1 17 ]
+"13
+[v ___fladd@signs signs `uc  1 a 1 16 ]
+"10
+[v ___fladd@b b `d  1 p 4 0 ]
+[v ___fladd@a a `d  1 p 4 4 ]
+"237
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+{
+"21
+[v ___fldiv@grs grs `ul  1 a 4 34 ]
+"22
+[v ___fldiv@rem rem `ul  1 a 4 27 ]
+"20
+[v ___fldiv@new_exp new_exp `i  1 a 2 32 ]
+"19
+[v ___fldiv@aexp aexp `uc  1 a 1 39 ]
+"18
+[v ___fldiv@bexp bexp `uc  1 a 1 38 ]
+"16
+[v ___fldiv@sign sign `uc  1 a 1 31 ]
+"8
+[v ___fldiv@a a `d  1 p 4 14 ]
+[v ___fldiv@b b `d  1 p 4 18 ]
+"185
+} 0
+"216 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\DimmerDigital_Pic16f628a\Programa\DimmerDigital_Pic16f628a.X\Main.c
+[v _Antirrebote Antirrebote `(v  1 e 1 0 ]
+{
+"222
+} 0
+"177
+[v _CargaDigitos CargaDigitos `(v  1 e 1 0 ]
+{
+"179
+[v CargaDigitos@centena centena `uc  1 a 1 18 ]
+[v CargaDigitos@decena decena `uc  1 a 1 17 ]
+[v CargaDigitos@unidad unidad `uc  1 a 1 16 ]
+"215
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\common\lbdiv.c
+[v ___lbdiv __lbdiv `(uc  1 e 1 0 ]
+{
+[v ___lbdiv@dividend dividend `uc  1 a 1 wreg ]
+"6
+[v ___lbdiv@quotient quotient `uc  1 a 1 3 ]
+"7
+[v ___lbdiv@counter counter `uc  1 a 1 2 ]
+"4
+[v ___lbdiv@dividend dividend `uc  1 a 1 wreg ]
+[v ___lbdiv@divisor divisor `uc  1 p 1 0 ]
+"9
+[v ___lbdiv@dividend dividend `uc  1 a 1 1 ]
+"26
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+{
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+"6
+[v ___bmul@product product `uc  1 a 1 1 ]
+"4
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+[v ___bmul@multiplicand multiplicand `uc  1 p 1 0 ]
+"6
+[v ___bmul@multiplier multiplier `uc  1 a 1 2 ]
+"51
+} 0
+"5 C:\Program Files (x86)\Microchip\xc8\pic\sources\c90\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 12 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 11 ]
+[v ___awdiv@counter counter `uc  1 a 1 10 ]
+"5
+[v ___awdiv@divisor divisor `i  1 p 2 6 ]
+[v ___awdiv@dividend dividend `i  1 p 2 8 ]
+"41
+} 0
+"223 C:\Users\aguat\OneDrive\Programacion Microcontroladores\Github\Programas\Mplab\DimmerDigital_Pic16f628a\Programa\DimmerDigital_Pic16f628a.X\Main.c
+[v _ISR ISR `II(v  1 e 1 0 ]
+{
+"260
+} 0
+"261
+[v _TimerReady TimerReady `(v  1 e 1 0 ]
+{
+"288
+} 0

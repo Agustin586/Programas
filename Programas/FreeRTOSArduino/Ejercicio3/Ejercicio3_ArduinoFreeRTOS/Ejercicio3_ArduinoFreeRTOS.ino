@@ -5,14 +5,13 @@
 *		- vTaskSender1Adc   --> Envia datos de 0 a 1023; con el adc0 modifica frecuencia y el adc1 el pwm
 *		- vTaskSender2		--> Envia el valor de un contador que se va sumando y haciendo un blink de 1hz
 *		- vTaskReceiver1	--> Recive una estructura donde luego segundo los datos imprime en el lcd 
-*		- vTaskSender3		--> Envia un puntero en una cola de datos
-*		- vTaskReceiver2	--> Recive un puntero en una cola de datos y lo envia por el puerto serial
 */
 
 // Defines //
 #define PWM_INPUT			A0
-#define FREQUENCY_INPUT		A1
+#define PWM2_INPUT			A1
 #define PWM_OUTPUT			2
+#define PWM2_OUTPUT			3
 #define LED_BLINK_PIN		13
 // End //
 
@@ -31,8 +30,6 @@ LiquidCrystal Lcd(rs, en, d4, d5, d6, d7);
 void vTaskSender1Adc(void* pvParameter);
 void vTaskSender2(void* pvParameter);
 void vTaskReceiver1(void* pvParameter);
-void vTaskSender3(void* pvParameter);
-void vTaskReceiver2(void* pvParameter);
 // End //
 
 // Pwm Configuration //
@@ -47,8 +44,8 @@ void vTaskReceiver2(void* pvParameter);
 // Variables for freertos //
 typedef enum
 {
-	eAdcFrequency,
-	eAdcPwm
+	eAdcPwm2,
+	eAdcPwm1
 }DataSource_t;
 typedef struct
 {
@@ -123,27 +120,27 @@ void vTaskSender1Adc(void* pvParameter)
 {
 	(void)pvParameter;
 	BaseType_t xStatus;
-	uint16_t xAdcFreq=0,xAdcPwm=0;
+	uint16_t xAdcPwm2=0,xAdcPwm1=0;
 	const TickType_t xDelay50ms = pdMS_TO_TICKS(50);
 	const TickType_t xDelay200ms = pdMS_TO_TICKS(200);
 	Data_t xStructMotorControl[2]
 	{
-		{0, eAdcFrequency},
-		{0, eAdcPwm}
+		{0, eAdcPwm2},
+		{0, eAdcPwm1}
 	};
 
 	while (1)
 	{
-		//xAdcFreq = analogRead(FREQUENCY_INPUT);
-		//xStructMotorControl[0].usValue = xAdcFreq;
-		xAdcPwm = analogRead(PWM_INPUT);
-		xStructMotorControl[1].usValue = (uint16_t)((xAdcPwm*255.0)/1024.0);
-		Serial.println(xStructMotorControl[1].usValue);
+		xAdcPwm2 = analogRead(PWM2_INPUT);
+		xStructMotorControl[0].usValue = (uint16_t) ((xAdcPwm2*255.0)/1024.0);
 
-		// Send AdcFrecuency
-		//xStatus = xQueueSendToBack(xQueueMotorControl, &(xStructMotorControl[0]), xDelay100ms);
+		xAdcPwm1 = analogRead(PWM_INPUT);
+		xStructMotorControl[1].usValue = (uint16_t)((xAdcPwm1*255.0)/1024.0);
+
+		// Send AdcPwm2
+		xStatus = xQueueSendToBack(xQueueMotorControl, &(xStructMotorControl[0]), xDelay200ms);
 		
-		// Send AdcPwm
+		// Send AdcPwm2
 		xStatus = xQueueSendToBack(xQueueMotorControl, &(xStructMotorControl[1]), xDelay200ms);
 		if (xStatus == NULL)
 		{
@@ -197,11 +194,9 @@ void vTaskReceiver1(void* pvParameter)
 	Lcd.clear();
 
 	Lcd.setCursor(0, 0);
-	Lcd.print("Motor:");
-	Lcd.setCursor(7, 0);
-	Lcd.print("Count:");
+	Lcd.print("Pwm2:");
 	Lcd.setCursor(0, 1);
-	Lcd.print("Pwm:");
+	Lcd.print("Pwm1:");
 	Lcd.setCursor(11, 1);
 	Lcd.print("490Hz");
 
@@ -210,18 +205,21 @@ void vTaskReceiver1(void* pvParameter)
 		xStatusReceiveQueue = xQueueReceive(xQueueMotorControl, &xStructReceiveMotorControl, xDelay100ms);
 		if (xStatusReceiveQueue == pdPASS)
 		{
-			if (xStructReceiveMotorControl.eDataSource == eAdcFrequency)
+			if (xStructReceiveMotorControl.eDataSource == eAdcPwm2)
 			{
-
-			}
-			if (xStructReceiveMotorControl.eDataSource == eAdcPwm)
-			{
-				Lcd.setCursor(4, 1);
+				Lcd.setCursor(5, 0);
 				Lcd.print("   ");
-				Lcd.setCursor(4, 1);
+				Lcd.setCursor(5, 0);
+				Lcd.print(xStructReceiveMotorControl.usValue);
+				analogWrite(PWM2_OUTPUT, xStructReceiveMotorControl.usValue);
+			}
+			if (xStructReceiveMotorControl.eDataSource == eAdcPwm1)
+			{
+				Lcd.setCursor(5, 1);
+				Lcd.print("   ");
+				Lcd.setCursor(5, 1);
 				Lcd.print(xStructReceiveMotorControl.usValue);
 				analogWrite(PWM_OUTPUT, xStructReceiveMotorControl.usValue);
-				//Pwm_SetDutyA(xStructReceiveMotorControl.usValue);
 			}
 		}
 
