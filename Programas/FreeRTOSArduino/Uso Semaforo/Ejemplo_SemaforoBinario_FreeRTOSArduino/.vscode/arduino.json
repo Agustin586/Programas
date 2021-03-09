@@ -1,0 +1,7 @@
+{
+    "board": "arduino:avr:mega",
+    "configuration": "cpu=atmega2560",
+    "sketch": "Ejemplo_SemaforoBinario_FreeRTOSArduino.ino",
+    "port": "COM8",
+    "programmer": "ArduinoISP"
+}

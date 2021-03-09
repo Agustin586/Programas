@@ -1,0 +1,40 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "F:\\Arduino Portable\\Arduino_portable\\arduino-1.8.13\\tools\\**",
+                "F:\\Arduino Portable\\Arduino_portable\\arduino-1.8.13\\portable\\sketchbook\\libraries\\**",
+                "F:\\Arduino Portable\\Arduino_portable\\arduino-1.8.13\\libraries\\**",
+                "F:\\Arduino Portable\\Arduino_portable\\arduino-1.8.13\\hardware\\tools\\**",
+                "F:\\Arduino Portable\\Arduino_portable\\arduino-1.8.13\\hardware\\arduino\\avr\\**",
+                "${workspaceFolder}/**",
+                "E:\\Arduino Portable\\Arduino_portable\\arduino-1.8.13\\hardware\\arduino\\avr\\**",
+                "E:\\Arduino Portable\\Arduino_portable\\arduino-1.8.13\\hardware\\tools\\**",
+                "E:\\Arduino Portable\\Arduino_portable\\arduino-1.8.13\\libraries\\**",
+                "E:\\Arduino Portable\\Arduino_portable\\arduino-1.8.13\\portable\\sketchbook\\libraries\\**",
+                "E:\\Arduino Portable\\Arduino_portable\\arduino-1.8.13\\tools\\**",
+                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\**",
+                "C:\\Program Files (x86)\\Arduino\\hardware\\tools\\**",
+                "C:\\Program Files (x86)\\Arduino\\libraries\\**",
+                "C:\\Users\\aguat\\Documents\\Arduino\\libraries\\**",
+                "C:\\Program Files (x86)\\Arduino\\tools\\**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE",
+                "USBCON"
+            ],
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-msvc-x64",
+            "forcedInclude": [
+                "F:\\Arduino Portable\\Arduino_portable\\arduino-1.8.13\\hardware\\arduino\\avr\\cores\\arduino\\Arduino.h",
+                "E:\\Arduino Portable\\Arduino_portable\\arduino-1.8.13\\hardware\\arduino\\avr\\cores\\arduino\\Arduino.h",
+                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino\\Arduino.h"
+            ]
+        }
+    ],
+    "version": 4
+}
