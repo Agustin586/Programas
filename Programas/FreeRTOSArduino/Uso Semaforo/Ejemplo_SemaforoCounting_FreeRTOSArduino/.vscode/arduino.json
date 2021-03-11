@@ -1,5 +1,6 @@
 {
     "sketch": "Ejemplo_SemaforoCounting_FreeRTOSArduino.ino",
     "board": "arduino:avr:mega",
-    "configuration": "cpu=atmega2560"
+    "configuration": "cpu=atmega2560",
+    "port": "COM8"
 }

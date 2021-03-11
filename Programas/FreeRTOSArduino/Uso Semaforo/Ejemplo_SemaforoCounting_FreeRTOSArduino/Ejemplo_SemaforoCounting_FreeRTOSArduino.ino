@@ -1,13 +1,14 @@
 #include <Arduino_FreeRTOS.h>
 #include <semphr.h>
+#include "UART_INTERRUPT.h"
 
 // FREERTOS definiciones //
 /* Semaforo Handle */
 SemaphoreHandle_t CoutingSemaphore;
 /* Task and Interrupt task */
 void vTaskBlink(void *pvParameter);
-void vISRInt0(void *pvParameter);
-void Int0(void);
+void vISR_RX0(void *pvParameter);
+void ISR_RX0(void);
 /* Definiciones */
 #define DELAY500ms  pdMS_TO_TICKS(500)
 #define LEDBLINK    13
@@ -15,15 +16,13 @@ void Int0(void);
 
 void setup()
 {
-    // Inicializacion del puerto serie //
-    Serial.begin(115200);
     // Inicalizacion de Apis de FreeRTOS//
     xTaskCreate(vTaskBlink,"Blink",128,NULL,1,NULL);
     CoutingSemaphore = xSemaphoreCreateCounting(10,0);
     if(CoutingSemaphore != NULL)
     {
-        xTaskCreate(vISRInt0,"Interrupcion0",128,NULL,configMAX_PRIORITIES,NULL);
-        attachInterrupt(digitalPinToInterrupt(2), Int0, FALLING);
+        xTaskCreate(vISR_RX0,"Interrupcion0",128,NULL,configMAX_PRIORITIES,NULL);
+        USART_Init(MYUBRR);
     }
 }
 
@@ -32,20 +31,22 @@ void loop() {}
 void vTaskBlink(void *pvParameter)
 {
     (void) pvParameter;
+    TickType_t xLastWakeTime;
 
     pinMode(LEDBLINK,OUTPUT);
     digitalWrite(LEDBLINK,LOW);
+    xLastWakeTime = xTaskGetTickCount();
 
     while (1)
     {
         /* code */
         digitalWrite(LEDBLINK,!digitalRead(LEDBLINK));
-        vTaskDelay(DELAY500ms);
+        xTaskDelayUntil(&xLastWakeTime, DELAY500ms);
     }
     vTaskDelete(NULL);
 }
 
-void vISRInt0(void *pvParameter)
+void vISR_RX0(void *pvParameter)
 {
     (void) pvParameter;
 
@@ -54,13 +55,13 @@ void vISRInt0(void *pvParameter)
         /* code */
         if(xSemaphoreTake(CoutingSemaphore,DELAY500ms)==pdPASS)
         {
-            if()
+            Uart_println("Interrupcion por RX0");
         }
     }
     vTaskDelete(NULL);
 }
 
-void Int0(void)
+void ISR_RX0(void)
 {
     // Da los semaforos //
     xSemaphoreGiveFromISR(CoutingSemaphore,NULL);
