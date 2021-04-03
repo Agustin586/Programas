@@ -4,9 +4,14 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
+/*
+    UBRR = (16Mhz / (16*baudios)) - 1
+    BAUDIOS = 16Mhz (16*(UBRR+1))
+*/
+
 #define FOSC 16000000
-#define BAUD 9600
-#define MYUBRR FOSC/16/(BAUD-1)
+#define BAUD 57600
+#define MYUBRR (FOSC/16/BAUD-1)
 
 /* Definiciones de funciones */
 #define Uart_Init   USART_Init
@@ -75,8 +80,6 @@ void USART_Arrayln(const char *buffer)
 }
 ISR(USART0_RX_vect)
 {
-    RxBuffer = Uart_Read();
-    Uart_print("Letra:"),Uart_Write(RxBuffer),Uart_println(" ");
     ISR_RX0();
 }
 

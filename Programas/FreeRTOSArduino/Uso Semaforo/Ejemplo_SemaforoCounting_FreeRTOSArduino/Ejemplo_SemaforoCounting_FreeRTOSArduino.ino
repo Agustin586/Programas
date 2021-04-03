@@ -55,6 +55,8 @@ void vISR_RX0(void *pvParameter)
         /* code */
         if(xSemaphoreTake(CoutingSemaphore,DELAY500ms)==pdPASS)
         {
+            RxBuffer = Uart_Read();
+            Uart_print("Letra:"),Uart_Write(RxBuffer),Uart_println(" ");
             Uart_println("Interrupcion por RX0");
         }
     }
